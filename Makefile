@@ -559,7 +559,6 @@ prepiso: $(MKTREE)
 	@install -m755 scripts/{net-setup,greeting,livecd-login} $(MP)/usr/bin/ 
 	@sed s/@LINKER@/$(LINKER)/ scripts/shutdown-helper.in >$(MP)/usr/bin/shutdown-helper
 	@chmod 755 $(MP)/usr/bin/shutdown-helper
-	#@svn export --force root $(MP)/etc/skel
 
 iso: prepiso
 	@make unmount
