@@ -1,40 +1,38 @@
 define setup_build
-    @touch $(DIR)-$@.log
-    @-ln -sf ../packages/$(shell basename `pwd`)/$(DIR)-$@.log $(MY_ROOT)/logs/ 
-    @unpack $(FILE) 2>&1 | tee -a $(MY_ROOT)/logs/build.log >$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
+    @unpack $(FILE)
 endef
 
 define clean_build
-    @make clean 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
+    @make clean
 endef
 
 define std_build
     @$(setup_build)
-    @make -C $(DIR) -f ../Makefile compile-$@ 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
+    @make -C $(DIR) -f ../Makefile compile-$@
     @$(clean_build)
     @touch $@
 endef
 
 define std_build_noclean
 	@$(setup_build)
-    @make -C $(DIR) -f ../Makefile compile-$@ 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
+    @make -C $(DIR) -f ../Makefile compile-$@
     @touch $@
 endef
 
 define sep_dir_build
 	@$(setup_build)
-	@rm -rf $(NM)-build 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
-	@install -dv $(NM)-build 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
-	@make -C $(NM)-build -f ../Makefile compile-$@ 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
+	@rm -rf $(NM)-build
+	@install -dv $(NM)-build
+	@make -C $(NM)-build -f ../Makefile compile-$@
 	@$(clean_build)
 	@touch $@
 endef
 
 define sep_dir_build_noclean
 	@$(setup_build)
-	@rm -rf $(NM)-build 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
-	@install -dv $(NM)-build 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
-	@make -C $(NM)-build -f ../Makefile compile-$@ 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
+	@rm -rf $(NM)-build
+	@install -dv $(NM)-build
+	@make -C $(NM)-build -f ../Makefile compile-$@
 	@touch $@
 endef
 
