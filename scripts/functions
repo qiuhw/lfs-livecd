@@ -1,11 +1,7 @@
-define clean_build
-    @make clean
-endef
-
 define std_build
     @unpack $(FILE)
     @make -C $(DIR) -f ../Makefile compile-$@
-    @$(clean_build)
+    @make clean
     @touch $@
 endef
 
@@ -20,7 +16,7 @@ define sep_dir_build
 	@rm -rf $(NM)-build
 	@install -dv $(NM)-build
 	@make -C $(NM)-build -f ../Makefile compile-$@
-	@$(clean_build)
+	@make clean
 	@touch $@
 endef
 
