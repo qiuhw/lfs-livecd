@@ -5,12 +5,6 @@ define std_build
     @touch $@
 endef
 
-define std_build_noclean
-	@unpack $(FILE)
-    @make -C $(DIR) -f ../Makefile compile-$@
-    @touch $@
-endef
-
 define sep_dir_build
 	@unpack $(FILE)
 	@rm -rf $(NM)-build
