@@ -1,12 +1,12 @@
 define std_build
-    @unpack $(FILE)
+    @tar xf $(FILE)
     @make -C $(DIR) -f ../Makefile compile-$@
     @make clean
     @touch $@
 endef
 
 define sep_dir_build
-	@unpack $(FILE)
+	@tar xf $(FILE)
 	@rm -rf $(NM)-build
 	@install -dv $(NM)-build
 	@make -C $(NM)-build -f ../Makefile compile-$@

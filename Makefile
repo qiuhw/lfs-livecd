@@ -2,8 +2,8 @@
 # Makefiles for automating the LFS LiveCD build
 #
 # Written by Jeremy Huntwork | jhuntwork AT linuxfromscratch DOT org
-# Several additions and edits by Alexander Patrakov, Justin Knierim and
-# Thomas Pegg
+# Several additions and edits by Alexander Patrakov, Justin Knierim,
+# Thomas Pegg and Hongwen Qiu
 #
 # These scripts are published under the GNU General Public License, version 2
 #
@@ -11,27 +11,17 @@
 
 # Place your personal customizations in Makefile.personal
 # instead of editing this Makefile.
-# Makefile.personal is deliberately not in SVN.
 
 -include Makefile.personal
 
-#==============================================================================
-# Variables you may want to change.
-#==============================================================================
-
 # Timezone
-export timezone ?= America/New_York
+export timezone ?= Asia/Shanghai
 
 # Remote server location for packages
 export HTTP ?= http://dev.lightcube.us/~jhuntwork/sources
 
 # Default paper size for groff.
-export pagesize ?= letter
-
-#==============================================================================
-# The following variables are not expected to be changed, but could be, if you
-# understand how they are used and accept the consequences of changing them.
-#==============================================================================
+export pagesize ?= A4
 
 # Location for the temporary tools, must be a directory immediately under /
 export TT := /tools
@@ -48,22 +38,19 @@ export CXXFLAGS := $(CFLAGS)
 export LDFLAGS := -s
 
 # Set the base architecture
-# Currently supported: i686
+# Currently supported: x86_64
 # FIXME: Verify that the host is one of the above
 export MY_ARCH := $(shell uname -m)
-export LINKER = ld-linux.so.2
+export LINKER = ld-linux-x86-64.so.2
 
 # The full path to the build scripts on the host OS
-# e.g., /mnt/build/build-env
 export MY_BASE := $(shell pwd)
 
-# The path to the build directory - This must be the parent directory of $(MY_BUILD)
-# e.g., /mnt/build
+# The path to the build directory - This must be the parent directory of $(MY_BASE)
 export MY_BUILD := $(shell dirname $(MY_BASE))
 
 # The chroot form of $(MY_BASE), needed so that certain functions and scripts will
 # work both inside and outside of the chroot environment.
-# e.g., /build-env
 export MY_ROOT := /$(shell basename $(MY_BASE))
 
 # Free disk space needed for the build.
@@ -72,17 +59,9 @@ ROOTFS_MEGS := 1536
 # LiveCD version
 export CD_VERSION ?= $(MY_ARCH)-6.6
 
-#==============================================================================
-# The following variables are not expected to be changed
-#==============================================================================
-
 export MP := $(MY_BUILD)/image
 export MKTREE := $(MP)$(MY_ROOT)
 export LFSSRC := /lfs-sources
-
-#==============================================================================
-# Environment Variables - don't modify these!
-#==============================================================================
 
 export toolsenv := env -i HOME=/home/$(USER) LC_ALL=POSIX PATH=$(TT)/bin:/bin:/usr/bin /bin/bash -c
 export toolsbash := set +o hashall 2>/dev/null || set -o nohash && umask 022 && cd $(MY_ROOT)
@@ -112,7 +91,6 @@ endif
 #==============================================================================
 
 all: test-host base iso
-	@echo $(GREEN)"The LiveCD, $(MY_BUILD)$(MY_ROOT)/lfslivecd-$(CD_VERSION).iso, is ready!"$(WHITE)
 
 # Check host prerequisites
 # FIXME: Fill this out with more package pre-reqs
@@ -143,8 +121,8 @@ $(MKTREE): root.ext2
 	mount --bind $(MY_BUILD)/iso/boot $(MP)/boot
 	mount --bind $(MY_BUILD)/iso$(LFSSRC) $(MP)$(LFSSRC)
 	-ln -nsf $(MY_BUILD)$(TT) /
-	-install -dv $(TT)/bin
-	-ln -sv /bin/bash $(TT)/bin/sh
+	-install -d $(TT)/bin
+	-ln -s /bin/bash $(TT)/bin/sh
 	-ln -nsf $(MY_BUILD)$(SRC) /
 	-ln -nsf $(MY_BUILD)$(MY_ROOT) /
 	-mkdir -p $(MP)/{proc,sys,dev/shm,dev/pts}
@@ -152,19 +130,18 @@ $(MKTREE): root.ext2
 	-mount -t sysfs sysfs $(MP)/sys
 	-mount -t tmpfs shm $(MP)/dev/shm
 	-mount -t devpts devpts $(MP)/dev/pts
-	-mkdir -pv $(MP)/{bin,boot,etc,home,lib,mnt,opt}
-	-mkdir -pv $(MP)/{media/{floppy,cdrom},sbin,srv,var}
-	-install -dv $(TT)/bin
-	-install -m755 $(MY_BASE)/scripts/unpack $(TT)/bin
+	-mkdir -p $(MP)/{bin,boot,etc,home,lib,mnt,opt}
+	-mkdir -p $(MP)/{media/{floppy,cdrom},sbin,srv,var}
+	-install -d $(TT)/bin
 	-install -d -m 0750 $(MP)/root
 	-install -d -m 1777 $(MP)/tmp $(MP)/var/tmp
-	-mkdir -pv $(MP)/usr/{,local/}{bin,include,lib,sbin,src}
-	-mkdir -pv $(MP)/usr/{,local/}share/{doc,info,locale,man}
-	-mkdir -v  $(MP)/usr/{,local/}share/{misc,terminfo,zoneinfo}
-	-mkdir -pv $(MP)/usr/{,local/}share/man/man{1..8}
-	-for dir in $(MP)/usr $(MP)/usr/local; do ln -sv share/{man,doc,info} $$dir ; done
-	-mkdir -v $(MP)/var/{lock,log,mail,run,spool}
-	-mkdir -pv $(MP)/var/{opt,cache,lib/{misc,locate},local}
+	-mkdir -p $(MP)/usr/{,local/}{bin,include,lib,sbin,src}
+	-mkdir -p $(MP)/usr/{,local/}share/{doc,info,locale,man}
+	-mkdir    $(MP)/usr/{,local/}share/{misc,terminfo,zoneinfo}
+	-mkdir -p $(MP)/usr/{,local/}share/man/man{1..8}
+	-for dir in $(MP)/usr $(MP)/usr/local; do ln -s share/{man,doc,info} $$dir ; done
+	-mkdir    $(MP)/var/{lock,log,mail,run,spool}
+	-mkdir -p $(MP)/var/{opt,cache,lib/{misc,locate},local}
 	-mknod -m 600 $(MP)/dev/console c 5 1
 	-mknod -m 666 $(MP)/dev/null c 1 3
 	-mknod -m 666 $(MP)/dev/zero c 1 5
@@ -177,7 +154,7 @@ $(MKTREE): root.ext2
 	-ln -s /proc/self/fd/1 $(MP)/dev/stdout
 	-ln -s /proc/self/fd/2 $(MP)/dev/stderr
 	-ln -s /proc/kcore $(MP)/dev/core
-	-install -dv $(MY_BASE)/logs
+	-install -d $(MY_BASE)/logs
 	touch $(MKTREE)
 
 # This image should be kept as clean as possible, i.e.:

@@ -17,11 +17,9 @@ ftpget:
 	@touch $@
 
 prebuild: ftpget $(FILE)
-	@touch $(DIR)-$@.log
-	@-ln -sf $(MY_ROOT)/packages/$(shell basename `pwd`)/$(DIR)-$@.log $(MY_ROOT)/logs/
-	@unpack $(FILE) >>$(DIR)-$@.log 2>&1
-	@make -C $(DIR) -f ../Makefile compile-$@>>$(DIR)-$@.log 2>&1
-	@make clean >>$(DIR)-$@.log 2>&1
+	@tar xf $(FILE)
+	@make -C $(DIR) -f ../Makefile compile-$@
+	@make clean
 	@touch $@
 
 compile-prebuild:

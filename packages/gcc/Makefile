@@ -3,16 +3,21 @@
 NM= gcc
 VRS= 4.4.3
 DIR= $(NM)-$(VRS)
-
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
 SHA-$(FILE)= 619766282734728539ce58a5c383cb371f1999c7
 
-FILE1= mpfr-2.4.2.tar.bz2
+NM1= mpfr
+VRS1= 2.4.2
+DIR1= $(NM1)-$(VRS1)
+FILE1= $(DIR1).tar.bz2
 URL-$(FILE1)= $(HTTP)/mpfr/$(FILE1)
 SHA-$(FILE1)= 7ca93006e38ae6e53a995af836173cf10ee7c18c
 
-FILE2= gmp-5.0.0.tar.bz2
+NM2= gmp
+VRS2= 5.0.0
+DIR2= $(NM2)-$(VRS2)
+FILE2= $(DIR2).tar.bz2
 URL-$(FILE2)= $(HTTP)/gmp/$(FILE2)
 SHA-$(FILE2)= 11a49c6fec0a3cfae2df9966d321d740af9f603f
 
@@ -28,8 +33,8 @@ prebuild: $(FILE) $(FILE1) $(FILE2)
 	$(sep_dir_build)
 
 compile-prebuild:
-	cd ../$(DIR) ; mv -v $$(unpack ../$(FILE1)) mpfr
-	cd ../$(DIR) ; mv -v $$(unpack ../$(FILE2)) gmp
+	cd ../$(DIR) ; tar xf ../$(FILE1); mv $(DIR1) $(NM1)
+	cd ../$(DIR) ; tar xf ../$(FILE2); mv $(DIR2) $(NM2)
 	../$(DIR)/configure \
 		--prefix=$(TT) \
 		--target=$(BUILD_ARCH) \
@@ -64,8 +69,8 @@ compile-stage1:
 	echo '#define STANDARD_STARTFILE_PREFIX_2 ""' >> $$file && \
 	touch $$file.orig ; \
 	done
-	cd ../$(DIR) ; mv -v $$(unpack ../$(FILE1)) mpfr
-	cd ../$(DIR) ; mv -v $$(unpack ../$(FILE2)) gmp
+	cd ../$(DIR) ; tar xf ../$(FILE1); mv $(DIR1) $(NM1)
+	cd ../$(DIR) ; tar xf ../$(FILE2); mv $(DIR2) $(NM2)
 	CC="$(BUILD_ARCH)-gcc -B$(TT)/lib/" \
 		AR=$(BUILD_ARCH)-ar \
 		RANLIB=$(BUILD_ARCH)-ranlib \
@@ -123,8 +128,8 @@ stage3: $(FILE) $(FILE1) $(FILE2)
 	$(sep_dir_build)
 	
 compile-stage3:
-	cd ../$(DIR) ; mv -v $$(unpack ../$(FILE1)) mpfr
-	cd ../$(DIR) ; mv -v $$(unpack ../$(FILE2)) gmp
+	cd ../$(DIR) ; tar xf ../$(FILE1); mv $(DIR1) $(NM1)
+	cd ../$(DIR) ; tar xf ../$(FILE2); mv $(DIR2) $(NM2)
 	cd ../$(DIR) ; sed -i 's/install_to_$$(INSTALL_DEST) //' \
 	 libiberty/Makefile.in
 	cd ../$(DIR) ; sed -i 's,\./fixinc\.sh,-c true,' gcc/Makefile.in
