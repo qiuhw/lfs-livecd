@@ -17,7 +17,6 @@ ftpget:
 	@touch $@
 
 prebuild: ftpget $(FILE)
-	@$(call echo_message, Building)
 	@touch $(DIR)-$@.log
 	@-ln -sf $(MY_ROOT)/packages/$(shell basename `pwd`)/$(DIR)-$@.log $(MY_ROOT)/logs/
 	@unpack $(FILE) >>$(DIR)-$@.log 2>&1

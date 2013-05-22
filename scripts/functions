@@ -1,10 +1,3 @@
-define echo_message
-	@echo $(BRW)
-	@echo ================================================================================
-	@echo $(BRW)$(1) $(ORANGE)$(NM)-$(VRS)$(BRW) for target $(ORANGE)$@$(BRW)
-	@echo ================================================================================$(WHITE)
-endef
-
 define setup_build
     @touch $(DIR)-$@.log
     @-ln -sf ../packages/$(shell basename `pwd`)/$(DIR)-$@.log $(MY_ROOT)/logs/ 
@@ -16,7 +9,6 @@ define clean_build
 endef
 
 define std_build
-	@$(call echo_message, Building)
     @$(setup_build)
     @make -C $(DIR) -f ../Makefile compile-$@ 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
     @$(clean_build)
@@ -24,14 +16,12 @@ define std_build
 endef
 
 define std_build_noclean
-	@$(call echo_message, Building)
 	@$(setup_build)
     @make -C $(DIR) -f ../Makefile compile-$@ 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
     @touch $@
 endef
 
 define sep_dir_build
-	@$(call echo_message, Building)
 	@$(setup_build)
 	@rm -rf $(NM)-build 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
 	@install -dv $(NM)-build 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
@@ -41,7 +31,6 @@ define sep_dir_build
 endef
 
 define sep_dir_build_noclean
-	@$(call echo_message, Building)
 	@$(setup_build)
 	@rm -rf $(NM)-build 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
 	@install -dv $(NM)-build 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}

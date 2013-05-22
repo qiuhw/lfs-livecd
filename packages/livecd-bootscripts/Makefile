@@ -9,7 +9,6 @@ DATA= font.dat font-errors.dat lang.dat
 include $(MY_ROOT)/scripts/functions
 
 stage2: Makefile $(SCRIPTS) $(DATA)
-	@$(call echo_message, Building)
 	@make -f Makefile compile-$@ >>$(NM)-$@.log 2>&1
 	@touch $@
 

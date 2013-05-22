@@ -13,7 +13,6 @@ chroot:
 	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
 
 stage2: Makefile $(FILE1)
-	@$(call echo_message, Building)
 	@touch $(DIR)-$@.log
 	@-ln -sf ../packages/$(shell basename `pwd`)/$(DIR)-$@.log $(MY_ROOT)/logs/ 
 	@make compile-$@ 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}

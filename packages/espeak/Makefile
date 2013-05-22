@@ -22,7 +22,6 @@ SHA-$(FILE)= 354dad04ccd96cc2f03f647d06b6d45aba593681
 include $(MY_ROOT)/scripts/functions
 
 stage2: Makefile $(FILE)
-	@$(call echo_message, Building)
 	@touch $(DIR)-$@.log
 	@-ln -sf ../packages/$(shell basename `pwd`)/$(DIR)-$@.log $(MY_ROOT)/logs/ 
 	@unzip $(FILE) 2>&1 | tee -a $(MY_ROOT)/logs/build.log >$(DIR)-$@.log ; exit $${PIPESTATUS[0]}

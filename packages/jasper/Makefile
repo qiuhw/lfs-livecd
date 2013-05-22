@@ -17,7 +17,6 @@ SHA-$(PATCH)= 025551612fb08b0694f71784d397eed3d1452ef6
 include $(MY_ROOT)/scripts/functions
 
 stage2: Makefile $(FILE) $(PATCH)
-	@$(call echo_message, Building)
 	@unzip $(FILE) >$(DIR)-$@.log 2>&1
 	@make -C $(DIR) -f ../Makefile compile-$@ >>$(DIR)-$@.log 2>&1
 	@make clean >>$(DIR)-$@.log 2>&1

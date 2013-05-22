@@ -15,7 +15,6 @@ SEAMONKEY_CONFIG= $(MY_ROOT)/root/.mozilla/default/79exklwh.slt/prefs.js
 include $(MY_ROOT)/scripts/functions
 
 stage2: Makefile $(FILE)
-	@$(call echo_message, Building)
 	@mkdir tmp
 	@make CROSSVARS=../$(CROSSVARS) -C tmp -f ../Makefile compile-$@ \
 	  2>&1 | tee -a $(MY_ROOT)/logs/build.log >$(DIR)-$@.log
