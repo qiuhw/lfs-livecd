@@ -1,0 +1,48 @@
+#!/bin/sh
+
+IFS=""
+IGNORE=1
+F=0
+
+while read -r LINE ; do
+	case "$LINE" in
+	"BOOT OPTIONS")
+		IGNORE=0
+		;;
+	"THANKS")
+		IGNORE=1
+		;;
+	\#\#\#\ *\ \#\#\#)
+		if [ "$IGNORE" = "0" ] ; then
+			F=$(( F+1 ))
+			TITLE=${LINE#????}
+			TITLE=${TITLE%????}
+			TITLE="F$F = $TITLE"
+			echo "$TITLE" >>boot-option-index
+			printf '\01770\014\01707' >"F$F.txt"
+		fi
+		;;
+	"Example:")
+		# Save a bit of space on the screen
+		if [ "$IGNORE" = "0" ] ; then
+			echo -n "Example:" >>"F$F.txt"
+			# Skip the following empty line and grab the example
+			read -r LINE
+			read -r LINE
+		fi
+		;;
+	esac
+	if [ "$IGNORE" = "0" ] && [ "$F" != "0" ] ; then
+		echo "$LINE" >>"F$F.txt"
+	fi
+done
+
+pr -t -2 -o 4 boot-option-index | col -x >>F1.txt
+
+for FILE in F*.txt ; do
+	LENGTH=`wc -l $FILE`
+	LENGTH=${LENGTH% *}
+	for (( i=$LENGTH ; i<28 ; i++ )) ; do
+		echo >>$FILE
+	done
+done

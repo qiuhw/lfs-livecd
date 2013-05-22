@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Tin
+Comment=Read news
+Exec=tin
+Terminal=true
+MultipleArgs=false
+Type=Application
+Categories=Application;Network

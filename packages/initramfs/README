@@ -1,0 +1,20 @@
+The fakecd.iso.head file is stored in pregenerated binary form in order
+to avoid breakage that can be caused by new cdrtools. Append a single
+file compressed by mkzftree to it, and adjust bytes at offsets mentioned below
+in order to get a valid iso image containing that single file as /root.ext2.
+
+bytes to change:
+
+Offset 0x8050, DWORD: volume size in 2K blocks, little-endian
+Offset 0x8054, DWORD: volume size in 2K blocks, big-endian
+Offset 0xb8f8, DWORD: compressed length, little-endian
+Offset 0xb8fc, DWORD: compressed length, big-endian
+Offset 0xb971, BYTE:  compression header size (>> 2)
+Offset 0xb972, BYTE:  compression block size (log2)
+Offset 0xb973, DWORD: uncompressed length, little-endian
+Offset 0xb977, DWORD: uncompressed length, big-endian
+
+Uncompressed length can be found at offset 8 in the compressed file, in the
+little-endian form. Bytes indicating compression header size and compression
+block size can be copied from the compressed file from offsets 12 and 13
+(decimal), respectively.

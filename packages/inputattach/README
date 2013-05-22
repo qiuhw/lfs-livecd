@@ -1,0 +1,26 @@
+The "inputattach.c" file was downloaded from:
+
+http://www.doc.ic.ac.uk/~jpc1/linux/ipaq/inputattach.c
+
+This version of inputattach is a bit old. Newer version is available at:
+
+http://cvs.sourceforge.net/viewcvs.py/*checkout*/linuxconsole/ruby/utils/inputattach.c
+
+but it requires the linux/serio.h file with updated SERIO_XXX definitions.
+
+The -D_LINUX_INTERRUPT_H flag is used in Makefile in order to prevent useless
+inclusion of broken linux/interrupt.h file by linux/serio.h (and thus avoid
+compilation error). This is a bug in linux-libc-headers 2.6.11.2. It will be
+fixed in the next version. When this happens, please remove this flag.
+
+To use a serial mouse:
+
+modprobe sermouse
+inputattach --intellimouse /dev/ttyS1 &
+
+Then mouse data will be present in /dev/input/mouse0, /dev/input/mice and
+/dev/psaux in ImPS/2 format. This means that gpm and Xorg don't require
+reconfiguration.
+
+-- 
+Alexander E. Patrakov

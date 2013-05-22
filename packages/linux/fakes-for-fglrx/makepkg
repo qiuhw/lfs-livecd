@@ -1,0 +1,4 @@
+#!/bin/sh
+rm -rf install
+mv usr/lib/xorg/modules/dri usr/lib/dri
+tar --exclude $5 -zcvf $5 .

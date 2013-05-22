@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<purple version='1.0'>
+	<blist>
+		<group name='LFS'>
+			<setting name='collapsed' type='bool'>0</setting>
+			<chat proto='prpl-irc' account='lfs-livecd@irc.linuxfromscratch.org'>
+				<component name='channel'>#lfs</component>
+				<setting name='gtk-autojoin' type='bool'>1</setting>
+			</chat>
+			<chat proto='prpl-irc' account='lfs-livecd@irc.linuxfromscratch.org'>
+				<component name='channel'>#lfs-support</component>
+				<setting name='gtk-autojoin' type='bool'>1</setting>
+			</chat>
+		</group>
+	</blist>
+	<privacy>
+		<account proto='prpl-irc' name='lfs-livecd@irc.linuxfromscratch.org' mode='1'/>
+	</privacy>
+</purple>

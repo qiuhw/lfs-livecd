@@ -1,0 +1,17 @@
+# Your username at the ISP
+# The password is set in /etc/ppp/pap-secrets
+user "jdoe"
+# Replace TTTTTTT with the ISP phone number
+connect "/usr/sbin/chat -T TTTTTTT -f /etc/ppp/dialup.chat"
+
+# Don't ask the peer to authenticate itself
+noauth
+hide-password 
+debug
+/dev/ttyS1
+115200
+lock
+defaultroute
+noipdefault 
+usepeerdns
+remotename dialup

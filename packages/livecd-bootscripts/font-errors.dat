@@ -1,0 +1,4 @@
+All non-ASCII characters will be treated as non-printable\nuntil you set locale to something other than "C".
+Some characters are missing from the console font.\nType "startx" to start the X session after login.
+Your language is supported in X window system only.\nType "startx" to start the X session after login.
+Your language is completely unsupported on this CD.\nIt is a bug, but we don't know how to fix it.\nPlease mail instructions to livecd@linuxfromscratch.org

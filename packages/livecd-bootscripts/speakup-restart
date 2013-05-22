@@ -1,0 +1,32 @@
+#!/bin/sh
+
+. /etc/sysconfig/rc
+. ${rc_functions}
+
+read SYNTH </sys/module/speakup/parameters/synth
+
+export LANG=`( . /etc/profile ; echo $LANG )`
+LL=${LANG%%_*}
+CHARMAP=`locale charmap`
+
+if [ "$CHARMAP" = "ANSI_X3.4-1968" ] ; then
+	CHARMAP="ISO-8859-1"
+fi
+
+case "${1}" in
+	start)
+		if [ "$SYNTH" = "soft" ] ; then
+		  boot_mesg "Restarting software speech synthesizer..."
+		  killproc /usr/bin/speechd-up >/dev/null 2>&1
+		  killproc /usr/bin/speech-dispatcher >/dev/null 2>&1
+		  sed -i "/DefaultLanguage/s/en/$LL/" /etc/speech-dispatcher/speechd.conf
+		  speech-dispatcher 2>/dev/null &&
+		  /usr/bin/speechd-up -c "$CHARMAP"
+		  evaluate_retval
+		fi
+		;;
+	*)
+		echo "Usage: ${0} {start}"
+		exit 1
+		;;
+esac

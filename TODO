@@ -1,0 +1,5 @@
+# LiveCD trunk TODO List
+
+*  Update README/documentation for Makefiles [in progress]
+
+* Add a script that checks the RAM size and tells the user to add swap if needed

@@ -1,0 +1,9 @@
+#!/bin/sh
+case `/bin/uname -m` in
+	x86_64)
+		/usr/bin/ld "$@"
+		;;
+	*)
+		/tools/bin/x86_64-unknown-linux-gnu-ld "$@"
+		;;
+esac

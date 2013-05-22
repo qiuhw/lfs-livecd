@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Mutt
+Comment=Read and write your email
+Exec=mutt
+Terminal=true
+MultipleArgs=false
+Type=Application
+Categories=Application;Network
+Comment[ca]=Llegiu i escriviu correu
+Comment[de]=Emails lesen und verfassen
+Comment[fr]=Lire et écrire votre mél

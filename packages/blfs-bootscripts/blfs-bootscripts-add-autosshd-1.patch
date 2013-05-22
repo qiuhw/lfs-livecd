@@ -1,0 +1,62 @@
+diff -urN blfs-bootscripts-20060910.orig/Makefile blfs-bootscripts-20060910/Makefile
+--- blfs-bootscripts-20060910.orig/Makefile	2006-10-08 03:50:18.000000000 +0000
++++ blfs-bootscripts-20060910/Makefile	2006-10-08 03:58:10.000000000 +0000
+@@ -50,6 +50,16 @@
+ 	install -m $(CONFMODE) blfs/sysconfig/autofs.conf $(EXTDIR)/sysconfig/
+ 	ln -sf  ../init.d/autofs $(EXTDIR)/rc.d/rcsysinit.d/S52autofs
+ 
++install-autosshd: create-dirs
++	install -m ${MODE} blfs/init.d/autosshd       ${EXTDIR}/rc.d/init.d/
++	ln -sf  ../init.d/autosshd ${EXTDIR}/rc.d/rc0.d/K40autosshd
++	ln -sf  ../init.d/autosshd ${EXTDIR}/rc.d/rc1.d/K40autosshd
++	ln -sf  ../init.d/autosshd ${EXTDIR}/rc.d/rc2.d/K40autosshd
++	ln -sf  ../init.d/autosshd ${EXTDIR}/rc.d/rc3.d/S40autosshd
++	ln -sf  ../init.d/autosshd ${EXTDIR}/rc.d/rc4.d/S40autosshd
++	ln -sf  ../init.d/autosshd ${EXTDIR}/rc.d/rc5.d/S40autosshd
++	ln -sf  ../init.d/autosshd ${EXTDIR}/rc.d/rc6.d/K40autosshd
++
+ install-bind: create-dirs
+ 	install -m ${MODE} blfs/init.d/bind       ${EXTDIR}/rc.d/init.d/
+ 	ln -sf  ../init.d/bind ${EXTDIR}/rc.d/rc0.d/K49bind
+diff -urN blfs-bootscripts-20060910.orig/blfs/init.d/autosshd blfs-bootscripts-20060910/blfs/init.d/autosshd
+--- blfs-bootscripts-20060910.orig/blfs/init.d/autosshd	1970-01-01 00:00:00.000000000 +0000
++++ blfs-bootscripts-20060910/blfs/init.d/autosshd	2006-10-08 03:58:10.000000000 +0000
+@@ -0,0 +1,25 @@
++#!/bin/sh
++# Begin $rc_base/init.d/autosshd
++
++. /etc/sysconfig/rc
++. $rc_functions
++
++case "$1" in
++	start)
++		if [ -f /.autosshd ] ; then
++			/etc/rc.d/init.d/sshd start
++		fi
++		;;
++	stop)
++		if statusproc /usr/sbin/sshd | grep -q "Process ID"
++		then
++			/etc/rc.d/init.d/sshd stop
++		fi
++		;;
++	*)
++		echo "Usage: $0 {start|stop}"
++		exit 1
++		;;
++esac
++
++# End $rc_base/init.d/autosshd
+diff -urN blfs-bootscripts-20060910.orig/blfs/init.d/sshd blfs-bootscripts-20060910/blfs/init.d/sshd
+--- blfs-bootscripts-20060910.orig/blfs/init.d/sshd	2006-10-08 03:50:18.000000000 +0000
++++ blfs-bootscripts-20060910/blfs/init.d/sshd	2006-10-08 03:58:52.000000000 +0000
+@@ -13,6 +13,9 @@
+ case "$1" in
+     start)
+         boot_mesg "Starting SSH Server..."
++        [ -f /etc/ssh/ssh_host_key ] || ssh-keygen -t rsa1 -f /etc/ssh/ssh_host_key -N ""
++        [ -f /etc/ssh/ssh_host_rsa_key ] || ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ""
++        [ -f /etc/ssh/ssh_host_dsa_key ] || ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key -N ""
+         # Also prevent ssh from being killed by out of memory conditions
+         loadproc /usr/sbin/sshd 
+         sleep 1

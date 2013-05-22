@@ -1,0 +1,201 @@
+#!/bin/sh
+########################################################################
+# Begin $rc_base/init.d/langconf
+#
+# Description : Language and Keymap Configuration Script for the Live CD
+#
+# Authors     : Alexander E. Patrakov
+#
+# Version     : 00.00
+#
+# Notes       :
+#
+########################################################################
+
+SELECTED=
+
+DATABASE=/etc/langconf/lang.dat
+FONTDB=/etc/langconf/font.dat
+ERRDB=/etc/langconf/font-errors.dat
+
+F_ERROR=0
+
+same_locale() {
+	for term in language territory charmap
+	do
+		[ "`LC_ALL=$1 locale $term`" = "`LC_ALL=$2 locale $term`" ] || return 1
+	done
+	return 0
+}
+
+guess_selection() {
+	while read F_DESCRIPTION F_LANG F_KEYMAP F_LEGACYCHARSET F_XKEYMAP F_CODEPAGE
+	do
+		if [ -z "$F_DESCRIPTION" ] || [ "$F_DESCRIPTION" = "#" ]
+		then
+			continue
+		fi
+		F_KEYMAP="${F_KEYMAP//\"/}"
+		F_KEYMAP="${F_KEYMAP//+/ }"
+		F_LEGACYCHARSET="${F_LEGACYCHARSET//\"/}"
+		F_XKEYMAP="${F_XKEYMAP//\"/}"
+		same_locale "$F_LANG" "$LANG" && SELECTED="$F_DESCRIPTION" && return 0
+	done <$DATABASE
+	F_LANG="$LANG"
+	F_KEYMAP=defkeymap
+	F_LEGACYCHARSET=""
+	F_XKEYMAP="us"
+	F_CODEPAGE="cp437"
+	return 1
+}
+
+get_selection_dlg() {
+	ARGS=""
+	while read F_DESCRIPTION F_JUNK
+	do
+		if [ -z "$F_DESCRIPTION" ] || [ "$F_DESCRIPTION" = "#" ]
+		then
+			continue
+		fi
+		DESCRIPTION=`echo $F_DESCRIPTION | tr _ ' '`
+		ARGS="$ARGS \"$DESCRIPTION\" \"\""
+	done <$DATABASE
+	DLG_COMMAND="dialog --title \"Regional settings\" --timeout 20 \
+	--default-item \"Default/Other\" \
+	--menu \"Choose your locale\" -1 0 0 $ARGS"
+	SELECTED=`eval $DLG_COMMAND 3>&2 2>&1 1>&3`
+
+	if [ $? -ne 0 ] ; then
+		exit 0
+	fi
+}
+
+guess_font() {
+	# Select font that has all characters in the language
+	# Base the selection on the language's non-UTF-8 locale charmap
+	F_CHARMAP=`LC_ALL=${F_LANG%.UTF-8} locale charmap`
+	while IFS="	" read CHARMAP G_FONT ERROR
+	do
+		if [ "$F_CHARMAP" = "$CHARMAP" ]
+		then
+			F_FONT="$G_FONT"
+			F_ERROR="$ERROR"
+			if [ "$F_ERROR" != "0" ]
+			then
+				echo -e `sed -n "${F_ERROR}p" $ERRDB`
+				sleep 5
+			fi
+		fi
+	done <$FONTDB
+	
+	# If UTF-8 locale is used, drop any "-m" flag
+	# and select a font with Euro, if appropriate
+	case "$F_LANG" in
+	*.UTF-8)
+		F_FONT=${F_FONT% -m*}
+		if [ "$F_FONT" = "lat1-16" ] ; then
+			F_FONT=lat0-16
+		fi
+		;;
+	esac
+}
+
+confirm() {
+	# TODO: simplify life for Dvorak users. They have to edit
+	# this using (awkward) qwerty keymap!
+	
+	DLG_COMMAND="dialog --title \"Confirm/edit settings\" \
+	--no-cancel \
+	--form \"Please review and, if necessary, edit the settings below.
+\n\nKeymap autoconversion is used only together with UTF-8 locales.
+If you don't need to convert your keymap to UTF-8 (e.g. because it
+is already in UTF-8, or because you don't want UTF-8), don't fill in
+that field.
+\" 0 0 6 \
+	\"Locale:\" 1 1 \"$F_LANG\" 1 30 40 0 \
+	\"Console keymap:\" 2 1 \"$F_KEYMAP\" 2 30 40 0 \
+	\"  autoconverted from charset:\" 3 1 \"$F_LEGACYCHARSET\" 3 30 40 0 \
+	\"Console font:\" 4 1 \"$F_FONT\" 4 30 40 0 \
+	\"X keymap:\" 5 1 \"$F_XKEYMAP\" 5 30 40 0 \
+	\"DOS charset:\" 6 1 \"$F_CODEPAGE\" 6 30 40 0"
+	SELECTION=`eval $DLG_COMMAND 3>&2 2>&1 1>&3`
+	STATUS=$?
+	[ "$STATUS" != 0 ] && exit 1
+	eval "`echo "$SELECTION" | \
+		sed -e '1s,^,F_LANG=",' \
+		-e '2s,^,F_KEYMAP=",' \
+		-e '3s,^,F_LEGACYCHARSET=",' \
+		-e '4s,^,F_FONT=",' \
+		-e '5s,^,F_XKEYMAP=",' \
+		-e '6s,^,F_CODEPAGE=",' | sed -e 's,$,",'`"
+	return 0
+}
+
+interactive_config() {
+	get_selection_dlg
+	F_SELECTED=`echo $SELECTED | tr ' ' _`
+	LINE=`grep "^$F_SELECTED" $DATABASE | sed 's,[[:space:]]\+,\n,g'`
+	eval "`echo "$LINE" | sed -e 's,+, ,g' -e 's,",,g' | \
+		sed -e '1d' \
+		-e '2s,^,F_LANG=",' \
+		-e '3s,^,F_KEYMAP=",' \
+		-e '4s,^,F_LEGACYCHARSET=",' \
+		-e '5s,^,F_XKEYMAP=",' \
+		-e '6s,^,F_CODEPAGE=",' | sed -e 's,$,",'`"
+	[ -z "$F_KEYMAP" ] && F_KEYMAP=defkeymap
+	guess_font
+	[ -z "$F_XKEYMAP" ] && F_XKEYMAP=us
+	confirm
+}
+
+noninteractive_config() {
+	guess_selection
+	F_LANG="$LANG"
+	guess_font
+	# Accept overrides to our guesses if given on the command line
+	[ -z "$F_KEYMAP" ] && F_KEYMAP=defkeymap
+	[ -z "$F_XKEYMAP" ] && F_XKEYMAP=us
+	[ -n "$KEYMAP" ] && F_KEYMAP=${KEYMAP//+/ }
+	[ -n "$FONT" ] && F_FONT=${FONT//+/ }
+	[ -n "$LEGACY_CHARSET" ] && F_LEGACYCHARSET=$LEGACY_CHARSET
+	[ -n "$XKEYMAP" ] && F_XKEYMAP=$XKEYMAP
+	[ -n "$CODEPAGE" ] && CODEPAGE=cp437
+}
+
+# Assume that noninteractive configuration is wanted if LANG is set
+if [ -n "$LANG" ]
+then
+	noninteractive_config
+else
+	interactive_config
+fi
+
+# Write the settings out to configuration files
+echo "LANG=\"$F_LANG\" ; export LANG" >>/etc/profile
+
+echo "KEYMAP=\"$F_KEYMAP\"" >/etc/sysconfig/console
+
+CHARMAP=`LC_ALL="$F_LANG" locale charmap`
+if [ "$CHARMAP" = "UTF-8" ]
+then
+	echo "UNICODE=1" >>/etc/sysconfig/console
+	echo "BROKEN_COMPOSE=0" >>/etc/sysconfig/console
+	if [ -n "$F_LEGACYCHARSET" ]
+	then
+		echo "FONT=\"$F_FONT -m ${F_LEGACYCHARSET#iso-}\"" >>/etc/sysconfig/console
+		echo "LEGACY_CHARSET=\"$F_LEGACYCHARSET\"" >>/etc/sysconfig/console
+	else
+		echo "FONT=\"$F_FONT\"" >>/etc/sysconfig/console
+	fi
+else
+	echo "FONT=\"$F_FONT\"" >>/etc/sysconfig/console
+fi
+
+sed -i "s/\"us\"/\"$F_XKEYMAP\"/" /etc/X11/xorg.conf
+sed -i -e "s/cp437/$F_CODEPAGE/" -e "s/ISO-8859-1/$CHARMAP/" /etc/samba/smb.conf
+
+if [ "$F_ERROR" = "3" ]
+then
+	echo '[ "$TERM" = "linux" ] && LC_ALL=C' >>/etc/profile
+	echo 'export LC_ALL' >>/etc/profile
+fi

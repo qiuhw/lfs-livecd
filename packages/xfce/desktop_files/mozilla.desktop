@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=SeaMonkey
+GenericName=Web Browser
+Comment=Browse the World Wide Web
+Exec=/bin/sh -c 'mozilla -remote "xfeDoCommand(openBrowser)" 2>/dev/null || mozilla'
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Application;Network
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/vnd.mozilla.xul+xml;application/rss+xml;application/rdf+xml;x-directory/webdav;x-directory/webdav-prefer-directory;image/gif;image/jpeg;image/png
+

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Chatzilla
+Comment=IRC Client
+Exec=/bin/sh -c 'mozilla -remote "openURL(irc://)" 2>/dev/null || mozilla -chat'
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Application;Network
+

@@ -1,0 +1,9 @@
+#!/bin/sh
+case "$1" in
+/proc/version)
+	echo "Linux version VERSION (root@lfslivecd) (gcc version 4.1.2) #1 SMP"
+	;;
+*)
+	/bin/cat "$@"
+	;;
+esac

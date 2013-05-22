@@ -1,0 +1,83 @@
+#!/bin/sh
+
+exec 2>/dev/null
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+
+CARD="$1"
+
+# Master-like volumes default to 74%, but one can override
+# them from the boot command line
+
+MASTER_VOLUME="74%"
+
+read -r CMDLINE </proc/cmdline
+for PARAM in $CMDLINE ; do
+	case $PARAM in
+	volume=*)
+		MASTER_VOLUME=${PARAM#volume=}
+		;;
+	esac
+done
+
+# Master volume and similar controls are unmuted and set to 74%
+# without looking at the dB scale
+#
+# Errors are ignored, because not all controls exist on all cards
+set_master_level()
+{
+	amixer -c "$CARD" -q -- set "$1" "$MASTER_VOLUME" unmute
+}
+
+# PCM volume and similar controls are first set to 0dB and unmuted.
+# If this fails (presumably because the card knows nothing about dB),
+# they are set to 74% and unmuted.
+#
+# This is done in order to minimize the amount of internal distortion
+# (the problem is obvious on FM801 - setting both PCM and Wave to 100%
+# leads to heavy internal clipping before the signal even gets to the
+# master volume control)
+#
+# Further errors are ignored, because not all controls exist on all cards
+set_pcm_level()
+{
+	AMIXER_OUTPUT=`	amixer -c "$CARD" -q -- set "$1" 0dB unmute 2>&1`
+	if [ "$AMIXER_OUTPUT" = 'amixer: Invalid command!' ] ; then
+		amixer -c "$CARD" -q -- set "$1" "74%" unmute
+	fi
+}
+
+# First, try restoring the saved volumes.
+# If that succeeds, don't do anything else.
+alsactl restore "$CARD" && exit 0
+
+# Then, try setting some sane volume levels.
+# List of control names taken from Debian.
+set_master_level "Master"
+set_master_level "Master Mono"
+set_master_level "Master Digital"
+set_master_level "Headphone"
+set_master_level "Front"
+
+# Some card-specific quirks
+amixer -c "$CARD" set "Master Playback Switch" on
+amixer -c "$CARD" set "IEC958 Capture Monitor" off
+amixer -c "$CARD" set "Headphone Jack Sense" off
+amixer -c "$CARD" set "Line Jack Sense" off
+
+set_pcm_level "PCM"
+set_pcm_level "PCM,1"
+set_pcm_level "DAC"
+set_pcm_level "DAC,0"
+set_pcm_level "DAC,1"
+# FIXME - some cards like FM801 default to a sane level for "wave",
+# don't override. The bug is currently hidden for FM801, because the default
+# is 74% or, equivalently, 0dB there.
+set_pcm_level "Wave"
+set_pcm_level "AC97"
+set_pcm_level "Playback"
+set_pcm_level "Dynamic Range Compression"
+
+# This script should never fail due to
+# a card not having dynamic range compression
+exit 0

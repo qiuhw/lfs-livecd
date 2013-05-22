@@ -1,0 +1,43 @@
+Submitted By: Alexander E. Patrakov
+Date: 2007-02-27
+Initial Package Version: 1.2.0
+Origin: Alexander E. Patrakov
+Upstream status: LiveCD specific
+Description: Deletes default modes with refresh rate less than 60 Hz
+
+diff -ur xorg-server-X11R7.0-1.1.1.orig/hw/xfree86/common/extramodes xorg-server-X11R7.0-1.1.1/hw/xfree86/common/extramodes
+--- xorg-server-X11R7.0-1.1.1.orig/hw/xfree86/common/extramodes	2004-04-24 01:53:57.000000000 +0600
++++ xorg-server-X11R7.0-1.1.1/hw/xfree86/common/extramodes	2006-02-28 18:07:35.000000000 +0500
+@@ -7,9 +7,6 @@
+ # 832x624 @ 75Hz (74.55Hz) (fix if the official/Apple spec is different) hsync: 49.725kHz
+ ModeLine "832x624" 57.284 832  864  928 1152  624  625  628  667 -Hsync -Vsync
+ 
+-# 1152x768 @ 54.8Hz (Titanium PowerBook) hsync: 44.2kHz
+-ModeLine "1152x768"   64.995 1152 1178 1314 1472  768  771  777  806 +hsync +vsync
+-
+ # 1400x1050 @ 60Hz (VESA GTF) hsync: 65.5kHz
+ ModeLine "1400x1050" 122.0 1400 1488 1640 1880   1050 1052 1064 1082 +hsync +vsync
+ 
+diff -ur xorg-server-X11R7.0-1.1.1.orig/hw/xfree86/common/vesamodes xorg-server-X11R7.0-1.1.1/hw/xfree86/common/vesamodes
+--- xorg-server-X11R7.0-1.1.1.orig/hw/xfree86/common/vesamodes	2004-04-24 01:53:57.000000000 +0600
++++ xorg-server-X11R7.0-1.1.1/hw/xfree86/common/vesamodes	2006-02-28 18:08:34.000000000 +0500
+@@ -27,9 +27,6 @@
+ # 640x480 @ 85Hz (VESA) hsync: 43.3kHz
+ ModeLine "640x480"    36.0  640  696  752  832    480  481  484  509 -hsync -vsync
+ 
+-# 800x600 @ 56Hz (VESA) hsync: 35.2kHz
+-ModeLine "800x600"    36.0  800  824  896 1024    600  601  603  625 +hsync +vsync
+-
+ # 800x600 @ 60Hz (VESA) hsync: 37.9kHz
+ ModeLine "800x600"    40.0  800  840  968 1056    600  601  605  628 +hsync +vsync
+ 
+@@ -42,9 +39,6 @@
+ # 800x600 @ 85Hz (VESA) hsync: 53.7kHz
+ ModeLine "800x600"    56.3  800  832  896 1048    600  601  604  631 +hsync +vsync
+ 
+-# 1024x768i @ 43Hz (industry standard) hsync: 35.5kHz
+-ModeLine "1024x768"   44.9 1024 1032 1208 1264    768  768  776  817 +hsync +vsync Interlace
+-
+ # 1024x768 @ 60Hz (VESA) hsync: 48.4kHz
+ ModeLine "1024x768"   65.0 1024 1048 1184 1344    768  771  777  806 -hsync -vsync
+ 

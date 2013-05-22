@@ -1,0 +1,10 @@
+#!/bin/sh
+cd $1/usr/src/nv
+sed -i 's/: select_makefile$/:/' makefile
+sed -i 's/^module:.*$/module:/' Makefile.kbuild
+ln -s Makefile.kbuild Makefile
+PATH=$PATH:/tools/bin make KERNEL_MODLIB=/lib/modules/$2 ARCH=x86_64 CROSS_COMPILE=x86_64-unknown-linux-gnu- CC=x86_64-unknown-linux-gnu-gcc module
+cd ../../..
+mkdir -p kernel/lib/modules/$2/external
+cp usr/src/nv/nvidia.ko kernel/lib/modules/$2/external
+cd kernel ; tar zcvf ../../${1%-pkg0}-kernel-$2.tgz . ; cd ..

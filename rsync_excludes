@@ -1,0 +1,8 @@
+.svn
+.project
+.buildpath
+antconfig.txt
+build.xml
+rsync_excludes
+.settings
+.cproject

@@ -1,0 +1,22 @@
+#!/bin/sh
+
+LC_ALL=en_US.UTF-8
+export LC_ALL
+
+. /etc/sysconfig/rc
+. ${rc_functions}
+
+case "${1}" in
+	start)
+		if [ ! -z "$brltty" ] ; then
+		  boot_mesg "Restarting brltty..."
+		  killproc /usr/bin/brltty >/dev/null 2>&1
+		  loadproc /usr/bin/brltty -l 0
+		  evaluate_retval
+		fi
+		;;
+	*)
+		echo "Usage: ${0} {start}"
+		exit 1
+		;;
+esac

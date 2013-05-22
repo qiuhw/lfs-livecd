@@ -1,0 +1,115 @@
+diff -urN lfs-bootscripts-20060712.orig/lfs/init.d/console lfs-bootscripts-20060712/lfs/init.d/console
+--- lfs-bootscripts-20060712.orig/lfs/init.d/console	2006-07-12 05:19:27.000000000 +0600
++++ lfs-bootscripts-20060712/lfs/init.d/console	2006-07-14 21:44:38.000000000 +0600
+@@ -59,8 +59,12 @@
+ 		# FIXME: Fedora Core also initializes two spare consoles
+ 		# - do we want that?
+ 		
+-		for TTY in `grep '^[^#].*respawn:/sbin/agetty' /etc/inittab |
+-			grep -o '\btty[[:digit:]]*\b'`
++		# for TTY in `grep '^[^#].*respawn:/sbin/agetty' /etc/inittab |
++		# 	grep -o '\btty[[:digit:]]*\b'`
++		#
++		# XXX Livecd doesn't use agetty, so the statement above
++		# doesn't work
++		for TTY in 1 2 3 4 5 6
+ 		do
+ 			openvt -f -w -c ${TTY#tty} -- \
+ 				/bin/sh -c "${MODE_COMMAND}"
+diff -urN lfs-bootscripts-20060712.orig/lfs/init.d/udev lfs-bootscripts-20060712/lfs/init.d/udev
+--- lfs-bootscripts-20060712.orig/lfs/init.d/udev	2006-06-03 08:23:11.000000000 +0600
++++ lfs-bootscripts-20060712/lfs/init.d/udev	2006-07-14 21:44:38.000000000 +0600
+@@ -18,41 +18,13 @@
+ case "${1}" in
+ 	start)
+ 		boot_mesg "Populating /dev with device nodes..."
+-		if ! grep -q '[[:space:]]sysfs' /proc/mounts; then
+-			echo_failure
+-			boot_mesg -n "FAILURE:\n\nUnable to create" ${FAILURE}
+-			boot_mesg -n " devices without a SysFS filesystem"
+-			boot_mesg -n "\n\nAfter you press Enter, this system"
+-			boot_mesg -n " will be halted and powered off."
+-			boot_mesg -n "\n\nPress Enter to continue..." ${INFO}
+-			boot_mesg "" ${NORMAL}
+-			read ENTER
+-			/etc/rc.d/init.d/halt stop
+-		fi
+-
+-		# Mount a temporary file system over /dev, so that any devices
+-		# made or removed during this boot don't affect the next one.
+-		# The reason we don't write to mtab is because we don't ever
+-		# want /dev to be unavailable (such as by `umount -a').
+-		mount -n -t tmpfs tmpfs /dev -o mode=755
+-		if [ ${?} != 0 ]; then
+-			echo_failure
+-			boot_mesg -n "FAILURE:\n\nCannot mount a tmpfs" ${FAILURE}
+-			boot_mesg -n " onto /dev, this system will be halted."
+-			boot_mesg -n "\n\nAfter you press Enter, this system"
+-			boot_mesg -n " will be halted and powered off."
+-			boot_mesg -n "\n\nPress Enter to continue..." ${INFO}
+-			boot_mesg "" ${NORMAL}
+-			read ENTER
+-			/etc/rc.d/init.d/halt stop
+-		fi
+ 
+ 		# Udev handles uevents itself, so we don't need to have
+ 		# the kernel call out to any binary in response to them
+ 		echo > /proc/sys/kernel/hotplug
+ 
+-		# Copy static device nodes to /dev
+-		cp -a /lib/udev/devices/* /dev
++		# LiveCD specific
++		/usr/sbin/dmsetup mknodes
+ 
+ 		# Start the udev daemon to continually watch for, and act on,
+ 		# uevents
+diff -urN lfs-bootscripts-20060712.orig/Makefile lfs-bootscripts-20060712/Makefile
+--- lfs-bootscripts-20060712.orig/Makefile	2006-06-03 08:23:11.000000000 +0600
++++ lfs-bootscripts-20060712/Makefile	2006-07-14 21:47:48.000000000 +0600
+@@ -86,6 +86,46 @@
+ 	install                   -m ${MODE} lfs/sysconfig/network-devices/services/ipv4-static       ${EXTDIR}/sysconfig/network-devices/services/
+ 	install                   -m ${MODE} lfs/sysconfig/network-devices/services/ipv4-static-route ${EXTDIR}/sysconfig/network-devices/services/
+ 
++install-livecd: create-dirs create-service-dir
++	install -m ${CONFMODE} lfs/init.d/functions ${EXTDIR}/rc.d/init.d/
++	install -m ${MODE} lfs/init.d/console       ${EXTDIR}/rc.d/init.d/
++	install -m ${MODE} lfs/init.d/localnet      ${EXTDIR}/rc.d/init.d/
++	install -m ${MODE} lfs/init.d/modules       ${EXTDIR}/rc.d/init.d/
++	install -m ${MODE} lfs/init.d/mountfs       ${EXTDIR}/rc.d/init.d/
++	install -m ${MODE} lfs/init.d/mountkernfs   ${EXTDIR}/rc.d/init.d/
++	install -m ${MODE} lfs/init.d/network       ${EXTDIR}/rc.d/init.d/
++	install -m ${MODE} lfs/init.d/rc            ${EXTDIR}/rc.d/init.d/
++	install -m ${MODE} lfs/init.d/sendsignals   ${EXTDIR}/rc.d/init.d/
++	install -m ${MODE} lfs/init.d/setclock      ${EXTDIR}/rc.d/init.d/
++	install -m ${MODE} lfs/init.d/swap          ${EXTDIR}/rc.d/init.d/
++	install -m ${MODE} lfs/init.d/sysklogd      ${EXTDIR}/rc.d/init.d/
++	install -m ${MODE} lfs/init.d/udev          ${EXTDIR}/rc.d/init.d/
++	ln -sf ../init.d/sendsignals ${EXTDIR}/rc.d/rc0.d/S60sendsignals
++	ln -sf ../init.d/swap        ${EXTDIR}/rc.d/rc0.d/S80swap
++	ln -sf ../init.d/localnet    ${EXTDIR}/rc.d/rc0.d/S90localnet
++	ln -sf ../init.d/sendsignals ${EXTDIR}/rc.d/rc6.d/S60sendsignals
++	ln -sf ../init.d/swap        ${EXTDIR}/rc.d/rc6.d/S80swap
++	ln -sf ../init.d/localnet    ${EXTDIR}/rc.d/rc6.d/S90localnet
++	ln -sf ../init.d/network     ${EXTDIR}/rc.d/rc0.d/K80network
++	ln -sf ../init.d/network     ${EXTDIR}/rc.d/rc1.d/K80network
++	ln -sf ../init.d/network     ${EXTDIR}/rc.d/rc2.d/K80network
++	# ln -sf ../init.d/network     ${EXTDIR}/rc.d/rc3.d/S20network
++	# ln -sf ../init.d/network     ${EXTDIR}/rc.d/rc4.d/S20network
++	# ln -sf ../init.d/network     ${EXTDIR}/rc.d/rc5.d/S20network
++	ln -sf ../init.d/network     ${EXTDIR}/rc.d/rc6.d/K80network
++	ln -sf ../init.d/mountkernfs ${EXTDIR}/rc.d/rcsysinit.d/S00mountkernfs
++	ln -sf ../init.d/modules     ${EXTDIR}/rc.d/rcsysinit.d/S05modules
++	ln -sf ../init.d/udev        ${EXTDIR}/rc.d/rcsysinit.d/S10udev
++	ln -sf ../init.d/mountfs     ${EXTDIR}/rc.d/rcsysinit.d/S40mountfs
++	ln -sf ../init.d/setclock    ${EXTDIR}/rc.d/rcsysinit.d/S60setclock
++	ln -sf ../init.d/console     ${EXTDIR}/rc.d/rcsysinit.d/S70console
++	ln -sf ../init.d/localnet    ${EXTDIR}/rc.d/rcsysinit.d/S11localnet
++	if [ ! -f ${EXTDIR}/sysconfig/rc          ]; then install -m ${CONFMODE} lfs/sysconfig/rc          ${EXTDIR}/sysconfig/; fi
++	install                   -m ${MODE} lfs/sysconfig/network-devices/ifup   ${EXTDIR}/sysconfig/network-devices/
++	install                   -m ${MODE} lfs/sysconfig/network-devices/ifdown ${EXTDIR}/sysconfig/network-devices/
++	install                   -m ${MODE} lfs/sysconfig/network-devices/services/ipv4-static       ${EXTDIR}/sysconfig/network-devices/services/
++	install                   -m ${MODE} lfs/sysconfig/network-devices/services/ipv4-static-route ${EXTDIR}/sysconfig/network-devices/services/
++
+ install-consolelog: create-dirs
+ 	install -m ${MODE} contrib/init.d/consolelog   ${EXTDIR}/rc.d/init.d
+ 	ln -sf ../init.d/consolelog  ${EXTDIR}/rc.d/rcsysinit.d/S00consolelog

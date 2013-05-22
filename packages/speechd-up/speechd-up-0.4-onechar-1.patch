@@ -1,0 +1,35 @@
+diff -ur speechd-up-0.4.bak/speechd-up.c speechd-up-0.4/speechd-up.c
+--- speechd-up-0.4.bak/speechd-up.c	2006-10-21 20:01:34.000000000 +0600
++++ speechd-up-0.4/speechd-up.c	2007-12-28 21:09:40.000000000 +0500
+@@ -324,7 +324,7 @@
+ 
+     /* It seems there is a bug in libspeechd function spd_say_char() */
+     {
+-	snprintf(cmd, 14, "KEY %s", cuu);
++	snprintf(cmd, 14, "CHAR %s", cuu);
+ 	DBG(5, "Saying single character CMD:|%s|", cmd);
+ 	spd_execute_command(conn, "SET SELF PRIORITY TEXT");
+ 	spd_execute_command(conn, cmd);
+@@ -375,18 +375,20 @@
+ 	   make pointer _c_ point to it. If it is the only character
+ 	   in the string, _characters_ is 1, otherwise different. */
+ 	for (i=0; i<=bytes-1; i++){
+-	    if (buf[i] != ' '){
++	    if (buf[i] != ' ' && buf[i] != 24){
+ 		c=buf+i;
+ 		characters++;
+ 		if (characters>1) break;
+ 	    }
+-	    if ((unsigned) buf[i] < 32){
++	    if ((unsigned) buf[i] < 32 && (unsigned) buf[i] != 24){
+ 		characters = -1; break;
+ 	    }
+ 
+ 	}
+ 
+ 	if (characters == 1){
++	    if (buf[0] == 24)
++	        spd_cancel(conn);
+ 	    say_single_character(c, bytes-i, cd);
+ 	    iconv_close(cd);
+ 	    return 0;

@@ -1,0 +1,112 @@
+
+LFS LiveCD Makefiles
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+I.   Using the Makefiles
+  A.   How These Makefiles Work
+  B.   Configuring the Environment
+  C.   Obtaining the Sources
+  D.   Running the Scripts
+II.  Editing the Makefiles
+III. End Notes
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+I. Using the Makefiles
+
+A. How These Makefiles Work
+
+  There is one main Makefile at the top-level of this directory that controls
+the build. It contains the instructions to control and direct the build,
+including the order in which the packages are built. It also contains variables
+that are used throughout the build. Inside the packages directory there is
+a sub-directory for each package the LiveCD will build and install. Each of
+those directories contains a Makefile with the specific instructions it needs to
+compile that package. Any patches which that package needs (and which are not
+part of the LFS or BLFS books) are included in that directory as well.
+
+  Part of the build is run as an unprivileged user, 'lfs', and the rest is
+done after chroot-ing into the $(MP) directory (see the Configuring the
+Environment section for information about $(MP) and other variables). In order
+to make that happen, the Makefile approximately runs "su - lfs -c '[commands]'"
+or "chroot $(MP) /bin/bash -c '[commands]'" where [commands] is the
+instructions necessary to cd into the proper directory and re-run 'make' with
+the proper target. So the Makefile is essentially re-calling itself as a
+different user or in a different environment.
+
+  In the correct order, and in the proper environment, each package's Makefile
+is called and run. These download the source files needed, verify the SHA1 sums,
+unpack the tarball(s) into its own directory, run the build instructions, and
+send the output into a log-file.
+
+B. Configuring the Environment
+
+  You should visually inspect the main Makefile, the one in the same directory
+as this README before attempting to run the scripts. There are a few variables
+that you may want to customize to meet the needs of your own particular setup
+and for the type of CD you are hoping to produce. Here is a list of the main
+variables to look for:
+
+* VERSION
+  This variable will be used in various places throughout the build and
+should equal the version of the CD you intend to build. If you are building
+this CD for personal use, you can enter anything here. LFS LiveCD editors will
+follow a specific versioning scheme.
+
+* MPBASE
+  This is the Mount Point, the directory that you will be using to house the
+build as it runs. These scripts (this entire directory and its sub-directories)
+should be placed inside the $MPBASE directory and run from there. Default is
+/mnt/lfs.
+
+* ROOT
+  This signifies the root-point of the build scripts. In other words, this is
+the name of the directory containing the build scripts. A symlink will be made
+from this directory to the root of the host filesystem. The default name of this
+directory is lfs-livecd. If you accept the defaults for both this variable and
+$MPBASE, then this directory will exist as /mnt/lfs/lfs-livecd. A symlink will
+be made to /lfs-livecd on the host system. It is important that this variable
+have a leading '/' as it is referenced by the scripts in both the host
+environment and the chroot environment.
+
+  All of the above variables (and others) can be edited directly in the
+top-level Makefile (the one in the same directory as this README). However, if
+you are tracking SVN, then each 'svn up' will overwrite your custom changes. To
+overcome that, you can create a file called 'Makefile.personal' and add the
+desired changes there. The original Makefile will source that file. 'svn up'
+will not affect 'Makefile.personal'.
+
+C. Obtaining the Sources
+
+  The scripts will attempt to download the sources and book patches as it needs
+them. If you want to gather the sources and book patches beforehand, create a
+directory called 'sources' in the $(MPBASE) directory and place the sources and
+book patches there. You should ensure that you download the *exact* same sources
+and book patches the scripts use and then verify the SHA1 sums. This will
+prevent the build from failing unexpectedly on a bad checksum during the build.
+
+D. Running the Scripts
+
+  Building the CD could be as simple as the following:
+
+mkdir /mnt/lfs
+cd /mnt/lfs
+svn co svn://svn.linuxfromscratch.org/livecd/[path of repo] lfs-livecd
+(or, 'tar -xjf [path to tarball]'if you have downloaded a tarball of these
+scripts)
+cd /mnt/lfs/lfs-livecd
+make
+
+  The above example makes use of the default variables for $(MPBASE) and
+$(ROOT).
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+II. Editing the Makefiles
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+III. End Notes

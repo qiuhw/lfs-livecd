@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=telnet
+Name=Telnet
+Terminal=true
+Comment=Telnet Client
+Categories=Application;Network;

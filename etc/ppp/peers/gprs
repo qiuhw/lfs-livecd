@@ -1,0 +1,14 @@
+# Replace inet.example.com with the proper APN for your provider
+connect "/usr/sbin/chat -T inet.example.com -f /etc/ppp/gprs.chat"
+
+# Authentication is based on the phone number
+# Don't ask the peer to authenticate itself
+noauth
+debug
+/dev/ttyS1
+115200
+lock
+defaultroute
+noipdefault 
+usepeerdns
+ 

@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# this script runs before "console",
+# thus translated error messages are not allowed
+# but a UTF-8 based locale is required for testing
+# the remote-X braille emulator (not on this CD)
+
+LC_ALL=en_US.UTF-8
+export LC_ALL
+
+. /etc/sysconfig/rc
+. ${rc_functions}
+
+case "${1}" in
+	start)
+		if [ ! -z "$brltty" ] ; then
+		  boot_mesg "Activating brltty..."
+		  loadproc /usr/bin/brltty -l 0
+		  evaluate_retval
+		  # Some applications need to be configured specially
+		  # in order to show cursor on selected items in menus
+		  echo 'visit_items=ON' >>/etc/dialogrc
+		  echo 'set braille_friendly=yes' >>/root/.muttrc
+		  sed -i -e 's/^#SHOW_CURSOR:FALSE/SHOW_CURSOR:TRUE/' \
+		         -e 's/#\(DEFAULT_KEYPAD_MODE\):NUMBERS_AS_ARROWS/\1:LINKS_AND_FIELDS_ARE_NUMBERED/' \
+		         /etc/lynx.cfg
+		  sed -i 's/^draw_arrow=OFF/draw_arrow=ON/' /etc/tin/tinrc
+		  # FIXME: others
+		fi
+		;;
+	*)
+		echo "Usage: ${0} {start}"
+		exit 1
+		;;
+esac

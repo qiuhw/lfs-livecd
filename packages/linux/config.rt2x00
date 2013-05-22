@@ -1,0 +1,79 @@
+# rt2x00 configuration
+# All configuration options can be enabled
+# by setting the value to 'y'. To disable
+# the option it should be set to 'n'.
+
+#
+# RT2X00 generic support
+#
+
+# Enable rt2x00 support
+CONFIG_RT2X00=y
+# Enable rt2x00 debug output
+CONFIG_RT2X00_DEBUG=y
+# Enable rt2x00 debugfs support
+CONFIG_RT2X00_LIB_DEBUGFS=n
+# Enable rt2x00 asm file creation
+CONFIG_RT2X00_ASM=n
+
+#
+# RT2X00 driver support
+#
+# Enable rt2400pci support
+CONFIG_RT2400PCI=y
+# Enable rt2400pci hardware button support (requires rfkill)
+CONFIG_RT2400PCI_BUTTON=y
+
+# Enable rt2500pci support
+CONFIG_RT2500PCI=y
+# Enable rt2500pci hardware button support (requires rfkill)
+CONFIG_RT2500PCI_BUTTON=y
+
+# Enable rt2500usb support
+CONFIG_RT2500USB=y
+
+# Enable rt61pci support
+CONFIG_RT61PCI=y
+# Enable rt61pci hardware button support (requires rfkill)
+CONFIG_RT61PCI_BUTTON=y
+
+# Enable rt73usb support
+CONFIG_RT73USB=y
+
+#
+# Dscape ieee80211 stack
+#
+
+# Build dscape ieee80211 stack support
+CONFIG_D80211=y
+# Enable dscape ieee80211 debug output
+CONFIG_D80211_DEBUG=y
+# Enable dscape ieee80211 asm file creation
+CONFIG_D80211_ASM=n
+
+#
+# CRC-ITU-T support
+#
+
+# Enable crc-itu-t support
+CONFIG_CRC_ITU_T=y
+# Enable crc-itu-t asm file creation
+CONFIG_CRC_ITU_T_ASM=n
+
+#
+# EEPROM 93Cx6 support
+#
+
+# Enable eeprom_93Cx6 support
+CONFIG_EEPROM_93CX6=y
+# Enable eeprom asm file creation
+CONFIG_EEPROM_93CX6_ASM=n
+
+#
+# RFkill support
+#
+
+# Enable rfkill support
+CONFIG_RFKILL=y
+# Enable rfkill asm file creation
+CONFIG_RFKILL_ASM=n

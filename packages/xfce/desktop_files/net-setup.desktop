@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=net-setup
+Name=net-setup
+Terminal=true
+Comment=Configure Internet connection
+Categories=Application;Network;

@@ -1,0 +1,65 @@
+define echo_message
+	@echo $(BRW)
+	@echo ================================================================================
+	@echo $(BRW)$(1) $(ORANGE)$(NM)-$(VRS)$(BRW) for target $(ORANGE)$@$(BRW)
+	@echo ================================================================================$(WHITE)
+endef
+
+define setup_build
+    @touch $(DIR)-$@.log
+    @-ln -sf ../packages/$(shell basename `pwd`)/$(DIR)-$@.log $(MY_ROOT)/logs/ 
+    @unpack $(FILE) 2>&1 | tee -a $(MY_ROOT)/logs/build.log >$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
+endef
+
+define clean_build
+    @make clean 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
+endef
+
+define std_build
+	@$(call echo_message, Building)
+    @$(setup_build)
+    @make -C $(DIR) -f ../Makefile compile-$@ 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
+    @$(clean_build)
+    @touch $@
+endef
+
+define std_build_noclean
+	@$(call echo_message, Building)
+	@$(setup_build)
+    @make -C $(DIR) -f ../Makefile compile-$@ 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
+    @touch $@
+endef
+
+define sep_dir_build
+	@$(call echo_message, Building)
+	@$(setup_build)
+	@rm -rf $(NM)-build 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
+	@install -dv $(NM)-build 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
+	@make -C $(NM)-build -f ../Makefile compile-$@ 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
+	@$(clean_build)
+	@touch $@
+endef
+
+define sep_dir_build_noclean
+	@$(call echo_message, Building)
+	@$(setup_build)
+	@rm -rf $(NM)-build 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
+	@install -dv $(NM)-build 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
+	@make -C $(NM)-build -f ../Makefile compile-$@ 2>&1 | tee -a $(MY_ROOT)/logs/build.log >>$(DIR)-$@.log ; exit $${PIPESTATUS[0]}
+	@touch $@
+endef
+
+# This takes the form of 'download [filename] [url] [sha1sum]'
+define download
+	@cd $(SRC) ; if [ ! -f "$(1)" ] ; then $(WGET) "$(2)" ; \
+	 elif ! echo "$(3)  $(SRC)/$(1)" | sha1sum -c - >/dev/null 2>/dev/null ; then \
+	 $(WGET) -c "$(2)" ; fi
+	@if echo "$(3)  $(SRC)/$(1)" | sha1sum -c - >/dev/null 2>/dev/null ; then \
+	 echo $(BRW)sha1sum check on "$(SRC)/$(1)": $(GREEN)[ OK ]$(WHITE); \
+	 else echo $(BRW)sha1sum check on "$(SRC)/$(1)": $(RED)[ FAILED ]$(WHITE); \
+	 echo $(BRW)The sha1sum for the downloaded file is:$(WHITE) $$(sha1sum $(SRC)/$(1) | awk '{print $$1}'); exit 1 ; fi
+	@ln -sf "$(SRC)/$(1)" .
+endef
+
+%.gz %.tgz %.bz2 %.zip %.patch %.diff %.rules %.ttf %.jpg %.run:
+	$(call download,$@,$(URL-$@),$(SHA-$@))

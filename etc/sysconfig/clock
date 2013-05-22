@@ -1,0 +1,8 @@
+# Begin /etc/sysconfig/clock
+
+# Default to localtime, but allow the user to
+# override this using the kernel command line
+
+UTC=${UTC-0}
+
+# End /etc/sysconfig/clock

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=top
+Name=Top
+Terminal=true
+Comment=Display Linux tasks
+Categories=Application;System

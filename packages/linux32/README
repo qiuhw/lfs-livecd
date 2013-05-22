@@ -1,0 +1,6 @@
+The "linux32.c" and "linux32.1" files were downloaded from:
+
+ftp://ftp.x86-64.org/pub/linux-x86_64/tools/linux32
+
+The "stupid" 3 gb address space default was changed to 4 gb, because
+the buggy version of Java is no longer relevant.

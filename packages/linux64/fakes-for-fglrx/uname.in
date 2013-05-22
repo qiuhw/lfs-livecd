@@ -1,0 +1,29 @@
+#!/bin/sh
+
+case "$1" in
+-a)
+	echo "Linux lfslivecd VERSION-64bit #1 SMP x86_64 GNU/Linux"
+	;;
+-s)
+	echo "Linux"
+	;;
+-n)
+	echo "lfslivecd"
+	;;
+-r)
+	echo "VERSION-64bit"
+	;;
+-v)
+	echo "#1 SMP"
+	;;
+-m)
+	echo "x86_64"
+	;;
+-p|-i)
+	echo "unknown"
+	;;
+-o)
+	echo "GNU/Linux"
+	;;
+esac
+

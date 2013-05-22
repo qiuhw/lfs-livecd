@@ -1,0 +1,17 @@
+#!/bin/sh
+
+test "$mandir" = '${prefix}/man' && mandir='${prefix}/share/man'
+test "$infodir" = '${prefix}/info' && infodir='${prefix}/share/info'
+
+build=${LFS_TARGET}
+host=${LFS_TARGET}
+build_alias=${LFS_TARGET}
+host_alias=${LFS_TARGET}
+
+if [ "$LFS_USE_TARGET" = "yes" ] ; then
+    target=${LFS_TARGET}
+    target_alias=${LFS_TARGET}
+fi
+
+enable_static=${enable_static:-no}
+enable_shared=${enable_shared:-yes}

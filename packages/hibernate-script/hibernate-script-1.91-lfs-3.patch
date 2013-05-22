@@ -1,0 +1,67 @@
+diff -ur hibernate-script-1.91/common.conf hibernate-script-1.91.new/common.conf
+--- hibernate-script-1.91/common.conf	2006-06-05 11:20:32.000000000 +0000
++++ hibernate-script-1.91.new/common.conf	2006-11-01 06:12:11.000000000 +0000
+@@ -38,7 +38,7 @@
+ # IncompatibleDevices /dev/dsp /dev/video*
+ 
+ ### diskcache
+-# DisableWriteCacheOn /dev/hda
++# DisableWriteCacheOn /dev/hd? /dev/sd?
+ 
+ ### fbsplash (enable SwitchToTextMode if you use this)
+ # FBSplash on
+@@ -75,6 +75,12 @@
+ # OnSuspend 20 echo "Good night!"
+ # OnResume 20 echo "Good morning!"
+ 
++# Restore console font if not in X
++OnResume 10 case `fgconsole 2>/dev/null` in [1-6]) openvt -f -c 1 -w /etc/rc.d/init.d/console start ;; esac
++
++# Kill pppd that is responsible for dialup and GPRS connections
++OnSuspend 61 killall -w pppd 2>/dev/null || :
++
+ ### modules
+ # UnloadModules snd_via82cxxx usb-ohci
+ # UnloadAllModules yes
+@@ -86,8 +92,8 @@
+ # GentooModulesAutoload yes
+ 
+ ### network
+-# DownInterfaces eth0
+-# UpInterfaces auto
++DownInterfaces auto
++UpInterfaces auto
+ 
+ ### pause_audio
+ # PauseAudio yes
+diff -ur hibernate-script-1.91/scriptlets.d/network hibernate-script-1.91.new/scriptlets.d/network
+--- hibernate-script-1.91/scriptlets.d/network	2006-06-05 11:20:38.000000000 +0000
++++ hibernate-script-1.91.new/scriptlets.d/network	2006-11-01 06:12:30.000000000 +0000
+@@ -20,7 +20,7 @@
+     ret=0
+     do_auto=
+     case $NETWORK_DOWNIFS in *\ auto\ *) do_auto=yes ;; esac
+-    for int in `/sbin/ifconfig|sed -e 's/^\([^ \t]*\).*/\1/;/^$/d'` ; do
++    for int in `ip -o link list | grep UP | cut -d ':' -f 2` ; do
+ 	if [ -z "$do_auto" ] ; then
+ 	    # Only proceed if we were given "auto" or this interface was meant
+ 	    # to be brought down.
+@@ -140,12 +140,15 @@
+ 		network_ifdown() {
+ 		    /etc/init.d/ifdown $*
+ 		}
+-	    elif [ -x "/etc/sysconfig/network-scripts/ifup" ] ; then
++	    elif [ -x "/etc/sysconfig/network-devices/ifup" ] ; then
+ 		network_ifup() {
+-		    /etc/sysconfig/network-scripts/ifup $*
++		    [ -f "/etc/sysconfig/network-devices/ifconfig.$1" ] &&
++		    /etc/sysconfig/network-devices/ifup $*
+ 		}
+ 		network_ifdown() {
+-		    /etc/sysconfig/network-scripts/ifdown $*
++		    [ -f "/etc/sysconfig/network-devices/ifconfig.$1" ] &&
++		    /etc/sysconfig/network-devices/ifdown $* ||
++		    ip link set "$1" down 2>/dev/null || :
+ 		}
+ 	    elif [ -x "/etc/init.d/networking" ] ; then
+ 		network_ifup() {

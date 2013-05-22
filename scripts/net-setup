@@ -1,0 +1,415 @@
+#!/bin/bash
+#
+# Script for interactively choosing a network interface, 
+# service and configuring this service.  First implemented
+# in the x86-6.0-1 CD.
+#
+# Written by Jeremy Huntwork 09.17.2004
+# Additional features by Justin Knierim with the help
+#   of Alexander Patrakov
+#
+
+# Locations of network configs, ifup and ifdown
+DIR=/etc/sysconfig/network-devices
+IFUP=$DIR/ifup
+IFDOWN=$DIR/ifdown
+OUI_DIR=/usr/share/oui-data
+
+# Find manufacturer by MAC address
+find_oui() {
+	MACADDR=`echo $1 | LC_ALL=C tr a-f A-F`
+	IFS=":"
+	set $MACADDR
+	if [ "$1-$2-$3" = "00-50-C2" ] ; then
+		# Search IAB
+		TAIL=$4$5$6
+		TAIL=${TAIL%???}000
+		LINE=`LC_ALL=C grep ^$TAIL- $OUI_DIR/iab.txt || echo "DUMMY	DUMMY	UNKNOWN MANUFACTURER"`
+		echo "$LINE" | cut -f 3- | iconv -f ISO-8859-1 -t //TRANSLIT
+	else
+		# Search OUI
+		LINE=`LC_ALL=C grep ^$1-$2-$3 $OUI_DIR/oui.txt || echo "DUMMY	DUMMY	UNKNOWN MANUFACTURER"`
+		echo "$LINE" | cut -f 3- | iconv -f ISO-8859-1 -t //TRANSLIT
+	fi
+}
+
+# Form to enter nameservers for /etc/resolv.conf
+set_dns() {
+	DLG_COMMAND="dialog --title \"DNS Servers - /etc/resolv.conf\" --no-cancel \
+        --form \"Please enter the DNS IP addresses below:\" 0 0 3 \
+	\"Server 1:\" 1 1 \"$F_DNS1\" 1 25 15 0 \
+	\"Server 2:\" 2 1 \"$F_DNS2\" 2 25 15 0 \
+	\"Server 3:\" 3 1 \"$F_DNS3\" 3 25 15 0"
+	SELECTION=`eval $DLG_COMMAND 3>&2 2>&1 1>&3`
+
+	[ $? -eq 0 ] || exit 1
+
+	unset F_DNS1 F_DNS2 F_DNS3
+	eval "`echo "$SELECTION" | sed -e '1s,^,F_DNS1=",' -e '2s,^,F_DNS2=",' \
+	      -e '3s,^,F_DNS3=",' | sed -e 's,$,",'`"
+
+	# Validate DNS IP addresses
+	unset ERRMSG
+	for addr in $F_DNS1 $F_DNS2 $F_DNS3 ; do
+	   if [ -n "$addr" -a "${addr##?*.?*.?*.?*}" ] ; then
+		ERRMSG="$addr is not a valid IP address."
+           fi
+	done
+
+	if [ -z "$ERRMSG" ] ; then
+		rm -f /etc/resolv.conf
+		for addr in $F_DNS1 $F_DNS2 $F_DNS3 ; do
+		   [ -n "$addr" ] && echo "nameserver $addr" >> /etc/resolv.conf
+		done
+
+		unset F_DNS1 F_DNS2 F_DNS3 SELECTION DLG_COMMAND ERRMSG
+	else
+		dialog --title "Validation Error" --msgbox "$ERRMSG" 6 60
+		set_dns;
+	fi
+}		
+
+# Setup IP address, prefix, gateway and broadcast
+set_static_cfg(){
+	# Default values
+	if [ -z "$ERRMSG" ] ; then
+		F_PREFIX=24
+	fi
+
+        DLG_COMMAND="dialog --title \"Static IP Configuration\" --no-cancel \
+        --form \"Please enter the network connection details:\" 0 0 4 \
+        \"IP Address:\" 1 1 \"$F_IPADDR\" 1 25 15 0 \
+        \"Prefix:\" 2 1 \"$F_PREFIX\" 2 25 2 0 \
+        \"Broadcast:\" 3 1 \"$F_BROADCAST\" 3 25 15 0 \
+	\"Gateway:\" 4 1 \"$F_GATEWAY\" 4 25 15 0"
+        SELECTION=`eval $DLG_COMMAND 3>&2 2>&1 1>&3`
+
+        [ $? -eq 0 ] || exit 1
+
+	unset F_IPADDR F_PREFIX F_BROADCAST F_GATEWAY
+        eval "`echo "$SELECTION" | sed -e '1s,^,F_IPADDR=",' -e '2s,^,F_PREFIX=",' \
+              -e '3s,^,F_BROADCAST=",' -e '4s,^,F_GATEWAY=",' | sed -e 's,$,",'`"
+
+        # Validate entries (Must give IP, prefix and broadcast.  Gateway optional.)
+        unset ERRMSG
+        if [ -n "$F_IPADDR" -a "${F_IPADDR##?*.?*.?*.?*}" ] || \
+           [ -n "$F_BROADCAST" -a "${F_BROADCAST##?*.?*.?*.?*}" ] || \
+           [ -n "$F_GATEWAY" -a "${F_GATEWAY##?*.?*.?*.?*}" ] ; then
+		ERRMSG="One of the entered IP addresses or prefix is not valid."
+	fi
+	if [ "$F_PREFIX" -lt 8 -o "$F_PREFIX" -gt 30 ] ; then
+		ERRMSG="The prefix is not valid.  Please enter a value from 8 to 30."
+	fi
+	if [ -z "$F_IPADDR" -o -z "$F_BROADCAST" -o -z "$F_PREFIX" ] ; then
+		ERRMSG="Please enter an IP address, broadcast and prefix."		
+        fi
+
+        if [ -z "$ERRMSG" ] ; then
+                echo "IP=$F_IPADDR" >> $ETHXCFG
+		echo "PREFIX=$F_PREFIX" >> $ETHXCFG
+		echo "BROADCAST=$F_BROADCAST" >> $ETHXCFG
+		[ -n "$F_GATEWAY" ] && echo "GATEWAY=$F_GATEWAY" >> $ETHXCFG
+
+                unset F_IPADDR F_PREFIX F_BROADCAST F_GATEWAY DLG_COMMAND
+                unset SELECTION ERRMSG
+	else
+		dialog --title "Validation Error" --msgbox "$ERRMSG" 6 60
+                set_static_cfg;
+	fi
+}
+
+# GPRS Device options
+set_gprs_cfg(){
+        # Default values
+        if [ -z "$ERRMSG" ] ; then
+                F_DEVICE=/dev/ttyS1
+                F_SPEED=115200
+		F_PROFILE=1
+        fi
+
+        DLG_COMMAND="dialog --title \"GPRS Device Configuration\" --no-cancel \
+        --form \"Please enter the GPRS device details below.\" 0 0 4 \
+        \"APN:\" 1 1 \"$F_APN\" 1 25 30 0 \
+        \"Device:\" 2 1 \"$F_DEVICE\" 2 25 20 0 \
+        \"Speed:\" 3 1 \"$F_SPEED\" 3 25 10 0 \
+	\"Profile Number:\" 4 1 \"$F_PROFILE\" 4 25 4 0"
+        SELECTION=`eval $DLG_COMMAND 3>&2 2>&1 1>&3`
+
+	[ $? -eq 0 ] || exit 1
+
+	unset F_APN F_DEVICE F_SPEED F_PROFILE
+        eval "`echo "$SELECTION" | sed -e '1s,^,F_APN=",' -e '2s,^,F_DEVICE=",' \
+              -e '3s,^,F_SPEED=",' -e '4s,^,F_PROFILE=",' | sed -e 's,$,",'`"
+
+        # Validate entries (All values are required.)
+        unset ERRMSG
+	if [ -z "$F_APN" -o -z "$F_DEVICE" -o -z "$F_SPEED" -o -z "$F_PROFILE" ] ; then
+		ERRMSG="All fields are required to setup your GPRS device."
+	fi
+
+        if [ -z "$ERRMSG" ] ; then
+		# Make a backup and restore before changes, so the sed's work correctly.
+		[ -f /etc/ppp/peers/gprs.orig ] || cp /etc/ppp/peers/gprs{,.orig}
+		[ -f /etc/ppp/gprs.chat.orig ] || cp /etc/ppp/gprs.chat{,.orig}
+		cp /etc/ppp/peers/gprs{.orig,}
+		cp /etc/ppp/gprs.chat{.orig,}
+
+		# Alter /etc/ppp/peers/gprs file.
+		sed -i -e "s@inet.example.com@$F_APN@g" -e "s@/dev/ttyS1@$F_DEVICE@g" \
+		       -e "s@115200@$F_SPEED@g" /etc/ppp/peers/gprs
+
+		# Alter /etc/ppp/gprs.chat (advanced setting)
+		sed -i -e "s@CGDCONT=1@CGDCONT=$F_PROFILE@g" \
+                       -e "s@\*\*\*1@\*\*\*$F_PROFILE@g" /etc/ppp/gprs.chat
+
+                unset F_APN F_DEVICE F_SPEED F_PROFILE DLG_COMMAND
+                unset SELECTION ERRMSG
+        else
+		dialog --title "Validation Error" --msgbox "$ERRMSG" 6 60
+                set_gprs_cfg;
+        fi
+}
+
+# Modem Device options
+set_modem_cfg(){
+        # Default values
+        if [ -z "$ERRMSG" ] ; then
+                F_DEVICE=/dev/ttyS1
+                F_SPEED=115200
+        fi
+
+        DLG_COMMAND="dialog --title \"Modem Configuration\" --no-cancel \
+        --form \"Please enter the modem details below:\" 0 0 5 \
+        \"Telephone Number:\" 1 1 \"$F_PHONE\" 1 25 20 0 \
+        \"User:\" 2 1 \"$F_USERNAME\" 2 25 30 0 \
+        \"Password:\" 3 1 \"$F_PASSWORD\" 3 25 30 0 \
+        \"Device:\" 4 1 \"$F_DEVICE\" 4 25 20 0 \
+        \"Speed:\" 5 1 \"$F_SPEED\" 5 25 10 0"
+        SELECTION=`eval $DLG_COMMAND 3>&2 2>&1 1>&3`
+
+        [ $? -eq 0 ] || exit 1
+
+        unset F_PHONE F_USERNAME F_PASSWORD F_DEVICE F_SPEED
+        eval "`echo "$SELECTION" | sed -e '1s,^,F_PHONE=",' -e '2s,^,F_USERNAME=",' \
+              -e '3s,^,F_PASSWORD=",' -e '4s,^,F_DEVICE=",' -e '5s,^,F_SPEED=",' | sed -e 's,$,",'`"
+
+        # Validate entries (All values except password are required.)
+        unset ERRMSG
+        if [ -z "$F_PHONE" -o -z "$F_USERNAME" -o -z "$F_DEVICE" -o -z "$F_SPEED" ] ; then
+                ERRMSG="The telephone number, username, device and speed are required fields."
+        fi
+
+        if [ -z "$ERRMSG" ] ; then
+                # Make a backup and restore before changes, so the sed's work correctly.
+                [ -f /etc/ppp/peers/dialup.orig ] || cp /etc/ppp/peers/dialup{,.orig}
+                cp /etc/ppp/peers/dialup{.orig,}
+
+                # Alter /etc/ppp/peers/dialup file.
+                sed -i -e "s@TTTTTTT@$F_PHONE@g" -e "s@/dev/ttyS1@$F_DEVICE@g" \
+                       -e "s@115200@$F_SPEED@g" -e "s@\"jdoe\"@\"$F_USERNAME\"@g" \
+		       /etc/ppp/peers/dialup
+
+		setup_papsecrets;
+                
+		unset F_PHONE F_USERNAME F_PASSWORD F_DEVICE F_SPEED DLG_COMMAND
+                unset SELECTION ERRMSG
+        else
+		dialog --title "Modem Validation Error" --msgbox "$ERRMSG" 6 60
+                set_modem_cfg;
+        fi
+}
+
+# pppoe device options
+set_pppoe_cfg(){
+        DLG_COMMAND="dialog --title \"Modem Configuration\" --no-cancel \
+        --form \"Please enter the modem details below:\" 0 0 2 \
+        \"User:\" 1 1 \"$F_USERNAME\" 1 25 30 0 \
+        \"Password:\" 2 1 \"$F_PASSWORD\" 2 25 30 0"
+        SELECTION=`eval $DLG_COMMAND 3>&2 2>&1 1>&3`
+
+        [ $? -eq 0 ] || exit 1
+
+        unset F_USERNAME F_PASSWORD
+        eval "`echo "$SELECTION" | sed -e '1s,^,F_USERNAME=",' -e '2s,^,F_PASSWORD=",' | sed -e 's,$,",'`"
+
+	PPPOEUSER=$F_USERNAME
+        setup_papsecrets;
+
+	# '# MC is stupid
+	
+	echo "SERVICE=pppoe" >$ETHXCFG
+	echo "PPP_OPTS=\"user $F_USERNAME\"" >>$ETHXCFG
+
+        unset F_USERNAME F_PASSWORD DLG_COMMAND SELECTION
+}
+
+# Common function to put user and password in pap-secrets
+setup_papsecrets(){
+	[ -f /etc/ppp/pap-secrets.orig ] || cp /etc/ppp/pap-secrets{,.orig}
+	cp /etc/ppp/pap-secrets{.orig,}
+
+	# Alter /etc/ppp/pap-secrets
+	echo $F_USERNAME \* $F_PASSWORD >> /etc/ppp/pap-secrets
+}
+
+# Main Menu for network devices
+net_service_menu(){
+	# Remove previous config, so ifup won't get confused.
+	rm -f $ETHXCFG
+
+	unset ARGS
+	ARGS="$ARGS dhcp \"Acquire IP address through dhcp.\""
+	ARGS="$ARGS static \"Enter a static IP Address.\""
+	ARGS="$ARGS pppoe \"Setup an ADSL connection.\""
+
+	DLG_COMMAND="dialog --title \"Select network service\" --default-item dhcp \
+		--menu \"Select the network service to use for the $DEV interface:\" \
+		0 0 0 $ARGS"
+	SERVICE=`eval $DLG_COMMAND 3>&2 2>&1 1>&3`
+
+	unset DLG_COMMAND ARGS
+
+	case "$SERVICE" in
+
+		dhcp) 
+			echo "SERVICE=dhcpcd" > $ETHXCFG
+			echo "DHCP_START=\"\"" >> $ETHXCFG
+			echo "DHCP_STOP=\"-k\"" >> $ETHXCFG
+			$IFUP $DEV
+
+			# Test if dhcp worked and did not set DNS.
+			if echo "$LINKTEST" | grep -q UP ; then			
+				[ -f /etc/resolv.conf ] || set_dns;
+				ip addr show $DEV
+			fi
+			;;
+	
+		static)
+			echo "SERVICE=ipv4-static" > $ETHXCFG
+			set_static_cfg;
+			set_dns;
+			$IFUP $DEV
+			;;
+	
+		pppoe)
+			set_pppoe_cfg;
+			$IFUP $DEV
+			;;
+		*)
+			exit 0
+			;;
+	esac
+}
+
+# Main Menu for ppp devices
+ppp_menu(){
+        unset ARGS
+        ARGS="$ARGS configure \"Configure your $DEV device.\""
+        ARGS="$ARGS dial \"Dial $DEV device and exit.\""
+        ARGS="$ARGS hangup \"Hang up $DEV device and exit.\""
+
+        DLG_COMMAND="dialog --title \"$DEV device - Actions\" --default-item configure \
+                --menu \"Select the action to perform for your $DEV device:\" \
+                0 0 0 $ARGS"
+        SERVICE=`eval $DLG_COMMAND 3>&2 2>&1 1>&3`
+
+        unset DLG_COMMAND ARGS
+
+        case "$SERVICE" in
+
+                configure)
+			[ "$DEV" = "gprs" ] && set_gprs_cfg;
+			[ "$DEV" = "dialup" ] && set_modem_cfg;
+                        ;;
+
+                dial)
+                        # "sleep 1" is for udev race
+                        modprobe ppp-generic ; sleep 1
+                        pppd call $DEV updetach
+                        exit 0
+                        ;;
+
+                hangup)
+                        killall pppd
+                        exit 0
+                        ;;
+                *)
+                        exit 0
+                        ;;
+        esac
+
+        ppp_menu;
+}
+
+# Script starts here. Check for root user.
+if [ `whoami` != "root" ] ; then
+	echo "You must be root to use $0"
+	exit 1;
+fi
+
+for EDEV in /sys/class/net/* ; do
+	if [ ! -f $EDEV/addr_len ] || [ ! -f $EDEV/address ] ; then
+		continue
+	fi
+	read ADDRLEN <$EDEV/addr_len
+	read MACADDR <$EDEV/address
+	if [ "$ADDRLEN" != "6" ] || [ "$MACADDR" = "00:00:00:00:00:00" ] ; then
+		continue
+	fi
+	
+	EDEV=`basename $EDEV`
+	if echo $EDEV | grep -q "*" ; then continue ; fi
+	if echo `/sbin/ip link show $EDEV 2> /dev/null` | grep -q UP ; then
+		EDEVSTATUS="UP"
+	else
+		EDEVSTATUS="DOWN"
+	fi
+	MANUF="`find_oui $MACADDR`"
+	if [ ${#MANUF} -gt 40 ] ; then
+		MANUF=${MANUF:0:37}...
+	fi
+	EDEVSTATUS="$EDEVSTATUS ($MANUF $MACADDR)"
+	DEVLIST="$DEVLIST `basename $EDEV` \"$EDEVSTATUS\""
+done
+DEVLIST="$DEVLIST dialup \"Configure a dial-up modem.\" gprs \"Configure a GPRS modem.\""
+
+DLG_COMMAND="dialog --title \"Network Configuration\" --default-item eth0 \
+       	--timeout 30 --menu \"Select the network device to configure:\" \
+	0 0 0 $DEVLIST"
+DEV=`eval $DLG_COMMAND 3>&2 2>&1 1>&3`
+unset EDEV EDEVSTATUS DEVLIST DLG_COMMAND
+
+# Continue if device was selected, exit if otherwise.
+if [ -n "$DEV" ] ; then
+	if [ "$DEV" = "dialup" -o "$DEV" = "gprs" ] ; then
+		ppp_menu;
+		exit 0
+	fi
+
+	ETHXCFG=$DIR/ifconfig.$DEV
+	LINKTEST=`/sbin/ip link show $DEV 2> /dev/null`
+
+        # If the menu times out, activate eth0 with dhcpcd and exit.
+        if [ "$DEV" = "timeout" ] ; then
+                DEV="eth0"
+                rm -f $ETHXCFG
+                echo "SERVICE=dhcpcd" > $ETHXCFG
+                echo "DHCP_START=\"\"" >> $ETHXCFG
+                echo "DHCP_STOP=\"-k\"" >> $ETHXCFG
+                $IFUP $DEV
+                exit 0
+        fi
+	
+	if [ -n "$LINKTEST" ] ; then
+		# Link is up. Bring it down and start service menu.
+		if echo "$LINKTEST" | grep -q UP ; then
+			$IFDOWN $DEV
+		fi
+
+		net_service_menu;
+	else
+		dialog --title "Device Not Found" --msgbox \
+		 "Device $DEV is not present on this system." 6 60
+		exit 1
+	fi
+fi

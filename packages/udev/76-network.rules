@@ -1,0 +1,7 @@
+# Run dhcpcd when anything resembling a valid Ethernet-like interface appears
+ACTION=="add", SUBSYSTEM=="net", ATTR{addr_len}=="6", ATTR{address}!="00:00:00:00:00:00", RUN+="dhcp-helper %k"
+
+# "dhcpcd -k" is not good: it destroys the cache but fails to send DHCP_RELEASE
+# Since the interface is already gone, we choose to keep the cache
+# and thus avoid the IP address leak from the DHCP server pool
+ACTION=="remove", SUBSYSTEM=="net", RUN+="/etc/sysconfig/network-devices/ifdown %k"

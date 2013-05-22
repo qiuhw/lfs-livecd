@@ -1,0 +1,177 @@
+#
+# Automatically generated configuration: don't edit
+# use make menuconfig or make config to make changes
+#
+
+#
+# --- BOOK Settings
+#
+BOOK_LFS=y
+# BOOK_CLFS is not set
+# BOOK_CLFS2 is not set
+# BOOK_CLFS3 is not set
+# BOOK_HLFS is not set
+# BOOK_BLFS is not set
+PROGNAME="lfs"
+RUN_ME="./jhalfs run"
+# relSVN is not set
+WORKING_COPY=y
+# BRANCH is not set
+BRANCH_ID=""
+BOOK="/usr/share/LFS-BOOK-6.3-XML"
+# ARCH_X86 is not set
+# ARCH_MIPS is not set
+# ARCH_PPC is not set
+# ARCH_SPARC is not set
+# ARCH_ALPHA is not set
+# ARCH_ARM is not set
+# ARCH_HPPA is not set
+# PLATFORM_GENERIC is not set
+# PLATFORM_WRT is not set
+# DATA_32 is not set
+# DATA_64 is not set
+# DATA_MULTI is not set
+# PROC_i486 is not set
+# PROC_i586 is not set
+# PROC_i686 is not set
+# PROC_mipsel is not set
+# PROC_mips is not set
+# PROC_unknown is not set
+# PROC_hppa1 is not set
+# PROC_hppa2 is not set
+# PROC_EV5 is not set
+# PROC_EV56 is not set
+# PROC_PCA56 is not set
+# PROC_PCA57 is not set
+# PROC_EV6 is not set
+# PROC_EV67 is not set
+# PROC_EV68 is not set
+# PROC_ARM is not set
+# PROC_ARM5L is not set
+# PROC_ARM5B is not set
+# PROC_ULTRA1 is not set
+# PROC_ULTRA2 is not set
+# PROC_ULTRA3 is not set
+# ABI_32 is not set
+# ABI_N32 is not set
+# ABI_64 is not set
+TARGET=""
+TARGET32=""
+PLATFORM="GENERIC"
+SPARC64_PROC="none"
+ARCH=""
+MIPS_LEVEL=""
+ABI=""
+ENDIAN=""
+# BUILD_CHROOT is not set
+# BUILD_BOOT is not set
+METHOD=""
+BOOT_CONFIG=""
+# GRSECURITY_HOST is not set
+# LIB_GLIBC is not set
+# LIB_UCLIBC is not set
+MODEL=""
+# KERNEL_26 is not set
+# KERNEL_24 is not set
+KERNEL=""
+SSP=",ssp,"
+ASLR=",aslr,"
+PAX=",pax,"
+HARDENED_TMP=",hardened_tmp,"
+WARNINGS=",warnings,"
+MISC=",misc,"
+BLOWFISH=",blowfish,"
+# CUSTOM_TOOLS is not set
+# BLFS_TOOL is not set
+# BLFS_SVN is not set
+# BLFS_BRANCH is not set
+BLFS_BRANCH_ID=""
+# DEP_LIBXML is not set
+# DEP_LIBXSLT is not set
+# DEP_TIDY is not set
+# DEP_DBXML is not set
+# DEP_UNZIP is not set
+# DEP_LINKS is not set
+# DEP_SUDO is not set
+# DEP_WGET is not set
+# DEP_GPM is not set
+# DEP_SVN is not set
+BLFS_ROOT=""
+BLFS_XML=""
+TRACKING_DIR=""
+
+#
+# --- General Settings
+#
+# CONFIG_USER is not set
+DEF_USER="lfs"
+SET_USER=""
+# CONFIG_GROUP is not set
+SET_GROUP=""
+# CONFIG_HOME is not set
+SET_HOME=""
+LUSER="lfs"
+LGROUP="lfs"
+LHOME="/home"
+BUILDDIR="/mnt/build_dir"
+GETPKG=y
+SRC_ARCHIVE="/lfs-sources"
+SERVER="http://ftp.lfs-matrix.net/"
+GETKERNEL=y
+RUNMAKE=y
+# CLEAN is not set
+
+#
+# --- Build Settings
+#
+CONFIG_TESTS=y
+TST_1=y
+# TST_2 is not set
+# TST_3 is not set
+TEST=1
+NO_BOMB=y
+# BOMB is not set
+# BOMB_TEST is not set
+# INSTALL_LOG is not set
+# HAVE_FSTAB is not set
+FSTAB=""
+# CONFIG_BUILD_KERNEL is not set
+CONFIG=""
+STRIP=y
+VIMLANG=y
+TIMEZONE="GMT"
+LANG="$LANG"
+PAGE_LETTER=y
+# PAGE_A4 is not set
+PAGE="letter"
+
+#
+# --- Advanced Features
+#
+REPORT=y
+# COMPARE is not set
+ITERATIONS=0
+# RUN_ICA is not set
+# RUN_FARCE is not set
+# CONFIG_OPTIMIZE is not set
+# OPT_1 is not set
+# OPT_2 is not set
+OPTIMIZE=0
+
+#
+# --- Internal Settings (WARNING: for jhalfs developers only)
+#
+SCRIPT_ROOT="jhalfs"
+JHALFSDIR="$BUILDDIR/$SCRIPT_ROOT"
+LOGDIRBASE="logs"
+LOGDIR="$JHALFSDIR/logs"
+TESTLOGDIRBASE="test-logs"
+TESTLOGDIR="$JHALFSDIR/test-logs"
+FILELOGDIRBASE="installed-files"
+FILELOGDIR="$JHALFSDIR/$FILELOGDIRBASE"
+ICALOGDIR="$LOGDIR/ICA"
+FARCELOGDIR="$LOGDIR/farce"
+MKFILE="$JHALFSDIR/Makefile"
+XSL="$PROGNAME.xsl"
+PKG_LST="unpacked"
+# REBUILD_MAKEFILE is not set

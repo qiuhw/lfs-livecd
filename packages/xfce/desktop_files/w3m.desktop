@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=w3m %u
+Name=W3M
+Terminal=true
+Comment=W3M
+Icon=html
+MimeType=text/html
+Categories=Application;Network;

@@ -1,0 +1,23 @@
+[H[J
+This is the [0;1mOfficial Linux From Scratch LiveCD[00m
+
+Created by: [1;32mJeremy Huntwork[00m
+Maintained by: [1;32mAlexander Patrakov[00m
+[0;1m
+Version:
+____________________________________________________________
+[00m
+Please read the [1;32m/root/README.txt[00m file before using this CD.
+
+This CD does not include LFS sources.
+You can find the LFS book in [1;32m/usr/share/LFS-BOOK-6.3-HTML[00m.
+
+Support questions concerning this CD should be directed to
+[1;32mlivecd@linuxfromscratch.org[00m
+
+Please do NOT send questions regarding building a LFS system or the
+instructions in the LFS book to the above address. Instead please
+use the [1;32mlfs-support@linuxfromscratch.org[00m address.
+
+Type [1;31mgreeting[00m at any time to view this message again.
+

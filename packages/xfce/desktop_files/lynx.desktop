@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=lynx %u
+Name=Lynx
+Terminal=true
+Comment=Lynx
+Icon=html
+MimeType=text/html
+XClassHintResName=Lynx
+Categories=Application;Network;

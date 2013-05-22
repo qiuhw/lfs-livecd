@@ -1,0 +1,14 @@
+diff -urN jhalfs-2.3.1.orig/common/libs/func_check_version.sh jhalfs-2.3.1/common/libs/func_check_version.sh
+--- jhalfs-2.3.1.orig/common/libs/func_check_version.sh	2007-08-02 22:47:23.000000000 +0600
++++ jhalfs-2.3.1/common/libs/func_check_version.sh	2007-11-07 20:13:10.000000000 +0500
+@@ -77,6 +77,10 @@
+ check_prerequisites() {      #
+ #----------------------------#
+ 
++  # Avoid translation of version strings
++  local LC_ALL=C
++  export LC_ALL
++
+   # LFS/HLFS/CLFS prerequisites
+   check_version "2.6.2"   "`uname -r`"          "KERNEL"
+   check_version "3.0"     "$BASH_VERSION"       "BASH"

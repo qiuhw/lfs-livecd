@@ -1,0 +1,36 @@
+#!/bin/sh
+
+. /etc/sysconfig/rc
+. ${rc_functions}
+
+read SYNTH </sys/module/speakup/parameters/synth
+
+case "${1}" in
+	start)
+		if [ "$SYNTH" != "<NULL>" ] ; then
+		  boot_mesg "Activating speakup..."
+		  modprobe "speakup_$SYNTH" && udevsettle
+		  evaluate_retval
+		  if [ "$SYNTH" = "soft" ] ; then
+			  boot_mesg "Starting software speech synthesizer..."
+			  speech-dispatcher 2>/dev/null &&
+			  speechd-up
+			  evaluate_retval
+		  fi
+		  # Some applications need to be configured specially
+		  # in order to show cursor on selected items in menus
+		  echo 'visit_items=ON' >>/etc/dialogrc
+		  echo 'set braille_friendly=yes' >>/root/.muttrc
+		  sed -i -e 's/^#SHOW_CURSOR:FALSE/SHOW_CURSOR:TRUE/' \
+		         -e 's/#\(DEFAULT_KEYPAD_MODE\):NUMBERS_AS_ARROWS/\1:LINKS_AND_FIELDS_ARE_NUMBERED/' \
+		         /etc/lynx.cfg
+		  # FIXME: does not help
+		  # sed -i 's/^draw_arrow=OFF/draw_arrow=ON/' /etc/tin/tinrc
+		  # FIXME: others
+		fi
+		;;
+	*)
+		echo "Usage: ${0} {start}"
+		exit 1
+		;;
+esac

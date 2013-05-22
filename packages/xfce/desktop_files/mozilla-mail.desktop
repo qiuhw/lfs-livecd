@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=SeaMonkey Mail
+Comment=Read and write your email
+Exec=/bin/sh -c 'mozilla -remote "xfeDoCommand(openInbox)" 2>/dev/null || mozilla -mail'
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Application;Network
+Name[ca]=Client de correu SeaMonkey
+Comment[ca]=Llegiu i escriviu correu
+Comment[de]=Emails lesen und verfassen
+Comment[fr]=Lire et écrire votre mél
+

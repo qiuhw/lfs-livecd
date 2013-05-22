@@ -1,0 +1,16 @@
+--- rt2x00mac.c
++++ rt2x00mac.c
+@@ -56,11 +56,11 @@
+ 	skb_put(skb, size);
+ 
+ 	if (control->flags & IEEE80211_TXCTL_USE_CTS_PROTECT)
+-		ieee80211_ctstoself_get(rt2x00dev->hw, rt2x00dev->interface.id,
++		ieee80211_ctstoself_get(rt2x00dev->hw,
+ 					frag_skb->data, frag_skb->len, control,
+ 					(struct ieee80211_cts *)(skb->data));
+ 	else
+-		ieee80211_rts_get(rt2x00dev->hw, rt2x00dev->interface.id,
++		ieee80211_rts_get(rt2x00dev->hw,
+ 				  frag_skb->data, frag_skb->len, control,
+ 				  (struct ieee80211_rts *)(skb->data));
+ 

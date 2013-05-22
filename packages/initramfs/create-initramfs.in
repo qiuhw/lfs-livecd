@@ -1,0 +1,35 @@
+#!/bin/bash
+
+LIVECD_VERSION=$1
+KERNEL_VERSION=$2
+INITRAMFS_FILE=$3
+
+WDIR=`mktemp -d`
+
+mkdir -p $WDIR/{bin,dev,etc/udev/rules.d,lib/firmware,sbin,sys,proc}
+ln -s lib $WDIR/lib64
+cp /etc/udev/udev.conf $WDIR/etc/udev/udev.conf
+cp /etc/udev/rules.d/* $WDIR/etc/udev/rules.d
+sed -i 's/, *GROUP="[^"]*"//' $WDIR/etc/udev/rules.d/*
+sed -e s/@VERSION@/$LIVECD_VERSION/ /usr/share/initramfs/init.in >$WDIR/init
+chmod 755 $WDIR/init
+cp /usr/share/initramfs/fakecd.iso.head $WDIR
+mknod -m 640 $WDIR/dev/console c 5 1
+mknod -m 664 $WDIR/dev/null c 1 3
+cp /bin/{sh,dd,cat,cp,ls,mkdir,mount,umount,sed,sleep,ln,rm,uname} $WDIR/bin
+cp /lib/{librt.so.1,libpthread.so.0,libz.so.1} $WDIR/lib
+cp /lib/{libblkid.so.1,libc.so.6,libdl.so.2,@LINKER@} $WDIR/lib
+cp /lib/{libncursesw.so.5,libreadline.so.6,libhistory.so.6} $WDIR/lib
+cp /lib/{libpthread.so.0,librt.so.1,libuuid.so.1} $WDIR/lib
+cp /lib/libsysfs.so.2 $WDIR/lib
+cp /usr/lib/libdevmapper.so.1.02 $WDIR/lib
+cp -a /lib/udev $WDIR/lib
+cp /sbin/{losetup,blockdev,udevd,udevadm,modprobe} $WDIR/sbin
+cp /usr/bin/{killall,stat} $WDIR/bin
+cp /usr/sbin/dmsetup $WDIR/sbin
+find /lib/modules/$KERNEL_VERSION/kernel/drivers/{ata,block,cdrom,ide,ieee1394,firewire,hid,message,scsi,pcmcia,usb/{core,host,storage}} \
+    /lib/modules/$KERNEL_VERSION/kernel/fs/{mbcache.ko,ext2,ext3,ext4,jbd,jbd2,jfs,reiserfs,xfs,fat,ntfs,isofs,udf,nls} \
+    /lib/modules/$KERNEL_VERSION/kernel/lib -type f | cpio --make-directories -p $WDIR
+depmod -b $WDIR $KERNEL_VERSION
+( cd $WDIR ; find . | cpio -o -H newc | gzip -9 ) > $INITRAMFS_FILE
+rm -rf $WDIR

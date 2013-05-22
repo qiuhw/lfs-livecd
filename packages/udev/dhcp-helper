@@ -1,0 +1,16 @@
+#!/bin/sh
+
+INTERFACE=$1
+FILE=/etc/sysconfig/network-devices/ifconfig.${INTERFACE}
+if [ -f ${FILE} ] || [ -d ${FILE} ] ; then
+	exit 0
+fi
+
+cat >${FILE} <<"EOF"
+ONBOOT="yes"
+SERVICE="dhcpcd"
+DHCP_START="-t 20"
+DHCP_STOP="-k"
+EOF
+
+/etc/sysconfig/network-devices/ifup ${INTERFACE} >/dev/null 2>/dev/null &

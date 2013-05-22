@@ -1,0 +1,7 @@
+[Configuration]
+CommandUpdateRecords=FALSE
+FontName=Monospace 12
+ShortcutsNoMenukey=TRUE
+ShortcutsNoMnemonics=TRUE
+HelperWebbrowser=exo-open-browser
+HelperMailreader=exo-open-mailer

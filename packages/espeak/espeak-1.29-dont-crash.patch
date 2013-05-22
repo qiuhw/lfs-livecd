@@ -1,0 +1,11 @@
+--- espeak-1.29-source/src/dictionary.cpp	2007-09-30 19:36:21.000000000 +0600
++++ espeak-1.29-source/src/dictionary.cpp	2007-09-30 18:29:51.000000000 +0600
+@@ -966,6 +965,7 @@
+ 		if(phonetic[ix] == 0)
+ 			break;
+ 	}
++	if(ix == 0) return;
+ 	final_ph = phonetic[ix-1];
+ 
+ 	max_output = output + (N_WORD_PHONEMES-3);   /* check for overrun */
+

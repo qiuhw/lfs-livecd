@@ -1,0 +1,101 @@
+#!/bin/sh
+
+FILES="/lib/libc.so.6
+/lib/@LINKER@
+/lib/libreadline.so.5
+/lib/libhistory.so.5
+/lib/libncursesw.so.5
+/lib/libdl.so.2
+/lib/libblkid.so.1
+/lib/libuuid.so.1
+/bin/sh
+/bin/umount
+/sbin/losetup
+/sbin/halt
+/sbin/reboot
+/usr/sbin/chroot
+/usr/sbin/dmsetup
+/usr/lib/libdevmapper.so.1.02
+/usr/bin/eject
+/bin/sleep
+/lib/libm.so.6
+/lib/librt.so.1
+/lib/libpthread.so.0
+/dev/console
+/dev/null
+/dev/loop0
+/dev/loop3
+/dev/mapper/control"
+
+case "$RUNLEVEL" in
+	0)
+		HALT="/sbin/halt -d -f -i -p"
+		;;
+	6)
+		HALT="/sbin/reboot -d -f -i"
+		;;
+esac
+
+if [ ! -b /dev/lfs-cd ] && [ ! -d /dev/shm/.partition ] ; then
+	# The CD has been loaded into RAM
+	$HALT
+	while true ; do sleep 1 ; done
+fi
+
+mkdir /dev/shm/old /dev/shm/proc /dev/shm/etc
+ln -s /proc/mounts /dev/shm/etc/mtab
+echo "$FILES" | cpio -pLd --quiet /dev/shm
+# this doesn't hurt on x86
+ln -s lib /dev/shm/lib64
+ln -s lib /dev/shm/usr/lib64
+if [ -b /dev/lfs-cd ] ; then cp -RH /dev/lfs-cd /dev/shm/dev/lfs-cd ; fi
+
+cat >/dev/shm/sbin/init <<EOF
+#!/bin/sh
+
+halt() {
+	$HALT
+	while true ; do sleep 1 ; done
+}
+
+fail() {
+	echo "Could not unmount the CD, sorry. Please report this as a bug."
+	sleep 5
+	halt
+}
+
+exec </dev/console >/dev/console 2>/dev/console
+TIMEOUT=
+while ! umount -n /old 2>/dev/null && [ "\$TIMEOUT" != "....." ] ; do
+        sleep 1
+	TIMEOUT=".\$TIMEOUT"
+done
+[ "\$TIMEOUT" = "....." ] && fail
+
+dmsetup remove_all || fail
+losetup -d /dev/loop0 || fail
+umount -n /.cdrom || fail
+
+if [ -d /.partition ] ; then
+	losetup -d /dev/loop3 || fail
+	umount -n /.partition || fail
+fi
+
+if [ -b /dev/lfs-cd ] ; then
+	eject -r /dev/lfs-cd
+	echo -n "Take the CD, close the CD-ROM tray and press Enter..."
+	( sleep 30 ; halt ) &
+	read ENTER
+fi
+halt
+EOF
+chmod 755 /dev/shm/sbin/init
+ln -nsf /old/dev/initctl /dev/shm/dev/initctl
+# "-t no" because otherwise /dev/pts isn't unmounted.
+umount -na -t no
+# brltty quirk - it mounts /etc/brltty/usbfs. "not mounted" goes to /dev/null
+umount -n /etc/brltty/usbfs 2>/dev/null
+cd /dev/shm
+mount -n -t proc proc /dev/shm/proc
+pivot_root . old
+exec chroot . /old/sbin/init u

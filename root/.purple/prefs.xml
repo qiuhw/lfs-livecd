@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<pref version='1' name='/'>
+	<pref name='purple'>
+		<pref name='savedstatus'>
+			<pref name='startup' type='int' value='1185296724'/>
+			<pref name='startup_current_status' type='bool' value='0'/>
+		</pref>
+	</pref>
+	<pref name='pidgin'>
+		<pref name='browsers'>
+			<pref name='place' type='int' value='3'/>
+			<pref name='command' type='path' value=''/>
+			<pref name='browser' type='string' value='seamonkey'/>
+		</pref>
+		<pref name='blist'>
+			<pref name='list_visible' type='bool' value='1'/>
+		</pref>
+		<pref name='sound'>
+			<pref name='command' type='path' value='aplay -q %s'/>
+			<pref name='method' type='string' value='custom'/>
+		</pref>
+	</pref>
+</pref>

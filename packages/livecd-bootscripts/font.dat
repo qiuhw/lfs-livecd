@@ -1,0 +1,33 @@
+# Charset	FONT				ERRORCODE (from font-errors.dat)
+ANSI_X3.4-1968	default8x16			1
+BIG5		default8x16			3
+BIG5-HKSCS	default8x16			3
+CP1251		cyr-sun16 -m cp1251		0
+CP1255		LatArCyrHeb-16 -m 8859-8	2
+EUC-JP		default8x16			3
+EUC-KR		default8x16			3
+EUC-TW		default8x16			3
+GB18030		default8x16			3
+GB2312		default8x16			3
+GBK		default8x16			3
+GEORGIAN-PS	default8x16			4
+ISO-8859-1	lat1-16 -m 8859-1		0
+ISO-8859-2	lat2-16 -m 8859-2		0
+ISO-8859-3	LatArCyrHeb-16 -m 8859-3	0
+ISO-8859-5	cyr-sun16 -m 8859-5		0
+ISO-8859-6	LatArCyrHeb-16 -m 8859-6	0
+ISO-8859-7	iso07u-16 -m 8859-7		0
+ISO-8859-8	LatArCyrHeb-16 -m 8859-8	0
+ISO-8859-9	cp857.16 -u cp857 -m 8859-9	0
+ISO-8859-10	LatArCyrHeb-16 -m 8859-10	0
+ISO-8859-13	LatArCyrHeb-16 -m 8859-13	0
+ISO-8859-14	default8x16			3
+ISO-8859-15	lat0-16 -m 8859-15		0
+KOI8-R		cyr-sun16 -m koi8-r		0
+KOI8-T		cyr-sun16 -m koi8-r		2
+KOI8-U		cyr-sun16 -m koi8-u		0
+PT154		cyr-sun16 -m cp1251		2
+# FIXME: "tis-ptsmall.f16 -m tis620" may be more readable
+TIS-620		tis-phaisarn.f16 -m tis620	0
+# This catches all essentially-UTF-8 scripts like Indic ones.
+UTF-8		LatArCyrHeb-16			4
