@@ -184,13 +184,11 @@ build-tools:
 	@touch $@
 
 maybe-tools:
-	@if [ -f tools.tar.bz2 ] ; then \
-	    echo "Found previously built tools. Unpacking..." && \
-	    tar -C .. -jxpf tools.tar.bz2 ; \
+	@if [ -f tools.tar.xz ] ; then \
+	    tar -C .. -xpf tools.tar.bz2 ; \
 	else \
 	    su - lfs -c "$(lfsenv) '$(lfsbash) && $(MAKE) tools'" && \
-	    echo "Packaging tools for later use..." && \
-	    tar -C .. -jcpf tools.tar.bz2 tools ; \
+	    tar -C .. -Jcpf tools.tar.xz tools ; \
 	fi
 	@touch $@
 
@@ -497,13 +495,6 @@ final-environment:
 	@-cp $(MY_ROOT)/etc/profile /etc
 	@-dircolors -p > /etc/dircolors
 	@-cp $(MY_ROOT)/etc/fstab /etc
-
-wget-list:
-	@>wget-list ; \
-	 for DIR in packages/* ; do \
-	    make -C $${DIR} wget-list-entry || echo Never mind. ; \
-	 done ; \
-	 sed -i '/^$$/d' wget-list
 
 stop:
 	@echo $(GREEN)Stopping due to user specified stop point.$(WHITE)
