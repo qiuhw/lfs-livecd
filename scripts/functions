@@ -14,14 +14,6 @@ define sep_dir_build
 	@touch $@
 endef
 
-define sep_dir_build_noclean
-	@unpack $(FILE)
-	@rm -rf $(NM)-build
-	@install -dv $(NM)-build
-	@make -C $(NM)-build -f ../Makefile compile-$@
-	@touch $@
-endef
-
 # This takes the form of 'download [filename] [url] [sha1sum]'
 define download
 	@cd $(SRC) ; if [ ! -f "$(1)" ] ; then $(WGET) "$(2)" ; \
