@@ -496,10 +496,6 @@ final-environment:
 	@-dircolors -p > /etc/dircolors
 	@-cp $(MY_ROOT)/etc/fstab /etc
 
-stop:
-	@echo $(GREEN)Stopping due to user specified stop point.$(WHITE)
-	@exit 1
-
 #==============================================================================
 # Targets for building packages individually. Useful for troubleshooting.
 # These are not used internally, but are expected to be specified manually on
