@@ -1,26 +1,22 @@
-define setup_build
-    @unpack $(FILE)
-endef
-
 define clean_build
     @make clean
 endef
 
 define std_build
-    @$(setup_build)
+    @unpack $(FILE)
     @make -C $(DIR) -f ../Makefile compile-$@
     @$(clean_build)
     @touch $@
 endef
 
 define std_build_noclean
-	@$(setup_build)
+	@unpack $(FILE)
     @make -C $(DIR) -f ../Makefile compile-$@
     @touch $@
 endef
 
 define sep_dir_build
-	@$(setup_build)
+	@unpack $(FILE)
 	@rm -rf $(NM)-build
 	@install -dv $(NM)-build
 	@make -C $(NM)-build -f ../Makefile compile-$@
@@ -29,7 +25,7 @@ define sep_dir_build
 endef
 
 define sep_dir_build_noclean
-	@$(setup_build)
+	@unpack $(FILE)
 	@rm -rf $(NM)-build
 	@install -dv $(NM)-build
 	@make -C $(NM)-build -f ../Makefile compile-$@
