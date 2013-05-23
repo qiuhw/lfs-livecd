@@ -30,7 +30,7 @@ endif
 endif
 		../$(DIR)/configure \
 		--prefix=/tools \
-		--host=$(BUILD_ARCH) \
+		--host=$(LFS_TGT) \
 		--build=$$(../$(DIR)/scripts/config.guess) \
 		--disable-profile \
 		--enable-add-ons \
@@ -41,11 +41,11 @@ endif
 		libc_cv_initfini_array=yes $(SPARCTLS)
 	make
 	make install
-	$(BUILD_ARCH)-gcc -dumpspecs | sed \
+	$(LFS_TGT)-gcc -dumpspecs | sed \
 	 -e 's@/lib\(64\)\?/ld@/tools&@g' \
 	 -e "/^\*cpp:$$/{n;s,$$, -isystem /tools/include,}" \
-	 > `dirname $$($(BUILD_ARCH)-gcc -print-libgcc-file-name)`/specs
-	echo 'main(){}' | $(BUILD_ARCH)-gcc -B/tools/lib/ -x c - -v -Wl,--verbose
+	 > `dirname $$($(LFS_TGT)-gcc -print-libgcc-file-name)`/specs
+	echo 'main(){}' | $(LFS_TGT)-gcc -B/tools/lib/ -x c - -v -Wl,--verbose
 	readelf -l a.out | grep /tools
 	rm -vf a.out
 

@@ -18,7 +18,7 @@ prebuild: $(FILE)
 compile-prebuild:
 	../$(DIR)/configure \
 		--prefix=/tools \
-		--target=$(BUILD_ARCH) \
+		--target=$(LFS_TGT) \
 		--disable-nls \
 		--disable-werror
 	echo "MAKEINFO = :" >> Makefile
@@ -29,9 +29,9 @@ stage1: $(FILE)
 	$(sep_dir_build)
 
 compile-stage1:
-	CC="$(BUILD_ARCH)-gcc -B/tools/lib/" \
-		AR=$(BUILD_ARCH)-ar \
-		RANLIB=$(BUILD_ARCH)-ranlib \
+	CC="$(LFS_TGT)-gcc -B/tools/lib/" \
+		AR=$(LFS_TGT)-ar \
+		RANLIB=$(LFS_TGT)-ranlib \
 		../$(DIR)/configure \
 		--prefix=/tools \
 		--disable-nls \

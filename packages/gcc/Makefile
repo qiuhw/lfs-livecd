@@ -37,7 +37,7 @@ compile-prebuild:
 	cd ../$(DIR) ; tar xf ../$(FILE2); mv $(DIR2) $(NM2)
 	../$(DIR)/configure \
 		--prefix=/tools \
-		--target=$(BUILD_ARCH) \
+		--target=$(LFS_TGT) \
 		--disable-nls \
 		--disable-shared \
 		--disable-decimal-float \
@@ -49,7 +49,7 @@ compile-prebuild:
 		--enable-languages=c
 	make
 	make install
-	ln -sv libgcc.a `$(BUILD_ARCH)-gcc -print-libgcc-file-name | sed 's/libgcc/&_eh/'`
+	ln -sv libgcc.a `$(LFS_TGT)-gcc -print-libgcc-file-name | sed 's/libgcc/&_eh/'`
 
 stage1: $(FILE) $(FILE1) $(FILE2) $(PATCH1)
 	$(sep_dir_build)
@@ -71,9 +71,9 @@ compile-stage1:
 	done
 	cd ../$(DIR) ; tar xf ../$(FILE1); mv $(DIR1) $(NM1)
 	cd ../$(DIR) ; tar xf ../$(FILE2); mv $(DIR2) $(NM2)
-	CC="$(BUILD_ARCH)-gcc -B/tools/lib/" \
-		AR=$(BUILD_ARCH)-ar \
-		RANLIB=$(BUILD_ARCH)-ranlib \
+	CC="$(LFS_TGT)-gcc -B/tools/lib/" \
+		AR=$(LFS_TGT)-ar \
+		RANLIB=$(LFS_TGT)-ranlib \
 		../$(DIR)/configure \
 		--prefix=/tools \
 		--with-local-prefix=/tools \

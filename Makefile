@@ -75,9 +75,9 @@ export WHITE = "[00m"
 # Architecture specifics
 ifeq ($(MY_ARCH),ppc)
 export MY_LIBDIR := lib
-export BUILD_ARCH := powerpc-lfs-linux-gnu
+export LFS_TGT := powerpc-lfs-linux-gnu
 else
-export BUILD_ARCH := $(MY_ARCH)-lfs-linux-gnu
+export LFS_TGT := $(MY_ARCH)-lfs-linux-gnu
 endif
 
 #==============================================================================
