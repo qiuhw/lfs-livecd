@@ -150,7 +150,7 @@ $(MKTREE): root.img
 # preserve as many zeroed sectors as possible.
 root.img:
 	dd if=/dev/null of=root.img bs=1M seek=$(ROOTFS_MEGS)
-	mke2fs -F root.img
+	mke2fs -jF root.img
 	tune2fs -c 0 -i 0 root.img
 
 # Add the unprivileged user - will be used for building the temporary tools
