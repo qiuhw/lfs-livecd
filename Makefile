@@ -32,8 +32,6 @@ export CXXFLAGS := $(CFLAGS)
 export LDFLAGS := -s
 
 # Set the base architecture
-# Currently supported: x86_64
-# FIXME: Verify that the host is one of the above
 export MY_ARCH := $(shell uname -m)
 export LINKER = ld-linux-x86-64.so.2
 
@@ -86,8 +84,13 @@ all: test-host base iso
 # Check host prerequisites
 # FIXME: Fill this out with more package pre-reqs
 test-host:
-	@if [ $$EUID -ne 0 ] ; then \
-	 echo "You must be logged in as root." && exit 1 ; fi
+ifneq ($(MY_ARCH),x86_64)
+	$(error Only x86_64 architecture is supported.)
+endif
+
+ifneq ($$EUID,0)
+	$(error You must be logged in as root.)
+endif
 	@if ! type -p gawk >/dev/null 2>&1 ; then \
 	 echo -e "Missing gawk on host!\nPlease install gawk and re-run 'make'." && exit 1 ; fi 
 

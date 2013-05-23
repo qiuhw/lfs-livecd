@@ -61,13 +61,9 @@ compile-stage1:
 	echo '#define STANDARD_STARTFILE_PREFIX_2 ""' >> $$file && \
 	touch $$file.orig ; \
 	done
-	case $(shell uname -m) in \
-		x86_64) \
-		    for file in $$(find ../$(DIR)/gcc/config -name t-linux64) ; do \
-		      sed -i '/MULTILIB_OSDIRNAMES/d' $$file; \
-			done; \
-	    ;; \
-	esac
+	for file in $$(find ../$(DIR)/gcc/config -name t-linux64) ; do \
+	  sed -i '/MULTILIB_OSDIRNAMES/d' $$file; \
+	done
 	cd ../$(DIR) ; tar xf ../$(FILE1); mv $(DIR1) $(NM1)
 	cd ../$(DIR) ; tar xf ../$(FILE2); mv $(DIR2) $(NM2)
 	CC="$(LFS_TGT)-gcc -B/tools/lib/" \
@@ -91,10 +87,6 @@ stage2: $(FILE)
 
 compile-stage2:
 	sed -i 's/install_to_$$(INSTALL_DEST) //' ../$(DIR)/libiberty/Makefile.in
-	case `uname -m` in \
-		i?86) sed -i 's/^T_CFLAGS =$$/& -fomit-frame-pointer/' ../$(DIR)/gcc/Makefile.in ; \
-		;; \
-    esac
 	sed -i 's@\./fixinc\.sh@-c true@' ../$(DIR)/gcc/Makefile.in
 	sed -i 's/getline/get_line/' ../$(DIR)/libiberty/testsuite/test-demangle.c
 	../$(DIR)/configure \
