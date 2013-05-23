@@ -5,7 +5,7 @@ VRS= 2.20
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= http://ftp.gnu.org/gnu/binutils/binutils-2.20.tar.bz2
+URL-$(FILE)= http://anduin.linuxfromscratch.org/sources/LFS/lfs-packages/6.6/binutils-2.20.tar.bz2
 SHA-$(FILE)= 747e7b4d94bce46587236dc5f428e5b412a590dc
 
 # Targets
