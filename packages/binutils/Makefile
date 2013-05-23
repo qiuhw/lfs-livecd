@@ -1,8 +1,9 @@
 # Binutils Makefile
+#
+# The Binutils package contains a liner, an assembler, and other tools for handling object files.
 
 NM= binutils
-VRS= 2.20
-DIR= $(NM)-$(VRS)
+DIR= $(NM)-2.20
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://anduin.linuxfromscratch.org/sources/LFS/lfs-packages/6.6/binutils-2.20.tar.bz2
@@ -17,12 +18,13 @@ prebuild: $(FILE)
 
 compile-prebuild:
 	../$(DIR)/configure \
-		--prefix=/tools \
-		--target=$(LFS_TGT) \
-		--disable-nls \
-		--disable-werror
+		--target=$(LFS_TGT) --prefix=/tools \
+		--disable-nls --disable-werror
 	echo "MAKEINFO = :" >> Makefile
 	make
+	case $(uname -m) in \
+		x86_64) install -d /tools/lib && ln -s lib /tools/lib64 ;; \
+	esac
 	make install
 
 stage1: $(FILE)
@@ -72,4 +74,4 @@ clean:
 	-rm -rf $(DIR)
 	-rm -rf $(NM)-build
 
-.PHONY: compile-prebuild clean compile-stage1 compile-stage2 compile-stage3
+.PHONY: compile-prebuild compile-stage1 compile-stage2 compile-stage3 clean

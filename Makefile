@@ -182,9 +182,9 @@ maybe-tools:
 	@touch $@
 
 tools: \
+	binutils-prebuild \
 	make-prebuild \
 	sed-prebuild \
-	binutils-prebuild \
 	gcc-prebuild \
 	linux-headers-stage1 \
 	glibc-stage1 \
