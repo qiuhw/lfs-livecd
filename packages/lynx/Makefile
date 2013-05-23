@@ -5,7 +5,7 @@ VRS= 2.8.7rel.1
 DIR= $(NM)2-8-7
 
 FILE= $(NM)$(VRS).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://lynx.isc.org/current/lynx2.8.7rel.1.tar.bz2
 SHA-$(FILE)= f5e67a298322b22fe0edcfba326c02eaa5edcb72
 
 # Targets

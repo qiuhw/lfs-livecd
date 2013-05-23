@@ -5,11 +5,11 @@ VRS= 1.11.23
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/non-gnu/cvs/source/stable/1.11.23/cvs-1.11.23.tar.bz2
 SHA-$(FILE)= a51c531eebaff2dfdcc0fb6d94c8c6e509e06d7d
 
 PATCH= $(DIR)-zlib-1.patch
-URL-$(PATCH)= $(HTTP)/$(NM)/$(PATCH)
+URL-$(PATCH)= http://www.linuxfromscratch.org/patches/blfs/svn/cvs-1.11.23-zlib-1.patch
 SHA-$(PATCH)= 0d20bab8a6b6e419a8c900d082b487ad6a3aec38
 
 # Targets

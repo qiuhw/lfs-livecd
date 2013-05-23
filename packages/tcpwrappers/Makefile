@@ -5,11 +5,11 @@ VRS= 7.6
 DIR= tcp_wrappers_$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/tcp_wrappers/$(FILE)
+URL-$(FILE)= http://files.ichilton.co.uk/nfs/tcp_wrappers_7.6.tar.gz
 SHA-$(FILE)= 61689ec85b80f4ca0560aef3473eccd9e9e80481
 
 PATCH1= tcp_wrappers-$(VRS)-shared_lib_plus_plus-1.patch
-URL-$(PATCH1)= $(HTTP)/tcp_wrappers/$(PATCH1)
+URL-$(PATCH1)= http://www.linuxfromscratch.org/patches/blfs/6.3/tcp_wrappers-7.6-shared_lib_plus_plus-1.patch
 SHA-$(PATCH1)= 915652d43c57f346d6f0a14eeaf706bbfed98ffa
 
 # Targets

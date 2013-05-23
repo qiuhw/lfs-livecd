@@ -5,7 +5,7 @@ VRS= 2.6.4
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnome.org/pub/gnome/sources/libglade/2.6/libglade-2.6.4.tar.bz2
 SHA-$(FILE)= 8465851733b8a0efbe57c43efc0f140d8e2d2edb
 
 # Targets

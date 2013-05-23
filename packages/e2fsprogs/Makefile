@@ -5,7 +5,7 @@ VRS= 1.41.10
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://prdownloads.sourceforge.net/e2fsprogs/e2fsprogs-1.41.10.tar.gz
 SHA-$(FILE)= 18fa09e34009c5fcbce40461ac435ddcce0fee39
 
 # Targets

@@ -5,7 +5,7 @@ VRS= 0.23
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://pkgconfig.freedesktop.org/releases/pkg-config-0.23.tar.gz
 SHA-$(FILE)= b59dddd6b5320bd74c0f74b3339618a327096b2a
 
 # Targets

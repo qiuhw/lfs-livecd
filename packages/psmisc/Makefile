@@ -5,7 +5,7 @@ VRS= 22.10
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://prdownloads.sourceforge.net/psmisc/psmisc-22.10.tar.gz
 SHA-$(FILE)= 20bfa81ec36603c6a141bd7e6137cf9d3b52c3d9
 
 # Targets

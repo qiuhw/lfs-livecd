@@ -5,7 +5,7 @@ VRS= 1.2.9
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://download.videolan.org/pub/libdvdcss/1.2.9/libdvdcss-1.2.9.tar.bz2
 SHA-$(FILE)= 6c834633f58521d8ad09775f625cc723e30f2549
 
 # Targets

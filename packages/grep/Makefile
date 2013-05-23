@@ -5,11 +5,11 @@ VRS= 2.5.4
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/grep/grep-2.5.4.tar.bz2
 SHA-$(FILE)= 9bbd4f02b18bb264e0fcb17293b6f0445c8694d2
 
 PATCH= $(DIR)-debian_fixes-1.patch
-URL-$(PATCH)= $(HTTP)/$(NM)/$(PATCH)
+URL-$(PATCH)= http://www.linuxfromscratch.org/patches/lfs/6.6/grep-2.5.4-debian_fixes-1.patch
 SHA-$(PATCH)= 77b5967bc0aa25fa827f892cd0f4625e18d0361f
 
 # Targets

@@ -5,7 +5,7 @@ VRS= 1.8.3
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/gdbm/gdbm-1.8.3.tar.gz
 SHA-$(FILE)= a0296b1986a99cb9ec0dc3b17ea99aec76e9b760
 
 # Targets

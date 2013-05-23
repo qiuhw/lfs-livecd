@@ -5,7 +5,7 @@ VRS= 4.5.20
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://prdownloads.sourceforge.net/strace/$(FILE)
 SHA-$(FILE)= 3f5c8874610d7e3d13fc1c8b2e5fb5513468c45a
 
 # Targets

@@ -5,7 +5,7 @@ VRS= 1.54
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/perl-modules/$(FILE)
+URL-$(FILE)= http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/URI-1.54.tar.gz
 SHA-$(FILE)= e0ef831aed3b3dd44b3027075b610a81c135ddae
 
 # Targets

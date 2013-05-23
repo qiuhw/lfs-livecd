@@ -5,7 +5,7 @@ VRS= 7.20.1
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://curl.haxx.se/download/curl-7.20.1.tar.bz2
 SHA-$(FILE)= bc3ba6d83069ef1f13d320f29b26f1c63f6056b3
 
 # Targets

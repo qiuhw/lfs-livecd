@@ -5,7 +5,7 @@ VRS= 3.6.20
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.sunet.se/pub/Linux/kernel.org/linux/utils/fs/reiserfs/reiserfsprogs-3.6.20.tar.gz
 SHA-$(FILE)= 688b26c224769b46400e314c16f4185c55549e70
 
 # Targets

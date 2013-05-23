@@ -5,7 +5,7 @@ VRS= 20091130
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/hal/$(FILE)
+URL-$(FILE)= http://hal.freedesktop.org/releases/hal-info-20091130.tar.gz
 SHA-$(FILE)= d548a0d837d39a609c42a789c92578150c18b9f5
 
 # Targets

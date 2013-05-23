@@ -5,15 +5,15 @@ VRS= 7.2
 DIR= $(NM)72
 
 FILE= $(NM)-$(VRS).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= ftp://ftp.vim.org/pub/vim/unix/vim-7.2.tar.bz2
 SHA-$(FILE)= a4b6641ca528fada71ea77c998a441495ed4984c
 
 FILE2= $(NM)-$(VRS)-lang.tar.gz
-URL-$(FILE2)= $(HTTP)/$(NM)/$(FILE2)
+URL-$(FILE2)= ftp://ftp.vim.org/pub/vim/extra/vim-7.2-lang.tar.gz
 SHA-$(FILE2)= 970e0dda7e5b2308cf33488be1ea33d593d951cb
 
 PATCH1= $(NM)-$(VRS)-fixes-5.patch
-URL-$(PATCH1)= $(HTTP)/$(NM)/$(PATCH1)
+URL-$(PATCH1)= http://www.linuxfromscratch.org/patches/lfs/6.6/vim-7.2-fixes-5.patch
 SHA-$(PATCH1)= 10bd3c55d5b8fa416cbe5538d5a9d39110db911e
 
 # Targets

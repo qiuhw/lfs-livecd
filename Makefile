@@ -17,9 +17,6 @@
 # Timezone
 export timezone ?= Asia/Shanghai
 
-# Remote server location for packages
-export HTTP ?= http://dev.lightcube.us/~jhuntwork/sources
-
 # Default paper size for groff.
 export pagesize ?= A4
 

@@ -5,7 +5,7 @@ VRS= 0.5.9
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://sourceforge.net/projects/scim/files/scim-tables/0.5.9/scim-tables-0.5.9.tar.gz
 SHA-$(FILE)= aeca1c8a2eb10a214edc07fa248cd7450f78e387
 
 # Targets

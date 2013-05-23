@@ -5,7 +5,7 @@ VRS= 2.4.44
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).src.tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://download.savannah.gnu.org/releases/attr/attr-2.4.44.src.tar.gz
 SHA-$(FILE)= 7dcbdaac57dcc81b9c36d6c49d25b22b48b5e11f
 
 # Targets

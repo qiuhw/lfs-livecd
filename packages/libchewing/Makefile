@@ -5,7 +5,7 @@ VRS= 0.3.2
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://chewing.googlecode.com/files/libchewing-0.3.2.tar.bz2
 SHA-$(FILE)= 23eb09ab17c432cefb8cf42c758106b71b50d55f
 
 # Targets

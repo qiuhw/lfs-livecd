@@ -5,7 +5,7 @@ VRS= 1.222
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/perl-modules/$(FILE)
+URL-$(FILE)= http://sourceforge.net/projects/gtk2-perl/files/Glib/1.222/Glib-1.222.tar.gz
 SHA-$(FILE)= 526bbd4058a0cbbef22b5a87d07f8f3dbd7fae0d
 
 # Targets

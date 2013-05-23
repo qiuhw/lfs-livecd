@@ -5,7 +5,7 @@ VRS= 2.0.0
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://sourceforge.net/projects/linux-ntfs/files/NTFS%20Tools%20and%20Library/2.0.0/ntfsprogs-2.0.0.tar.gz
 SHA-$(FILE)= c433189eb0955beb7360c6a475cc97083c5cd020
 
 # Targets

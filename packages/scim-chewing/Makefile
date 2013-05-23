@@ -5,7 +5,7 @@ VRS= 0.3.3
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://chewing.googlecode.com/files/scim-chewing-0.3.3.tar.bz2
 SHA-$(FILE)= 346d9a1511cfbb1025c0290d5a97a799329cb24e
 
 # Targets

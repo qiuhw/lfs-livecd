@@ -5,7 +5,7 @@ VRS= 1.3.1
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://sourceforge.jp/projects/scim-imengine/downloads/29660/scim-anthy-1.3.1.tar.gz
 SHA-$(FILE)= 7c71c86deafab0f9a9844e77bbd75e71463dc36a
 
 # Targets

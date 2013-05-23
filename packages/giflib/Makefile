@@ -5,7 +5,7 @@ VRS= 4.1.6
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://downloads.sourceforge.net/giflib/giflib-4.1.6.tar.bz2
 SHA-$(FILE)= 22680f604ec92065f04caf00b1c180ba74fb8562
 
 # Targets

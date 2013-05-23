@@ -5,7 +5,7 @@ VRS= 1.97.2
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= ftp://alpha.gnu.org/gnu/grub/grub-1.97.2.tar.gz
 SHA-$(FILE)= 90aca596add560afeb9f2a829421dfd360d4c725
 
 # Targets

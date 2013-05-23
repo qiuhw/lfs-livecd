@@ -1,6 +1,6 @@
 NM= Xorg-app
 VRS= X11R7.5
-URLBASE= $(HTTP)/$(NM)
+URLBASE= http://ftp.x.org/pub/individual/app
 
 include $(MY_ROOT)/packages/$(NM)/filelist
 

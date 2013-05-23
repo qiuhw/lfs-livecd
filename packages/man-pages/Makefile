@@ -5,7 +5,7 @@ VRS= 3.23
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://www.kernel.org/pub/linux/docs/manpages/Archive/man-pages-3.23.tar.bz2
 SHA-$(FILE)= 34452a00ccd9a9463d7ca66aeab55d5993a70fa9
 
 # Targets

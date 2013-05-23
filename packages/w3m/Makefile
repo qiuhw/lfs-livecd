@@ -5,7 +5,7 @@ VRS= 0.5.2
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://prdownloads.sourceforge.net/w3m/$(FILE)
 SHA-$(FILE)= 484522547ae6dbb342d3858a2a53a65451e273f9
 
 # Targets

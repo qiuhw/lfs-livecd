@@ -5,7 +5,7 @@ VRS= 1.2.16
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://dbus.freedesktop.org/releases/dbus/dbus-1.2.16.tar.gz
 SHA-$(FILE)= 28aa5c8839e60d82eb9ce934e3e244abdda913f7
 
 # Targets

@@ -5,7 +5,7 @@ VRS= 0.23
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= ftp://ftp.uwsg.indiana.edu/linux/gentoo/distfiles/libnfsidmap-0.23.tar.gz
 SHA-$(FILE)= bd9647582f7d863a483460815f0a0b1450884c3d
 
 # Targets

@@ -5,7 +5,7 @@ VRS= 6.8
 DIR= $(NM)$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://www.hpl.hp.com/personal/Hans_Boehm/gc/gc_source/gc6.8.tar.gz
 SHA-$(FILE)= 6d5def5ba5d29292ba9c76f04df3ec06d3ab3278
 
 # Targets

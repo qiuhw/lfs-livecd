@@ -1,6 +1,6 @@
 NM= Xorg-proto
 VRS= X11R7.5
-URLBASE= $(HTTP)/$(NM)
+URLBASE= http://ftp.x.org/pub/individual/proto
 
 include $(MY_ROOT)/packages/$(NM)/filelist
 

@@ -5,7 +5,7 @@ VRS= 4.7.1
 DIR= $(NM)-$(VRS)
 
 FILE= $(NM)-$(VRS).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.osuosl.org/pub/midnightcommander/mc-4.7.1.tar.bz2
 SHA-$(FILE)= 61fd896780798d17bd1e41ee3910e36a4b0d306a
 
 # Targets

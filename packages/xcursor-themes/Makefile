@@ -5,7 +5,7 @@ VRS= 1.0.2
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.x.org/pub/individual/data/xcursor-themes-1.0.2.tar.bz2
 SHA-$(FILE)= 12b865c17c65e70a6bc20300dfa660fe8faaa0a4
 
 # Targets

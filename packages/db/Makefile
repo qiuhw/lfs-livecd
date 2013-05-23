@@ -5,11 +5,11 @@ VRS= 4.7.25
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://download-east.oracle.com/berkeley-db/db-4.7.25.tar.gz
 SHA-$(FILE)= 957c10358df1211e1dc37ea997aadef42117d6a5
 
 PATCH1= $(DIR)-upstream_fixes-1.patch
-URL-$(PATCH1)= $(HTTP)/$(NM)/$(PATCH1)
+URL-$(PATCH1)= http://www.linuxfromscratch.org/patches/lfs/6.4/db-4.7.25-upstream_fixes-1.patch
 SHA-$(PATCH1)= 737f11c8f7f9b7bd2523f6c19460bd0aacd6799f
 
 # Targets

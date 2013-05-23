@@ -5,7 +5,7 @@ VRS= 0.15.20
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.x.org/pub/individual/lib/pixman-0.15.20.tar.gz
 SHA-$(FILE)= a5f973b6895e269731964fbe328f61a8cbfdc931
 
 # Targets

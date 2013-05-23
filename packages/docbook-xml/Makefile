@@ -6,7 +6,7 @@ OLDVERSIONS= 4.1.2 4.2 4.3 4.4
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).zip
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://www.docbook.org/xml/4.5/docbook-xml-4.5.zip
 SHA-$(FILE)= b9124233b50668fb508773aa2b3ebc631d7c1620
 
 # Targets

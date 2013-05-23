@@ -5,7 +5,7 @@ VRS= 4.999.9beta
 DIR= $(NM)-$(VRS)
 
 FILE= $(NM)-$(VRS).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://tukaani.org/xz/$(FILE)
 SHA-$(FILE)= 67cd2598b5149da9b3c126f3483fd632e06b3d48
 
 # Targets

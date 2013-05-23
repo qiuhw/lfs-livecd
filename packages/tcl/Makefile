@@ -5,7 +5,7 @@ VRS= 8.5.8
 DIR= $(NM)$(VRS)
 
 FILE= $(DIR)-src.tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://prdownloads.sourceforge.net/tcl/tcl8.5.8-src.tar.gz
 SHA-$(FILE)= 21de27a24633c7550383bc7c35736e9acd5cb3a8
 
 # Targets

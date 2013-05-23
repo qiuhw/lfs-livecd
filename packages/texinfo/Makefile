@@ -5,7 +5,7 @@ VRS= 4.13a
 DIR= $(NM)-4.13
 
 FILE= $(DIR)a.tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/texinfo/texinfo-4.13a.tar.gz
 SHA-$(FILE)= a1533cf8e03ea4fa6c443b73f4c85e4da04dead0
 
 # Targets

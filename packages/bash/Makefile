@@ -5,7 +5,7 @@ VRS= 4.1
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/bash/bash-4.1.tar.gz
 SHA-$(FILE)= 3bd1ec9c66f3689f6b3495bdaaf9077b2e5dc150
 
 # Targets

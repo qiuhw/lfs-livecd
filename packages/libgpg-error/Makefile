@@ -5,7 +5,7 @@ VRS= 1.7
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://mirrors.dotsrc.org/gcrypt/libgpg-error/libgpg-error-1.7.tar.bz2
 SHA-$(FILE)= bf8c6babe1e28cae7dd6374ca24ddcc42d57e902
 
 # Targets

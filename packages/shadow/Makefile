@@ -5,7 +5,7 @@ VRS= 4.1.4.2
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= ftp://pkg-shadow.alioth.debian.org/pub/pkg-shadow/shadow-4.1.4.2.tar.bz2
 SHA-$(FILE)= 43e29471057c671de51360b10e3ee2b419c78ffa
 
 # Targets

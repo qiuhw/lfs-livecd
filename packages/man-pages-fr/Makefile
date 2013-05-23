@@ -5,7 +5,7 @@ VRS= 3.03.0
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= ftp://ftp.ro.debian.org/pub/linux/distributions/frugalware/frugalware-1.6/source/locale-extra/man-pages-fr/man-pages-fr-3.03.0.tar.bz2
 SHA-$(FILE)= de913b8cecba855b58f7bcc05a5c28c0d470c48b
 
 # Targets

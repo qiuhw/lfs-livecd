@@ -5,7 +5,7 @@ VRS= cvs_20070326
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.lfs-matrix.net/pub/blfs/conglomeration/tidy/tidy-cvs_20070326.tar.bz2
 SHA-$(FILE)= 8a775dea48fac5dacff7879813bce60fd44c2ed0
 
 # Targets

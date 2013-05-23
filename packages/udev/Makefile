@@ -7,11 +7,11 @@ DIR= $(NM)-$(VRS)
 CONFDIR=$(NM)-config-$(CONFVRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev-151.tar.bz2
 SHA-$(FILE)= 04bab1fd73797815b0f2412edcf1070acd35bce1
 
 FILE1= $(CONFDIR).tar.bz2
-URL-$(FILE1)= $(HTTP)/$(NM)-config/$(FILE1)
+URL-$(FILE1)= http://www.linuxfromscratch.org/lfs/downloads/6.6/udev-config-20100128.tar.bz2
 SHA-$(FILE1)= be1dffa11984c65f5d6e5481eca792eecf56a8b5
 
 # Targets

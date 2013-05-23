@@ -5,7 +5,7 @@ VRS= 2.80
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= ftp://ftp.pluto.it/pub/pluto/ildp/man/man-pages-it-2.80.tar.gz
 SHA-$(FILE)= 26f96df626922f636017316a64458779d087a498
 
 # Targets

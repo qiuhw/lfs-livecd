@@ -5,7 +5,7 @@ VRS= 0.8.15
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://irssi.org/files/irssi-0.8.15.tar.bz2
 SHA-$(FILE)= b79ce8c2c98a76b004f63706e7868cd363000d89
 
 # Targets

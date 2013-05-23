@@ -5,7 +5,7 @@ VRS= 30
 DIR= $(NM)$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://prdownloads.sourceforge.net/infozip/$(FILE)
 SHA-$(FILE)= c9f4099ecf2772b53c2dd4a8e508064ce015d182
 
 # Targets

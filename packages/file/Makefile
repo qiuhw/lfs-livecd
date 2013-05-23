@@ -5,7 +5,7 @@ VRS= 5.04
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= ftp://ftp.astron.com/pub/file/file-5.04.tar.gz
 SHA-$(FILE)= 56ddf7135471aa656334ed8fefe1112bcccc2cc3
 
 # Targets

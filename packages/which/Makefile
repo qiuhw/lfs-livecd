@@ -5,7 +5,7 @@ VRS= 2.20
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/which/which-2.20.tar.gz
 SHA-$(FILE)= 3bcd6d87aa5231917ba7123319eedcae90cfa0fd
 
 # Targets

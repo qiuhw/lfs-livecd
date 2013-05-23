@@ -5,7 +5,7 @@ VRS= 1.0.7
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.7/libusb-1.0.7.tar.bz2
 SHA-$(FILE)= 8b7dd10dd9e86dbdefc80f42c923a5ecd9d3e2ef
 
 # Targets

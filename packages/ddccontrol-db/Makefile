@@ -5,7 +5,7 @@ VRS= 20061014
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://sourceforge.net/projects/ddccontrol/files/ddccontrol-db/20061014/ddccontrol-db-20061014.tar.bz2
 SHA-$(FILE)= 9d06570fdbb4d25e397202a518265cc1173a5de3
 
 # Targets

@@ -5,7 +5,7 @@ VRS= 7
 DIR= jpeg-$(VRS)
 
 FILE= jpegsrc.v$(VRS).tar.gz
-URL-$(FILE)= $(HTTP)/jpeg/$(FILE)
+URL-$(FILE)= http://www.ijg.org/files/jpegsrc.v7.tar.gz
 SHA-$(FILE)= 88cced0fc3dbdbc82115e1d08abce4e9d23a4b47
 
 # Targets

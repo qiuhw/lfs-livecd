@@ -5,7 +5,7 @@ VRS= 2.6.32.8
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.32.8.tar.bz2
 SHA-$(FILE)= 9f021c6f225ab01a39c1c474ab2dd8800e80976b
 
 # Targets

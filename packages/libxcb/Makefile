@@ -5,7 +5,7 @@ VRS= 1.6
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://xcb.freedesktop.org/dist/libxcb-1.6.tar.bz2
 SHA-$(FILE)= b0a6fec4c02ec876f32bbd4b64ffe8a25f0da518
 
 # Targets

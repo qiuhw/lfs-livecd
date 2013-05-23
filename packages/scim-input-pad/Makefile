@@ -5,7 +5,7 @@ VRS= 0.1.2
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://sourceforge.net/projects/scim/files/scim-input-pad/0.1.2/scim-input-pad-0.1.2.tar.gz
 SHA-$(FILE)= e3c5bceba046f627ef0db22c7ab4142f61ba38dc
 
 # Targets

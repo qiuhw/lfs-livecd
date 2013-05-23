@@ -5,11 +5,11 @@ VRS= 7.6
 DIR= $(NM)-$(VRS)
 
 FILE= MesaLib-$(VRS).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= ftp://ftp.mirrorservice.org/sites/distfiles.macports.org/mesa/MesaLib-7.6.tar.bz2
 SHA-$(FILE)= 4bb10d98afa2585bf60cffb6861b511e86b7b240
 
 FILE1= MesaDemos-$(VRS).tar.bz2
-URL-$(FILE1)= $(HTTP)/$(NM)/$(FILE1)
+URL-$(FILE1)= ftp://ftp.parrot.org/.1/blfs/conglomeration/MesaDemos/MesaDemos-7.6.tar.bz2
 SHA-$(FILE1)= 2d1ba323711b595f93ed5bc98aa0dfe674c7c768
 
 # Targets

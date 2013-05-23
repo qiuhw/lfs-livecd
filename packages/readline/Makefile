@@ -5,7 +5,7 @@ VRS= 6.1
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/readline/readline-6.1.tar.gz
 SHA-$(FILE)= 54840a0dc907e7fa598d7ffcdcbd17bae69ace83
 
 # Targets

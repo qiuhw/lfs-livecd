@@ -5,7 +5,7 @@ VRS= 1.7
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://xlibs.freedesktop.org/xkbdesc/xkeyboard-config-1.7.tar.bz2
 SHA-$(FILE)= d6df43bfc0596be04865f2be7c4e794e198358c8
 
 # Targets

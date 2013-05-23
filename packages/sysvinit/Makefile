@@ -5,7 +5,7 @@ VRS= 2.86
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= ftp://ftp.cistron.nl/pub/people/miquels/sysvinit/sysvinit-2.86.tar.gz
 SHA-$(FILE)= 3e78df609a2ff0fea6304cb662a7f10298d03667
 
 # Targets

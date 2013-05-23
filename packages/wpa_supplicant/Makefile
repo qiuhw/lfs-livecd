@@ -5,7 +5,7 @@ VRS= 0.6.10
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://wl500g.googlecode.com/svn-history/r3173/branches/rt-n/wpa_supplicant/wpa_supplicant-0.6.10.tar.gz
 SHA-$(FILE)= d2c93758607de250a8dda7adc8f8b304d0a074ce
 
 # Targets

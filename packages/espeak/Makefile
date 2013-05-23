@@ -5,7 +5,7 @@ VRS= 1.43.03
 DIR= $(NM)-$(VRS)-source
 
 FILE= $(DIR).zip
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://sourceforge.net/projects/espeak/files/espeak/espeak-1.43/espeak-1.43.03-source.zip
 SHA-$(FILE)= 354dad04ccd96cc2f03f647d06b6d45aba593681
 
 # Russian file is not downloaded because espeak mispronounces many words

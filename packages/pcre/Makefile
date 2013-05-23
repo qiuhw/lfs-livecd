@@ -5,7 +5,7 @@ VRS= 8.02
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://sourceforge.net/projects/pcre/files/pcre/8.02/pcre-8.02.tar.bz2
 SHA-$(FILE)= 2cf2f7f04988813c7ce45c43eb934f3b8b1c3b34
 
 # Targets

@@ -5,7 +5,7 @@ VRS= 2.6.6
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://sourceforge.net/projects/pidgin/files/Pidgin/2.6.6/pidgin-2.6.6.tar.bz2
 SHA-$(FILE)= d74459152f9598139a3fd8aee385e3366722155c
 
 # Targets

@@ -5,7 +5,7 @@ VRS= 1.1.4
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://downloads.xiph.org/releases/ogg/libogg-1.1.4.tar.gz
 SHA-$(FILE)= 868ace372004cf303231b954c60a836acbd71065
 
 # Targets

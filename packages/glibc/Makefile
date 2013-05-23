@@ -5,7 +5,7 @@ VRS= 2.11.1
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/glibc/glibc-2.11.1.tar.bz2
 SHA-$(FILE)= 29f492ae56fd4ef79f32b45c29c0edb6aa8a35a7
 
 ifeq ($(MY_ARCH),sparc64)

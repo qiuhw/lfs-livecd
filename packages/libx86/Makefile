@@ -5,7 +5,7 @@ VRS= 1.1
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= ftp://ftp.de.cw.net/pub/FreeBSD/ports/distfiles/libx86-1.1.tar.gz
 SHA-$(FILE)= c55d8a428ab7f2084010c255aa8c666602544af9
 
 # Targets

@@ -5,7 +5,7 @@ VRS= 5.2.2
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= ftp://ftp.uwsg.indiana.edu/linux/slackware/slackware-13.1/source/n/dhcpcd/dhcpcd-5.2.2.tar.bz2
 SHA-$(FILE)= 2739ea24091b3ede42b60affd3ea424dfa05686d
 
 # Targets

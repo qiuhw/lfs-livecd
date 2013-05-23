@@ -5,7 +5,7 @@ VRS= 1.20.1
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/groff/groff-1.20.1.tar.gz
 SHA-$(FILE)= 3066587d73df73c2bda235034f4515cf52d22549
 
 # Targets

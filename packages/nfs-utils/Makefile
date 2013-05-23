@@ -5,7 +5,7 @@ VRS= 1.2.2
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://sourceforge.net/projects/nfs/files/nfs-utils/1.2.2/nfs-utils-1.2.2.tar.bz2
 SHA-$(FILE)= bf823cb85844de3ff3bf07601698aaa1cfdd8a28
 
 # Targets

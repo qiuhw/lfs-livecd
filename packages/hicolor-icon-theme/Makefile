@@ -5,7 +5,7 @@ VRS= 0.11
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.11.tar.gz
 SHA-$(FILE)= 8a870f13254f1704bc2e7bb4fa1258d07ba5cc8e
 
 # Targets

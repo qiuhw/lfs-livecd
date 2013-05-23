@@ -5,7 +5,7 @@ VRS= 0.9
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.lfs-matrix.net/pub/blfs/6.3/s/startup-notification-0.9.tar.bz2
 SHA-$(FILE)= 2c09f43247683d1e4a16b2f8d1e236b57eafae68
 
 # Targets

@@ -5,7 +5,7 @@ VRS= 0.5
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= ftp://ftp.uwsg.indiana.edu/linux/gentoo/distfiles/manpages-de-0.5.tar.gz
 SHA-$(FILE)= afab7e0ecb27b04a126ad89fd5ea557af66cd329
 
 # Targets

@@ -5,7 +5,7 @@ VRS= 1.4
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/gzip/gzip-1.4.tar.gz
 SHA-$(FILE)= 1d398dac6a7920a7de6e2685fe472a840eb2ce6e
 
 # Targets

@@ -5,11 +5,11 @@ VRS= 2.8.1
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/diffutils/diffutils-2.8.1.tar.gz
 SHA-$(FILE)= a4c467c3a6a08cde9f3d94d02067ec26436e7dc5
 
 PATCH= $(DIR)-i18n-1.patch
-URL-$(PATCH)= $(HTTP)/$(NM)/$(PATCH)
+URL-$(PATCH)= http://www.linuxfromscratch.org/patches/lfs/6.6/diffutils-2.8.1-i18n-1.patch
 SHA-$(PATCH)= 2d88d693ab572f04990a3a28deb5e743e288b9da
 
 # Targets

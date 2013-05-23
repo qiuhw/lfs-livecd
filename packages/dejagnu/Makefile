@@ -5,7 +5,7 @@ VRS= 1.4.4
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/dejagnu/dejagnu-1.4.4.tar.gz
 SHA-$(FILE)= fd82ffd396eba5b595f76d2f4a068cb7fcc6cffb
 
 # Targets

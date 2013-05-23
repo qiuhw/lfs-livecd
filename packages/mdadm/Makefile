@@ -5,7 +5,7 @@ VRS= 3.1.2
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= https://www.kernel.org/pub/linux/utils/raid/mdadm/mdadm-3.1.2.tar.bz2
 SHA-$(FILE)= 0599bd60a6cf8194bc2b5306ec939e05f825e4ce
 
 # Targets

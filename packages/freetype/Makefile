@@ -5,11 +5,11 @@ VRS= 2.3.12
 DIR= $(NM)-$(VRS)
 	 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://download.savannah.gnu.org/releases/freetype/freetype-old/freetype-2.3.12.tar.bz2
 SHA-$(FILE)= ebf0438429c0bedd310059326d91646c3c91016b
 
 FILE2= $(NM)-doc-$(VRS).tar.bz2
-URL-$(FILE2)= $(HTTP)/$(NM)/$(FILE2)
+URL-$(FILE2)= http://download.savannah.gnu.org/releases/freetype/freetype-old/freetype-doc-2.3.12.tar.bz2
 SHA-$(FILE2)= 4f3b2d0f04f23d5430dac4252fc225831c29dd18
 
 # Targets

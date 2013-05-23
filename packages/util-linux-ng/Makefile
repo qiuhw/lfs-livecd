@@ -5,7 +5,7 @@ VRS= 2.17
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= https://www.kernel.org/pub/linux/utils/util-linux/v2.17/util-linux-ng-2.17.tar.bz2
 SHA-$(FILE)= 3be54ede41d0aff87a717a0d75c8f3c0171f85f6
 
 # Targets

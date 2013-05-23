@@ -5,7 +5,7 @@ VRS= 1.1
 DIR= $(NM)-$(VRS)
 
 FILE= $(NM)-$(VRS).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= ftp://ftp.uwsg.indiana.edu/linux/gentoo/distfiles/vbetool-1.1.tar.gz
 SHA-$(FILE)= c7ba7c0635160c47fb1b94fd7c7cbe39cb717d22
 
 # Targets

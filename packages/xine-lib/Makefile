@@ -5,7 +5,7 @@ VRS= 1.1.15
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://sourceforge.net/projects/xine/files/xine-lib%201.1/1.1.15/xine-lib%201.1-1.1.15.tar.bz2
 SHA-$(FILE)= bcb567ea2a11c5f26b2384d5400b8466ea9048c6
 
 # Targets

@@ -5,7 +5,7 @@ VRS= 4.4.2
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/findutils/findutils-4.4.2.tar.gz
 SHA-$(FILE)= e8dd88fa2cc58abffd0bfc1eddab9020231bb024
 
 # Targets

@@ -5,7 +5,7 @@ VRS= 2.5.6
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://download.savannah.gnu.org/releases/man-db/man-db-2.5.6.tar.gz
 SHA-$(FILE)= e8799313afb31976f9c7a4e34bc4498293a6fef8
 
 # Targets

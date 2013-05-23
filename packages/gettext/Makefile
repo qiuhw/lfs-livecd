@@ -5,11 +5,11 @@ VRS= 0.17
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/gettext/gettext-0.17.tar.gz
 SHA-$(FILE)= c51803d9f745f6ace36bd09c0486d5735ce399cf
 
 PATCH= $(DIR)-upstream_fixes-2.patch
-URL-$(PATCH)= $(HTTP)/$(NM)/$(PATCH)
+URL-$(PATCH)= http://www.linuxfromscratch.org/patches/lfs/6.6/gettext-0.17-upstream_fixes-2.patch
 SHA-$(PATCH)= 6bc51e592c8f6400f0c4501c9d0364ef4151b45b
 
 # Targets

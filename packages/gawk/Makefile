@@ -5,7 +5,7 @@ VRS= 3.1.7
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/gawk/gawk-3.1.7.tar.bz2
 SHA-$(FILE)= 77dfacb793d579fa6830152d943096bc4362a465
 
 # Targets

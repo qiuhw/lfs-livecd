@@ -5,7 +5,7 @@ VRS= 1.4.13
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/m4/m4-1.4.13.tar.bz2
 SHA-$(FILE)= 7ba1834ebf96d0520d526c1c9f5764cc869a9f42
 
 # Targets

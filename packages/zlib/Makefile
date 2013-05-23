@@ -5,7 +5,7 @@ VRS= 1.2.3
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://www.zlib.net/zlib-1.2.3.tar.bz2
 SHA-$(FILE)= 967e280f284d02284b0cd8872a8e2e04bfdc7283
 
 # Targets

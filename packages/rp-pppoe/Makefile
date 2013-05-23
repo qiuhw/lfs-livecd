@@ -5,7 +5,7 @@ VRS= 3.10
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://wl500g.googlecode.com/svn-history/r101/trunk/rp-pppoe-3.10.tar.gz
 SHA-$(FILE)= 183372b84c1bb8e22d1bd8be05a280d948ae41f9
 
 # Targets

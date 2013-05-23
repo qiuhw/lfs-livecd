@@ -5,7 +5,7 @@ VRS= 1.11.1
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/automake/automake-1.11.1.tar.bz2
 SHA-$(FILE)= 44ab0007d8edbe82338e29bdda2f461f43a98818
 
 # Targets

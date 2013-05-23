@@ -5,7 +5,7 @@ VRS= 4.0.3
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.uni-erlangen.de/pub/utilities/screen/screen-4.0.3.tar.gz
 SHA-$(FILE)= 7bc6e2f0959ffaae6f52d698c26c774e7dec3545
 
 # Targets

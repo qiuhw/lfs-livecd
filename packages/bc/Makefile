@@ -5,7 +5,7 @@ VRS= 1.06
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/bc/bc-1.06.tar.gz
 SHA-$(FILE)= c8f258a7355b40a485007c40865480349c157292
 
 # Targets

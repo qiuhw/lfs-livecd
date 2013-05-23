@@ -5,11 +5,11 @@ VRS= 1.0.21
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://alsa.cybermirror.org/utils/alsa-utils-1.0.21.tar.bz2
 SHA-$(FILE)= b0b6ece5198143647db90171ca573654f337f9ae
 
 PATCH= $(DIR)-no_xmlto-1.patch
-URL-$(PATCH)= $(HTTP)/$(NM)/$(PATCH)
+URL-$(PATCH)= http://ftp.slackware.com/pub/blfs/conglomeration/alsa-utils/alsa-utils-1.0.21-no_xmlto-1.patch
 SHA-$(PATCH)= 024f43daddcdc74774a588c4dbf5a729ca51778c
 
 # Targets

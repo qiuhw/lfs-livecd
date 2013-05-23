@@ -5,15 +5,15 @@ VRS= 1.20.1
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTPBLFS)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.schottelius.org/pub/linux/gpm/gpm-1.20.1.tar.bz2
 SHA-$(FILE)= c48d937e62abb438c2f6439b34ef3332c89af8d1
 
 PATCH1= $(DIR)-segfault-1.patch
-URL-$(PATCH1)= $(HTTPBLFS)/$(NM)/$(PATCH1)
+URL-$(PATCH1)= http://www.linuxfromscratch.org/patches/blfs/6.3/gpm-1.20.1-segfault-1.patch
 SHA-$(PATCH1)= da53bf78a0ebaa5020e332aa6d6861159170ed86
 
 PATCH2= $(DIR)-silent-1.patch
-URL-$(PATCH2)= $(HTTPBLFS)/$(NM)/$(PATCH2)
+URL-$(PATCH2)= http://www.linuxfromscratch.org/patches/blfs/6.3/gpm-1.20.1-silent-1.patch
 SHA-$(PATCH2)= 8899a212eadfbda201d8da3e44590bd05b97f9f6
 
 PATCH3= $(DIR)-default_client-1.patch

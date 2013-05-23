@@ -5,11 +5,11 @@ VRS= 1.15.1
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.altlinux.com/pub/people/legion/kbd/kbd-1.15.1.tar.gz
 SHA-$(FILE)= a5750125be4ddff84cdcf37f5d5e320a7f3c4c35
 
 PATCH1= $(DIR)-backspace-1.patch
-URL-$(PATCH1)= $(HTTP)/$(NM)/$(PATCH1)
+URL-$(PATCH1)= http://www.linuxfromscratch.org/patches/lfs/6.6/kbd-1.15.1-backspace-1.patch
 SHA-$(PATCH1)= 44f2fb0ac18db4f717421db756db4897f88dc08c
 
 # Targets

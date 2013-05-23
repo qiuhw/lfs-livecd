@@ -5,7 +5,7 @@ VRS= 1.26.2
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnome.org/pub/gnome/sources/pango/1.26/pango-1.26.2.tar.bz2
 SHA-$(FILE)= 051b6f7b5f98a4c8083ef6a5178cb5255a992b98
 
 # Targets

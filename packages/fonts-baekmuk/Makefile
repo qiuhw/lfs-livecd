@@ -5,7 +5,7 @@ VRS= 2.2
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/baekmuk-fonts/$(FILE)
+URL-$(FILE)= http://kldp.net/frs/download.php/1429/baekmuk-ttf-2.2.tar.gz
 SHA-$(FILE)= afdee34f700007de6ea87b43c92a88b7385ba65b
 
 # Targets

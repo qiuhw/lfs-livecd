@@ -5,7 +5,7 @@ VRS= 1.4
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/ed/ed-1.4.tar.gz
 SHA-$(FILE)= 367bb9cd20b584ba550f7eda727a90862d014fe3
 
 # Targets

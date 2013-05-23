@@ -5,7 +5,7 @@ VRS= 2.2.4
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/nano/nano-2.2.4.tar.gz
 SHA-$(FILE)= c69f70d30883e846f74951c5daa20d7c5a6f0662
 
 # Targets

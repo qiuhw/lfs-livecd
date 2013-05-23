@@ -5,7 +5,7 @@ VRS= 2.8.6
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/gnutls/gnutls-2.8.6.tar.bz2
 SHA-$(FILE)= bff911d4fd7389aa6698a644b3748eb2d23715bc
 
 # Targets

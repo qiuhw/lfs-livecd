@@ -5,7 +5,7 @@ VRS= 2.8.6
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= http://xchat.org/files/source/2.8/xchat-2.8.6.tar.bz2
 SHA-$(FILE)= 7a7463e65cb26c680ed70dd96cec98bcc05435a4
 
 # Targets

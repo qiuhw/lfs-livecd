@@ -5,7 +5,7 @@ VRS= 2.25.3
 DIR= $(NM)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= $(HTTP)/$(NM)/$(FILE)
+URL-$(FILE)= https://launchpad.net/glib/head/2.25.3/+download/glib-2.25.3.tar.bz2
 SHA-$(FILE)= 5a8cf17c44decb27de3fbc202be05c89d55f647d
 
 # Targets
