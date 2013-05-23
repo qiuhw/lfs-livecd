@@ -25,12 +25,12 @@ stage1: $(FILE) $(PATCH1)
 
 compile-stage1:
 	patch -Np1 -i ../$(PATCH1)
-	sh Configure -des -Dprefix=$(TT) \
+	sh Configure -des -Dprefix=/tools \
 	 -Dstatic_ext='Data/Dumper Fcntl IO POSIX'
 	make perl utilities ext/Errno/pm_to_blib
-	cp -v perl pod/pod2man $(TT)/bin
-	mkdir -pv $(TT)/lib/perl5/$(VRS)
-	cp -Rv lib/* $(TT)/lib/perl5/$(VRS)
+	cp -v perl pod/pod2man /tools/bin
+	mkdir -pv /tools/lib/perl5/$(VRS)
+	cp -Rv lib/* /tools/lib/perl5/$(VRS)
 
 stage2: Makefile $(FILE) $(PATCH)
 	$(std_build)

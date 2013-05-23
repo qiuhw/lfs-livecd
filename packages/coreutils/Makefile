@@ -24,17 +24,17 @@ prebuild: $(FILE)
 	$(std_build)
 	
 compile-prebuild:
-	./configure --prefix=$(TT)
+	./configure --prefix=/tools
 	make -C lib
 	make -C src version.h su
-	install -m755 src/su $(TT)/bin/
+	install -m755 src/su /tools/bin/
 
 stage1: $(FILE)
 	$(std_build)
 
 compile-stage1:
 	./configure \
-		--prefix=$(TT) \
+		--prefix=/tools \
 		--enable-install-program=hostname
 	make
 	make install
@@ -50,8 +50,8 @@ compile-stage2:
 		--enable-no-install-program=kill,uptime
 	make
 	make install
-	$(TT)/bin/mv -v /usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo} /bin
-	$(TT)/bin/mv -v /usr/bin/{false,ln,ls,mkdir,mknod,mv,pwd,readlink,rm} /bin
+	/tools/bin/mv -v /usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo} /bin
+	/tools/bin/mv -v /usr/bin/{false,ln,ls,mkdir,mknod,mv,pwd,readlink,rm} /bin
 	mv -v /usr/bin/{rmdir,stty,sync,true,uname} /bin
 	mv -v /usr/bin/chroot /usr/sbin
 	mv -v /usr/bin/{head,sleep,nice} /bin

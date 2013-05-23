@@ -21,21 +21,21 @@ stage1: $(FILE)
 
 compile-stage1:
 ifeq ($(ARCH64),true)
-	echo "slibdir=$(TT)/lib64" > configparms
-	echo "libdir=$(TT)/lib64" >> configparms
+	echo "slibdir=/tools/lib64" > configparms
+	echo "libdir=/tools/lib64" >> configparms
 else
 ifeq ($(MY_ARCH),i686)
 	echo "CFLAGS += -march=i486 -mtune=i686 $(CFLAGS)" > configparms
 endif
 endif
 		../$(DIR)/configure \
-		--prefix=$(TT) \
+		--prefix=/tools \
 		--host=$(BUILD_ARCH) \
 		--build=$$(../$(DIR)/scripts/config.guess) \
 		--disable-profile \
 		--enable-add-ons \
 		--enable-kernel=2.6.18 \
-		--with-headers=$(TT)/include \
+		--with-headers=/tools/include \
 		libc_cv_forced_unwind=yes \
 		libc_cv_c_cleanup=yes \
 		libc_cv_initfini_array=yes $(SPARCTLS)
@@ -43,17 +43,17 @@ endif
 	make install
 	$(BUILD_ARCH)-gcc -dumpspecs | sed \
 	 -e 's@/lib\(64\)\?/ld@/tools&@g' \
-	 -e "/^\*cpp:$$/{n;s,$$, -isystem $(TT)/include,}" \
+	 -e "/^\*cpp:$$/{n;s,$$, -isystem /tools/include,}" \
 	 > `dirname $$($(BUILD_ARCH)-gcc -print-libgcc-file-name)`/specs
-	echo 'main(){}' | $(BUILD_ARCH)-gcc -B$(TT)/lib/ -x c - -v -Wl,--verbose
-	readelf -l a.out | grep $(TT)
+	echo 'main(){}' | $(BUILD_ARCH)-gcc -B/tools/lib/ -x c - -v -Wl,--verbose
+	readelf -l a.out | grep /tools
 	rm -vf a.out
 
 stage2: $(FILE)
 	$(sep_dir_build)
 
 compile-stage2:
-	cd ../$(DIR) ; sed -i "s|libs -o|libs -L/usr/lib -Wl,-dynamic-linker=`readelf -l /bin/sh | sed -n 's@.*interpret.*$(TT)\(.*\)]$$@\1@p'` -o|" \
+	cd ../$(DIR) ; sed -i "s|libs -o|libs -L/usr/lib -Wl,-dynamic-linker=`readelf -l /bin/sh | sed -n 's@.*interpret.*/tools\(.*\)]$$@\1@p'` -o|" \
         scripts/test-installation.pl
 	cd ../$(DIR) ; sed -i 's|@BASH@|/bin/bash|' elf/ldd.bash.in
 ifeq ($(MY_ARCH),i686)
@@ -90,12 +90,12 @@ endif
 	cp $(MY_ROOT)/etc/nsswitch.conf /etc
 	cp --remove-destination /usr/share/zoneinfo/$(timezone) /etc/localtime
 	cp $(MY_ROOT)/etc/ld.so.conf /etc
-	mv -v $(TT)/bin/{ld,ld-old}
-	mv -v $(TT)/$$(gcc -dumpmachine)/bin/{ld,ld-old}
-	mv -v $(TT)/bin/{ld-new,ld}
-	ln -sv $(TT)/bin/ld $(TT)/$$(gcc -dumpmachine)/bin/ld
+	mv -v /tools/bin/{ld,ld-old}
+	mv -v /tools/$$(gcc -dumpmachine)/bin/{ld,ld-old}
+	mv -v /tools/bin/{ld-new,ld}
+	ln -sv /tools/bin/ld /tools/$$(gcc -dumpmachine)/bin/ld
 	gcc -dumpspecs | sed \
-	  -e 's@$(TT)@@g' \
+	  -e 's@/tools@@g' \
 	  -e '/^\*cpp:$$/{n;s,$$, -isystem /usr/include,}' \
 	  -e '/\*startfile_prefix_spec:/{n;s@.*@/usr/lib/ @}' \
 	  > `dirname $$(gcc --print-libgcc-file-name)`/specs

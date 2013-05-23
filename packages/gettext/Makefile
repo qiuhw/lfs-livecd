@@ -20,10 +20,10 @@ stage1: $(FILE)
 	$(std_build)
 
 compile-stage1:
-	cd $(NM)-tools ; ./configure --prefix=$(TT) --disable-shared
+	cd $(NM)-tools ; ./configure --prefix=/tools --disable-shared
 	cd $(NM)-tools ; make -C gnulib-lib
 	cd $(NM)-tools ; make -C src msgfmt
-	cd $(NM)-tools ; cp -v src/msgfmt $(TT)/bin
+	cd $(NM)-tools ; cp -v src/msgfmt /tools/bin
 
 stage2: Makefile $(FILE) $(PATCH)
 	$(std_build)

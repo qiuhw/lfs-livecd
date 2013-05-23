@@ -17,7 +17,7 @@ prebuild: $(FILE)
 
 compile-prebuild:
 	./configure \
-		--prefix=$(TT) \
+		--prefix=/tools \
 		--disable-nls \
 		ac_cv_header_stdbool_h=yes
 	make
@@ -28,7 +28,7 @@ stage1: $(FILE)
 
 compile-stage1:
 	./configure \
-		--prefix=$(TT)
+		--prefix=/tools
 	make
 	make install
 

@@ -16,7 +16,7 @@ stage1: $(FILE)
 	$(std_build)
 
 compile-stage1:
-	./configure --prefix=$(TT) --shared
+	./configure --prefix=/tools --shared
 	make
 	make install
 

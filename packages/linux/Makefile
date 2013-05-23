@@ -31,8 +31,8 @@ stage3: $(FILE)
 compile-stage3:
 	make mrproper
 	cp ../config.x86_64 .config
-	PATH=$$PATH:$(TT)/bin make ARCH=x86_64 CROSS_COMPILE=x86_64-unknown-linux-gnu-
-	PATH=$$PATH:$(TT)/bin make ARCH=x86_64 CROSS_COMPILE=x86_64-unknown-linux-gnu- modules_install
+	PATH=$$PATH:/tools/bin make ARCH=x86_64 CROSS_COMPILE=x86_64-unknown-linux-gnu-
+	PATH=$$PATH:/tools/bin make ARCH=x86_64 CROSS_COMPILE=x86_64-unknown-linux-gnu- modules_install
 	cp -v arch/x86_64/boot/bzImage /boot/isolinux/linux64
 	create-initramfs $(CD_VERSION) $(VRS)-64bit /boot/isolinux/initramfs_data64.cpio.gz
 

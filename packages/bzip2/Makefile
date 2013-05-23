@@ -21,7 +21,7 @@ stage1: $(FILE)
 
 compile-stage1:
 	make
-	make PREFIX=$(TT) install
+	make PREFIX=/tools install
 
 stage2: Makefile $(FILE) $(PATCH)
 	$(std_build)

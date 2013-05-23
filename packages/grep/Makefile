@@ -21,7 +21,7 @@ stage1: $(FILE)
 
 compile-stage1:
 	./configure \
-		--prefix=$(TT) \
+		--prefix=/tools \
 		--disable-perl-regexp \
 		--without-included-regex
 	make

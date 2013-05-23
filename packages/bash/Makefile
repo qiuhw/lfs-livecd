@@ -23,16 +23,16 @@ prebuild: ftpget $(FILE)
 	@touch $@
 
 compile-prebuild:
-	./configure --prefix=$(TT) --without-bash-malloc
+	./configure --prefix=/tools --without-bash-malloc
 	make
 	make install
-	ln -sfv bash $(TT)/bin/sh
+	ln -sfv bash /tools/bin/sh
 
 stage1: $(FILE)
 	$(std_build)
 
 compile-stage1:
-	./configure --prefix=$(TT) --without-bash-malloc
+	./configure --prefix=/tools --without-bash-malloc
 	make
 	make install
 

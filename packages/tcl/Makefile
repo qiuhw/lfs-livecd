@@ -17,12 +17,12 @@ stage1: $(FILE)
 
 compile-stage1:
 	cd unix ; ./configure \
-		--prefix=$(TT)
+		--prefix=/tools
 	cd unix ; make
 	cd unix ; make install
-	chmod -v u+w $(TT)/lib/libtcl8.5.so
+	chmod -v u+w /tools/lib/libtcl8.5.so
 	cd unix ; make install-private-headers
-	ln -s tclsh8.5 $(TT)/bin/tclsh
+	ln -s tclsh8.5 /tools/bin/tclsh
 
 clean:
 	-rm -rf $(DIR)

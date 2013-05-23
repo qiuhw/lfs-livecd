@@ -21,17 +21,17 @@ prebuild: $(FILE)
 
 compile-prebuild:
 	./configure \
-		--prefix=$(TT)
+		--prefix=/tools
 	make
 	make install
-	ln -vs make $(TT)/bin/gmake
+	ln -vs make /tools/bin/gmake
 
 stage1: $(FILE)
 	$(std_build)
 
 compile-stage1:
 	./configure \
-		--prefix=$(TT)
+		--prefix=/tools
 	make
 	make install
 

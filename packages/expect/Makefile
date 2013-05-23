@@ -29,9 +29,9 @@ compile-stage1:
 	cp configure{,.bak}
 	sed 's:/usr/local/bin:/bin:' configure.bak > configure
 	./configure \
-		--prefix=$(TT) \
-		--with-tcl=$(TT)/lib \
-		--with-tclinclude=$(TT)/include \
+		--prefix=/tools \
+		--with-tcl=/tools/lib \
+		--with-tclinclude=/tools/include \
 		--with-x=no
 	make
 	make SCRIPTS="" install

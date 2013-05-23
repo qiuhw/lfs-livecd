@@ -21,7 +21,7 @@ stage1: $(FILE)
 
 compile-stage1:
 	./configure \
-		--prefix=$(TT)
+		--prefix=/tools
 	make
 	make install
 

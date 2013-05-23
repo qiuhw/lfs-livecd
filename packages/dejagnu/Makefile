@@ -17,8 +17,8 @@ stage1: $(FILE)
 
 compile-stage1:
 	./configure \
-		--prefix=$(TT) \
-		--libdir=$(TT)/$(MY_LIBDIR)
+		--prefix=/tools \
+		--libdir=/tools/$(MY_LIBDIR)
 	make install
 
 clean:

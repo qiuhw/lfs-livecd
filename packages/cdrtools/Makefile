@@ -14,8 +14,8 @@ stage1: Makefile $(FILE)
 	$(std_build)
 
 compile-stage1:
-	make INS_BASE=$(TT) DEFINSUSR=root DEFINSGRP=root
-	make INS_BASE=$(TT) DEFINSUSR=root DEFINSGRP=root install
+	make INS_BASE=/tools DEFINSUSR=root DEFINSGRP=root
+	make INS_BASE=/tools DEFINSUSR=root DEFINSGRP=root install
 
 clean:
 	-rm -rf $(DIR)

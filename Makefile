@@ -20,9 +20,6 @@ export timezone ?= Asia/Shanghai
 # Default paper size for groff.
 export pagesize ?= A4
 
-# Location for the temporary tools, must be a directory immediately under /
-export TT := /tools
-
 # Location for the sources, must be a directory immediately under /
 export SRC := /sources
 
@@ -60,13 +57,13 @@ export MP := $(MY_BUILD)/image
 export MKTREE := $(MP)$(MY_ROOT)
 export LFSSRC := /lfs-sources
 
-export toolsenv := env -i HOME=/home/$(USER) LC_ALL=POSIX PATH=$(TT)/bin:/bin:/usr/bin /bin/bash -c
+export toolsenv := env -i HOME=/home/$(USER) LC_ALL=POSIX PATH=/tools/bin:/bin:/usr/bin /bin/bash -c
 export toolsbash := set +o hashall 2>/dev/null || set -o nohash && umask 022 && cd $(MY_ROOT)
 
-export chenv-pre-bash := $(TT)/bin/env -i HOME=/root TERM=$(TERM) PS1='\u:\w\$$ ' PATH=/bin:/usr/bin:/sbin:/usr/sbin:$(TT)/bin $(TT)/bin/bash -c
-export chenv-post-bash := $(TT)/bin/env -i HOME=/root TERM=$(TERM) PS1='\u:\w\$$ ' PATH=/bin:/usr/bin:/sbin:/usr/sbin:$(TT)/bin /bin/bash -c
+export chenv-pre-bash := /tools/bin/env -i HOME=/root TERM=$(TERM) PS1='\u:\w\$$ ' PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin /tools/bin/bash -c
+export chenv-post-bash := /tools/bin/env -i HOME=/root TERM=$(TERM) PS1='\u:\w\$$ ' PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin /bin/bash -c
 
-export WGET := $(TT)/bin/wget
+export WGET := /tools/bin/wget
 
 export BRW = "[0;1m"
 export RED = "[0;31m"
@@ -99,8 +96,8 @@ test-host:
 
 base: $(MKTREE) builduser build-tools
 	@chroot "$(MP)" $(chenv-pre-bash) 'set +h && \
-	 chown -R 0:0 $(TT) $(SRC) $(MY_ROOT) && \
-	 cd $(MY_ROOT) && make SHELL=$(TT)/bin/bash pre-bash'
+	 chown -R 0:0 /tools $(SRC) $(MY_ROOT) && \
+	 cd $(MY_ROOT) && make SHELL=/tools/bin/bash pre-bash'
 	@chroot "$(MP)" $(chenv-post-bash) 'set +h && cd $(MY_ROOT) && \
 	 make SHELL=/bin/bash post-bash'
 	@install -m644 etc/issue* $(MP)/etc
@@ -108,18 +105,18 @@ base: $(MKTREE) builduser build-tools
 
 # This target populates the root.ext2 image and sets up some mounts
 $(MKTREE): root.ext2
-	mkdir -p $(MP) $(MY_BUILD)$(SRC) $(MY_BUILD)$(TT)/bin $(MY_BUILD)/iso/boot
+	mkdir -p $(MP) $(MY_BUILD)$(SRC) $(MY_BUILD)/tools/bin $(MY_BUILD)/iso/boot
 	mount -o loop root.ext2 $(MP)
-	mkdir -p $(MKTREE) $(MP)$(SRC) $(MP)$(TT)
+	mkdir -p $(MKTREE) $(MP)$(SRC) $(MP)/tools
 	mkdir -p $(MP)/boot $(MP)$(LFSSRC) $(MY_BUILD)/iso$(LFSSRC)
 	mount --bind $(MY_BASE) $(MP)$(MY_ROOT)
-	mount --bind $(MY_BUILD)$(TT) $(MP)$(TT)
+	mount --bind $(MY_BUILD)/tools $(MP)/tools
 	mount --bind $(MY_BUILD)$(SRC) $(MP)$(SRC)
 	mount --bind $(MY_BUILD)/iso/boot $(MP)/boot
 	mount --bind $(MY_BUILD)/iso$(LFSSRC) $(MP)$(LFSSRC)
-	-ln -nsf $(MY_BUILD)$(TT) /
-	-install -d $(TT)/bin
-	-ln -s /bin/bash $(TT)/bin/sh
+	-ln -nsf $(MY_BUILD)/tools /
+	-install -d /tools/bin
+	-ln -s /bin/bash /tools/bin/sh
 	-ln -nsf $(MY_BUILD)$(SRC) /
 	-ln -nsf $(MY_BUILD)$(MY_ROOT) /
 	-mkdir -p $(MP)/{proc,sys,dev/shm,dev/pts}
@@ -129,7 +126,7 @@ $(MKTREE): root.ext2
 	-mount -t devpts devpts $(MP)/dev/pts
 	-mkdir -p $(MP)/{bin,boot,etc,home,lib,mnt,opt}
 	-mkdir -p $(MP)/{media/{floppy,cdrom},sbin,srv,var}
-	-install -d $(TT)/bin
+	-install -d /tools/bin
 	-install -d -m 0750 $(MP)/root
 	-install -d -m 1777 $(MP)/tmp $(MP)/var/tmp
 	-mkdir -p $(MP)/usr/{,local/}{bin,include,lib,sbin,src}
@@ -166,17 +163,17 @@ root.ext2:
 builduser:
 	@-groupadd $(USER)
 	@-useradd -s /bin/bash -g $(USER) -m -k /dev/null $(USER)
-	@-chown -R $(USER):$(USER) $(MY_BUILD)$(TT) $(MY_BUILD)$(SRC) $(MY_BASE)
+	@-chown -R $(USER):$(USER) $(MY_BUILD)/tools $(MY_BUILD)$(SRC) $(MY_BASE)
 	@touch $@
 
 build-tools:
 	@su - $(USER) -c "$(toolsenv) '$(toolsbash) && make bash-prebuild'"
-	@su - $(USER) -c "$(toolsenv) '$(toolsbash) && make SHELL=$(TT)/bin/sh wget-prebuild'"
-	@su - $(USER) -c "$(toolsenv) '$(toolsbash) && make SHELL=$(TT)/bin/sh coreutils-prebuild'"
-	@$(TT)/bin/su - $(USER) -c "$(toolsenv) '$(toolsbash) && make SHELL=$(TT)/bin/sh tools'"
-	@cp /etc/resolv.conf $(TT)/etc
-	@rm -rf $(TT)/{,share/}{info,man}
-	@-ln -s $(TT)/bin/bash $(MP)/bin/bash
+	@su - $(USER) -c "$(toolsenv) '$(toolsbash) && make SHELL=/tools/bin/sh wget-prebuild'"
+	@su - $(USER) -c "$(toolsenv) '$(toolsbash) && make SHELL=/tools/bin/sh coreutils-prebuild'"
+	@/tools/bin/su - $(USER) -c "$(toolsenv) '$(toolsbash) && make SHELL=/tools/bin/sh tools'"
+	@cp /etc/resolv.conf /tools/etc
+	@rm -rf /tools/{,share/}{info,man}
+	@-ln -s /tools/bin/bash $(MP)/bin/bash
 	@install -m644 -oroot -groot $(MY_BASE)/etc/{group,passwd} $(MP)/etc
 	@touch $@
 
@@ -248,15 +245,15 @@ pre-bash: \
 	bash-stage2
 
 createfiles:
-	@-$(TT)/bin/ln -s $(TT)/bin/{bash,cat,grep,pwd,stty} /bin
-	@-$(TT)/bin/ln -s $(TT)/bin/perl /usr/bin
-	@-$(TT)/bin/ln -s $(TT)/lib/libgcc_s.so{,.1} /usr/lib
-	@-$(TT)/bin/ln -s $(TT)/lib/libstdc++.so{,.6} /usr/lib
-	@-$(TT)/bin/ln -s bash /bin/sh
+	@-/tools/bin/ln -s /tools/bin/{bash,cat,grep,pwd,stty} /bin
+	@-/tools/bin/ln -s /tools/bin/perl /usr/bin
+	@-/tools/bin/ln -s /tools/lib/libgcc_s.so{,.1} /usr/lib
+	@-/tools/bin/ln -s /tools/lib/libstdc++.so{,.6} /usr/lib
+	@-/tools/bin/ln -s bash /bin/sh
 	@touch /var/run/utmp /var/log/{btmp,lastlog,wtmp}
 	@chgrp utmp /var/run/utmp /var/log/lastlog
 	@chmod 664 /var/run/utmp /var/log/lastlog
-	@cp $(TT)/etc/resolv.conf /etc
+	@cp /tools/etc/resolv.conf /etc
 	@-cp $(MY_ROOT)/etc/hosts /etc
 	@touch $@
 
@@ -565,12 +562,12 @@ iso: prepiso
 	# e2fsck optimizes directories and returns 1 after a clean build.
 	# This is not a bug.
 	@-e2fsck -f -p root.ext2
-	@$(TT)/bin/mkzftree -F root.ext2 $(MY_BUILD)/iso/root.ext2
-	@cd $(MY_BUILD)/iso ; $(TT)/bin/mkisofs -z -R -l --allow-leading-dots -D -o \
+	@/tools/bin/mkzftree -F root.ext2 $(MY_BUILD)/iso/root.ext2
+	@cd $(MY_BUILD)/iso ; /tools/bin/mkisofs -z -R -l --allow-leading-dots -D -o \
 	$(MY_BUILD)$(MY_ROOT)/lfslivecd-$(CD_VERSION).iso -b boot/isolinux/isolinux.bin \
 	-c boot/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table \
 	-V "lfslivecd-$(CD_VERSION)" ./
-	@cd $(MY_BUILD)/iso ; $(TT)/bin/mkisofs -z -R -l --allow-leading-dots -D -o \
+	@cd $(MY_BUILD)/iso ; /tools/bin/mkisofs -z -R -l --allow-leading-dots -D -o \
 	$(MY_BUILD)$(MY_ROOT)/lfslivecd-$(CD_VERSION)-nosrc.iso -b boot/isolinux/isolinux.bin \
 	-c boot/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table \
 	-m lfs-sources -V "lfslivecd-$(CD_VERSION)" ./
@@ -581,7 +578,7 @@ iso: prepiso
 #==============================================================================
 
 clean: unmount
-	@-rm -rf $(TT) $(MY_BUILD)$(TT) $(MY_BUILD)/iso
+	@-rm -rf /tools $(MY_BUILD)/tools $(MY_BUILD)/iso
 	@-userdel $(USER)
 	@-groupdel $(USER)
 	@rm -rf /home/$(USER)
@@ -610,9 +607,9 @@ unmount:
 	-umount $(MP)/boot
 	-umount $(MP)$(LFSSRC)
 	-umount $(MP)$(SRC)
-	-umount $(MP)$(TT)
+	-umount $(MP)/tools
 	-umount $(MP)$(MY_ROOT)
-	-rmdir $(MP)$(SRC) $(MP)$(TT) $(MP)$(MY_ROOT)
+	-rmdir $(MP)$(SRC) $(MP)/tools $(MP)$(MY_ROOT)
 	-rmdir $(MP)/boot $(MP)$(LFSSRC)
 	-umount $(MP)
 

@@ -36,7 +36,7 @@ compile-prebuild:
 	cd ../$(DIR) ; tar xf ../$(FILE1); mv $(DIR1) $(NM1)
 	cd ../$(DIR) ; tar xf ../$(FILE2); mv $(DIR2) $(NM2)
 	../$(DIR)/configure \
-		--prefix=$(TT) \
+		--prefix=/tools \
 		--target=$(BUILD_ARCH) \
 		--disable-nls \
 		--disable-shared \
@@ -60,8 +60,8 @@ compile-stage1:
 	cd ../$(DIR) ; sed -i 's/^T_CFLAGS =$$/& -fomit-frame-pointer/' gcc/Makefile.in
 	cd ../$(DIR) ; for file in $$(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h) ; \
 	do cp -uv $$file{,.orig} && \
-	sed -e 's@/lib\(64\)\?\(32\)\?/ld@$(TT)&@g' \
-	    -e 's@/usr@$(TT)@g' $$file.orig > $$file && \
+	sed -e 's@/lib\(64\)\?\(32\)\?/ld@/tools&@g' \
+	    -e 's@/usr@/tools@g' $$file.orig > $$file && \
 	echo '' >> $$file && \
 	echo '#undef STANDARD_INCLUDE_DIR' >> $$file && \
 	echo '#define STANDARD_INCLUDE_DIR 0' >> $$file && \
@@ -71,12 +71,12 @@ compile-stage1:
 	done
 	cd ../$(DIR) ; tar xf ../$(FILE1); mv $(DIR1) $(NM1)
 	cd ../$(DIR) ; tar xf ../$(FILE2); mv $(DIR2) $(NM2)
-	CC="$(BUILD_ARCH)-gcc -B$(TT)/lib/" \
+	CC="$(BUILD_ARCH)-gcc -B/tools/lib/" \
 		AR=$(BUILD_ARCH)-ar \
 		RANLIB=$(BUILD_ARCH)-ranlib \
 		../$(DIR)/configure \
-		--prefix=$(TT) \
-		--with-local-prefix=$(TT) \
+		--prefix=/tools \
+		--with-local-prefix=/tools \
 		--enable-clocale=gnu \
 		--enable-shared \
 		--enable-threads=posix \
@@ -87,9 +87,9 @@ compile-stage1:
 		--disable-bootstrap
 	make
 	make install
-	ln -vs gcc $(TT)/bin/cc
+	ln -vs gcc /tools/bin/cc
 	echo 'main(){}' | cc -x c - -v -lrt -Wl,--verbose
-	readelf -l a.out | grep $(TT)
+	readelf -l a.out | grep /tools
 	rm -vf a.out
 
 chroot:
@@ -138,14 +138,14 @@ compile-stage3:
 	 gcc/Makefile.in
 	PATH=$$PATH:$(WD)/bin \
 		../$(DIR)/configure \
-		--prefix=$(TT) \
+		--prefix=/tools \
 		--target=x86_64-unknown-linux-gnu \
 		--disable-shared \
 		--disable-threads \
 		--enable-languages=c \
 		--enable-static
-	PATH=$$PATH:$(TT)/bin make all-gcc
-	PATH=$$PATH:$(TT)/bin make install-gcc
+	PATH=$$PATH:/tools/bin make all-gcc
+	PATH=$$PATH:/tools/bin make install-gcc
 
 clean:
 	-rm -rf $(DIR)

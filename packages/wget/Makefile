@@ -22,7 +22,7 @@ compile-prebuild:
 	cp -v Makefile.in{,.bak}
 	sed -e '/^SUBDIRS/s@ doc@@' -e '/^install:/s@ install.info@@' \
 	-e 's/@COMMENT_IF_NO_POD2MAN@install.man//' Makefile.in.bak > Makefile.in
-	./configure --prefix=$(TT) --disable-nls
+	./configure --prefix=/tools --disable-nls
 	make
 	make install
 

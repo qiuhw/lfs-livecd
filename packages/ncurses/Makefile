@@ -16,7 +16,7 @@ stage1: $(FILE)
 	$(std_build)
 
 compile-stage1:
-	./configure --prefix=$(TT) \
+	./configure --prefix=/tools \
 		--with-shared \
 		--without-debug \
 		--without-ada \

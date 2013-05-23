@@ -17,7 +17,7 @@ prebuild: $(FILE)
 
 compile-prebuild:
 	../$(DIR)/configure \
-		--prefix=$(TT) \
+		--prefix=/tools \
 		--target=$(BUILD_ARCH) \
 		--disable-nls \
 		--disable-werror
@@ -29,19 +29,19 @@ stage1: $(FILE)
 	$(sep_dir_build)
 
 compile-stage1:
-	CC="$(BUILD_ARCH)-gcc -B$(TT)/lib/" \
+	CC="$(BUILD_ARCH)-gcc -B/tools/lib/" \
 		AR=$(BUILD_ARCH)-ar \
 		RANLIB=$(BUILD_ARCH)-ranlib \
 		../$(DIR)/configure \
-		--prefix=$(TT) \
+		--prefix=/tools \
 		--disable-nls \
-		--with-lib-path=$(TT)/lib
+		--with-lib-path=/tools/lib
 	echo "MAKEINFO = :" >> Makefile
 	make
 	make install
 	make -C ld clean
 	make -C ld LIB_PATH=/usr/lib:/lib
-	cp -v ld/ld-new $(TT)/bin
+	cp -v ld/ld-new /tools/bin
 
 stage2: $(FILE)
 	$(sep_dir_build)
@@ -61,7 +61,7 @@ stage3: $(FILE)
 	
 compile-stage3:
 	../$(DIR)/configure \
-	--prefix=$(TT) \
+	--prefix=/tools \
 	--target=x86_64-unknown-linux-gnu \
 	--disable-nls \
 	--disable-werror

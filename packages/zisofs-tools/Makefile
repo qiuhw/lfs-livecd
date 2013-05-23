@@ -16,7 +16,7 @@ stage2: Makefile $(FILE)
 	$(std_build)
 
 compile-stage2:
-	./configure --prefix=$(TT) CFLAGS="-I$(TT)/include" LDFLAGS="-L$(TT)/lib"
+	./configure --prefix=/tools CFLAGS="-I/tools/include" LDFLAGS="-L/tools/lib"
 	make
 	make install
 
