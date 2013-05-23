@@ -187,11 +187,11 @@ tools: \
 	binutils-prebuild \
 	gcc-prebuild \
 	linux-headers-stage1 \
-	make-prebuild \
-	sed-prebuild \
 	glibc-stage1 \
 	binutils-stage1 \
 	gcc-stage1 \
+	make-prebuild \
+	sed-prebuild \
 	tcl-stage1 \
 	expect-stage1 \
 	dejagnu-stage1 \
