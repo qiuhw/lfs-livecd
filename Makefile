@@ -470,7 +470,6 @@ post-bash: \
 	vbetool-stage2 \
 	gcc33-stage2 \
 	linux-stage2 \
-	binutils-stage3 \
 	gcc-stage3 \
 	linux-stage3 \
 	zisofs-tools-stage2 \
