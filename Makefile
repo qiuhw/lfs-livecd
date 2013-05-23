@@ -60,8 +60,6 @@ export LFSSRC := /lfs-sources
 export chenv-pre-bash := /tools/bin/env -i HOME=/root TERM=$(TERM) PS1='\u:\w\$$ ' PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin /tools/bin/bash -c
 export chenv-post-bash := /tools/bin/env -i HOME=/root TERM=$(TERM) PS1='\u:\w\$$ ' PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin /bin/bash -c
 
-export WGET := /tools/bin/wget
-
 export BRW = "[0;1m"
 export RED = "[0;31m"
 export GREEN = "[0;32m"

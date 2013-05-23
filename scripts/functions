@@ -16,9 +16,9 @@ endef
 
 # This takes the form of 'download [filename] [url] [sha1sum]'
 define download
-	@cd $(SRC) ; if [ ! -f "$(1)" ] ; then $(WGET) "$(2)" ; \
+	@cd $(SRC) ; if [ ! -f "$(1)" ] ; then wget "$(2)" ; \
 	 elif ! echo "$(3)  $(SRC)/$(1)" | sha1sum -c - >/dev/null 2>/dev/null ; then \
-	 $(WGET) -c "$(2)" ; fi
+	 wget -c "$(2)" ; fi
 	@if echo "$(3)  $(SRC)/$(1)" | sha1sum -c - >/dev/null 2>/dev/null ; then \
 	 echo $(BRW)sha1sum check on "$(SRC)/$(1)": $(GREEN)[ OK ]$(WHITE); \
 	 else echo $(BRW)sha1sum check on "$(SRC)/$(1)": $(RED)[ FAILED ]$(WHITE); \
