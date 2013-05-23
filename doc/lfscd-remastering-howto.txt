@@ -33,10 +33,10 @@ The LiveCD uses the ISO9660 filesystem with Linux-specific transparent
 decompression extension. On that filesystem, there are the following files:
 
 	boot/*
-	root.ext2
+	root.img
 
 The boot directory contains the Linux kernel, the initramfs image and the
-bootloader. The actual root filesystem (ext2) is in the root.ext2 file.
+bootloader. The actual root filesystem (ext2) is in the root.img file.
 
 In order to remaster the CD, you have to install the following packages:
 
@@ -50,18 +50,18 @@ zisofs-tools-1.0.6:
 Mount the CD:
 	mount /media/cdrom
 
-Look at the root.ext2 file size:
-	ls -l /media/cdrom/root.ext2
+Look at the root.img file size:
+	ls -l /media/cdrom/root.img
 
 If it is approximately 1.5 GB, the kernel uncompresses the CD for you. In
 this case, you can copy the file to your hard disk as usual:
-	cp /media/cdrom/root.ext2 $WORK/root.ext2
+	cp /media/cdrom/root.img $WORK/root.img
 
 If it is only 500 MB, you have to rebuild your kernel with ZISOFS support, or
 uncompress this file manually:
-	mkzftree -u -F /media/cdrom/root.ext2 $WORK/root.ext2
+	mkzftree -u -F /media/cdrom/root.img $WORK/root.img
 
-In either case, you end up with a $WORK/root.ext2 file that is 1.5 GB in size.
+In either case, you end up with a $WORK/root.img file that is 1.5 GB in size.
 
 This may or may not be sufficient for your remastered CD (or DVD) filesystem.
 If you want, you can resize the file with the resize2fs program from e2fsprogs
@@ -71,7 +71,7 @@ directly.
 Mounting the filesystem image is achieved with a loop device:
 
 	mkdir $WORK/root
-	mount -o loop $WORK/root.ext2 $WORK/root
+	mount -o loop $WORK/root.img $WORK/root
 
 It is a good idea to create and bind-mount a temporary directory, in order to
 preserve as many zeroed sectors as possible:
@@ -150,7 +150,7 @@ This command will print a message that the disk is full. This is not an error.
 Then, remove the file that fills the filesystem:
 	rm $WORK/root/zeroes
 
-Now you can unmount the root.ext2 file:
+Now you can unmount the root.img file:
 	umount $WORK/root
 	sync
 
@@ -168,8 +168,8 @@ own:
 	cp $WORK/build/initramfs_data*.cpio.gz \
 	    $WORK/iso/boot/isolinux/
 
-Recompress the root.ext2 file:
-	mkzftree -F $WORK/root.ext2 $WORK/iso/root.ext2
+Recompress the root.img file:
+	mkzftree -F $WORK/root.img $WORK/iso/root.img
 
 Recreate the CD image (the string avter "lfslivecd-" must be the same as you
 used when creating the initramfs):

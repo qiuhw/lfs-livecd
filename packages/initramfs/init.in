@@ -91,7 +91,7 @@ copy_cd_to_ram() {
 	echo "Copying LFS LiveCD to RAM. This will take several minutes..."
 	mount -n -t iso9660 -o ro,norock /dev/lfs-cd /.tmpfs/.cdrom
 	cat /fakecd.iso.head >/.tmpfs/.fakecd.iso
-	dd if=/.tmpfs/.cdrom/root.ext2 bs=2048 conv=sync >>/.tmpfs/.fakecd.iso
+	dd if=/.tmpfs/.cdrom/root.img bs=2048 conv=sync >>/.tmpfs/.fakecd.iso
 	# Update volume size
 	vsize=`stat -c '%s' /.tmpfs/.fakecd.iso`
 	vsize=$(( $vsize >> 11 ))
@@ -102,7 +102,7 @@ copy_cd_to_ram() {
 		$(( ( vsize >> 8 ) & 0xff )) $(( vsize & 0xff )) \
 	) | dd of=/.tmpfs/.fakecd.iso bs=1 seek=32848 conv=notrunc 2>/dev/null
 	# Update compressed size
-	csize=`stat -c '%s' /.tmpfs/.cdrom/root.ext2`
+	csize=`stat -c '%s' /.tmpfs/.cdrom/root.img`
 	printf $(printf '\\x%x\\x%x\\x%x\\x%x\\x%x\\x%x\\x%x\\x%x\n' \
 		$(( csize & 0xff )) $(( ( csize >> 8 ) & 0xff )) \
 		$(( ( csize >> 16 ) & 0xff )) $(( ( csize >> 24 ) & 0xff )) \
@@ -110,18 +110,18 @@ copy_cd_to_ram() {
 		$(( ( csize >> 8 ) & 0xff )) $(( csize & 0xff )) \
 	) | dd of=/.tmpfs/.fakecd.iso bs=1 seek=47352 conv=notrunc 2>/dev/null
 	# Update compression parameters
-	dd if=/.tmpfs/.cdrom/root.ext2 of=of=/.tmpfs/.fakecd.iso \
+	dd if=/.tmpfs/.cdrom/root.img of=of=/.tmpfs/.fakecd.iso \
 		bs=1 count=2 skip=12 seek=47473 conv=notrunc 2>/dev/null
 	# Update uncompressed size
-	dd if=/.tmpfs/.cdrom/root.ext2 of=of=/.tmpfs/.fakecd.iso \
+	dd if=/.tmpfs/.cdrom/root.img of=of=/.tmpfs/.fakecd.iso \
 		bs=1 count=4 skip=8 seek=47475 conv=notrunc 2>/dev/null
-	dd if=/.tmpfs/.cdrom/root.ext2 of=of=/.tmpfs/.fakecd.iso \
+	dd if=/.tmpfs/.cdrom/root.img of=of=/.tmpfs/.fakecd.iso \
 		bs=1 count=1 skip=11 seek=47479 conv=notrunc 2>/dev/null
-	dd if=/.tmpfs/.cdrom/root.ext2 of=of=/.tmpfs/.fakecd.iso \
+	dd if=/.tmpfs/.cdrom/root.img of=of=/.tmpfs/.fakecd.iso \
 		bs=1 count=1 skip=10 seek=47480 conv=notrunc 2>/dev/null
-	dd if=/.tmpfs/.cdrom/root.ext2 of=of=/.tmpfs/.fakecd.iso \
+	dd if=/.tmpfs/.cdrom/root.img of=of=/.tmpfs/.fakecd.iso \
 		bs=1 count=1 skip=9 seek=47481 conv=notrunc 2>/dev/null
-	dd if=/.tmpfs/.cdrom/root.ext2 of=of=/.tmpfs/.fakecd.iso \
+	dd if=/.tmpfs/.cdrom/root.img of=of=/.tmpfs/.fakecd.iso \
 		bs=1 count=1 skip=8 seek=47482 conv=notrunc 2>/dev/null
 	umount -n /.tmpfs/.cdrom
 	losetup /dev/loop2 /.tmpfs/.fakecd.iso
@@ -165,7 +165,7 @@ EOF
 	detect_cd_type
 	if [ "$toram" = 1 ] ; then copy_cd_to_ram ; fi
 	mount -n -t iso9660 -o ro /dev/lfs-cd /.tmpfs/.cdrom
-	losetup /dev/loop0 /.tmpfs/.cdrom/root.ext2
+	losetup /dev/loop0 /.tmpfs/.cdrom/root.img
 	SIZE=`blockdev --getsize /dev/loop0`
 	OVERHEAD=$(( 0x1000 + $SIZE * 2 ))
 	OVLSIZE=$(( $SIZE + ( $OVERHEAD + 511 ) / 512 ))

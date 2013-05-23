@@ -1,7 +1,7 @@
 The fakecd.iso.head file is stored in pregenerated binary form in order
 to avoid breakage that can be caused by new cdrtools. Append a single
 file compressed by mkzftree to it, and adjust bytes at offsets mentioned below
-in order to get a valid iso image containing that single file as /root.ext2.
+in order to get a valid iso image containing that single file as /root.img.
 
 bytes to change:
 

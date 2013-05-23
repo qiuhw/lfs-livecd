@@ -97,10 +97,10 @@ base: $(MKTREE) builduser build-tools
 	@install -m644 etc/issue* $(LFS)/etc
 	@touch $@
 
-# This target populates the root.ext2 image and sets up some mounts
-$(MKTREE): root.ext2
+# This target populates the root.img image and sets up some mounts
+$(MKTREE): root.img
 	mkdir -p $(LFS) $(MY_BUILD)$(SRC) $(MY_BUILD)/tools/bin $(MY_BUILD)/iso/boot
-	mount -o loop root.ext2 $(LFS)
+	mount -o loop root.img $(LFS)
 	mkdir -p $(MKTREE) $(LFS)$(SRC) $(LFS)/tools
 	mkdir -p $(LFS)/boot $(LFS)$(LFSSRC) $(MY_BUILD)/iso$(LFSSRC)
 	mount --bind $(MY_BASE) $(LFS)$(MY_ROOT)
@@ -148,10 +148,10 @@ $(MKTREE): root.ext2
 # This image should be kept as clean as possible, i.e.:
 # avoid creating files on it that you will later delete,
 # preserve as many zeroed sectors as possible.
-root.ext2:
-	dd if=/dev/null of=root.ext2 bs=1M seek=$(ROOTFS_MEGS)
-	mke2fs -F root.ext2
-	tune2fs -c 0 -i 0 root.ext2
+root.img:
+	dd if=/dev/null of=root.img bs=1M seek=$(ROOTFS_MEGS)
+	mke2fs -F root.img
+	tune2fs -c 0 -i 0 root.img
 
 # Add the unprivileged user - will be used for building the temporary tools
 builduser:
@@ -555,8 +555,8 @@ iso: prepiso
 	@sync ; sleep 1 ; sync
 	# e2fsck optimizes directories and returns 1 after a clean build.
 	# This is not a bug.
-	@-e2fsck -f -p root.ext2
-	@/tools/bin/mkzftree -F root.ext2 $(MY_BUILD)/iso/root.ext2
+	@-e2fsck -f -p root.img
+	@/tools/bin/mkzftree -F root.img $(MY_BUILD)/iso/root.img
 	@cd $(MY_BUILD)/iso ; /tools/bin/mkisofs -z -R -l --allow-leading-dots -D -o \
 	$(MY_BUILD)$(MY_ROOT)/lfslivecd-$(CD_VERSION).iso -b boot/isolinux/isolinux.bin \
 	-c boot/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table \
@@ -586,7 +586,7 @@ clean: unmount
 	@rm -f packages/binutils/{a.out,dummy.c,.spectest}
 	@-rm -f $(SRC) $(MY_ROOT)
 	@find packages/* -xtype l -exec rm -f \{} \;
-	@-rm root.ext2
+	@-rm root.img
 
 scrub: clean
 	@rm -f lfslivecd-$(CD_VERSION).iso lfslivecd-$(CD_VERSION)-nosrc.iso

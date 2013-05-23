@@ -212,17 +212,17 @@ To change the default boot arguments, follow these steps as root.
         export WORK=/mnt/lfslivecd
         mkdir -p $WORK/{orig,copy}
 	
- * Copy all files except root.ext2 from the original image:
+ * Copy all files except root.img from the original image:
 
         mount -t iso9660 -o loop lfslivecd-[version].iso $WORK/orig
         cp -a $WORK/orig/*/ $WORK/orig/README.html $WORK/copy/
         umount $WORK/orig
 	
- * Copy the compressed root.ext2 file without uncompressing it:
+ * Copy the compressed root.img file without uncompressing it:
 
         mount -t iso9660 -o loop,norock lfslivecd-[version].iso $WORK/orig
-        cp $WORK/orig/root.ext2 $WORK/copy/
-        chmod 644 $WORK/copy/root.ext2
+        cp $WORK/orig/root.img $WORK/copy/
+        chmod 644 $WORK/copy/root.img
         umount $WORK/orig
 	
  * Edit the boot loader configuration:
