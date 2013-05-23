@@ -25,7 +25,7 @@ SHA-$(PATCH3)= 912613acbf3a000a2935391a14e55b5ccdeeae6b
 include $(ROOT)/scripts/functions
 
 chroot:
-	chroot "$(MP)" $(chenv-post-bash) \
+	chroot "$(LFS)" $(chenv-post-bash) \
 	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
 
 stage2: Makefile $(FILE) $(PATCH1) $(PATCH2) $(PATCH3)

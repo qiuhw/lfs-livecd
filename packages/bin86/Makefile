@@ -17,7 +17,7 @@ SHA-$(PATCH)= 2c967c062fbee4e40ca1bf55feec2033e132e0a9
 include $(ROOT)/scripts/functions
 
 chroot:
-	chroot "$(MP)" $(chenv-blfs) \
+	chroot "$(LFS)" $(chenv-blfs) \
 	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
 
 stage2: Makefile $(FILE) $(PATCH)

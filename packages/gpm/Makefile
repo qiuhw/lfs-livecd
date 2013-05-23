@@ -23,7 +23,7 @@ PATCH3= $(DIR)-default_client-1.patch
 include $(ROOT)/scripts/functions
 
 chroot:
-	chroot "$(MP)" $(chenv-pre-bash) \
+	chroot "$(LFS)" $(chenv-pre-bash) \
 	'cd $(ROOT) && make ch-$(NM) $(chbash-pre-bash)'
 
 stage2: Makefile $(FILE) $(PATCH1) $(PATCH2)

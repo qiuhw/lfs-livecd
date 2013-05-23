@@ -5,7 +5,7 @@ NM= inputattach
 # Targets
 
 chroot:
-	chroot "$(MP)" $(chenv-blfs) \
+	chroot "$(LFS)" $(chenv-blfs) \
 	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
 
 stage2: Makefile

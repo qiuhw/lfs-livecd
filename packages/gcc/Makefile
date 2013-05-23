@@ -93,7 +93,7 @@ compile-stage1:
 	rm -vf a.out
 
 chroot:
-	chroot "$(MP)" $(chenv-pre-bash) \
+	chroot "$(LFS)" $(chenv-pre-bash) \
 	'cd $(MY_ROOT) && make ch-$(NM) $(chbash-pre-bash)'
 
 stage2: $(FILE)

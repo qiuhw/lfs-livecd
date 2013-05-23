@@ -53,8 +53,8 @@ ROOTFS_MEGS := 1536
 # LiveCD version
 export CD_VERSION ?= $(MY_ARCH)-6.6
 
-export MP := $(MY_BUILD)/image
-export MKTREE := $(MP)$(MY_ROOT)
+export LFS := $(MY_BUILD)/image
+export MKTREE := $(LFS)$(MY_ROOT)
 export LFSSRC := /lfs-sources
 
 export toolsenv := env -i HOME=/home/$(USER) LC_ALL=POSIX PATH=/tools/bin:/bin:/usr/bin /bin/bash -c
@@ -95,59 +95,59 @@ test-host:
 	 echo -e "Missing gawk on host!\nPlease install gawk and re-run 'make'." && exit 1 ; fi 
 
 base: $(MKTREE) builduser build-tools
-	@chroot "$(MP)" $(chenv-pre-bash) 'set +h && \
+	@chroot "$(LFS)" $(chenv-pre-bash) 'set +h && \
 	 chown -R 0:0 /tools $(SRC) $(MY_ROOT) && \
 	 cd $(MY_ROOT) && make SHELL=/tools/bin/bash pre-bash'
-	@chroot "$(MP)" $(chenv-post-bash) 'set +h && cd $(MY_ROOT) && \
+	@chroot "$(LFS)" $(chenv-post-bash) 'set +h && cd $(MY_ROOT) && \
 	 make SHELL=/bin/bash post-bash'
-	@install -m644 etc/issue* $(MP)/etc
+	@install -m644 etc/issue* $(LFS)/etc
 	@touch $@
 
 # This target populates the root.ext2 image and sets up some mounts
 $(MKTREE): root.ext2
-	mkdir -p $(MP) $(MY_BUILD)$(SRC) $(MY_BUILD)/tools/bin $(MY_BUILD)/iso/boot
-	mount -o loop root.ext2 $(MP)
-	mkdir -p $(MKTREE) $(MP)$(SRC) $(MP)/tools
-	mkdir -p $(MP)/boot $(MP)$(LFSSRC) $(MY_BUILD)/iso$(LFSSRC)
-	mount --bind $(MY_BASE) $(MP)$(MY_ROOT)
-	mount --bind $(MY_BUILD)/tools $(MP)/tools
-	mount --bind $(MY_BUILD)$(SRC) $(MP)$(SRC)
-	mount --bind $(MY_BUILD)/iso/boot $(MP)/boot
-	mount --bind $(MY_BUILD)/iso$(LFSSRC) $(MP)$(LFSSRC)
+	mkdir -p $(LFS) $(MY_BUILD)$(SRC) $(MY_BUILD)/tools/bin $(MY_BUILD)/iso/boot
+	mount -o loop root.ext2 $(LFS)
+	mkdir -p $(MKTREE) $(LFS)$(SRC) $(LFS)/tools
+	mkdir -p $(LFS)/boot $(LFS)$(LFSSRC) $(MY_BUILD)/iso$(LFSSRC)
+	mount --bind $(MY_BASE) $(LFS)$(MY_ROOT)
+	mount --bind $(MY_BUILD)/tools $(LFS)/tools
+	mount --bind $(MY_BUILD)$(SRC) $(LFS)$(SRC)
+	mount --bind $(MY_BUILD)/iso/boot $(LFS)/boot
+	mount --bind $(MY_BUILD)/iso$(LFSSRC) $(LFS)$(LFSSRC)
 	-ln -nsf $(MY_BUILD)/tools /
 	-install -d /tools/bin
 	-ln -s /bin/bash /tools/bin/sh
 	-ln -nsf $(MY_BUILD)$(SRC) /
 	-ln -nsf $(MY_BUILD)$(MY_ROOT) /
-	-mkdir -p $(MP)/{proc,sys,dev/shm,dev/pts}
-	-mount -t proc proc $(MP)/proc
-	-mount -t sysfs sysfs $(MP)/sys
-	-mount -t tmpfs shm $(MP)/dev/shm
-	-mount -t devpts devpts $(MP)/dev/pts
-	-mkdir -p $(MP)/{bin,boot,etc,home,lib,mnt,opt}
-	-mkdir -p $(MP)/{media/{floppy,cdrom},sbin,srv,var}
+	-mkdir -p $(LFS)/{proc,sys,dev/shm,dev/pts}
+	-mount -t proc proc $(LFS)/proc
+	-mount -t sysfs sysfs $(LFS)/sys
+	-mount -t tmpfs shm $(LFS)/dev/shm
+	-mount -t devpts devpts $(LFS)/dev/pts
+	-mkdir -p $(LFS)/{bin,boot,etc,home,lib,mnt,opt}
+	-mkdir -p $(LFS)/{media/{floppy,cdrom},sbin,srv,var}
 	-install -d /tools/bin
-	-install -d -m 0750 $(MP)/root
-	-install -d -m 1777 $(MP)/tmp $(MP)/var/tmp
-	-mkdir -p $(MP)/usr/{,local/}{bin,include,lib,sbin,src}
-	-mkdir -p $(MP)/usr/{,local/}share/{doc,info,locale,man}
-	-mkdir    $(MP)/usr/{,local/}share/{misc,terminfo,zoneinfo}
-	-mkdir -p $(MP)/usr/{,local/}share/man/man{1..8}
-	-for dir in $(MP)/usr $(MP)/usr/local; do ln -s share/{man,doc,info} $$dir ; done
-	-mkdir    $(MP)/var/{lock,log,mail,run,spool}
-	-mkdir -p $(MP)/var/{opt,cache,lib/{misc,locate},local}
-	-mknod -m 600 $(MP)/dev/console c 5 1
-	-mknod -m 666 $(MP)/dev/null c 1 3
-	-mknod -m 666 $(MP)/dev/zero c 1 5
-	-mknod -m 666 $(MP)/dev/ptmx c 5 2
-	-mknod -m 666 $(MP)/dev/tty c 5 0
-	-mknod -m 444 $(MP)/dev/random c 1 8
-	-mknod -m 444 $(MP)/dev/urandom c 1 9
-	-ln -s /proc/self/fd $(MP)/dev/fd
-	-ln -s /proc/self/fd/0 $(MP)/dev/stdin
-	-ln -s /proc/self/fd/1 $(MP)/dev/stdout
-	-ln -s /proc/self/fd/2 $(MP)/dev/stderr
-	-ln -s /proc/kcore $(MP)/dev/core
+	-install -d -m 0750 $(LFS)/root
+	-install -d -m 1777 $(LFS)/tmp $(LFS)/var/tmp
+	-mkdir -p $(LFS)/usr/{,local/}{bin,include,lib,sbin,src}
+	-mkdir -p $(LFS)/usr/{,local/}share/{doc,info,locale,man}
+	-mkdir    $(LFS)/usr/{,local/}share/{misc,terminfo,zoneinfo}
+	-mkdir -p $(LFS)/usr/{,local/}share/man/man{1..8}
+	-for dir in $(LFS)/usr $(LFS)/usr/local; do ln -s share/{man,doc,info} $$dir ; done
+	-mkdir    $(LFS)/var/{lock,log,mail,run,spool}
+	-mkdir -p $(LFS)/var/{opt,cache,lib/{misc,locate},local}
+	-mknod -m 600 $(LFS)/dev/console c 5 1
+	-mknod -m 666 $(LFS)/dev/null c 1 3
+	-mknod -m 666 $(LFS)/dev/zero c 1 5
+	-mknod -m 666 $(LFS)/dev/ptmx c 5 2
+	-mknod -m 666 $(LFS)/dev/tty c 5 0
+	-mknod -m 444 $(LFS)/dev/random c 1 8
+	-mknod -m 444 $(LFS)/dev/urandom c 1 9
+	-ln -s /proc/self/fd $(LFS)/dev/fd
+	-ln -s /proc/self/fd/0 $(LFS)/dev/stdin
+	-ln -s /proc/self/fd/1 $(LFS)/dev/stdout
+	-ln -s /proc/self/fd/2 $(LFS)/dev/stderr
+	-ln -s /proc/kcore $(LFS)/dev/core
 	-install -d $(MY_BASE)/logs
 	touch $(MKTREE)
 
@@ -173,8 +173,8 @@ build-tools:
 	@/tools/bin/su - $(USER) -c "$(toolsenv) '$(toolsbash) && make SHELL=/tools/bin/sh tools'"
 	@cp /etc/resolv.conf /tools/etc
 	@rm -rf /tools/{,share/}{info,man}
-	@-ln -s /tools/bin/bash $(MP)/bin/bash
-	@install -m644 -oroot -groot $(MY_BASE)/etc/{group,passwd} $(MP)/etc
+	@-ln -s /tools/bin/bash $(LFS)/bin/bash
+	@install -m644 -oroot -groot $(MY_BASE)/etc/{group,passwd} $(LFS)/etc
 	@touch $@
 
 maybe-tools:
@@ -503,7 +503,7 @@ final-environment:
 	@su - $(USER) -c "$(toolsenv) '$(toolsbash) && make $*-stage1'"
 
 %-only-stage2: $(MKTREE)
-	@chroot "$(MP)" $(chenv-post-bash) 'set +h && cd $(MY_ROOT) && \
+	@chroot "$(LFS)" $(chenv-post-bash) 'set +h && cd $(MY_ROOT) && \
 	 make SHELL=/bin/bash -C packages/$* stage2'
 
 # Clean the build directory of a single package.
@@ -539,20 +539,20 @@ update-caches:
 #==============================================================================
 
 prepiso: $(MKTREE)
-	@-rm $(MP)/root/.bash_history
-	@-rm $(MP)/etc/resolv.conf
-	@>$(MP)/var/log/btmp
-	@>$(MP)/var/log/wtmp
-	@>$(MP)/var/log/lastlog
-	@sed -i 's/Version:$$/Version: $(CD_VERSION)/' $(MP)/boot/isolinux/boot.msg
-	@sed -i 's/Version:$$/Version: $(CD_VERSION)/' $(MP)/etc/issue*
-	@install -m644 doc/lfscd-remastering-howto.txt $(MP)/root
+	@-rm $(LFS)/root/.bash_history
+	@-rm $(LFS)/etc/resolv.conf
+	@>$(LFS)/var/log/btmp
+	@>$(LFS)/var/log/wtmp
+	@>$(LFS)/var/log/lastlog
+	@sed -i 's/Version:$$/Version: $(CD_VERSION)/' $(LFS)/boot/isolinux/boot.msg
+	@sed -i 's/Version:$$/Version: $(CD_VERSION)/' $(LFS)/etc/issue*
+	@install -m644 doc/lfscd-remastering-howto.txt $(LFS)/root
 	@sed -e 's/\[Version\]/$(CD_VERSION)/' -e 's/\\_/_/g' \
-	    doc/README.txt >$(MP)/root/README.txt
-	@install -m600 root/.bashrc $(MP)/root/.bashrc
-	@install -m755 scripts/{net-setup,greeting,livecd-login} $(MP)/usr/bin/ 
-	@sed s/@LINKER@/$(LINKER)/ scripts/shutdown-helper.in >$(MP)/usr/bin/shutdown-helper
-	@chmod 755 $(MP)/usr/bin/shutdown-helper
+	    doc/README.txt >$(LFS)/root/README.txt
+	@install -m600 root/.bashrc $(LFS)/root/.bashrc
+	@install -m755 scripts/{net-setup,greeting,livecd-login} $(LFS)/usr/bin/ 
+	@sed s/@LINKER@/$(LINKER)/ scripts/shutdown-helper.in >$(LFS)/usr/bin/shutdown-helper
+	@chmod 755 $(LFS)/usr/bin/shutdown-helper
 
 iso: prepiso
 	@make unmount
@@ -600,22 +600,22 @@ scrub: clean
 mount: $(MKTREE)
 
 unmount:
-	-umount $(MP)/dev/shm
-	-umount $(MP)/dev/pts
-	-umount $(MP)/proc
-	-umount $(MP)/sys
-	-umount $(MP)/boot
-	-umount $(MP)$(LFSSRC)
-	-umount $(MP)$(SRC)
-	-umount $(MP)/tools
-	-umount $(MP)$(MY_ROOT)
-	-rmdir $(MP)$(SRC) $(MP)/tools $(MP)$(MY_ROOT)
-	-rmdir $(MP)/boot $(MP)$(LFSSRC)
-	-umount $(MP)
+	-umount $(LFS)/dev/shm
+	-umount $(LFS)/dev/pts
+	-umount $(LFS)/proc
+	-umount $(LFS)/sys
+	-umount $(LFS)/boot
+	-umount $(LFS)$(LFSSRC)
+	-umount $(LFS)$(SRC)
+	-umount $(LFS)/tools
+	-umount $(LFS)$(MY_ROOT)
+	-rmdir $(LFS)$(SRC) $(LFS)/tools $(LFS)$(MY_ROOT)
+	-rmdir $(LFS)/boot $(LFS)$(LFSSRC)
+	-umount $(LFS)
 
 zeroes: $(MKTREE)
-	-dd if=/dev/zero of=$(MP)/zeroes
-	-rm $(MP)/zeroes
+	-dd if=/dev/zero of=$(LFS)/zeroes
+	-rm $(LFS)/zeroes
 	-make unmount
 
 #==============================================================================

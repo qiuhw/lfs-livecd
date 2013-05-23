@@ -14,7 +14,7 @@ SHA-$(FILE)= 02e94e471b2b29845f4dbbde6056b34fac0d1611
 include $(ROOT)/scripts/functions
 
 chroot:
-	chroot "$(MP)" $(chenv-blfs) \
+	chroot "$(LFS)" $(chenv-blfs) \
 	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
 
 stage2: Makefile $(FILE) 
