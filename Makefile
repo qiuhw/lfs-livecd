@@ -99,7 +99,7 @@ base: $(MKTREE) builduser build-tools
 
 # This target populates the root.img image and sets up some mounts
 $(MKTREE): root.img
-	mkdir -p $(LFS) $(MY_BUILD)$(SRC) $(MY_BUILD)/tools/bin $(MY_BUILD)/iso/boot
+	mkdir -p $(LFS) $(MY_BUILD)$(SRC) $(MY_BUILD)/iso/boot
 	mount -o loop root.img $(LFS)
 	mkdir -p $(MKTREE) $(LFS)$(SRC) $(LFS)/tools
 	mkdir -p $(LFS)/boot $(LFS)$(LFSSRC) $(MY_BUILD)/iso$(LFSSRC)
@@ -109,8 +109,6 @@ $(MKTREE): root.img
 	mount --bind $(MY_BUILD)/iso/boot $(LFS)/boot
 	mount --bind $(MY_BUILD)/iso$(LFSSRC) $(LFS)$(LFSSRC)
 	-ln -nsf $(MY_BUILD)/tools /
-	-install -d /tools/bin
-	-ln -s /bin/bash /tools/bin/sh
 	-ln -nsf $(MY_BUILD)$(SRC) /
 	-ln -nsf $(MY_BUILD)$(MY_ROOT) /
 	-mkdir -p $(LFS)/{proc,sys,dev/shm,dev/pts}
@@ -120,7 +118,6 @@ $(MKTREE): root.img
 	-mount -t devpts devpts $(LFS)/dev/pts
 	-mkdir -p $(LFS)/{bin,boot,etc,home,lib,mnt,opt}
 	-mkdir -p $(LFS)/{media/{floppy,cdrom},sbin,srv,var}
-	-install -d /tools/bin
 	-install -d -m 0750 $(LFS)/root
 	-install -d -m 1777 $(LFS)/tmp $(LFS)/var/tmp
 	-mkdir -p $(LFS)/usr/{,local/}{bin,include,lib,sbin,src}
