@@ -160,6 +160,7 @@ root.ext2:
 builduser:
 	@-groupadd $(USER)
 	@-useradd -s /bin/bash -g $(USER) -m -k /dev/null $(USER)
+	@install -m644 -o$(USER) -g$(USER) $(MY_BASE)/lfs/{.bash_profile,.bashrc} ~$(USER)/
 	@-chown -R $(USER):$(USER) $(MY_BUILD)/tools $(MY_BUILD)$(SRC) $(MY_BASE)
 	@touch $@
 
