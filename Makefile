@@ -184,10 +184,10 @@ maybe-tools:
 	@touch $@
 
 tools: \
+	gcc-prebuild \
 	make-prebuild \
 	sed-prebuild \
 	binutils-prebuild \
-	gcc-prebuild \
 	linux-headers-stage1 \
 	glibc-stage1 \
 	binutils-stage1 \
@@ -473,7 +473,6 @@ post-bash: \
 	gcc33-stage2 \
 	linux-stage2 \
 	binutils-stage3 \
-	gcc-stage3 \
 	linux-stage3 \
 	zisofs-tools-stage2 \
 	update-caches
