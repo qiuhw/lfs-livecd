@@ -57,9 +57,6 @@ export LFS := $(MY_BUILD)/image
 export MKTREE := $(LFS)$(MY_ROOT)
 export LFSSRC := /lfs-sources
 
-export toolsenv := env -i HOME=/home/$(USER) LC_ALL=POSIX PATH=/tools/bin:/bin:/usr/bin /bin/bash -c
-export toolsbash := set +o hashall 2>/dev/null || set -o nohash && umask 022 && cd $(MY_ROOT)
-
 export chenv-pre-bash := /tools/bin/env -i HOME=/root TERM=$(TERM) PS1='\u:\w\$$ ' PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin /tools/bin/bash -c
 export chenv-post-bash := /tools/bin/env -i HOME=/root TERM=$(TERM) PS1='\u:\w\$$ ' PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin /bin/bash -c
 
@@ -165,10 +162,10 @@ builduser:
 	@touch $@
 
 build-tools:
-	@su - $(USER) -c "$(toolsenv) '$(toolsbash) && make bash-prebuild'"
-	@su - $(USER) -c "$(toolsenv) '$(toolsbash) && make SHELL=/tools/bin/sh wget-prebuild'"
-	@su - $(USER) -c "$(toolsenv) '$(toolsbash) && make SHELL=/tools/bin/sh coreutils-prebuild'"
-	@/tools/bin/su - $(USER) -c "$(toolsenv) '$(toolsbash) && make SHELL=/tools/bin/sh tools'"
+	@su - $(USER) -c "make tools"
+	@su - $(USER) -c "make bash-prebuild"
+	@su - $(USER) -c "make SHELL=/tools/bin/sh wget-prebuild"
+	@su - $(USER) -c "make SHELL=/tools/bin/sh coreutils-prebuild"
 	@cp /etc/resolv.conf /tools/etc
 	@rm -rf /tools/{,share/}{info,man}
 	@-ln -s /tools/bin/bash $(LFS)/bin/bash
@@ -495,10 +492,10 @@ final-environment:
 #==============================================================================
 
 %-only-prebuild: builduser
-	@su - $(USER) -c "$(toolsenv) '$(toolsbash) && make $*-prebuild'"
+	@su - $(USER) -c "make $*-prebuild"
 
 %-only-stage1: builduser
-	@su - $(USER) -c "$(toolsenv) '$(toolsbash) && make $*-stage1'"
+	@su - $(USER) -c "make $*-stage1"
 
 %-only-stage2: $(MKTREE)
 	@chroot "$(LFS)" $(chenv-post-bash) 'set +h && cd $(MY_ROOT) && \
