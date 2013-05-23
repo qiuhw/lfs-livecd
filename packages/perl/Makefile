@@ -42,7 +42,7 @@ compile-stage2:
 	# this is already taken care of by the createfiles target
 	sed -i -e "s|BUILD_ZLIB\s*= True|BUILD_ZLIB = False|" \
 	 -e "s|INCLUDE\s*= ./zlib-src|INCLUDE    = /usr/include|" \
-	 -e "s|LIB\s*= ./zlib-src|LIB        = /usr/$(MY_LIBDIR)|" \
+	 -e "s|LIB\s*= ./zlib-src|LIB        = /usr|" \
 	 ext/Compress-Raw-Zlib/config.in
 	sh Configure -des -Dprefix=/usr \
 	 -Dvendorprefix=/usr           \

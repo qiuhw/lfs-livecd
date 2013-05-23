@@ -32,10 +32,16 @@ export CXXFLAGS := $(CFLAGS)
 export LDFLAGS := -s
 
 # Set the base architecture
-# Currently supported: x86_64
-# FIXME: Verify that the host is one of the above
 export MY_ARCH := $(shell uname -m)
+
+# Architecture specifics
+ifeq ($(MY_ARCH),x86_64)
 export LINKER = ld-linux-x86-64.so.2
+else
+export LINKER = ld-linux.so.2
+endif
+
+export LFS_TGT := $(MY_ARCH)-lfs-linux-gnu
 
 # The full path to the build scripts on the host OS
 export MY_BASE := $(shell pwd)
@@ -63,14 +69,6 @@ export chenv-post-bash := /tools/bin/env -i HOME=/root TERM=$(TERM) PS1='\u:\w\$
 export BRW = "[0;1m"
 export RED = "[0;31m"
 export GREEN = "[0;32m"
-
-# Architecture specifics
-ifeq ($(MY_ARCH),ppc)
-export MY_LIBDIR := lib
-export LFS_TGT := powerpc-lfs-linux-gnu
-else
-export LFS_TGT := $(MY_ARCH)-lfs-linux-gnu
-endif
 
 #==============================================================================
 # Build Targets
