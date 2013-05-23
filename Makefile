@@ -27,7 +27,7 @@ export TT := /tools
 export SRC := /sources
 
 # The name of the build user account to create and use for the temporary tools
-export USER := builduser
+export USER := lfs
 
 # Compiler optimizations
 export CFLAGS := -O2 -pipe
