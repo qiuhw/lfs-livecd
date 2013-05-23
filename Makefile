@@ -68,7 +68,6 @@ export WGET := /tools/bin/wget
 export BRW = "[0;1m"
 export RED = "[0;31m"
 export GREEN = "[0;32m"
-export WHITE = "[00m"
 
 # Architecture specifics
 ifeq ($(MY_ARCH),ppc)
