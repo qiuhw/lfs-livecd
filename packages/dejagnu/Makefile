@@ -1,11 +1,10 @@
 # DejaGNU Makefile
+# The DejaGNU package contains a framework for testing other programs.
 
 NM= dejagnu
-VRS= 1.4.4
-DIR= $(NM)-$(VRS)
-
+DIR= $(NM)-1.4.4
 FILE= $(DIR).tar.gz
-URL-$(FILE)= http://ftp.gnu.org/gnu/dejagnu/dejagnu-1.4.4.tar.gz
+URL-$(FILE)= http://ftp.gnu.org/gnu/$(NM)/$(FILE)
 SHA-$(FILE)= fd82ffd396eba5b595f76d2f4a068cb7fcc6cffb
 
 # Targets
@@ -17,11 +16,11 @@ stage1: $(FILE)
 
 compile-stage1:
 	./configure \
-		--prefix=/tools \
-		--libdir=/tools
+		--prefix=/tools
 	make install
+	make check
 
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: compile-stage1 clean chroot
+.PHONY: compile-stage1 clean
