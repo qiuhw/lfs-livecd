@@ -1,15 +1,17 @@
 # Bzip2 Makefile
+# The Bzip2 package contains programs for compressing and decompressing files.
+# Compressing text files with bzip2 yields a much better compression percentage
+# than with the traditional gzip.
 
 NM= bzip2
-VRS= 1.0.5
-DIR= $(NM)-$(VRS)
+DIR= $(NM)-1.0.5
 
 FILE= $(DIR).tar.gz
-URL-$(FILE)= http://www.bzip.org/1.0.5/bzip2-1.0.5.tar.gz
+URL-$(FILE)= http://www.bzip.org/1.0.5/$(FILE)
 SHA-$(FILE)= 8b02713ea0c8eb501cc8bdac4432d7f29700f767
 
 PATCH= $(DIR)-install_docs-1.patch
-URL-$(PATCH)= http://www.linuxfromscratch.org/patches/lfs/6.6/bzip2-1.0.5-install_docs-1.patch
+URL-$(PATCH)= http://www.linuxfromscratch.org/patches/lfs/6.6/$(PATCH)
 SHA-$(PATCH)= 86fa168b260bb12651ebfa6d47939e926e067036
 
 # Targets
@@ -23,7 +25,7 @@ compile-stage1:
 	make
 	make PREFIX=/tools install
 
-stage2: Makefile $(FILE) $(PATCH)
+stage2: $(FILE) $(PATCH)
 	$(std_build)
 
 compile-stage2:
@@ -33,14 +35,14 @@ compile-stage2:
 	make clean
 	make
 	make PREFIX=/usr install
-	cp -v bzip2-shared /bin/bzip2
-	cp -av libbz2.so* /lib
-	ln -svf ../../lib/libbz2.so.1.0 /usr/lib/libbz2.so
-	rm -v /usr/bin/{bunzip2,bzcat,bzip2}
-	ln -svf bzip2 /bin/bunzip2
-	ln -svf bzip2 /bin/bzcat
+	cp bzip2-shared /bin/bzip2
+	cp -a libbz2.so* /lib
+	ln -s ../../lib/libbz2.so.1.0 /usr/lib/libbz2.so
+	rm /usr/bin/{bunzip2,bzcat,bzip2}
+	ln -s bzip2 /bin/bunzip2
+	ln -s bzip2 /bin/bzcat
 
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: compile-stage1 clean compile-stage2
+.PHONY: compile-stage1 compile-stage2 clean
