@@ -83,7 +83,7 @@ test-euid:
 		echo "You must be logged in as root." && exit 1; \
 	 fi
 
-BASH_VER := $(subst ., ,$(shell bash --version | head -n1 | cut -d" " -f4))
+BASH_VER := $(subst ., ,$(shell LC_ALL=C bash --version | head -n1 | cut -d" " -f4))
 BASH_MAJOR := $(word 1,$(BASH_VER))
 BASH_MINOR := $(word 2,$(BASH_VER))
 test-bash:
@@ -93,6 +93,9 @@ test-bash:
 	@if [ $(BASH_MAJOR) -eq 3 -a $(BASH_MINOR) -lt 2 ]; then \
 		echo "Bash >= 3.2 is required." && exit 1; \
 	 fi
+ifneq ($(shell readlink -f /bin/sh),/usr/bin/bash)
+	$(error /bin/sh  should be a symbolic or hard link to bash.)
+endif
 
 base: $(MKTREE) builduser build-tools
 	@chroot "$(LFS)" $(chenv-pre-bash) 'set +h && \
