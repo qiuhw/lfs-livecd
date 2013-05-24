@@ -34,12 +34,7 @@ export LDFLAGS := -s
 # Set the base architecture
 export MY_ARCH := $(shell uname -m)
 
-# Architecture specifics
-ifeq ($(MY_ARCH),x86_64)
 export LINKER = ld-linux-x86-64.so.2
-else
-export LINKER = ld-linux.so.2
-endif
 
 export LFS_TGT := $(MY_ARCH)-lfs-linux-gnu
 
@@ -79,8 +74,13 @@ all: test-host base iso
 # Check host prerequisites
 # FIXME: Fill this out with more package pre-reqs
 test-host:
-	@if [ $$EUID -ne 0 ] ; then \
-	 echo "You must be logged in as root." && exit 1 ; fi
+ifneq ($(MY_ARCH),x86_64)
+	$(error Only x86_64 architecture is supported.)
+endif
+
+ifneq ($$EUID,0)
+	$(error You must be logged in as root.)
+endif
 	@if ! type -p gawk >/dev/null 2>&1 ; then \
 	 echo -e "Missing gawk on host!\nPlease install gawk and re-run 'make'." && exit 1 ; fi 
 
@@ -176,13 +176,13 @@ maybe-tools:
 
 tools: \
 	binutils-prebuild \
-	make-prebuild \
-	sed-prebuild \
 	gcc-prebuild \
 	linux-headers-stage1 \
 	glibc-stage1 \
 	binutils-stage1 \
 	gcc-stage1 \
+	make-prebuild \
+	sed-prebuild \
 	tcl-stage1 \
 	expect-stage1 \
 	dejagnu-stage1 \
@@ -463,7 +463,6 @@ post-bash: \
 	vbetool-stage2 \
 	gcc33-stage2 \
 	linux-stage2 \
-	gcc-stage3 \
 	linux-stage3 \
 	zisofs-tools-stage2 \
 	update-caches
