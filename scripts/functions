@@ -1,4 +1,4 @@
-define std_build
+efine std_build
     @tar xf $(FILE)
     @make -C $(DIR) -f ../Makefile compile-$@
     @make clean
@@ -16,15 +16,12 @@ endef
 
 # This takes the form of 'download [filename] [url] [sha1sum]'
 define download
-	@cd $(SRC) ; if [ ! -f "$(1)" ] ; then wget "$(2)" ; \
-	 elif ! echo "$(3)  $(SRC)/$(1)" | sha1sum -c - >/dev/null 2>/dev/null ; then \
-	 wget -c "$(2)" ; fi
-	@if echo "$(3)  $(SRC)/$(1)" | sha1sum -c - >/dev/null 2>/dev/null ; then \
-	 echo $(BRW)sha1sum check on "$(SRC)/$(1)": $(GREEN)[ OK ]$(WHITE); \
-	 else echo $(BRW)sha1sum check on "$(SRC)/$(1)": $(RED)[ FAILED ]$(WHITE); \
-	 echo $(BRW)The sha1sum for the downloaded file is:$(WHITE) $$(sha1sum $(SRC)/$(1) | awk '{print $$1}'); exit 1 ; fi
+	@if [ ! -f "$(SRC)/$(1)" ] ; then wget "$(2)" -P $(SRC) ; \
+        elif ! echo "$(3)  $(SRC)/$(1)" | sha1sum -c - --status ; then \
+        wget -c "$(2)" ; fi
+	@echo "$(3)  $(SRC)/$(1)" | sha1sum -c - --quiet
 	@ln -sf "$(SRC)/$(1)" .
 endef
 
-%.gz %.tgz %.bz2 %.zip %.patch %.diff %.rules %.ttf %.jpg %.run:
+%.gz %.tgz %.bz2 %.zip %.patch %.jpg %.run:
 	$(call download,$@,$(URL-$@),$(SHA-$@))
