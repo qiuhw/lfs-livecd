@@ -178,9 +178,9 @@ tools: \
 	binutils-stage1 \
 	gcc-stage1 \
 	tcl-stage1 \
+	expect-stage1 \
 	make-prebuild \
 	sed-prebuild \
-	expect-stage1 \
 	dejagnu-stage1 \
 	ncurses-stage1 \
 	bash-stage1 \
