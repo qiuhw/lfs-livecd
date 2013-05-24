@@ -152,9 +152,6 @@ builduser:
 
 build-tools:
 	@su - $(USER) -c "make tools"
-	@su - $(USER) -c "make bash-prebuild"
-	@su - $(USER) -c "make SHELL=/tools/bin/sh wget-prebuild"
-	@su - $(USER) -c "make SHELL=/tools/bin/sh coreutils-prebuild"
 	@cp /etc/resolv.conf /tools/etc
 	@rm -rf /tools/{,share/}{info,man}
 	@-ln -s /tools/bin/bash $(LFS)/bin/bash
@@ -181,8 +178,6 @@ tools: \
 	expect-stage1 \
 	dejagnu-stage1 \
 	ncurses-stage1 \
-	make-prebuild \
-	sed-prebuild \
 	bash-stage1 \
 	bzip2-stage1 \
 	coreutils-stage1 \
