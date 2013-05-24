@@ -180,9 +180,9 @@ tools: \
 	tcl-stage1 \
 	expect-stage1 \
 	dejagnu-stage1 \
+	ncurses-stage1 \
 	make-prebuild \
 	sed-prebuild \
-	ncurses-stage1 \
 	bash-stage1 \
 	bzip2-stage1 \
 	coreutils-stage1 \
