@@ -52,7 +52,7 @@ export MY_ROOT := /$(shell basename $(MY_BASE))
 ROOTFS_MEGS := 1536
 
 # LiveCD version
-export CD_VERSION ?= $(MY_ARCH)-6.6
+export CD_VERSION ?= $(MY_ARCH)-7.3
 
 export LFS := $(MY_BUILD)/image
 export MKTREE := $(LFS)$(MY_ROOT)
@@ -69,16 +69,30 @@ all: test-host base iso
 
 # Check host prerequisites
 # FIXME: Fill this out with more package pre-reqs
-test-host:
+test-host: test-arch test-euid test-bash
+	@if ! type -p gawk >/dev/null 2>&1 ; then \
+	 echo -e "Missing gawk on host!\nPlease install gawk and re-run 'make'." && exit 1 ; fi 
+
+test-arch:
 ifneq ($(MY_ARCH),x86_64)
 	$(error Only x86_64 architecture is supported.)
 endif
 
-ifneq ($$EUID,0)
-	$(error You must be logged in as root.)
-endif
-	@if ! type -p gawk >/dev/null 2>&1 ; then \
-	 echo -e "Missing gawk on host!\nPlease install gawk and re-run 'make'." && exit 1 ; fi 
+test-euid:
+	@if [ $$EUID -ne 0 ]; then \
+		echo "You must be logged in as root." && exit 1; \
+	 fi
+
+BASH_VER := $(subst ., ,$(shell bash --version | head -n1 | cut -d" " -f4))
+BASH_MAJOR := $(word 1,$(BASH_VER))
+BASH_MINOR := $(word 2,$(BASH_VER))
+test-bash:
+	@if [ $(BASH_MAJOR) -lt 3 ]; then \
+		echo "Bash >= 3.2 is required." && exit 1; \
+	 fi
+	@if [ $(BASH_MAJOR) -eq 3 -a $(BASH_MINOR) -lt 2 ]; then \
+		echo "Bash >= 3.2 is required." && exit 1; \
+	 fi
 
 base: $(MKTREE) builduser build-tools
 	@chroot "$(LFS)" $(chenv-pre-bash) 'set +h && \
