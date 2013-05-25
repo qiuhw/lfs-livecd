@@ -1,55 +1,33 @@
-# Sed Makefile
+NAME = sed
+VER  = 4.2.2
+DIR  = $(NAME)-$(VER)
 
-NAME= sed
-VER= 4.2.1
-DIR= $(NAME)-$(VER)
-
-FILE= $(DIR).tar.bz2
-URL-$(FILE)= http://ftp.gnu.org/gnu/sed/sed-4.2.1.tar.bz2
-SUM-$(FILE)= ace93d23eabc00d3a8187ecf07d3a02b1b297810
-
-# Targets
+FILE = $(DIR).tar.bz2
+URL-$(FILE) = http://ftp.gnu.org/gnu/$(NAME)/$(FILE)
+SUM-$(FILE) = 7ffe1c7cdc3233e1e0c4b502df253974
 
 include $(MY_ROOT)/scripts/functions
-
-prebuild: $(FILE)
-	$(std_build)
-
-compile-prebuild:
-	./configure \
-		--prefix=/tools \
-		--disable-nls \
-		ac_cv_header_stdbool_h=yes
-	make
-	make install
 
 stage1: $(FILE)
 	$(std_build)
 
 compile-stage1:
-	./configure \
-		--prefix=/tools
+	./configure --prefix=/tools
 	make
 	make install
 
-chroot:
-	chroot "$(LFS)" $(chenv-pre-bash) \
-	'cd $(MY_ROOT) && make ch-$(NAME) $(chbash-pre-bash)'
-
-stage2: Makefile $(FILE)
+stage2: $(FILE)
 	$(std_build)
 
 compile-stage2:
-	./configure \
-		--prefix=/usr \
+	./configure --prefix=/usr \
 		--bindir=/bin \
-		--htmldir=/usr/share/doc/sed-4.2.1
+		--htmldir=/usr/share/doc/$(DIR)
 	make
 	make html
 	make install
-	make -C doc install-html
 
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: compile-prebuild compile-stage1 clean chroot compile-stage2
+.PHONY: compile-stage1 compile-stage2 clean
