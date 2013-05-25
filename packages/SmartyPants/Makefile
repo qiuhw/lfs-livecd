@@ -1,8 +1,8 @@
 # SmartyPants Makefile
 
 NAME= SmartyPants
-VRS= 1.5.1
-DIR= $(NAME)_$(VRS)
+VER= 1.5.1
+DIR= $(NAME)_$(VER)
 
 FILE= $(DIR).zip
 URL-$(FILE)= http://daringfireball.net/projects/downloads/$(FILE)

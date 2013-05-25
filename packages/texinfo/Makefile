@@ -1,7 +1,7 @@
 # Texinfo Makefile
 
 NAME= texinfo
-VRS= 4.13a
+VER= 4.13a
 DIR= $(NAME)-4.13
 
 FILE= $(DIR)a.tar.gz

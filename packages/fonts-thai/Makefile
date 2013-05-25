@@ -1,11 +1,11 @@
 # Thai fonts Makefile
 
 NAME= thai-ttf
-VRS= 0.4.5
+VER= 0.4.5
 DIR= usr
 LOCATION= /usr/share/fonts
 
-FILE= $(NAME)-$(VRS).tar.gz
+FILE= $(NAME)-$(VER).tar.gz
 URL-$(FILE)= http://linux.thai.net/pub/thailinux/software/thai-ttf/$(FILE)
 SHA-$(FILE)= 02e94e471b2b29845f4dbbde6056b34fac0d1611
 

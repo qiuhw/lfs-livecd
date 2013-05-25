@@ -1,7 +1,7 @@
 # network firmware Makefile
 
 NAME= net-firmware
-VRS= 1
+VER= 1
 
 UNCOMPRESSED_FILE1= t3fw-3.3.0.bin
 FILE1= $(UNCOMPRESSED_FILE1).gz

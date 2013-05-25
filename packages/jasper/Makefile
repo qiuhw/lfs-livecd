@@ -1,8 +1,8 @@
 # JasPer Makefile
 
 NAME= jasper
-VRS= 1.900.1
-DIR= $(NAME)-$(VRS)
+VER= 1.900.1
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).zip
 URL-$(FILE)= http://www.ece.uvic.ca/~mdadams/jasper/software/jasper-1.900.1.zip

@@ -1,8 +1,8 @@
 # liboil Makefile
 
 NAME= liboil
-VRS= 0.3.17
-DIR= $(NAME)-$(VRS)
+VER= 0.3.17
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://liboil.freedesktop.org/download/liboil-0.3.17.tar.gz

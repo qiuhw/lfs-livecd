@@ -1,6 +1,6 @@
 # xfce Makefile
 NAME= xfce
-VRS= 4.6.1
+VER= 4.6.1
 URLBASE= http://archive.xfce.org/xfce/4.6.1/src
 
 include $(MY_ROOT)/packages/$(NAME)/filelist

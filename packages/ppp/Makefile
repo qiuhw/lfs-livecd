@@ -1,8 +1,8 @@
 # ppp Makefile
 
 NAME= ppp
-VRS= 2.4.5
-DIR= $(NAME)-$(VRS)
+VER= 2.4.5
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://wcoserver.googlecode.com/files/ppp-2.4.5.tar.gz

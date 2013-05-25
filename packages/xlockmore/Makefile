@@ -1,8 +1,8 @@
 # xlockmore Makefile
 
 NAME= xlockmore
-VRS= 5.30
-DIR= $(NAME)-$(VRS)
+VER= 5.30
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://www.tux.org/~bagleyd/xlock/xlockmore-5.30/xlockmore-5.30.tar.bz2

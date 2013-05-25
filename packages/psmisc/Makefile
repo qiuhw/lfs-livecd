@@ -1,8 +1,8 @@
 # Psmisc Makefile
 
 NAME= psmisc
-VRS= 22.10
-DIR= $(NAME)-$(VRS)
+VER= 22.10
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://prdownloads.sourceforge.net/psmisc/psmisc-22.10.tar.gz

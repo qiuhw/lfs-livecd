@@ -1,8 +1,8 @@
 # BRLTTY Makefile
 
 NAME= brltty
-VRS= 4.2
-DIR= $(NAME)-$(VRS)
+VER= 4.2
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= ftp://ftp.uwsg.indiana.edu/linux/gentoo/distfiles/brltty-4.2.tar.gz

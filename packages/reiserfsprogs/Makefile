@@ -1,8 +1,8 @@
 # ReiserFS Progs Makefile
 
 NAME= reiserfsprogs
-VRS= 3.6.20
-DIR= $(NAME)-$(VRS)
+VER= 3.6.20
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.sunet.se/pub/Linux/kernel.org/linux/utils/fs/reiserfs/reiserfsprogs-3.6.20.tar.gz

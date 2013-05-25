@@ -1,5 +1,5 @@
 NAME= Xorg-util
-VRS= X11R7.5
+VER= X11R7.5
 URLBASE= http://ftp.x.org/pub/individual/util
 
 include $(MY_ROOT)/packages/$(NAME)/filelist

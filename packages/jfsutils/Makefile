@@ -1,8 +1,8 @@
 # jfsutils Makefile
 
 NAME= jfsutils
-VRS= 1.1.11
-DIR= $(NAME)-$(VRS)
+VER= 1.1.11
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://jfs.sourceforge.net/project/pub/$(FILE)

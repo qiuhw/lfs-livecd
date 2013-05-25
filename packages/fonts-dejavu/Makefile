@@ -1,8 +1,8 @@
 # DejaVu fonts Makefile
 
 NAME= dejavu-fonts-ttf
-VRS= 2.30
-DIR= $(NAME)-$(VRS)
+VER= 2.30
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://sourceforge.net/projects/dejavu/files/dejavu/2.30/dejavu-fonts-ttf-2.30.tar.bz2

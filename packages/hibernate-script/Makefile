@@ -2,8 +2,8 @@
 
 # Do not update - new versions are buggy (call hooks more than once)
 NAME= hibernate-script
-VRS= 1.91
-DIR= $(NAME)-$(VRS)
+VER= 1.91
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://at-mirror.tuxonice.net/downloads/all/$(FILE)

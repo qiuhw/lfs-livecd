@@ -1,8 +1,8 @@
 # Linux Kernel Makefile
 
 NAME= linux
-VRS= 2.6.32.8
-DIR= $(NAME)-$(VRS)
+VER= 2.6.32.8
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.32.8.tar.bz2
@@ -22,7 +22,7 @@ compile-stage2:
 	make
 	make modules_install
 	cp -v arch/i386/boot/bzImage /boot/isolinux/linux
-	create-initramfs $(CD_VERSION) $(VRS) /boot/isolinux/initramfs_data.cpio.gz
+	create-initramfs $(CD_VERSION) $(VER) /boot/isolinux/initramfs_data.cpio.gz
 	sh ../debian-style-headers.sh
 
 stage3: $(FILE)
@@ -34,7 +34,7 @@ compile-stage3:
 	PATH=$$PATH:/tools/bin make ARCH=x86_64 CROSS_COMPILE=x86_64-unknown-linux-gnu-
 	PATH=$$PATH:/tools/bin make ARCH=x86_64 CROSS_COMPILE=x86_64-unknown-linux-gnu- modules_install
 	cp -v arch/x86_64/boot/bzImage /boot/isolinux/linux64
-	create-initramfs $(CD_VERSION) $(VRS)-64bit /boot/isolinux/initramfs_data64.cpio.gz
+	create-initramfs $(CD_VERSION) $(VER)-64bit /boot/isolinux/initramfs_data64.cpio.gz
 
 clean:
 	-rm -rf $(DIR)

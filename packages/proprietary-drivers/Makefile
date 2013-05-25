@@ -1,7 +1,7 @@
 # Makefile for proprietary video drivers
 
 NAME= proprietary-drivers
-VRS= 3
+VER= 3
 
 # NVIDIA legacy driver
 FILE1= NVIDIA-Linux-x86-1.0-7184-pkg0.run

@@ -1,8 +1,8 @@
 # Fontconfig Makefile
 
 NAME= fontconfig
-VRS= 2.8.0
-DIR= $(NAME)-$(VRS)
+VER= 2.8.0
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.8.0.tar.gz

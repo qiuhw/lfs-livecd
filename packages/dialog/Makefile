@@ -1,8 +1,8 @@
 # Dialog Makefile
 
 NAME= dialog
-VRS= 1.1-20100428
-DIR= $(NAME)-$(VRS)
+VER= 1.1-20100428
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tgz
 URL-$(FILE)= ftp://invisible-island.net/dialog/dialog-1.1-20100428.tgz

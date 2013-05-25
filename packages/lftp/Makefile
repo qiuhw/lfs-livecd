@@ -1,8 +1,8 @@
 # lftp Makefile
 
 NAME= lftp
-VRS= 3.5.11
-DIR= $(NAME)-$(VRS)
+VER= 3.5.11
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://www.kanshima.net/mirrors/lftp/$(FILE)

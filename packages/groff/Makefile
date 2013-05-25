@@ -1,8 +1,8 @@
 # Groff Makefile
 
 NAME= groff
-VRS= 1.20.1
-DIR= $(NAME)-$(VRS)
+VER= 1.20.1
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/groff/groff-1.20.1.tar.gz

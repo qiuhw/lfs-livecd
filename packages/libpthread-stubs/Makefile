@@ -1,8 +1,8 @@
 # libpthread-stubs Makefile
 
 NAME= libpthread-stubs
-VRS= 0.3
-DIR= $(NAME)-$(VRS)
+VER= 0.3
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://xcb.freedesktop.org/dist/libpthread-stubs-0.3.tar.bz2

@@ -1,8 +1,8 @@
 # libgpg-error Makefile
 
 NAME= libgpg-error
-VRS= 1.7
-DIR= $(NAME)-$(VRS)
+VER= 1.7
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://mirrors.dotsrc.org/gcrypt/libgpg-error/libgpg-error-1.7.tar.bz2

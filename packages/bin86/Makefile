@@ -1,8 +1,8 @@
 # bin86 Makefile
 
 NAME= bin86
-VRS= 0.16.17
-DIR= $(NAME)-$(VRS)
+VER= 0.16.17
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.nux.at/pub/dev86/$(FILE)

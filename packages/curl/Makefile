@@ -1,8 +1,8 @@
 # Curl Makefile
 
 NAME= curl
-VRS= 7.20.1
-DIR= $(NAME)-$(VRS)
+VER= 7.20.1
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://curl.haxx.se/download/curl-7.20.1.tar.bz2

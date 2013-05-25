@@ -1,8 +1,8 @@
 # xkeyboard-config Makefile
 
 NAME= xkeyboard-config
-VRS= 1.7
-DIR= $(NAME)-$(VRS)
+VER= 1.7
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://xlibs.freedesktop.org/xkbdesc/xkeyboard-config-1.7.tar.bz2

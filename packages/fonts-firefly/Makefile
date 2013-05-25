@@ -1,8 +1,8 @@
 # FireFly fonts Makefile
 
 NAME= fireflysung
-VRS= 1.3.0
-DIR= $(NAME)-$(VRS)
+VER= 1.3.0
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://chinesepuppylinux.googlecode.com/files/fireflysung-1.3.0.tar.gz

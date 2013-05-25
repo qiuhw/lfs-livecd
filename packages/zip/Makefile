@@ -1,8 +1,8 @@
 # Zip Makefile
 
 NAME= zip
-VRS= 30
-DIR= $(NAME)$(VRS)
+VER= 30
+DIR= $(NAME)$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://prdownloads.sourceforge.net/infozip/$(FILE)

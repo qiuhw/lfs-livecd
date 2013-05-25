@@ -1,8 +1,8 @@
 # distcc Makefile
 
 NAME= distcc
-VRS= 3.1
-DIR= $(NAME)-$(VRS)
+VER= 3.1
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://distcc.googlecode.com/files/distcc-3.1.tar.bz2

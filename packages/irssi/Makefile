@@ -1,8 +1,8 @@
 # irssi Makefile
 
 NAME= irssi
-VRS= 0.8.15
-DIR= $(NAME)-$(VRS)
+VER= 0.8.15
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://irssi.org/files/irssi-0.8.15.tar.bz2

@@ -1,8 +1,8 @@
 # pixman Makefile
 
 NAME= pixman
-VRS= 0.15.20
-DIR= $(NAME)-$(VRS)
+VER= 0.15.20
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.x.org/pub/individual/lib/pixman-0.15.20.tar.gz

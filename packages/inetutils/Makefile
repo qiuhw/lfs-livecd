@@ -1,8 +1,8 @@
 # Inetutils Makefile
 
 NAME= inetutils
-VRS= 1.7
-DIR= $(NAME)-$(VRS)
+VER= 1.7
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/inetutils/inetutils-1.7.tar.gz

@@ -1,8 +1,8 @@
 # Samba Makefile
 
 NAME= samba
-VRS= 3.5.2
-DIR= $(NAME)-$(VRS)
+VER= 3.5.2
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.samba.org/pub/samba/stable/samba-3.5.2.tar.gz

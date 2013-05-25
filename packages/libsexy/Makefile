@@ -1,8 +1,8 @@
 # libsexy Makefile
 
 NAME= libsexy
-VRS= 0.1.11
-DIR= $(NAME)-$(VRS)
+VER= 0.1.11
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://releases.chipx86.com/libsexy/libsexy/$(FILE)

@@ -2,8 +2,8 @@
 # Libstdc++ is the standard C++ library. It is needed for the correct operation of the g++ compiler.
 
 NAME= gcc
-VRS= 4.8.0
-DIR= $(NAME)-$(VRS)
+VER= 4.8.0
+DIR= $(NAME)-$(VER)
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/$(NAME)/$(DIR)/$(FILE)
 SUM-$(FILE)= e6040024eb9e761c3bea348d1fa5abb0
@@ -24,7 +24,7 @@ compile-stage1:
 		--disable-nls \
 		--disable-libstdcxx-threads \
 		--disable-libstdcxx-pch \
-		--with-gxx-include-dir=/tools/$LFS_TGT/include/c++/$(VRS)
+		--with-gxx-include-dir=/tools/$LFS_TGT/include/c++/$(VER)
 	make
 	make install
 

@@ -1,8 +1,8 @@
 # xbitmaps Makefile
 
 NAME= xbitmaps
-VRS= 1.1.0
-DIR= $(NAME)-$(VRS)
+VER= 1.1.0
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.x.org/pub/individual/data/xbitmaps-1.1.0.tar.bz2

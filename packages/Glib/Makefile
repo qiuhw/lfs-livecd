@@ -1,8 +1,8 @@
 # Glib (perl module) Makefile
 
 NAME= Glib
-VRS= 1.222
-DIR= $(NAME)-$(VRS)
+VER= 1.222
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://sourceforge.net/projects/gtk2-perl/files/Glib/1.222/Glib-1.222.tar.gz

@@ -1,10 +1,10 @@
 # xz Utils Makefile
 
 NAME= xz
-VRS= 4.999.9beta
-DIR= $(NAME)-$(VRS)
+VER= 4.999.9beta
+DIR= $(NAME)-$(VER)
 
-FILE= $(NAME)-$(VRS).tar.bz2
+FILE= $(NAME)-$(VER).tar.bz2
 URL-$(FILE)= http://tukaani.org/xz/$(FILE)
 SHA-$(FILE)= 67cd2598b5149da9b3c126f3483fd632e06b3d48
 

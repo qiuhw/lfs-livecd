@@ -1,8 +1,8 @@
 # librsvg Makefile
 
 NAME= librsvg
-VRS= 2.26.0
-DIR= $(NAME)-$(VRS)
+VER= 2.26.0
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnome.org/pub/GNOME/sources/librsvg/2.26/librsvg-2.26.0.tar.bz2

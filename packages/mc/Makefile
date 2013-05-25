@@ -1,10 +1,10 @@
 # MC Makefile
 
 NAME= mc
-VRS= 4.7.1
-DIR= $(NAME)-$(VRS)
+VER= 4.7.1
+DIR= $(NAME)-$(VER)
 
-FILE= $(NAME)-$(VRS).tar.bz2
+FILE= $(NAME)-$(VER).tar.bz2
 URL-$(FILE)= http://ftp.osuosl.org/pub/midnightcommander/mc-4.7.1.tar.bz2
 SHA-$(FILE)= 61fd896780798d17bd1e41ee3910e36a4b0d306a
 

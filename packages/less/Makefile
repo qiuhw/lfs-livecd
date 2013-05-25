@@ -1,8 +1,8 @@
 # Less Makefile 
 
 NAME= less
-VRS= 436
-DIR= $(NAME)-$(VRS)
+VER= 436
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://www.greenwoodsoftware.com/less/less-436.tar.gz

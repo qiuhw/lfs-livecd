@@ -1,8 +1,8 @@
 # dhcpcd Makefile
 
 NAME= dhcpcd
-VRS= 5.2.2
-DIR= $(NAME)-$(VRS)
+VER= 5.2.2
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= ftp://ftp.uwsg.indiana.edu/linux/slackware/slackware-13.1/source/n/dhcpcd/dhcpcd-5.2.2.tar.bz2

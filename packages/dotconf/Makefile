@@ -1,8 +1,8 @@
 # dotconf Makefile
 
 NAME= dotconf
-VRS= 1.0.13
-DIR= $(NAME)-$(VRS)
+VER= 1.0.13
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://www.azzit.de/dotconf/download/v1.0/dotconf-1.0.13.tar.gz

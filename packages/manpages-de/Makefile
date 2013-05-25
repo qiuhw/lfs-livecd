@@ -1,8 +1,8 @@
 # manpages-de Makefile
 
 NAME= manpages-de
-VRS= 0.5
-DIR= $(NAME)-$(VRS)
+VER= 0.5
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= ftp://ftp.uwsg.indiana.edu/linux/gentoo/distfiles/manpages-de-0.5.tar.gz

@@ -1,8 +1,8 @@
 # GPM Makefile
 
 NAME= gpm
-VRS= 1.20.1
-DIR= $(NAME)-$(VRS)
+VER= 1.20.1
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.schottelius.org/pub/linux/gpm/gpm-1.20.1.tar.bz2

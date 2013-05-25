@@ -1,8 +1,8 @@
 # cpio Makefile
 
 NAME= cpio
-VRS= 2.11
-DIR= $(NAME)-$(VRS)
+VER= 2.11
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/pub/gnu/cpio/cpio-2.11.tar.bz2

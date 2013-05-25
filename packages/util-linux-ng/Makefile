@@ -1,8 +1,8 @@
 # Util-Linux-NG Makefile
 
 NAME= util-linux-ng
-VRS= 2.17
-DIR= $(NAME)-$(VRS)
+VER= 2.17
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= https://www.kernel.org/pub/linux/utils/util-linux/v2.17/util-linux-ng-2.17.tar.bz2

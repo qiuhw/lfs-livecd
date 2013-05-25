@@ -1,8 +1,8 @@
 # Nano Makefile
 
 NAME= nano
-VRS= 2.2.4
-DIR= $(NAME)-$(VRS)
+VER= 2.2.4
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/nano/nano-2.2.4.tar.gz

@@ -1,8 +1,8 @@
 # hal Makefile
 
 NAME= hal
-VRS= 0.5.14
-DIR= $(NAME)-$(VRS)
+VER= 0.5.14
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://hal.freedesktop.org/releases/hal-0.5.14.tar.gz

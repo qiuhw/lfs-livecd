@@ -1,8 +1,8 @@
 # Mktemp Makefile
 
 NAME= mktemp
-VRS= 1.5
-DIR= $(NAME)-$(VRS)
+VER= 1.5
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://cross-lfs.org/files/packages/1.1.0/mktemp-1.5.tar.gz

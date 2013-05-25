@@ -1,8 +1,8 @@
 # Pkgconfig Makefile
 
 NAME= pkg-config
-VRS= 0.23
-DIR= $(NAME)-$(VRS)
+VER= 0.23
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://pkgconfig.freedesktop.org/releases/pkg-config-0.23.tar.gz

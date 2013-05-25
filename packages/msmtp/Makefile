@@ -1,8 +1,8 @@
 # msmtp Makefile
 
 NAME= msmtp
-VRS= 1.4.20
-DIR= $(NAME)-$(VRS)
+VER= 1.4.20
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://sourceforge.net/projects/msmtp/files/msmtp/1.4.20/msmtp-1.4.20.tar.bz2

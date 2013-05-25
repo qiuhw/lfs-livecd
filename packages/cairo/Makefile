@@ -1,8 +1,8 @@
 # cairo Makefile
 
 NAME= cairo
-VRS= 1.8.10
-DIR= $(NAME)-$(VRS)
+VER= 1.8.10
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://www.cairographics.org/releases/cairo-1.8.10.tar.gz

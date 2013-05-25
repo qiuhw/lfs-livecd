@@ -1,8 +1,8 @@
 # SCIM-Tables Makefile
 
 NAME= scim-tables
-VRS= 0.5.9
-DIR= $(NAME)-$(VRS)
+VER= 0.5.9
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://sourceforge.net/projects/scim/files/scim-tables/0.5.9/scim-tables-0.5.9.tar.gz

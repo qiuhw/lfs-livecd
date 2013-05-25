@@ -1,8 +1,8 @@
 # Kbd Makefile
 
 NAME= kbd
-VRS= 1.15.1
-DIR= $(NAME)-$(VRS)
+VER= 1.15.1
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.altlinux.com/pub/people/legion/kbd/kbd-1.15.1.tar.gz

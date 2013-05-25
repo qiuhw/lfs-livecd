@@ -1,8 +1,8 @@
 # libpng Makefile
 
 NAME= libpng
-VRS= 1.2.42
-DIR= $(NAME)-$(VRS)
+VER= 1.2.42
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.lfs-matrix.net/pub/blfs/conglomeration/libpng/libpng-1.2.42.tar.bz2

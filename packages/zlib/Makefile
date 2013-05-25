@@ -1,8 +1,8 @@
 # Zlib Makefile
 
 NAME= zlib
-VRS= 1.2.3
-DIR= $(NAME)-$(VRS)
+VER= 1.2.3
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://www.zlib.net/zlib-1.2.3.tar.bz2
@@ -28,7 +28,7 @@ compile-stage2:
 	make
 	make install
 	rm -v /lib/libz.so
-	ln -sfv ../../lib/libz.so.$(VRS) /usr/lib/libz.so
+	ln -sfv ../../lib/libz.so.$(VER) /usr/lib/libz.so
 	make clean
 	./configure --prefix=/usr --libdir=/usr/lib
 	make

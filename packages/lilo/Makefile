@@ -1,8 +1,8 @@
 # lilo Makefile
 
 NAME= lilo
-VRS= 22.8
-DIR= $(NAME)-$(VRS)
+VER= 22.8
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).src.tar.gz
 URL-$(FILE)= http://home.san.rr.com/johninsd/pub/linux/lilo/$(FILE)

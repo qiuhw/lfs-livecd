@@ -1,5 +1,5 @@
 NAME= Xorg-proto
-VRS= X11R7.5
+VER= X11R7.5
 URLBASE= http://ftp.x.org/pub/individual/proto
 
 include $(MY_ROOT)/packages/$(NAME)/filelist

@@ -1,8 +1,8 @@
 # Sed Makefile
 
 NAME= sed
-VRS= 4.2.1
-DIR= $(NAME)-$(VRS)
+VER= 4.2.1
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/sed/sed-4.2.1.tar.bz2

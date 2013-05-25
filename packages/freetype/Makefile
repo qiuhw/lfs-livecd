@@ -1,14 +1,14 @@
 # FreeType Makefile
 
 NAME= freetype
-VRS= 2.3.12
-DIR= $(NAME)-$(VRS)
+VER= 2.3.12
+DIR= $(NAME)-$(VER)
 	 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://download.savannah.gnu.org/releases/freetype/freetype-old/freetype-2.3.12.tar.bz2
 SHA-$(FILE)= ebf0438429c0bedd310059326d91646c3c91016b
 
-FILE2= $(NAME)-doc-$(VRS).tar.bz2
+FILE2= $(NAME)-doc-$(VER).tar.bz2
 URL-$(FILE2)= http://download.savannah.gnu.org/releases/freetype/freetype-old/freetype-doc-2.3.12.tar.bz2
 SHA-$(FILE2)= 4f3b2d0f04f23d5430dac4252fc225831c29dd18
 

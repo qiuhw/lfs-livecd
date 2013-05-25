@@ -1,8 +1,8 @@
 # DB Makefile
 
 NAME= db
-VRS= 4.7.25
-DIR= $(NAME)-$(VRS)
+VER= 4.7.25
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://download-east.oracle.com/berkeley-db/db-4.7.25.tar.gz

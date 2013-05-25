@@ -1,8 +1,8 @@
 # Perl Makefile
 
 NAME= perl
-VRS= 5.10.1
-DIR= $(NAME)-$(VRS)
+VER= 5.10.1
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://cpan.org/src/5.0/perl-5.10.1.tar.bz2
@@ -29,8 +29,8 @@ compile-stage1:
 	 -Dstatic_ext='Data/Dumper Fcntl IO POSIX'
 	make perl utilities ext/Errno/pm_to_blib
 	cp -v perl pod/pod2man /tools/bin
-	mkdir -pv /tools/lib/perl5/$(VRS)
-	cp -Rv lib/* /tools/lib/perl5/$(VRS)
+	mkdir -pv /tools/lib/perl5/$(VER)
+	cp -Rv lib/* /tools/lib/perl5/$(VER)
 
 stage2: Makefile $(FILE) $(PATCH)
 	$(std_build)

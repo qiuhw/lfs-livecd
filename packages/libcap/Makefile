@@ -1,8 +1,8 @@
 # libcap Makefile
 
 NAME= libcap
-VRS= 2.19
-DIR= $(NAME)-$(VRS)
+VER= 2.19
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.sunet.se/pub/Linux/kernel.org/linux/libs/security/linux-privs/libcap2/libcap-2.19.tar.gz

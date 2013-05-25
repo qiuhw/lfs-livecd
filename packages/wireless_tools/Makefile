@@ -1,8 +1,8 @@
 # wireless_tools Makefile
 
 NAME= wireless_tools
-VRS= 29
-DIR= $(NAME).$(VRS)
+VER= 29
+DIR= $(NAME).$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ceos.googlecode.com/files/wireless_tools.29.tar.gz

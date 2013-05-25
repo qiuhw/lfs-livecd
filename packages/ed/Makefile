@@ -1,8 +1,8 @@
 # Ed Makefile
 
 NAME= ed
-VRS= 1.4
-DIR= $(NAME)-$(VRS)
+VER= 1.4
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/ed/ed-1.4.tar.gz

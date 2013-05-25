@@ -2,8 +2,8 @@
 
 # Is it OK to download a 1 MB package just for 10 KB of cis-files?
 NAME= pcmcia-cs
-VRS= 3.2.8
-DIR= $(NAME)-$(VRS)
+VER= 3.2.8
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://pcmcia-cs.sourceforge.net/ftp/$(FILE)

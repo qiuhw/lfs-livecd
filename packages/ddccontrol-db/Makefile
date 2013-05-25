@@ -1,8 +1,8 @@
 # DDCControl Monitor Database Makefile
 
 NAME= ddccontrol-db
-VRS= 20061014
-DIR= $(NAME)-$(VRS)
+VER= 20061014
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://sourceforge.net/projects/ddccontrol/files/ddccontrol-db/20061014/ddccontrol-db-20061014.tar.bz2

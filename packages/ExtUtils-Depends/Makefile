@@ -1,8 +1,8 @@
 # ExtUtils-Depends Makefile
 
 NAME= ExtUtils-Depends
-VRS= 0.302
-DIR= $(NAME)-$(VRS)
+VER= 0.302
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/ExtUtils-Depends-0.302.tar.gz

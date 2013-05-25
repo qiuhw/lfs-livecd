@@ -1,8 +1,8 @@
 # libxslt Makefile
 
 NAME= libxslt
-VRS= 1.1.26
-DIR= $(NAME)-$(VRS)
+VER= 1.1.26
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://xmlsoft.org/sources/libxslt-1.1.26.tar.gz

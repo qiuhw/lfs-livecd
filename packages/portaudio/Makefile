@@ -1,10 +1,10 @@
 # portaudio Makefile
 
 NAME= portaudio
-VRS= stable_v19_20071207
+VER= stable_v19_20071207
 DIR= $(NAME)
 
-FILE= pa_$(VRS).tar.gz
+FILE= pa_$(VER).tar.gz
 URL-$(FILE)= http://www.portaudio.com/archives/pa_stable_v19_20071207.tar.gz
 SHA-$(FILE)= 3841453bb7be672a15b6b632ade6f225eb0a4efc
 

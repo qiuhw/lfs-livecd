@@ -1,8 +1,8 @@
 # parted Makefile
 
 NAME= parted
-VRS= 2.2
-DIR= $(NAME)-$(VRS)
+VER= 2.2
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/parted/parted-2.2.tar.gz

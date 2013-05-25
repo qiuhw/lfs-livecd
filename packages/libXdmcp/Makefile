@@ -1,8 +1,8 @@
 # libXdmcp Makefile
 
 NAME= libXdmcp
-VRS= 1.0.3
-DIR= $(NAME)-$(VRS)
+VER= 1.0.3
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= 

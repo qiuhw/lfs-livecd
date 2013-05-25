@@ -1,8 +1,8 @@
 # espeak Makefile
 
 NAME= espeak
-VRS= 1.43.03
-DIR= $(NAME)-$(VRS)-source
+VER= 1.43.03
+DIR= $(NAME)-$(VER)-source
 
 FILE= $(DIR).zip
 URL-$(FILE)= http://sourceforge.net/projects/espeak/files/espeak/espeak-1.43/espeak-1.43.03-source.zip

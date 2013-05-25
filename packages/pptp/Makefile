@@ -1,8 +1,8 @@
 # pptp Makefile
 
 NAME= pptp
-VRS= 1.7.2
-DIR= $(NAME)-$(VRS)
+VER= 1.7.2
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://sourceforge.net/projects/pptpclient/files/pptp/pptp-1.7.2/pptp-1.7.2.tar.gz

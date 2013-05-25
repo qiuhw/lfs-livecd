@@ -1,8 +1,8 @@
 # Sysvinit Makefile
 
 NAME= sysvinit
-VRS= 2.86
-DIR= $(NAME)-$(VRS)
+VER= 2.86
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= ftp://ftp.cistron.nl/pub/people/miquels/sysvinit/sysvinit-2.86.tar.gz

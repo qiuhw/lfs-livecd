@@ -1,8 +1,8 @@
 # jhalfs Makefile
 
 NAME= jhalfs
-VRS= trunk
-DIR= $(NAME)-$(VRS)
+VER= trunk
+DIR= $(NAME)-$(VER)
 
 # Using trunk version for now...
 

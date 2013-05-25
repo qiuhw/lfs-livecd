@@ -1,8 +1,8 @@
 # SCIM-pinyin Makefile
 
 NAME= scim-pinyin
-VRS= 0.5.91
-DIR= $(NAME)-$(VRS)
+VER= 0.5.91
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://sourceforge.net/projects/scim/files/scim-pinyin/0.5.91/scim-pinyin-0.5.91.tar.gz

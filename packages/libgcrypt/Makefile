@@ -1,8 +1,8 @@
 # libgcrypt Makefile
 
 NAME= libgcrypt
-VRS= 1.4.5
-DIR= $(NAME)-$(VRS)
+VER= 1.4.5
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://mirrors.dotsrc.org/gcrypt/libgcrypt/libgcrypt-1.4.5.tar.bz2

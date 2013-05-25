@@ -1,8 +1,8 @@
 # Screen Makefile
 
 NAME= screen
-VRS= 4.0.3
-DIR= $(NAME)-$(VRS)
+VER= 4.0.3
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.uni-erlangen.de/pub/utilities/screen/screen-4.0.3.tar.gz

@@ -1,8 +1,8 @@
 # W3M Makefile
 
 NAME= w3m
-VRS= 0.5.2
-DIR= $(NAME)-$(VRS)
+VER= 0.5.2
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://prdownloads.sourceforge.net/w3m/$(FILE)
@@ -21,7 +21,7 @@ compile-stage2:
 	make install
 	install -v -D -m 644 doc/keymap.default /etc/w3m/keymap
 	install -v -D -m 644 doc/menu.default /etc/w3m/menu
-	install -v -d -m 755 /usr/share/doc/w3m-$(VRS)/html
+	install -v -d -m 755 /usr/share/doc/w3m-$(VER)/html
 	install -v -m 644 doc/{HISTORY,READM*,keymap.*,menu.*,*.html} /usr/share/doc/$(DIR)
 
 clean:

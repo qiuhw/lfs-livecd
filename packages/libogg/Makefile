@@ -1,8 +1,8 @@
 # libogg Makefile
 
 NAME= libogg
-VRS= 1.1.4
-DIR= $(NAME)-$(VRS)
+VER= 1.1.4
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://downloads.xiph.org/releases/ogg/libogg-1.1.4.tar.gz

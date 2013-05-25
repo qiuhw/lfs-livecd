@@ -1,8 +1,8 @@
 # Gettext Makefile
 
 NAME= gettext
-VRS= 0.17
-DIR= $(NAME)-$(VRS)
+VER= 0.17
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/gettext/gettext-0.17.tar.gz

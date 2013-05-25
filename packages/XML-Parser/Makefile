@@ -1,8 +1,8 @@
 # XML-Parser Makefile
 
 NAME= XML-Parser
-VRS= 2.36
-DIR= $(NAME)-$(VRS)
+VER= 2.36
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://search.cpan.org/CPAN/authors/id/M/MS/MSERGEANT/XML-Parser-2.36.tar.gz

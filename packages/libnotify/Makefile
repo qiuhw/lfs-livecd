@@ -1,8 +1,8 @@
 # libnotify Makefile
 
 NAME= libnotify
-VRS= 0.4.4
-DIR= $(NAME)-$(VRS)
+VER= 0.4.4
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://www.galago-project.org/files/releases/source/libnotify/$(FILE)

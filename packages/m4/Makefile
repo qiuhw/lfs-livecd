@@ -1,8 +1,8 @@
 # M4 Makefile
 
 NAME= m4
-VRS= 1.4.13
-DIR= $(NAME)-$(VRS)
+VER= 1.4.13
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/m4/m4-1.4.13.tar.bz2

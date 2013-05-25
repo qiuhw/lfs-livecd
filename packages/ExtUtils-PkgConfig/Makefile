@@ -1,8 +1,8 @@
 # ExtUtils-PkgConfig Makefile
 
 NAME= ExtUtils-PkgConfig
-VRS= 1.12
-DIR= $(NAME)-$(VRS)
+VER= 1.12
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/ExtUtils-PkgConfig-1.12.tar.gz

@@ -1,8 +1,8 @@
 # scim-chewing Makefile
 
 NAME= scim-chewing
-VRS= 0.3.3
-DIR= $(NAME)-$(VRS)
+VER= 0.3.3
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://chewing.googlecode.com/files/scim-chewing-0.3.3.tar.bz2

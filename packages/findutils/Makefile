@@ -1,8 +1,8 @@
 # Findutils Makefile
 
 NAME= findutils
-VRS= 4.4.2
-DIR= $(NAME)-$(VRS)
+VER= 4.4.2
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/findutils/findutils-4.4.2.tar.gz

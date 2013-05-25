@@ -1,8 +1,8 @@
 # alsa-utils Makefile
 
 NAME= alsa-utils
-VRS= 1.0.21
-DIR= $(NAME)-$(VRS)
+VER= 1.0.21
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://alsa.cybermirror.org/utils/alsa-utils-1.0.21.tar.bz2

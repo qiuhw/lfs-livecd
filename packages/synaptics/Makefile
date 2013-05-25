@@ -1,8 +1,8 @@
 # synaptics Makefile
 
 NAME= synaptics
-VRS= 0.14.6
-DIR= $(NAME)-$(VRS)
+VER= 0.14.6
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://web.telia.com/~u89404340/touchpad/files/$(FILE)

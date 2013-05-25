@@ -1,8 +1,8 @@
 # eject Makefile
 
 NAME= eject
-VRS= 2.1.0
-DIR= $(NAME)-$(VRS)
+VER= 2.1.0
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= ftp://ftp.home.vim.org/vol/2/metalab/utils/disk-management/eject-2.1.0.tar.gz

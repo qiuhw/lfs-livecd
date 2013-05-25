@@ -1,5 +1,5 @@
 NAME= livecd-bootscripts
-VRS= SVN
+VER= SVN
 
 # Targets
 

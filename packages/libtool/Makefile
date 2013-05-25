@@ -1,8 +1,8 @@
 # Libtool Makefile
 
 NAME= libtool
-VRS= 2.2.6b
-DIR= $(NAME)-$(VRS)
+VER= 2.2.6b
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/libtool/libtool-2.2.6b.tar.gz

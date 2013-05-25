@@ -1,8 +1,8 @@
 # Python Makefile
 
 NAME= Python
-VRS= 2.6.5
-DIR= $(NAME)-$(VRS)
+VER= 2.6.5
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://www.python.org/ftp/python/2.6.5/Python-2.6.5.tar.bz2

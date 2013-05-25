@@ -1,7 +1,7 @@
 # SCSI firmware Makefile
 
 NAME= scsi-firmware
-VRS= 1
+VER= 1
 
 FILE1= aic94xx-seq.fw
 URL-$(FILE1)= http://kernel.org/pub/linux/kernel/people/jejb/$(FILE1)

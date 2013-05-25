@@ -1,8 +1,8 @@
 # Gcc 3.3.6 Makefile
 
 NAME= gcc
-VRS= 3.3.6
-DIR= $(NAME)-$(VRS)
+VER= 3.3.6
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/gcc/$(DIR)/$(FILE)

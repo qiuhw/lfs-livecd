@@ -1,8 +1,8 @@
 # hicolor-icon-theme Makefile
 
 NAME= hicolor-icon-theme
-VRS= 0.11
-DIR= $(NAME)-$(VRS)
+VER= 0.11
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.11.tar.gz

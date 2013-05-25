@@ -1,8 +1,8 @@
 # Joe Makefile
 
 NAME= joe
-VRS= 3.7
-DIR= $(NAME)-$(VRS)
+VER= 3.7
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://downloads.sourceforge.net/joe-editor/joe-3.7.tar.gz

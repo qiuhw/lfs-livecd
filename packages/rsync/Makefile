@@ -1,8 +1,8 @@
 # rsync Makefile
 
 NAME= rsync
-VRS= 3.0.7
-DIR= $(NAME)-$(VRS)
+VER= 3.0.7
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://mirrors.ibiblio.org/rsync/src/rsync-3.0.7.tar.gz

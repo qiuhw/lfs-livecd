@@ -1,9 +1,9 @@
 # Udev Makefile
 
 NAME= udev
-VRS= 151
+VER= 151
 CONFVRS= 20100128
-DIR= $(NAME)-$(VRS)
+DIR= $(NAME)-$(VER)
 CONFDIR=$(NAME)-config-$(CONFVRS)
 
 FILE= $(DIR).tar.bz2

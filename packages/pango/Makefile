@@ -1,8 +1,8 @@
 # Pango Makefile
 
 NAME= pango
-VRS= 1.26.2
-DIR= $(NAME)-$(VRS)
+VER= 1.26.2
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnome.org/pub/gnome/sources/pango/1.26/pango-1.26.2.tar.bz2

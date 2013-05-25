@@ -1,8 +1,8 @@
 # dosfstools Makefile
 
 NAME= dosfstools
-VRS= 3.0.9
-DIR= $(NAME)-$(VRS)
+VER= 3.0.9
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://daniel-baumann.ch/files/software/dosfstools/dosfstools-3.0.9.tar.bz2

@@ -8,8 +8,8 @@ CROSS_MAKE= make
 endif
 
 NAME= linux
-VRS= 2.6.22.5
-DIR= $(NAME)-$(VRS)
+VER= 2.6.22.5
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://www.kernel.org/pub/linux/kernel/v2.6/$(FILE)
@@ -106,19 +106,19 @@ compile-stage2:
 	$(CROSS_MAKE)
 	$(CROSS_MAKE) modules_install
 	cp -v arch/x86_64/boot/bzImage /boot/isolinux/linux64
-	create-initramfs $(CD_VERSION) $(VRS)-64bit /boot/isolinux/initramfs_data64.cpio.gz
-	sed 's/VERSION/$(VRS)/' ../fakes-for-fglrx/uname.in >../fakes-for-fglrx/uname
-	sed 's/VERSION/$(VRS)/' ../fakes-for-fglrx/cat.in >../fakes-for-fglrx/cat
+	create-initramfs $(CD_VERSION) $(VER)-64bit /boot/isolinux/initramfs_data64.cpio.gz
+	sed 's/VERSION/$(VER)/' ../fakes-for-fglrx/uname.in >../fakes-for-fglrx/uname
+	sed 's/VERSION/$(VER)/' ../fakes-for-fglrx/cat.in >../fakes-for-fglrx/cat
 	chmod 755 ../fakes-for-fglrx/{uname,cat}
 ifeq ($(CD_ARCH),x86)
 	PATH=$$PWD/../fakes-for-fglrx:$$PATH sh ../$(FILE1) --buildpkg Slackware/Only_Module
 	for a in $(DIR2) $(DIR3) $(DIR4) ; do \
-	    sh ../$$a.run -x ; ../build-nvidia-driver $$a $(VRS)-64bit ; done
+	    sh ../$$a.run -x ; ../build-nvidia-driver $$a $(VER)-64bit ; done
 endif
 ifeq ($(CD_ARCH),x86_64)
 	PATH=$$PWD/../fakes-for-fglrx:$$PATH sh ../$(FILE1) --buildpkg Slackware/All
 	for a in $(DIR2) $(DIR3) $(DIR4) ; do \
-	    sh ../$$a.run -x ; ../build-nvidia-driver.native $$a $(VRS)-64bit ; done
+	    sh ../$$a.run -x ; ../build-nvidia-driver.native $$a $(VER)-64bit ; done
 endif
 	# both rtl8187 and rt2x00 build eeprom_93cx6.ko and thus conflict
 	# so we have to hack the build

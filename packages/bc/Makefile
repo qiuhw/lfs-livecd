@@ -1,8 +1,8 @@
 # bc Makefile
 
 NAME= bc
-VRS= 1.06
-DIR= $(NAME)-$(VRS)
+VER= 1.06
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/bc/bc-1.06.tar.gz

@@ -1,8 +1,8 @@
 # File Makefile
 
 NAME= file
-VRS= 5.04
-DIR= $(NAME)-$(VRS)
+VER= 5.04
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= ftp://ftp.astron.com/pub/file/file-5.04.tar.gz

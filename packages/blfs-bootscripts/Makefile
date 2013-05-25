@@ -1,8 +1,8 @@
 # BLFS Bootscripts Makefile
 
 NAME= blfs-bootscripts
-VRS= 20090302
-DIR= $(NAME)-$(VRS)
+VER= 20090302
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.cross-lfs.org/pub/blfs/conglomeration/blfs-bootscripts/blfs-bootscripts-20090302.tar.bz2

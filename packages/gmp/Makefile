@@ -1,8 +1,8 @@
 # gmp Makefile
 
 NAME= gmp
-VRS= 5.0.0
-DIR= $(NAME)-$(VRS)
+VER= 5.0.0
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/gmp/gmp-5.0.0.tar.bz2

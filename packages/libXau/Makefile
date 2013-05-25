@@ -1,8 +1,8 @@
 # libXau Makefile
 
 NAME= libXau
-VRS= 1.0.5
-DIR= $(NAME)-$(VRS)
+VER= 1.0.5
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.x.org/pub/individual/lib/libXau-1.0.5.tar.bz2

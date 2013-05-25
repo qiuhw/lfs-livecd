@@ -1,8 +1,8 @@
 # mpfr Makefile
 
 NAME= mpfr
-VRS= 2.4.2
-DIR= $(NAME)-$(VRS)
+VER= 2.4.2
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://www.mpfr.org/mpfr-2.4.2/mpfr-2.4.2.tar.bz2

@@ -1,8 +1,8 @@
 # net-tools Makefile
 
 NAME= net-tools
-VRS= 1.60
-DIR= $(NAME)-$(VRS)
+VER= 1.60
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://www.tazenda.demon.co.uk/phil/net-tools/$(FILE)

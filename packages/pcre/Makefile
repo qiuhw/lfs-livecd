@@ -1,8 +1,8 @@
 # PCRE Makefile
 
 NAME= pcre
-VRS= 8.02
-DIR= $(NAME)-$(VRS)
+VER= 8.02
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://sourceforge.net/projects/pcre/files/pcre/8.02/pcre-8.02.tar.bz2

@@ -1,8 +1,8 @@
 # device-mapper Makefile
 
 NAME= device-mapper
-VRS= 1.02.21
-DIR= $(NAME).$(VRS)
+VER= 1.02.21
+DIR= $(NAME).$(VER)
 
 FILE= $(DIR).tgz
 URL-$(FILE)= ftp://sources.redhat.com/pub/dm/$(FILE)

@@ -1,10 +1,10 @@
 # FreeFont Makefile
 
 NAME= freefont
-VRS= 20090104
-DIR= $(NAME)-$(VRS)
+VER= 20090104
+DIR= $(NAME)-$(VER)
 
-FILE= $(NAME)-ttf-$(VRS).tar.gz
+FILE= $(NAME)-ttf-$(VER).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/freefont/freefont-ttf-20090104.tar.gz
 SHA-$(FILE)= 776393e70028e74062754d48c74fe6829271d182
 

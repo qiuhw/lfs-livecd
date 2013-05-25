@@ -1,8 +1,8 @@
 # xine-lib Makefile
 
 NAME= xine-lib
-VRS= 1.1.15
-DIR= $(NAME)-$(VRS)
+VER= 1.1.15
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://sourceforge.net/projects/xine/files/xine-lib%201.1/1.1.15/xine-lib%201.1-1.1.15.tar.bz2

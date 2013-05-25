@@ -1,8 +1,8 @@
 # man-pages-it Makefile
 
 NAME= man-pages-it
-VRS= 2.80
-DIR= $(NAME)-$(VRS)
+VER= 2.80
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= ftp://ftp.pluto.it/pub/pluto/ildp/man/man-pages-it-2.80.tar.gz

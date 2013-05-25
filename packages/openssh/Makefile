@@ -1,8 +1,8 @@
 # OpenSSH Makefile
 
 NAME= openssh
-VRS= 5.5p1
-DIR= $(NAME)-$(VRS)
+VER= 5.5p1
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= https://launchpad.net/openssh/main/5.5p1/+download/openssh-5.5p1.tar.gz

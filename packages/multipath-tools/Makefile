@@ -6,8 +6,8 @@
 # Udev rules are not installed, because they rely on a patched dmsetup
 
 NAME= multipath-tools
-VRS= 0.4.8
-DIR= $(NAME)-$(VRS)
+VER= 0.4.8
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://christophe.varoqui.free.fr/$(NAME)/$(FILE)

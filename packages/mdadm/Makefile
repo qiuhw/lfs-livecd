@@ -1,8 +1,8 @@
 # mdadm Makefile
 
 NAME= mdadm
-VRS= 3.1.2
-DIR= $(NAME)-$(VRS)
+VER= 3.1.2
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= https://www.kernel.org/pub/linux/utils/raid/mdadm/mdadm-3.1.2.tar.bz2

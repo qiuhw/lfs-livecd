@@ -1,8 +1,8 @@
 # LFS-Bootscripts Makefile
 
 NAME= lfs-bootscripts
-VRS= 20100124
-DIR= $(NAME)-$(VRS)
+VER= 20100124
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://www.linuxfromscratch.org/lfs/downloads/6.6/lfs-bootscripts-20100124.tar.bz2

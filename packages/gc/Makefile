@@ -1,8 +1,8 @@
 # Boehm GC Makefile
 
 NAME= gc
-VRS= 6.8
-DIR= $(NAME)$(VRS)
+VER= 6.8
+DIR= $(NAME)$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://www.hpl.hp.com/personal/Hans_Boehm/gc/gc_source/gc6.8.tar.gz
@@ -16,7 +16,7 @@ stage2: Makefile $(FILE)
 	$(std_build)
 
 compile-stage2:
-	sed -i "s|\$$(datadir)/@PACKAGE@|&-$(VRS)|" doc/Makefile.in
+	sed -i "s|\$$(datadir)/@PACKAGE@|&-$(VER)|" doc/Makefile.in
 	./configure --prefix=/usr --datadir=/usr/share/doc --enable-cplusplus
 	make
 	make install

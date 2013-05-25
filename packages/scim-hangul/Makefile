@@ -1,8 +1,8 @@
 # SCIM-Hangul Makefile
 
 NAME= scim-hangul
-VRS= 0.3.2
-DIR= $(NAME)-$(VRS)
+VER= 0.3.2
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://sourceforge.net/projects/scim/files/scim-hangul/0.3.2/scim-hangul-0.3.2.tar.gz

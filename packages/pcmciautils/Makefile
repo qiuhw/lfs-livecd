@@ -1,8 +1,8 @@
 # Sysfsutils Makefile
 
 NAME= pcmciautils
-VRS= 017
-DIR= $(NAME)-$(VRS)
+VER= 017
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.osuosl.org/pub/linux/utils/kernel/pcmcia/pcmciautils-017.tar.bz2

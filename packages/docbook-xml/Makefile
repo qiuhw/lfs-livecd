@@ -1,9 +1,9 @@
 # DocBook XML DTD Makefile
 
 NAME= docbook-xml
-VRS= 4.5
+VER= 4.5
 OLDVERSIONS= 4.1.2 4.2 4.3 4.4
-DIR= $(NAME)-$(VRS)
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).zip
 URL-$(FILE)= http://www.docbook.org/xml/4.5/docbook-xml-4.5.zip
@@ -22,7 +22,7 @@ stage2: Makefile $(FILE) install
 	@touch $@
 
 compile-stage2:
-	../install $(VRS) $(OLDVERSIONS)
+	../install $(VER) $(OLDVERSIONS)
 
 clean:
 	-rm -rf $(DIR)

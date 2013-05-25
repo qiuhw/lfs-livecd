@@ -1,8 +1,8 @@
 # xchat Makefile
 
 NAME= xchat
-VRS= 2.8.6
-DIR= $(NAME)-$(VRS)
+VER= 2.8.6
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://xchat.org/files/source/2.8/xchat-2.8.6.tar.bz2

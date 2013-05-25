@@ -1,8 +1,8 @@
 # fuse Makefile
 
 NAME= fuse
-VRS= 2.8.4
-DIR= $(NAME)-$(VRS)
+VER= 2.8.4
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://sourceforge.net/projects/fuse/files/fuse-2.X/2.8.4/fuse-2.8.4.tar.gz

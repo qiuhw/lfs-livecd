@@ -1,8 +1,8 @@
 # popt Makefile
 
 NAME= popt
-VRS= 1.15
-DIR= $(NAME)-$(VRS)
+VER= 1.15
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://cursosistemasembebidos.googlecode.com/svn-history/r8/trunk/buildroot/dl/popt-1.15.tar.gz

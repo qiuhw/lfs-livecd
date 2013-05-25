@@ -1,8 +1,8 @@
 # RP-pppoe Makefile
 
 NAME= rp-pppoe
-VRS= 3.10
-DIR= $(NAME)-$(VRS)
+VER= 3.10
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://wl500g.googlecode.com/svn-history/r101/trunk/rp-pppoe-3.10.tar.gz

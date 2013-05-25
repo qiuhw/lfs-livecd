@@ -1,8 +1,8 @@
 # Kochi fonts Makefile
 
 NAME= kochi-substitute
-VRS= 20030809
-DIR= $(NAME)-$(VRS)
+VER= 20030809
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= ftp://ftp.uwsg.indiana.edu/linux/gentoo/distfiles/kochi-substitute-20030809.tar.bz2

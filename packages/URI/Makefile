@@ -1,8 +1,8 @@
 # URI Makefile
 
 NAME= URI
-VRS= 1.54
-DIR= $(NAME)-$(VRS)
+VER= 1.54
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/URI-1.54.tar.gz

@@ -1,8 +1,8 @@
 # PCI Utilities Makefile
 
 NAME= pciutils
-VRS= 3.1.7
-DIR= $(NAME)-$(VRS)
+VER= 3.1.7
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= https://www.kernel.org/pub/software/utils/pciutils/pciutils-3.1.7.tar.gz

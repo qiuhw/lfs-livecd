@@ -1,5 +1,5 @@
 NAME= X.org-base
-VRS=X11R7.5
+VER=X11R7.5
 
 include $(MY_ROOT)/scripts/functions
 

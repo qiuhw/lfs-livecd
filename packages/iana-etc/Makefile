@@ -1,8 +1,8 @@
 # Iana-etc Makefile
 
 NAME= iana-etc
-VRS= 2.30
-DIR= $(NAME)-$(VRS)
+VER= 2.30
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://sethwklein.net/iana-etc-2.30.tar.bz2

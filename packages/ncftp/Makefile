@@ -1,8 +1,8 @@
 # ncftp Makefile
 
 NAME= ncftp
-VRS= 3.2.4
-DIR= $(NAME)-$(VRS)
+VER= 3.2.4
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR)-src.tar.bz2
 URL-$(FILE)= http://ftp.ist.utl.pt/pub/ftp/ftp/clients/Unix/ncftp/ncftp-3.2.4-src.tar.bz2

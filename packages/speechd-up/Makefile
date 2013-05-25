@@ -1,8 +1,8 @@
 # speechd-up Makefile
 
 NAME= speechd-up
-VRS= 0.4
-DIR= $(NAME)-$(VRS)
+VER= 0.4
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://www.freebsoft.org/pub/projects/speechd-up/$(FILE)

@@ -1,8 +1,8 @@
 # wpa_supplicant Makefile
 
 NAME= wpa_supplicant
-VRS= 0.6.10
-DIR= $(NAME)-$(VRS)
+VER= 0.6.10
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://wl500g.googlecode.com/svn-history/r3173/branches/rt-n/wpa_supplicant/wpa_supplicant-0.6.10.tar.gz

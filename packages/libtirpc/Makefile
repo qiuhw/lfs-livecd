@@ -1,8 +1,8 @@
 # libtirpc Makefile
 
 NAME= libtirpc
-VRS= 0.2.1
-DIR= $(NAME)-$(VRS)
+VER= 0.2.1
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://jaist.dl.sourceforge.net/project/libtirpc/libtirpc/0.2.1/libtirpc-0.2.1.tar.bz2

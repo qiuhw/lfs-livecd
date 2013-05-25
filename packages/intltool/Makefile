@@ -1,8 +1,8 @@
 # intltool Makefile
 
 NAME= intltool
-VRS= 0.40.6
-DIR= $(NAME)-$(VRS)
+VER= 0.40.6
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnome.org/pub/gnome/sources/intltool/0.40/intltool-0.40.6.tar.bz2

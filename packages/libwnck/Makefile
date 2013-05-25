@@ -1,8 +1,8 @@
 # libwnck Makefile
 
 NAME= libwnck
-VRS= 2.28.0
-DIR= $(NAME)-$(VRS)
+VER= 2.28.0
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= ftp://ftp.mirrorservice.org/sites/ftp.gnome.org/pub/GNOME/desktop/2.28/2.28.0/sources/libwnck-2.28.0.tar.bz2

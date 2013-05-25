@@ -1,8 +1,8 @@
 # OpenSSL Makefile
 
 NAME= openssl
-VRS= 1.0.0
-DIR= $(NAME)-$(VRS)
+VER= 1.0.0
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://www.openssl.org/source/$(FILE)

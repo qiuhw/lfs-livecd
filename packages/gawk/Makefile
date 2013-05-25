@@ -1,8 +1,8 @@
 # Gawk Makefile
 
 NAME= gawk
-VRS= 3.1.7
-DIR= $(NAME)-$(VRS)
+VER= 3.1.7
+DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/gawk/gawk-3.1.7.tar.bz2
