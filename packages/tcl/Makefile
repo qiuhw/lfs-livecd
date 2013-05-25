@@ -1,10 +1,11 @@
 # Tcl Makefile
+# The Tcl package contains the Tool Command Language.
 
 NM= tcl
-DIR= $(NM)8.5.8
+DIR= $(NM)8.6.0
 FILE= $(DIR)-src.tar.gz
-URL-$(FILE)= http://prdownloads.sourceforge.net/tcl/$(FILE)
-SHA-$(FILE)= 21de27a24633c7550383bc7c35736e9acd5cb3a8
+URL-$(FILE)= http://prdownloads.sourceforge.net/$(NM)/$(FILE)
+SUM-$(FILE)= 573aa5fe678e9185ef2b3c56b24658d3
 
 # Targets
 
@@ -14,13 +15,14 @@ stage1: $(FILE)
 	$(std_build)
 
 compile-stage1:
+	sed -i s/500/5000/ generic/regc_nfa.c
 	cd unix ; ./configure --prefix=/tools
 	cd unix ; make
 	cd unix ; TZ=UTC make test
 	cd unix ; make install
-	chmod u+w /tools/lib/libtcl8.5.so
+	chmod u+w /tools/lib/libtcl8.6.so
 	cd unix ; make install-private-headers
-	ln -s tclsh8.5 /tools/bin/tclsh
+	ln -s tclsh8.6 /tools/bin/tclsh
 
 clean:
 	-rm -rf $(DIR)
