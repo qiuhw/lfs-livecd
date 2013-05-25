@@ -172,6 +172,7 @@ tools: \
 	gcc-prebuild \
 	linux-headers-stage1 \
 	glibc-stage1 \
+	libstdc++-stage1 \
 	binutils-stage1 \
 	gcc-stage1 \
 	tcl-stage1 \
