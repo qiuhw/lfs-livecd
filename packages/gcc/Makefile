@@ -2,26 +2,28 @@
 # The GCC package contains the GNU compiler collection, which includes the C and C++ compilers.
 
 NM= gcc
-DIR= $(NM)-4.4.3
+DIR= $(NM)-4.7.2
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= http://ftp.gnu.org/gnu/gcc/$(DIR)/$(FILE)
-SHA-$(FILE)= 619766282734728539ce58a5c383cb371f1999c7
+URL-$(FILE)= http://ftp.gnu.org/gnu/$(NM)/$(DIR)/$(FILE)
+SUM-$(FILE)= cc308a0891e778cfda7a151ab8a6e762
 
 NM1= mpfr
-DIR1= $(NM1)-2.4.2
-FILE1= $(DIR1).tar.bz2
+DIR1= $(NM1)-3.1.1
+FILE1= $(DIR1).tar.xz
 URL-$(FILE1)= http://www.mpfr.org/$(DIR1)/$(FILE1)
-SHA-$(FILE1)= 7ca93006e38ae6e53a995af836173cf10ee7c18c
+SUM-$(FILE1)= 91d51c41fcf2799e4ee7a7126fc95c17
 
 NM2= gmp
-DIR2= $(NM2)-5.0.0
-FILE2= $(DIR2).tar.bz2
-URL-$(FILE2)= http://ftp.gnu.org/gnu/gmp/$(FILE2)
-SHA-$(FILE2)= 11a49c6fec0a3cfae2df9966d321d740af9f603f
+DIR2= $(NM2)-5.1.1
+FILE2= $(DIR2).xz
+URL-$(FILE2)= ftp://ftp.gmplib.org/pub/$(DIR2)/$(FILE2)
+SUM-$(FILE2)= 485b1296e6287fa381e6015b19767989
 
-PATCH1= $(DIR)-startfiles_fix-1.patch
-URL-$(PATCH1)= http://www.linuxfromscratch.org/patches/lfs/6.6/$(PATCH1)
-SHA-$(PATCH1)= 779bc28d8e3b330d189af660a236f7a2f51698fe
+NM3= mpc
+DIR3= $(NM3)-1.0.1
+FILE3= $(DIR3).tar.gz
+URL-$(FILE3)= http://www.multiprecision.org/$(NM3)/download/$(FILE3)
+SUM-$(FILE3)= b32a2e1a3daa392372fbd586d1ed3679
 
 # Targets
 
@@ -33,12 +35,40 @@ prebuild: $(FILE) $(FILE1) $(FILE2)
 compile-prebuild:
 	cd ../$(DIR) ; tar xf ../$(FILE1); mv $(DIR1) $(NM1)
 	cd ../$(DIR) ; tar xf ../$(FILE2); mv $(DIR2) $(NM2)
+	cd ../$(DIR) ; tar xf ../$(FILE3); mv $(DIR3) $(NM3)
+	for file in $$(find ../$(DIR)/gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h) ; \
+	do cp -u $$file{,.orig} && \
+	sed -e 's@/lib\(64\)\?\(32\)\?/ld@/tools&@g' \
+	    -e 's@/usr@/tools@g' $$file.orig > $$file && \
+	echo '' >> $$file && \
+	echo '#undef STANDARD_STARTFILE_PREFIX_1' >> $$file && \
+	echo '#undef STANDARD_STARTFILE_PREFIX_2' >> $$file && \
+	echo '#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"' >> $$file && \
+	echo '#define STANDARD_STARTFILE_PREFIX_2 ""' >> $$file && \
+	touch $$file.orig ; \
+	done
+	sed -i '/k prot/agcc_cv_libc_provides_ssp=yes' ../$(DIR)/gcc/configure
+	sed -i 's/BUILD_INFO=info/BUILD_INFO=/' ../$(DIR)/gcc/configure
 	../$(DIR)/configure \
-		--target=$(LFS_TGT) --prefix=/tools \
-		--disable-nls --disable-shared --disable-multilib \
-		--disable-decimal-float --disable-threads \
-		--disable-libmudflap --disable-libssp \
-		--disable-libgomp --enable-languages=c
+		--target=$(LFS_TGT) \
+		--prefix=/tools \
+		--with-sysroot=$(LFS) \
+		--with-newlib \
+		--without-headers \
+		--with-local-prefix=/tools \
+		--with-native-system-header-dir=/tools/include \
+		--disable-nls \
+		--disable-shared \
+		--disable-multilib \
+		--disable-decimal-float \
+		--disable-threads \
+		--disable-libmudflap \
+		--disable-libssp \
+		--disable-libgomp \
+		--disable-libquadmath \
+		--enable-languages=c \
+		--with-mpfr-include=$(pwd)/../$(DIR)/mpfr/src \
+		--with-mpfr-lib=$(pwd)/mpfr/src/.libs
 	make
 	make install
 	ln -s libgcc.a `$(LFS_TGT)-gcc -print-libgcc-file-name | sed 's/libgcc/&_eh/'`
@@ -47,33 +77,42 @@ stage1: $(FILE) $(FILE1) $(FILE2) $(PATCH1)
 	$(sep_dir_build)
 
 compile-stage1:
-	cd ../$(DIR) ; patch -Np1 -i ../$(PATCH1)
-	sed -i 's@\./fixinc\.sh@-c true@' ../$(DIR)/gcc/Makefile.in
+	cat ../$(DIR)/gcc/limitx.h ../$(DIR)/gcc/glimits.h ../$(DIR)/gcc/limity.h > \
+		`dirname $($LFS_TGT-gcc -print-libgcc-file-name)`/include-fixed/limits.h
 	sed -i 's/^T_CFLAGS =$$/& -fomit-frame-pointer/' ../$(DIR)/gcc/Makefile.in
 	for file in $$(find ../$(DIR)/gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h) ; \
 	do cp -u $$file{,.orig} && \
 	sed -e 's@/lib\(64\)\?\(32\)\?/ld@/tools&@g' \
 	    -e 's@/usr@/tools@g' $$file.orig > $$file && \
 	echo '' >> $$file && \
-	echo '#undef STANDARD_INCLUDE_DIR' >> $$file && \
-	echo '#define STANDARD_INCLUDE_DIR 0' >> $$file && \
-	echo '#define STANDARD_STARTFILE_PREFIX_1 ""' >> $$file && \
+	echo '#undef STANDARD_STARTFILE_PREFIX_1' >> $$file && \
+	echo '#undef STANDARD_STARTFILE_PREFIX_2' >> $$file && \
+	echo '#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"' >> $$file && \
 	echo '#define STANDARD_STARTFILE_PREFIX_2 ""' >> $$file && \
 	touch $$file.orig ; \
 	done
-	for file in $$(find ../$(DIR)/gcc/config -name t-linux64) ; do \
-	  sed -i '/MULTILIB_OSDIRNAMES/d' $$file; \
-	done
 	cd ../$(DIR) ; tar xf ../$(FILE1); mv $(DIR1) $(NM1)
 	cd ../$(DIR) ; tar xf ../$(FILE2); mv $(DIR2) $(NM2)
-	CC="$(LFS_TGT)-gcc -B/tools/lib/" \
-		AR=$(LFS_TGT)-ar RANLIB=$(LFS_TGT)-ranlib \
-		../$(DIR)/configure --prefix=/tools \
-		--with-local-prefix=/tools --enable-clocale=gnu \
-		--enable-shared --enable-threads=posix \
-		--enable-__cxa_atexit --enable-languages=c,c++ \
-		--disable-libstdcxx-pch --disable-multilib \
-		--disable-bootstrap
+	cd ../$(DIR) ; tar xf ../$(FILE3); mv $(DIR3) $(NM3)
+	sed -i 's/BUILD_INFO=info/BUILD_INFO=/' ../$(DIR)/gcc/configure
+	CC=$(LFS_TGT)-gcc \
+	AR=$(LFS_TGT)-ar \
+	RANLIB=$(LFS_TGT)-ranlib \
+	../$(DIR)/configure \
+		--prefix=/tools \
+		--with-local-prefix=/tools \
+		--with-native-system-header-dir=/tools/include \
+		--enable-clocale=gnu \
+		--enable-shared \
+		--enable-threads=posix \
+		--enable-__cxa_atexit \
+		--enable-languages=c,c++ \
+		--disable-libstdcxx-pch \
+		--disable-multilib \
+		--disable-bootstrap \
+		--disable-libgomp \
+		--with-mpfr-include=$(pwd)/../$(DIR)/mpfr/src \
+		--with-mpfr-lib=$(pwd)/mpfr/src/.libs
 	make
 	make install
 	ln -s gcc /tools/bin/cc
@@ -87,8 +126,8 @@ stage2: $(FILE)
 
 compile-stage2:
 	sed -i 's/install_to_$$(INSTALL_DEST) //' ../$(DIR)/libiberty/Makefile.in
-	sed -i 's@\./fixinc\.sh@-c true@' ../$(DIR)/gcc/Makefile.in
-	sed -i 's/getline/get_line/' ../$(DIR)/libiberty/testsuite/test-demangle.c
+	sed -i 's/BUILD_INFO=info/BUILD_INFO=/' ../$(DIR)/gcc/configure
+	sed -i -e /autogen/d -e /check.sh/d ../$(DIR)/fixincludes/Makefile.in
 	../$(DIR)/configure \
 		--prefix=/usr \
 		--libexecdir=/usr/lib \
@@ -99,7 +138,9 @@ compile-stage2:
 		--enable-languages=c,c++ \
 		--disable-multilib \
 		--disable-bootstrap \
+		--with-system-zlib
 	make
+	ulimit -s 32768
 	make -k check
 	../$(DIR)/contrib/test_summary |grep -A7 Summ
 	make install
@@ -114,6 +155,8 @@ compile-stage2:
 	grep "/lib.*/libc.so.6 " dummy.log
 	grep found dummy.log
 	rm dummy.c a.out dummy.log
+	mkdir -p /usr/share/gdb/auto-load/usr/lib
+	mv /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib
 	
 clean:
 	-rm -rf $(DIR)

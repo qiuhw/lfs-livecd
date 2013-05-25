@@ -23,5 +23,5 @@ define download
 	@ln -sf "$(SRC)/$(1)" .
 endef
 
-%.gz %.tgz %.bz2 %.zip %.patch %.jpg %.run:
+%.xz %.bz2 %.gz %.tgz %.zip %.patch %.jpg %.run:
 	$(call download,$@,$(URL-$@),$(SUM-$@))
