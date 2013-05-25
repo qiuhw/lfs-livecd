@@ -11,11 +11,7 @@ SUM-$(FILE)= a78a3b71fd59504df3ff3dbc0a2195a1410e9eac
 
 include $(MY_ROOT)/scripts/functions
 
-ftpget:
-	@cd $(SRC) ; sh $(MY_ROOT)/scripts/ftpget $(NAME) $(VER)
-	@touch $@
-
-prebuild: ftpget $(FILE)
+prebuild: $(FILE)
 	$(std_build)
 
 compile-prebuild:
