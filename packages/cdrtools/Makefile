@@ -1,16 +1,14 @@
-# CDRTools Makefile
+NAME = cdrtools
+VER  = 3.00
+DIR  = $(NAME)-$(VER)
 
-NAME= cdrtools
-VER= 3.00
-DIR= $(NAME)-$(VER)
-
-FILE= $(DIR).tar.bz2
-URL-$(FILE)= http://ftp.gwdg.de/linux/cdrecord/cdrtools-3.00.tar.bz2
-SUM-$(FILE)= 6464844d6b936d4f43ee98a04d637cd91131de4e
+FILE = $(DIR).tar.bz2
+URL-$(FILE) = http://ftp.gwdg.de/linux/cdrecord/$(FILE)
+SUM-$(FILE) = f9fbab08fbd458b0d2312976d8c5f558
 
 include $(MY_ROOT)/scripts/functions
 
-stage1: Makefile $(FILE)
+stage1: $(FILE)
 	$(std_build)
 
 compile-stage1:
@@ -20,4 +18,4 @@ compile-stage1:
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: clean compile-stage1
+.PHONY: compile-stage1 clean
