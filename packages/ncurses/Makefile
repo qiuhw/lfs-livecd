@@ -1,11 +1,10 @@
-# Ncurses Makefile
-# The Ncurses package contains libraries for terminal-independent handling of character screens.
+NAME = ncurses
+VER  = 5.9
+DIR  = $(NAME)-$(VER)
 
-NM= ncurses
-DIR= $(NM)-5.7
-FILE= $(DIR).tar.gz
-URL-$(FILE)= ftp://ftp.gnu.org/gnu/$(NM)/$(FILE)
-SHA-$(FILE)= 8233ee56ed84ae05421e4e6d6db6c1fe72ee6797
+FILE = $(DIR).tar.gz
+URL-$(FILE) = ftp://ftp.gnu.org/gnu/$(NAME)/$(FILE)
+SUM-$(FILE) = 8cb9c412e5f2d96bc6f459aa8c6282a1
 
 # Targets
 
@@ -27,8 +26,8 @@ stage2: $(FILE)
 	$(std_build)
 
 compile-stage2:
-	./configure \
-		--prefix=/usr \
+	./configure --prefix=/usr \
+		--mandir=/usr/share/man \
 		--with-shared \
 		--without-debug \
 		--enable-widec
@@ -40,6 +39,7 @@ compile-stage2:
 	  rm -f /usr/lib/lib$${lib}.so ; \
 	  echo "INPUT(-l$${lib}w)" >/usr/lib/lib$${lib}.so ; \
 	  ln -sf lib$${lib}w.a /usr/lib/lib$${lib}.a ; \
+	  ln -sf $${lib}w.pc /usr/lib/pkgconfig/$${lib}.pc ; \
 	done
 	ln -sf libncurses++w.a /usr/lib/libncurses++.a
 	rm -f /usr/lib/libcursesw.so
