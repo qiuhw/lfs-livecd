@@ -3,15 +3,11 @@
 # The Binutils package contains a liner, an assembler, and other tools for handling object files.
 
 NM= binutils
-DIR= $(NM)-2.23.1
+DIR= $(NM)-2.23.2
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/$(NM)/$(FILE)
-SUM-$(FILE)= 33adb18c3048d057ac58d07a3f1adb38
-
-PATCH= $(DIR)-testsuite_fix-1.patch
-URL-$(PATCH)= http://www.linuxfromscratch.org/patches/lfs/7.3/$(PATCH)
-SUM-$(PATCH)= cb47fae1bc572d45f4b0cff8ae8ecba8
+SUM-$(FILE)= 4f8fa651e35ef262edc01d60fb45702e
 
 # Targets
 
@@ -21,6 +17,8 @@ prebuild: $(FILE)
 	$(sep_dir_build)
 
 compile-prebuild:
+	sed -i -e 's/@colophon/@@colophon/' \
+		   -e 's/doc@cygnus.com/doc@@cygnus.com/' ../$(DIR)/bfd/doc/bfd.texinfo
 	../$(DIR)/configure \
 		--prefix=/tools \
 		--with-sysroot=$(LFS) \
@@ -36,13 +34,16 @@ stage1: $(FILE)
 	$(sep_dir_build)
 
 compile-stage1:
+	sed -i -e 's/@colophon/@@colophon/' \
+		   -e 's/doc@cygnus.com/doc@@cygnus.com/' ../$(DIR)/bfd/doc/bfd.texinfo
 	CC=$(LFS_TGT)-gcc \
 	AR=$(LFS_TGT)-ar \
 	RANLIB=$(LFS_TGT)-ranlib \
 	../$(DIR)/configure \
 		--prefix=/tools \
 		--disable-nls \
-		--with-lib-path=/tools/lib
+		--with-lib-path=/tools/lib \
+		--with-sysroot
 	make
 	make install
 	make -C ld clean
@@ -55,7 +56,8 @@ stage2: $(FILE)
 compile-stage2:
 	rm -f ../$(DIR)/etc/standards.info
 	sed -i.bak '/^INFO/s/standards.info //' ../$(DIR)/etc/Makefile.in
-	cd ../$(DIR) ; patch -Np1 -i ../$(PATCH)
+	sed -i -e 's/@colophon/@@colophon/' \
+		   -e 's/doc@cygnus.com/doc@@cygnus.com/' ../$(DIR)/bfd/doc/bfd.texinfo
 	../$(DIR)/configure \
 		--prefix=/usr \
 		--enable-shared
