@@ -2,20 +2,20 @@
 # The GCC package contains the GNU compiler collection, which includes the C and C++ compilers.
 
 NM= gcc
-DIR= $(NM)-4.7.2
+DIR= $(NM)-4.8.0
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/$(NM)/$(DIR)/$(FILE)
-SUM-$(FILE)= cc308a0891e778cfda7a151ab8a6e762
+SUM-$(FILE)= e6040024eb9e761c3bea348d1fa5abb0
 
 NM1= mpfr
-DIR1= $(NM1)-3.1.1
+DIR1= $(NM1)-3.1.2
 FILE1= $(DIR1).tar.xz
 URL-$(FILE1)= http://www.mpfr.org/$(DIR1)/$(FILE1)
-SUM-$(FILE1)= 91d51c41fcf2799e4ee7a7126fc95c17
+SUM-$(FILE1)= e3d203d188b8fe60bb6578dd3152e05c
 
 NM2= gmp
 DIR2= $(NM2)-5.1.1
-FILE2= $(DIR2).xz
+FILE2= $(DIR2).tar.xz
 URL-$(FILE2)= ftp://ftp.gmplib.org/pub/$(DIR2)/$(FILE2)
 SUM-$(FILE2)= 485b1296e6287fa381e6015b19767989
 
@@ -48,7 +48,6 @@ compile-prebuild:
 	touch $$file.orig ; \
 	done
 	sed -i '/k prot/agcc_cv_libc_provides_ssp=yes' ../$(DIR)/gcc/configure
-	sed -i 's/BUILD_INFO=info/BUILD_INFO=/' ../$(DIR)/gcc/configure
 	../$(DIR)/configure \
 		--target=$(LFS_TGT) \
 		--prefix=/tools \
@@ -62,11 +61,14 @@ compile-prebuild:
 		--disable-multilib \
 		--disable-decimal-float \
 		--disable-threads \
-		--disable-libmudflap \
-		--disable-libssp \
 		--disable-libgomp \
+		--disable-libitm \
+		--disable-libmudflap \
 		--disable-libquadmath \
-		--enable-languages=c \
+		--disable-libsanitizer \
+		--disable-libssp \
+		--disable-libstdc++-v3 \
+		--enable-languages=c,c++ \
 		--with-mpfr-include=$(pwd)/../$(DIR)/mpfr/src \
 		--with-mpfr-lib=$(pwd)/mpfr/src/.libs
 	make
@@ -94,8 +96,8 @@ compile-stage1:
 	cd ../$(DIR) ; tar xf ../$(FILE1); mv $(DIR1) $(NM1)
 	cd ../$(DIR) ; tar xf ../$(FILE2); mv $(DIR2) $(NM2)
 	cd ../$(DIR) ; tar xf ../$(FILE3); mv $(DIR3) $(NM3)
-	sed -i 's/BUILD_INFO=info/BUILD_INFO=/' ../$(DIR)/gcc/configure
 	CC=$(LFS_TGT)-gcc \
+	CXX=$(LFS_TGT)-g++ \
 	AR=$(LFS_TGT)-ar \
 	RANLIB=$(LFS_TGT)-ranlib \
 	../$(DIR)/configure \
@@ -126,8 +128,8 @@ stage2: $(FILE)
 
 compile-stage2:
 	sed -i 's/install_to_$$(INSTALL_DEST) //' ../$(DIR)/libiberty/Makefile.in
-	sed -i 's/BUILD_INFO=info/BUILD_INFO=/' ../$(DIR)/gcc/configure
 	sed -i -e /autogen/d -e /check.sh/d ../$(DIR)/fixincludes/Makefile.in
+	mv ../$(DIR)/libmudflap/testsuite/libmudflap.c++/pass41-frag.cxx{,.disable}
 	../$(DIR)/configure \
 		--prefix=/usr \
 		--libexecdir=/usr/lib \
@@ -138,6 +140,7 @@ compile-stage2:
 		--enable-languages=c,c++ \
 		--disable-multilib \
 		--disable-bootstrap \
+		--disable-install-libiberty \
 		--with-system-zlib
 	make
 	ulimit -s 32768
