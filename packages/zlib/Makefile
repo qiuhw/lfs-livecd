@@ -1,14 +1,10 @@
-# Zlib Makefile
+NAME = zlib
+VER  = 1.2.8
+DIR  = $(NAME)-$(VER)
 
-NAME= zlib
-VER= 1.2.3
-DIR= $(NAME)-$(VER)
-
-FILE= $(DIR).tar.bz2
-URL-$(FILE)= http://www.zlib.net/zlib-1.2.3.tar.bz2
-SUM-$(FILE)= 967e280f284d02284b0cd8872a8e2e04bfdc7283
-
-# Targets
+FILE = $(DIR).tar.xz
+URL-$(FILE) = http://www.zlib.net/$(FILE)
+SUM-$(FILE) = 28f1205d8dd2001f26fec1e8c2cebe37
 
 include $(MY_ROOT)/scripts/functions
 
@@ -16,26 +12,21 @@ stage1: $(FILE)
 	$(std_build)
 
 compile-stage1:
-	./configure --prefix=/tools --shared
+	./configure --prefix=/tools
 	make
 	make install
 
-stage2: Makefile $(FILE)
+stage2: $(FILE)
 	$(std_build)
 
 compile-stage2:
-	./configure --prefix=/usr --shared --libdir=/lib
+	./configure --prefix=/usr
 	make
 	make install
-	rm -v /lib/libz.so
-	ln -sfv ../../lib/libz.so.$(VER) /usr/lib/libz.so
-	make clean
-	./configure --prefix=/usr --libdir=/usr/lib
-	make
-	make install
-	chmod 644 /usr/lib/libz.a
+	mv /usr/lib/libz.so.* /lib
+	ln -sf ../../lib/libz.so.$(VER) /usr/lib/libz.so
 
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: clean chroot compile-stage2
+.PHONY: compile-stage1 compile-stage2 clean
