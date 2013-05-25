@@ -6,11 +6,11 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.nux.at/pub/dev86/$(FILE)
-SHA-$(FILE)= 656f06b4b26d08412132e338baa25e42d713eeec
+SUM-$(FILE)= 656f06b4b26d08412132e338baa25e42d713eeec
 
 PATCH= $(DIR)-x86_64-1.patch
 URL-$(PATCH)= http://svn.cross-lfs.org/svn/repos/cross-lfs/trunk/patches/$(PATCH)
-SHA-$(PATCH)= 2c967c062fbee4e40ca1bf55feec2033e132e0a9
+SUM-$(PATCH)= 2c967c062fbee4e40ca1bf55feec2033e132e0a9
 
 # Targets
 

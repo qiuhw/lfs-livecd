@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://www.freebsoft.org/pub/projects/speechd/speech-dispatcher-0.6.7.tar.gz
-SHA-$(FILE)= 00fe5051930a00c2bcdf67683410beedfa066d4e
+SUM-$(FILE)= 00fe5051930a00c2bcdf67683410beedfa066d4e
 
 # Targets
 

@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://prdownloads.sourceforge.net/strace/$(FILE)
-SHA-$(FILE)= 3f5c8874610d7e3d13fc1c8b2e5fb5513468c45a
+SUM-$(FILE)= 3f5c8874610d7e3d13fc1c8b2e5fb5513468c45a
 
 # Targets
 

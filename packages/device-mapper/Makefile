@@ -6,7 +6,7 @@ DIR= $(NAME).$(VER)
 
 FILE= $(DIR).tgz
 URL-$(FILE)= ftp://sources.redhat.com/pub/dm/$(FILE)
-SHA-$(FILE)= b9ce3e5400cf66e2b5b2eebc672268360c371692
+SUM-$(FILE)= b9ce3e5400cf66e2b5b2eebc672268360c371692
 
 # Targets
 

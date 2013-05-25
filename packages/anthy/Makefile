@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= ftp://ftp.uwsg.indiana.edu/linux/gentoo/distfiles/anthy-9100h.tar.gz
-SHA-$(FILE)= bfea9e74e208c4b976b6bd7ac6784cd290c636fd
+SUM-$(FILE)= bfea9e74e208c4b976b6bd7ac6784cd290c636fd
 
 # Targets
 

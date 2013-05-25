@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= ftp://ftp.mutt.org/mutt/devel/mutt-1.5.20.tar.gz
-SHA-$(FILE)= d2bec7a33771f128ca49b1723b06b6d248a35d31
+SUM-$(FILE)= d2bec7a33771f128ca49b1723b06b6d248a35d31
 
 # Targets
 

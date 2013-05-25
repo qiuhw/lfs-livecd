@@ -7,7 +7,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://at-mirror.tuxonice.net/downloads/all/$(FILE)
-SHA-$(FILE)= b81808f499068937a9696e977ef1cfd499d21eee
+SUM-$(FILE)= b81808f499068937a9696e977ef1cfd499d21eee
 
 PATCH1=$(DIR)-lfs-3.patch
 

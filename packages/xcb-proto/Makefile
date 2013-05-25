@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://xcb.freedesktop.org/dist/xcb-proto-1.6.tar.bz2
-SHA-$(FILE)= e82418557c7f59f29da9ec18e0906d6d78e3a164
+SUM-$(FILE)= e82418557c7f59f29da9ec18e0906d6d78e3a164
 
 # Targets
 

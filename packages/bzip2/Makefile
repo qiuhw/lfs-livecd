@@ -8,11 +8,11 @@ DIR= $(NAME)-1.0.5
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://www.bzip.org/1.0.5/$(FILE)
-SHA-$(FILE)= 8b02713ea0c8eb501cc8bdac4432d7f29700f767
+SUM-$(FILE)= 8b02713ea0c8eb501cc8bdac4432d7f29700f767
 
 PATCH= $(DIR)-install_docs-1.patch
 URL-$(PATCH)= http://www.linuxfromscratch.org/patches/lfs/6.6/$(PATCH)
-SHA-$(PATCH)= 86fa168b260bb12651ebfa6d47939e926e067036
+SUM-$(PATCH)= 86fa168b260bb12651ebfa6d47939e926e067036
 
 # Targets
 

@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://jfs.sourceforge.net/project/pub/$(FILE)
-SHA-$(FILE)= 27837760bd65f32758d6048803387b8b3443467f
+SUM-$(FILE)= 27837760bd65f32758d6048803387b8b3443467f
 
 # Targets
 

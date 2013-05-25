@@ -6,15 +6,15 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://cpan.org/src/5.0/perl-5.10.1.tar.bz2
-SHA-$(FILE)= 98b762b5cd4fb76dd354dfa5ba0d21bc2acacaf2
+SUM-$(FILE)= 98b762b5cd4fb76dd354dfa5ba0d21bc2acacaf2
 
 PATCH= $(DIR)-utf8-1.patch
 URL-$(PATCH)= http://www.linuxfromscratch.org/patches/lfs/6.6/perl-5.10.1-utf8-1.patch
-SHA-$(PATCH)= 8fd13345554b15be27cbb1ba5d0a190793ea6489
+SUM-$(PATCH)= 8fd13345554b15be27cbb1ba5d0a190793ea6489
 
 PATCH1= $(DIR)-libc-1.patch
 URL-$(PATCH1)= http://www.linuxfromscratch.org/patches/lfs/6.6/perl-5.10.1-libc-1.patch
-SHA-$(PATCH1)= 67c2e4e4d63f88b83cd8042dad04c07a4054037b
+SUM-$(PATCH1)= 67c2e4e4d63f88b83cd8042dad04c07a4054037b
 
 # Targets
 

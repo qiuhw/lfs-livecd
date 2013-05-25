@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://www.netfilter.org/projects/iptables/files/iptables-1.4.7.tar.bz2
-SHA-$(FILE)= 825594a2c5017852b03ce441f592c67070b4b29c
+SUM-$(FILE)= 825594a2c5017852b03ce441f592c67070b4b29c
 
 # Targets
 

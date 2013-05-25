@@ -6,11 +6,11 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/patch/patch-2.6.1.tar.bz2
-SHA-$(FILE)= 105f313d14b5458e0aa229c518bda9ebdf921a1b
+SUM-$(FILE)= 105f313d14b5458e0aa229c518bda9ebdf921a1b
 
 PATCH= $(DIR)-test_fix-1.patch
 URL-$(PATCH)= http://www.linuxfromscratch.org/patches/lfs/6.6/patch-2.6.1-test_fix-1.patch
-SHA-$(PATCH)= c6e7b69a51c282c910dcc30365bd7a428f244a45
+SUM-$(PATCH)= c6e7b69a51c282c910dcc30365bd7a428f244a45
 
 # Targets
 

@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= ftp://ftp.uwsg.indiana.edu/linux/gentoo/distfiles/libnfsidmap-0.23.tar.gz
-SHA-$(FILE)= bd9647582f7d863a483460815f0a0b1450884c3d
+SUM-$(FILE)= bd9647582f7d863a483460815f0a0b1450884c3d
 
 # Targets
 

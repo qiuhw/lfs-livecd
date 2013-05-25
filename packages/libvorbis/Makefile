@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://downloads.xiph.org/releases/vorbis/libvorbis-1.2.3.tar.bz2
-SHA-$(FILE)= 9b0ae094aebe75cee2d2bf3b7572deccab3746cb
+SUM-$(FILE)= 9b0ae094aebe75cee2d2bf3b7572deccab3746cb
 
 # Targets
 

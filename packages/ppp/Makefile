@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://wcoserver.googlecode.com/files/ppp-2.4.5.tar.gz
-SHA-$(FILE)= cb977b31584e3488e08a643aaa672fdb229d2e78
+SUM-$(FILE)= cb977b31584e3488e08a643aaa672fdb229d2e78
 
 # Targets
 

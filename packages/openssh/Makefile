@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= https://launchpad.net/openssh/main/5.5p1/+download/openssh-5.5p1.tar.gz
-SHA-$(FILE)= 361c6335e74809b26ea096b34062ba8ff6c97cd6
+SUM-$(FILE)= 361c6335e74809b26ea096b34062ba8ff6c97cd6
 
 # Targets
 

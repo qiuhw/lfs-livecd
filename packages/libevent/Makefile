@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://sourceforge.net/projects/levent/files/libevent/libevent-1.4/libevent-1.4.13-stable.tar.gz
-SHA-$(FILE)= b0c4e9801b74f8bed1502353674288a5e4f1ca16
+SUM-$(FILE)= b0c4e9801b74f8bed1502353674288a5e4f1ca16
 
 # Targets
 

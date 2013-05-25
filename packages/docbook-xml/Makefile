@@ -7,7 +7,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).zip
 URL-$(FILE)= http://www.docbook.org/xml/4.5/docbook-xml-4.5.zip
-SHA-$(FILE)= b9124233b50668fb508773aa2b3ebc631d7c1620
+SUM-$(FILE)= b9124233b50668fb508773aa2b3ebc631d7c1620
 
 # Targets
 

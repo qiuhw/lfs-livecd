@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.samba.org/pub/samba/stable/samba-3.5.2.tar.gz
-SHA-$(FILE)= f49733ea2fb9715bd4ec24d7ec96668cc6a97a1f
+SUM-$(FILE)= f49733ea2fb9715bd4ec24d7ec96668cc6a97a1f
 
 # Targets
 

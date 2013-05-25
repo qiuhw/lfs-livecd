@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/gnutls/gnutls-2.8.6.tar.bz2
-SHA-$(FILE)= bff911d4fd7389aa6698a644b3748eb2d23715bc
+SUM-$(FILE)= bff911d4fd7389aa6698a644b3748eb2d23715bc
 
 # Targets
 

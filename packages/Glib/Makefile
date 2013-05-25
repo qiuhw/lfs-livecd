@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://sourceforge.net/projects/gtk2-perl/files/Glib/1.222/Glib-1.222.tar.gz
-SHA-$(FILE)= 526bbd4058a0cbbef22b5a87d07f8f3dbd7fae0d
+SUM-$(FILE)= 526bbd4058a0cbbef22b5a87d07f8f3dbd7fae0d
 
 # Targets
 

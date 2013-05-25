@@ -6,11 +6,11 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).zip
 URL-$(FILE)= http://www.ece.uvic.ca/~mdadams/jasper/software/jasper-1.900.1.zip
-SHA-$(FILE)= 9c5735f773922e580bf98c7c7dfda9bbed4c5191
+SUM-$(FILE)= 9c5735f773922e580bf98c7c7dfda9bbed4c5191
 
 PATCH= $(DIR)-security_fixes-1.patch
 URL-$(PATCH)= http://www.linuxfromscratch.org/patches/blfs/svn/jasper-1.900.1-security_fixes-1.patch
-SHA-$(PATCH)= 025551612fb08b0694f71784d397eed3d1452ef6
+SUM-$(PATCH)= 025551612fb08b0694f71784d397eed3d1452ef6
 
 # Targets
 

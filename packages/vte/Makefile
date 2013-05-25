@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnome.org/mirror/gnome.org/sources/vte/0.22/vte-0.22.5.tar.bz2
-SHA-$(FILE)= c9dd126991cf6d50ac3c678c0e117a5b2fefc180
+SUM-$(FILE)= c9dd126991cf6d50ac3c678c0e117a5b2fefc180
 
 # Targets
 

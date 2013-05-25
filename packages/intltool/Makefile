@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnome.org/pub/gnome/sources/intltool/0.40/intltool-0.40.6.tar.bz2
-SHA-$(FILE)= 4f6469e09e2c06a8072dffff36f84ff401d7ea75
+SUM-$(FILE)= 4f6469e09e2c06a8072dffff36f84ff401d7ea75
 
 # Targets
 

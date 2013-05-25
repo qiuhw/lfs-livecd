@@ -6,7 +6,7 @@ DIR= $(NAME)
 
 FILE= pa_$(VER).tar.gz
 URL-$(FILE)= http://www.portaudio.com/archives/pa_stable_v19_20071207.tar.gz
-SHA-$(FILE)= 3841453bb7be672a15b6b632ade6f225eb0a4efc
+SUM-$(FILE)= 3841453bb7be672a15b6b632ade6f225eb0a4efc
 
 # Targets
 

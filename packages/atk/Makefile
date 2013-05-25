@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnome.org/pub/gnome/sources/atk/1.28/atk-1.28.0.tar.bz2
-SHA-$(FILE)= 4cf9c171f5b305453396501b4c29a68ab3a9ec89
+SUM-$(FILE)= 4cf9c171f5b305453396501b4c29a68ab3a9ec89
 
 # Targets
 

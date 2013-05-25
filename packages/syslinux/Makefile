@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= https://www.kernel.org/pub/linux/utils/boot/syslinux/3.xx/syslinux-3.86.tar.bz2
-SHA-$(FILE)= 2d41043a3083c26e5e6bac3a5e8f17c3c0d963a1
+SUM-$(FILE)= 2d41043a3083c26e5e6bac3a5e8f17c3c0d963a1
 
 # Targets
 

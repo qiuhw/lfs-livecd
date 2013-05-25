@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://sourceforge.net/projects/hdparm/files/hdparm/hdparm-9.28.tar.gz
-SHA-$(FILE)= b320997655788e5cb658e643d82ddc2e30e187d4
+SUM-$(FILE)= b320997655788e5cb658e643d82ddc2e30e187d4
 
 # Targets
 

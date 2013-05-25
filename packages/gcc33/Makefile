@@ -6,15 +6,15 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/gcc/$(DIR)/$(FILE)
-SHA-$(FILE)= 2cc43978bb09af6c2ccfdf74797d10d7cc2596fb
+SUM-$(FILE)= 2cc43978bb09af6c2ccfdf74797d10d7cc2596fb
 
 PATCH1= $(DIR)-no_fixincludes-1.patch
 URL-$(PATCH1)= http://www.linuxfromscratch.org/patches/blfs/svn/$(PATCH1)
-SHA-$(PATCH1)= 0ff124e669753a80050fe8b8746067d3eb8503b1
+SUM-$(PATCH1)= 0ff124e669753a80050fe8b8746067d3eb8503b1
 
 PATCH2= $(DIR)-linkonce-1.patch
 URL-$(PATCH2)= http://www.linuxfromscratch.org/patches/blfs/svn/$(PATCH2)
-SHA-$(PATCH2)= dd73dfe163ec16b59d3f258e7d60099a8c8de424
+SUM-$(PATCH2)= dd73dfe163ec16b59d3f258e7d60099a8c8de424
 
 # Targets
 

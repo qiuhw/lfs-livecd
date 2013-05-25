@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://sourceforge.net/projects/nfs/files/nfs-utils/1.2.2/nfs-utils-1.2.2.tar.bz2
-SHA-$(FILE)= bf823cb85844de3ff3bf07601698aaa1cfdd8a28
+SUM-$(FILE)= bf823cb85844de3ff3bf07601698aaa1cfdd8a28
 
 # Targets
 

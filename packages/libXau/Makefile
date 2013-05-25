@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.x.org/pub/individual/lib/libXau-1.0.5.tar.bz2
-SHA-$(FILE)= b1c68843edf7e80ce952f7ee0541448f41bac202
+SUM-$(FILE)= b1c68843edf7e80ce952f7ee0541448f41bac202
 
 # Targets
 

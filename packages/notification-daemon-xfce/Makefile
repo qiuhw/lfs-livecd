@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://goodies.xfce.org/releases/notification-daemon-xfce/$(FILE)
-SHA-$(FILE)= 6edc6a21df03514880abe892befe4a7a58437107
+SUM-$(FILE)= 6edc6a21df03514880abe892befe4a7a58437107
 
 # Targets
 

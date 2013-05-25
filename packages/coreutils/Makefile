@@ -6,15 +6,15 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/coreutils/coreutils-8.4.tar.gz
-SHA-$(FILE)= 89eefb041215c30408261f46f59dc08e4b500edf
+SUM-$(FILE)= 89eefb041215c30408261f46f59dc08e4b500edf
 
 PATCH1= $(DIR)-uname-1.patch
 URL-$(PATCH1)= http://www.linuxfromscratch.org/patches/lfs/6.6/coreutils-8.4-uname-1.patch
-SHA-$(PATCH1)= 366cc6a73a0f9c27d33e96983df39c1ed631b764
+SUM-$(PATCH1)= 366cc6a73a0f9c27d33e96983df39c1ed631b764
 
 PATCH2= $(DIR)-i18n-1.patch
 URL-$(PATCH2)= http://www.linuxfromscratch.org/patches/lfs/6.6/coreutils-8.4-i18n-1.patch
-SHA-$(PATCH2)= 36ce7ce492b5873044e0576e69616ecc676f1bf4
+SUM-$(PATCH2)= 36ce7ce492b5873044e0576e69616ecc676f1bf4
 
 # Targets
 

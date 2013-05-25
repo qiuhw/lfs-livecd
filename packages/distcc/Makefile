@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://distcc.googlecode.com/files/distcc-3.1.tar.bz2
-SHA-$(FILE)= 30663e8ff94f13c0553fbfb928adba91814e1b3a
+SUM-$(FILE)= 30663e8ff94f13c0553fbfb928adba91814e1b3a
 
 # Targets
 

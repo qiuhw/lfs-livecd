@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://xmlsoft.org/sources/libxml2-2.7.7.tar.gz
-SHA-$(FILE)= 8592824a2788574a172cbddcdc72f734ff87abe3
+SUM-$(FILE)= 8592824a2788574a172cbddcdc72f734ff87abe3
 
 # Targets
 

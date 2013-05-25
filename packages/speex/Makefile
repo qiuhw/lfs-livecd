@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://downloads.us.xiph.org/releases/speex/speex-1.2rc1.tar.gz
-SHA-$(FILE)= 52daa72572e844e5165315e208da539b2a55c5eb
+SUM-$(FILE)= 52daa72572e844e5165315e208da539b2a55c5eb
 
 # Targets
 

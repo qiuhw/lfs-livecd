@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://sethwklein.net/iana-etc-2.30.tar.bz2
-SHA-$(FILE)= 218593bcb9264014c4e397d838b2c218eac9df06
+SUM-$(FILE)= 218593bcb9264014c4e397d838b2c218eac9df06
 
 # Targets
 

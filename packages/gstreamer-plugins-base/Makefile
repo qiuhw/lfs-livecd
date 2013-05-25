@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-0.10.25.tar.bz2
-SHA-$(FILE)= 6057e6552c936f3dbe9ba01269bc0bcf8469ae0a
+SUM-$(FILE)= 6057e6552c936f3dbe9ba01269bc0bcf8469ae0a
 
 # Targets
 

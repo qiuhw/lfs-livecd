@@ -6,11 +6,11 @@ DIR= tcp_wrappers_$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://files.ichilton.co.uk/nfs/tcp_wrappers_7.6.tar.gz
-SHA-$(FILE)= 61689ec85b80f4ca0560aef3473eccd9e9e80481
+SUM-$(FILE)= 61689ec85b80f4ca0560aef3473eccd9e9e80481
 
 PATCH1= tcp_wrappers-$(VER)-shared_lib_plus_plus-1.patch
 URL-$(PATCH1)= http://www.linuxfromscratch.org/patches/blfs/6.3/tcp_wrappers-7.6-shared_lib_plus_plus-1.patch
-SHA-$(PATCH1)= 915652d43c57f346d6f0a14eeaf706bbfed98ffa
+SUM-$(PATCH1)= 915652d43c57f346d6f0a14eeaf706bbfed98ffa
 
 # Targets
 

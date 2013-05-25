@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://www.greenwoodsoftware.com/less/less-436.tar.gz
-SHA-$(FILE)= f78998a1a79a7e1962c901dd41bdc3d1c2005471
+SUM-$(FILE)= f78998a1a79a7e1962c901dd41bdc3d1c2005471
 
 # Targets
 

@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://liboil.freedesktop.org/download/liboil-0.3.17.tar.gz
-SHA-$(FILE)= f9d7103a3a4a4089f56197f81871ae9129d229ed
+SUM-$(FILE)= f9d7103a3a4a4089f56197f81871ae9129d229ed
 
 # Targets
 

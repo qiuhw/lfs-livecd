@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.x.org/pub/individual/xserver/$(FILE)
-SHA-$(FILE)= d31e259b3ab975e2c1baea8f7310b57152ae3c62
+SUM-$(FILE)= d31e259b3ab975e2c1baea8f7310b57152ae3c62
 
 # Targets
 

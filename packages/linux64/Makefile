@@ -13,11 +13,11 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://www.kernel.org/pub/linux/kernel/v2.6/$(FILE)
-SHA-$(FILE)= a04e4efb32884ab95fe0ec38d60552cf3e0c49b8
+SUM-$(FILE)= a04e4efb32884ab95fe0ec38d60552cf3e0c49b8
 
 PATCH1= reiser4-for-2.6.22-2.patch.gz
 URL-$(PATCH1)= ftp://ftp.namesys.com/pub/reiser4-for-2.6/2.6.22/$(PATCH1)
-SHA-$(PATCH1)= a49f8a6d9851915c31f4c44e00519e0e4d2461c7
+SUM-$(PATCH1)= a49f8a6d9851915c31f4c44e00519e0e4d2461c7
 
 # Undoes some upstream changes that are needed for linux-2.6.23-rcX
 # but break the build with 2.6.22
@@ -27,38 +27,38 @@ PATCH3= tulip-is-not-a-proper-driver-for-dm910x.patch
 
 FILE1= ati-driver-installer-8.38.6-x86.x86_64.run
 URL-$(FILE1)= http://www2.ati.com/drivers/linux/$(FILE1)
-SHA-$(FILE1)= a4320c6d3c6716740971c18bbd5e62b0b452cc67
+SUM-$(FILE1)= a4320c6d3c6716740971c18bbd5e62b0b452cc67
 
 DIR2= NVIDIA-Linux-x86_64-100.14.11-pkg0
 FILE2= $(DIR2).run
 URL-$(FILE2)= http://us.download.nvidia.com/XFree86/Linux-x86_64/100.14.11/$(FILE2)
-SHA-$(FILE2)= 11c4f7ab736262e20db937ec410de3511e3e6aad
+SUM-$(FILE2)= 11c4f7ab736262e20db937ec410de3511e3e6aad
 
 DIR3= NVIDIA-Linux-x86_64-1.0-9639-pkg0
 FILE3= $(DIR3).run
 URL-$(FILE3)= http://us.download.nvidia.com/XFree86/Linux-x86_64/1.0-9639/$(FILE3)
-SHA-$(FILE3)= 6294d421131b9dc4514634ecde171869f589dae3
+SUM-$(FILE3)= 6294d421131b9dc4514634ecde171869f589dae3
 
 DIR4= NVIDIA-Linux-x86_64-1.0-7185-pkg0
 FILE4= $(DIR4).run
 URL-$(FILE4)= http://us.download.nvidia.com/XFree86/Linux-x86_64/1.0-7185/$(FILE4)
-SHA-$(FILE4)= ffe1eb012707d5bffbe39756be54cb687b4ef498
+SUM-$(FILE4)= ffe1eb012707d5bffbe39756be54cb687b4ef498
 
 DIR5= mac80211-9.0.4
 FILE5= $(DIR5).tgz
 URL-$(FILE5)= http://intellinuxwireless.org/mac80211/downloads/$(FILE5)
-SHA-$(FILE5)= c15acff74a7c736cdb997546083f1e34278c6387
+SUM-$(FILE5)= c15acff74a7c736cdb997546083f1e34278c6387
 
 DIR6= iwlwifi-1.0.0-1
 FILE6= $(DIR6).tgz
 URL-$(FILE6)= http://intellinuxwireless.org/iwlwifi/downloads/$(FILE6)
-SHA-$(FILE6)= 879a636b63cd1c8aebc8bc1a6205656b491107bb
+SUM-$(FILE6)= 879a636b63cd1c8aebc8bc1a6205656b491107bb
 
 DIR7= rt2x00-cvs-2007081406
 FILE7= $(DIR7).tar.gz
 # Originally from http://rt2x00.serialmonkey.com/rt2x00-cvs-daily.tar.gz
 URL-$(FILE7)= http://www.linuxfromscratch.org/~alexander/$(FILE7)
-SHA-$(FILE7)= 3eba4dc8e08ce256280adff492b541bda9c0198b
+SUM-$(FILE7)= 3eba4dc8e08ce256280adff492b541bda9c0198b
 
 # The latest version from
 # http://ftp.kernel.org/pub/linux/kernel/people/linville/wireless-2.6/ath5k/
@@ -68,18 +68,18 @@ SHA-$(FILE7)= 3eba4dc8e08ce256280adff492b541bda9c0198b
 DIR8= ath5k-r2701
 FILE8= $(DIR8).tar.gz
 URL-$(FILE8)= http://www.linuxfromscratch.org/~alexander/$(FILE8)
-SHA-$(FILE8)= d14a002ba192788881ca9a715348f8b7b898fe3c
+SUM-$(FILE8)= d14a002ba192788881ca9a715348f8b7b898fe3c
 
 DIR9=rtl-mac80211-20070729
 FILE9= $(DIR9).tar.bz2
 URL-$(FILE9)= http://www.hauke-m.de/fileadmin/rtl-wifi/$(FILE9)
-SHA-$(FILE9)= 001787fe6556cdfe02ec77665e83f7747d71b953
+SUM-$(FILE9)= 001787fe6556cdfe02ec77665e83f7747d71b953
 
 # Git snapshot - stable versions are incompatible with linux-2.6.22
 DIR10= speakup-20070928
 FILE10= $(DIR10).tar.gz
 URL-$(FILE10)= http://www.linuxfromscratch.org/~alexander/$(FILE10)
-SHA-$(FILE10)= 101a7fcae2cbf2dbad81d91ff7cb262d6857d104
+SUM-$(FILE10)= 101a7fcae2cbf2dbad81d91ff7cb262d6857d104
 
 # Targets
 

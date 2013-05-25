@@ -6,7 +6,7 @@ DIR= $(NAME).$(VER)
 
 FILE= $(DIR).tgz
 URL-$(FILE)= http://sourceware.mirrors.tds.net/pub/sourceware.org/lvm2/old/LVM2.2.02.64.tgz
-SHA-$(FILE)= 033a317f1ca8baa3b30e10cf4095f0491a10db7f
+SUM-$(FILE)= 033a317f1ca8baa3b30e10cf4095f0491a10db7f
 
 # Targets
 

@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://gstreamer.freedesktop.org/src/gstreamer/gstreamer-0.10.25.tar.bz2
-SHA-$(FILE)= e3cda2dcac9dbbfc2e61ba79fcd3bff1313dc7f4
+SUM-$(FILE)= e3cda2dcac9dbbfc2e61ba79fcd3bff1313dc7f4
 
 # Targets
 

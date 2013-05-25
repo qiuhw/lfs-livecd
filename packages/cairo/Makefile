@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://www.cairographics.org/releases/cairo-1.8.10.tar.gz
-SHA-$(FILE)= fd5e8ca82ff0e8542ea4c51612cad387f2a49df3
+SUM-$(FILE)= fd5e8ca82ff0e8542ea4c51612cad387f2a49df3
 
 # Targets
 

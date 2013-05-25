@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gwdg.de/linux/cdrecord/cdrtools-3.00.tar.bz2
-SHA-$(FILE)= 6464844d6b936d4f43ee98a04d637cd91131de4e
+SUM-$(FILE)= 6464844d6b936d4f43ee98a04d637cd91131de4e
 
 include $(MY_ROOT)/scripts/functions
 

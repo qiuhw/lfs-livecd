@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://xcb.freedesktop.org/dist/libpthread-stubs-0.3.tar.bz2
-SHA-$(FILE)= 7fc486ad0ec54938f8b781cc374218f50eac8b99
+SUM-$(FILE)= 7fc486ad0ec54938f8b781cc374218f50eac8b99
 
 # Targets
 

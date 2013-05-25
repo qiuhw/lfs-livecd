@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= ftp://ftp.parrot.org/.1/blfs/6.3/t/tin-1.8.3.tar.bz2
-SHA-$(FILE)= 3822e7281d22433862075270b06bfa6b82226b0e
+SUM-$(FILE)= 3822e7281d22433862075270b06bfa6b82226b0e
 
 # Targets
 

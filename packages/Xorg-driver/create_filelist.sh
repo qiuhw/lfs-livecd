@@ -15,7 +15,7 @@ do
 	echo '' >> filelist
 	echo "FILE$i= $file" >> filelist
 	echo "URL-\$(FILE$i)= \$(URLBASE)/\$(FILE$i)" >> filelist
-	echo "SHA-\$(FILE$i)= $(sha1sum $file | awk '{print $1}')" >> filelist
+	echo "SUM-\$(FILE$i)= $(md5sum $file | awk '{print $1}')" >> filelist
 	i=`expr $i + 1`
 done
 

@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/inetutils/inetutils-1.7.tar.gz
-SHA-$(FILE)= d5fdee9855a06663ca7c0a8150c09439ef520206
+SUM-$(FILE)= d5fdee9855a06663ca7c0a8150c09439ef520206
 
 # Targets
 

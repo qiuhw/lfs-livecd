@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(NAME)-$(VER).tar.bz2
 URL-$(FILE)= ftp://109.106.1.82/pub/FreeBSD/ports/distfiles/slang-2.2.2.tar.bz2
-SHA-$(FILE)= 13bb6344f71779cad8c05e1b6b1ef2d073888d58
+SUM-$(FILE)= 13bb6344f71779cad8c05e1b6b1ef2d073888d58
 
 # Targets
 

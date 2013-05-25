@@ -7,11 +7,11 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://sourceforge.net/projects/docbook/files/docbook-xsl/1.75.2/docbook-xsl-1.75.2.tar.bz2
-SHA-$(FILE)= cd146012c07f3c2c79c1cd927ad1faf5bee6cc74
+SUM-$(FILE)= cd146012c07f3c2c79c1cd927ad1faf5bee6cc74
 
 FILE1= $(NAME)-doc-$(VER).tar.bz2
 URL-$(FILE1)= http://sourceforge.net/projects/docbook/files/docbook-xsl-doc/1.75.2/docbook-xsl-doc-1.75.2.tar.bz2
-SHA-$(FILE1)= 2befba14b0cfe748dec4bc8b7b891cbb2f394767
+SUM-$(FILE1)= 2befba14b0cfe748dec4bc8b7b891cbb2f394767
 
 # Targets
 

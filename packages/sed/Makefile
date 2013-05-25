@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/sed/sed-4.2.1.tar.bz2
-SHA-$(FILE)= ace93d23eabc00d3a8187ecf07d3a02b1b297810
+SUM-$(FILE)= ace93d23eabc00d3a8187ecf07d3a02b1b297810
 
 # Targets
 

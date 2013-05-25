@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).src.tar.gz
 URL-$(FILE)= http://download.savannah.gnu.org/releases/acl/acl-2.2.49.src.tar.gz
-SHA-$(FILE)= 6f223daa5aafc8a6d29dbf579c82e86312aeb75d
+SUM-$(FILE)= 6f223daa5aafc8a6d29dbf579c82e86312aeb75d
 
 # Targets
 

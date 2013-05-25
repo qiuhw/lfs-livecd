@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://downloads.sourceforge.net/flac/flac-1.2.1.tar.gz
-SHA-$(FILE)= bd54354900181b59db3089347cc84ad81e410b38
+SUM-$(FILE)= bd54354900181b59db3089347cc84ad81e410b38
 
 # Targets
 

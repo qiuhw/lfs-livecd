@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://prdownloads.sourceforge.net/w3m/$(FILE)
-SHA-$(FILE)= 484522547ae6dbb342d3858a2a53a65451e273f9
+SUM-$(FILE)= 484522547ae6dbb342d3858a2a53a65451e273f9
 
 # Targets
 

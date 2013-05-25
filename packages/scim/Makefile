@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://sourceforge.net/projects/scim/files/scim/1.4.9/scim-1.4.9.tar.gz
-SHA-$(FILE)= 7717339575fdbf909309a78882e30c60cce9f8eb
+SUM-$(FILE)= 7717339575fdbf909309a78882e30c60cce9f8eb
 
 # Targets
 

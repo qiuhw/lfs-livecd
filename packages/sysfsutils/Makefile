@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://enterprise-storage-os.googlecode.com/files/sysfsutils-2.1.0.tar.gz
-SHA-$(FILE)= b3cb316c652b09ec66f93f4ea98a93a7a1001678
+SUM-$(FILE)= b3cb316c652b09ec66f93f4ea98a93a7a1001678
 
 # Targets
 

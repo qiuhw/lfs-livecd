@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://nchc.dl.sourceforge.net/project/expat/expat/2.0.1/expat-2.0.1.tar.gz
-SHA-$(FILE)= 663548c37b996082db1f2f2c32af060d7aa15c2d
+SUM-$(FILE)= 663548c37b996082db1f2f2c32af060d7aa15c2d
 
 # Targets
 

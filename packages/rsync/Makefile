@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://mirrors.ibiblio.org/rsync/src/rsync-3.0.7.tar.gz
-SHA-$(FILE)= 63426a1bc71991d93159cd522521fbacdafb7a61
+SUM-$(FILE)= 63426a1bc71991d93159cd522521fbacdafb7a61
 
 # Targets
 

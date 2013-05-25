@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnome.org/pub/GNOME/sources/librsvg/2.26/librsvg-2.26.0.tar.bz2
-SHA-$(FILE)= 61044be4bcd5945f5711f788e1aa303a80b69e32
+SUM-$(FILE)= 61044be4bcd5945f5711f788e1aa303a80b69e32
 
 # Targets
 

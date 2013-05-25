@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://releases.chipx86.com/libsexy/libsexy/$(FILE)
-SHA-$(FILE)= be01c58f8888556660a847aa901a08c38a45fd96
+SUM-$(FILE)= be01c58f8888556660a847aa901a08c38a45fd96
 
 # Targets
 

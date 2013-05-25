@@ -6,7 +6,7 @@ DIR= $(NAME).$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ceos.googlecode.com/files/wireless_tools.29.tar.gz
-SHA-$(FILE)= 22040ac1497f4c5f8ddeca365591b01ae3475710
+SUM-$(FILE)= 22040ac1497f4c5f8ddeca365591b01ae3475710
 
 # Targets
 

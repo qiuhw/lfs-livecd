@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= ftp://ftp.uwsg.indiana.edu/linux/gentoo/distfiles/brltty-4.2.tar.gz
-SHA-$(FILE)= d25802d08599b75841e7bb2f29bc88737f2992d2
+SUM-$(FILE)= d25802d08599b75841e7bb2f29bc88737f2992d2
 
 # Targets
 

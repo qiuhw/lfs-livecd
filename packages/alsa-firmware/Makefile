@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://alsa.cybermirror.org/firmware/alsa-firmware-1.0.20.tar.bz2
-SHA-$(FILE)= 184742e14c5edcbea8da01db7c9e96b9d0bd3678
+SUM-$(FILE)= 184742e14c5edcbea8da01db7c9e96b9d0bd3678
 
 # Targets
 

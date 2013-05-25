@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://search.cpan.org/CPAN/authors/id/M/MS/MSERGEANT/XML-Parser-2.36.tar.gz
-SHA-$(FILE)= 74acac4f939ebf788d8ef5163cbc9802b1b04bfa
+SUM-$(FILE)= 74acac4f939ebf788d8ef5163cbc9802b1b04bfa
 
 # Targets
 

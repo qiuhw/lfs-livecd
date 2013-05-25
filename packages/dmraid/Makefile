@@ -6,7 +6,7 @@ DIR= $(NAME)
 
 FILE= $(NAME)-$(VER).tar.bz2
 URL-$(FILE)= http://repository.timesys.com/buildsources/d/dmraid/dmraid-1.0.0.rc16/dmraid-1.0.0.rc16.tar.bz2
-SHA-$(FILE)= 99e76332bb03c5a79406e3c8cb12b6746288635d
+SUM-$(FILE)= 99e76332bb03c5a79406e3c8cb12b6746288635d
 
 # Targets
 

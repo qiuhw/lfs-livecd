@@ -6,11 +6,11 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://cross-lfs.org/files/packages/1.1.0/mktemp-1.5.tar.gz
-SHA-$(FILE)= aa001fd61d13bbf128dc58ca4dc6d83311435bae
+SUM-$(FILE)= aa001fd61d13bbf128dc58ca4dc6d83311435bae
 
 PATCH1= $(DIR)-add_tempfile-3.patch
 URL-$(PATCH1)= http://cross-lfs.org/files/packages/1.1.0/mktemp-1.5-add_tempfile-3.patch
-SHA-$(PATCH1)= c4ca0c1d5993a44bf82c369d60f415e2cf92b95b
+SUM-$(PATCH1)= c4ca0c1d5993a44bf82c369d60f415e2cf92b95b
 
 # Targets
 

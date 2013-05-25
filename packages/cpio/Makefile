@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/pub/gnu/cpio/cpio-2.11.tar.bz2
-SHA-$(FILE)= 6f1934b0079dc1e85ddff89cabdf01adb3a74abb
+SUM-$(FILE)= 6f1934b0079dc1e85ddff89cabdf01adb3a74abb
 
 # Targets
 

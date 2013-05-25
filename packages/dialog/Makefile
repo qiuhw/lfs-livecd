@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tgz
 URL-$(FILE)= ftp://invisible-island.net/dialog/dialog-1.1-20100428.tgz
-SHA-$(FILE)= 6945b302bf5b107c12f6009c25699d265b45579c
+SUM-$(FILE)= 6945b302bf5b107c12f6009c25699d265b45579c
 
 # Targets
 

@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= 
-SHA-$(FILE)= 7efd71d29d6cfba797b8791398e4d81ade677d77
+SUM-$(FILE)= 7efd71d29d6cfba797b8791398e4d81ade677d77
 
 # Targets
 

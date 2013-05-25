@@ -5,7 +5,7 @@ VER= 1.11.4
 DIR= $(NAME)-$(VER)
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/$(NAME)/$(FILE)
-SHA-$(FILE)= a78a3b71fd59504df3ff3dbc0a2195a1410e9eac
+SUM-$(FILE)= a78a3b71fd59504df3ff3dbc0a2195a1410e9eac
 
 # Targets
 

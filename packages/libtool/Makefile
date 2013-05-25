@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/libtool/libtool-2.2.6b.tar.gz
-SHA-$(FILE)= 5afa73c8ef9ebe64bbb438a0f8779c9036e43c55
+SUM-$(FILE)= 5afa73c8ef9ebe64bbb438a0f8779c9036e43c55
 
 # Targets
 

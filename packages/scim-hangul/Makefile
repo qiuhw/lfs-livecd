@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://sourceforge.net/projects/scim/files/scim-hangul/0.3.2/scim-hangul-0.3.2.tar.gz
-SHA-$(FILE)= d1f4a2114d284c926d64fbfe8ea83307b8d8e2ec
+SUM-$(FILE)= d1f4a2114d284c926d64fbfe8ea83307b8d8e2ec
 
 # Targets
 

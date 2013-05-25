@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/bison/bison-2.4.1.tar.bz2
-SHA-$(FILE)= fc96b28ee4a6a914b18cb1eddb68177d94b83361
+SUM-$(FILE)= fc96b28ee4a6a914b18cb1eddb68177d94b83361
 
 # Targets
 

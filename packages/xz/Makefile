@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(NAME)-$(VER).tar.bz2
 URL-$(FILE)= http://tukaani.org/xz/$(FILE)
-SHA-$(FILE)= 67cd2598b5149da9b3c126f3483fd632e06b3d48
+SUM-$(FILE)= 67cd2598b5149da9b3c126f3483fd632e06b3d48
 
 # Targets
 

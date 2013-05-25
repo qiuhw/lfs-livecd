@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://sourceforge.net/projects/dejavu/files/dejavu/2.30/dejavu-fonts-ttf-2.30.tar.bz2
-SHA-$(FILE)= 3a09830033f74be6e370155410091f76193f5528
+SUM-$(FILE)= 3a09830033f74be6e370155410091f76193f5528
 
 # Targets
 

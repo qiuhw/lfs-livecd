@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://sourceforge.net/projects/pptpclient/files/pptp/pptp-1.7.2/pptp-1.7.2.tar.gz
-SHA-$(FILE)= 1007eb1d4d21629fab390903e8b394d6157b4983
+SUM-$(FILE)= 1007eb1d4d21629fab390903e8b394d6157b4983
 
 # Targets
 

@@ -7,7 +7,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://pcmcia-cs.sourceforge.net/ftp/$(FILE)
-SHA-$(FILE)= 38ce295c2a6baed05d792141f60a01fe6770350e
+SUM-$(FILE)= 38ce295c2a6baed05d792141f60a01fe6770350e
 
 # Targets
 

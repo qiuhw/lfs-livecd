@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= ftp://ftp.uwsg.indiana.edu/linux/gentoo/distfiles/libhangul-0.0.10.tar.gz
-SHA-$(FILE)= 3fdbb1b4ea2f5f12bd3c6760bb2ad609e2eebbaa
+SUM-$(FILE)= 3fdbb1b4ea2f5f12bd3c6760bb2ad609e2eebbaa
 
 # Targets
 

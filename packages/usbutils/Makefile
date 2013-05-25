@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gts.lug.ro/kernel/linux/utils/usb/usbutils/usbutils-0.86.tar.gz
-SHA-$(FILE)= 8789fe562a0c791cc1cdffd30af5908876efb6da
+SUM-$(FILE)= 8789fe562a0c791cc1cdffd30af5908876efb6da
 
 # Targets
 

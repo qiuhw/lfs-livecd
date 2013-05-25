@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/tar/tar-1.22.tar.bz2
-SHA-$(FILE)= ca99a6ade7308f9293bdb04048cb335e52c63215
+SUM-$(FILE)= ca99a6ade7308f9293bdb04048cb335e52c63215
 
 # Targets
 

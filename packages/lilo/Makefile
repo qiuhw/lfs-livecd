@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).src.tar.gz
 URL-$(FILE)= http://home.san.rr.com/johninsd/pub/linux/lilo/$(FILE)
-SHA-$(FILE)= 59852eab59b93dcea63b39eef1db7963b7268b0d
+SUM-$(FILE)= 59852eab59b93dcea63b39eef1db7963b7268b0d
 
 # Targets
 

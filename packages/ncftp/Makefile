@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR)-src.tar.bz2
 URL-$(FILE)= http://ftp.ist.utl.pt/pub/ftp/ftp/clients/Unix/ncftp/ncftp-3.2.4-src.tar.bz2
-SHA-$(FILE)= 7e149123c45e1628882c0866c3ebea3ba37f9929
+SUM-$(FILE)= 7e149123c45e1628882c0866c3ebea3ba37f9929
 
 # Targets
 

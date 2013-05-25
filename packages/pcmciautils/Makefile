@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.osuosl.org/pub/linux/utils/kernel/pcmcia/pcmciautils-017.tar.bz2
-SHA-$(FILE)= 5605e1b13fdfcb08b5742865dc4ad475cbefe501
+SUM-$(FILE)= 5605e1b13fdfcb08b5742865dc4ad475cbefe501
 
 # Targets
 

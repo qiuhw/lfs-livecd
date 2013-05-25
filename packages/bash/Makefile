@@ -5,7 +5,7 @@ NAME= bash
 DIR= $(NAME)-4.1
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/$(NAME)/$(FILE)
-SHA-$(FILE)= 3bd1ec9c66f3689f6b3495bdaaf9077b2e5dc150
+SUM-$(FILE)= 3bd1ec9c66f3689f6b3495bdaaf9077b2e5dc150
 
 # Targets
 

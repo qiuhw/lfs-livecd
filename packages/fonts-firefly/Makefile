@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://chinesepuppylinux.googlecode.com/files/fireflysung-1.3.0.tar.gz
-SHA-$(FILE)= a513386c18257febcbedb72b7a4e4aa21e930002
+SUM-$(FILE)= a513386c18257febcbedb72b7a4e4aa21e930002
 
 # Targets
 

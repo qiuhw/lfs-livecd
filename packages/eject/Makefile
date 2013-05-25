@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= ftp://ftp.home.vim.org/vol/2/metalab/utils/disk-management/eject-2.1.0.tar.gz
-SHA-$(FILE)= 92059323f43093ab9f01690c97fb35f14eff4c53
+SUM-$(FILE)= 92059323f43093ab9f01690c97fb35f14eff4c53
 
 # Targets
 

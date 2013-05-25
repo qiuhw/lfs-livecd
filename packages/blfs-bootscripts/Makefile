@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.cross-lfs.org/pub/blfs/conglomeration/blfs-bootscripts/blfs-bootscripts-20090302.tar.bz2
-SHA-$(FILE)= ef50182fd20b89c2cb081c1d07a7371e0da47cc3
+SUM-$(FILE)= ef50182fd20b89c2cb081c1d07a7371e0da47cc3
 
 PATCH1=$(NAME)-add-autosshd-1.patch
 

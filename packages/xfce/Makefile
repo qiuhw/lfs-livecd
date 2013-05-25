@@ -9,7 +9,7 @@ ALLFILES= $(foreach FILE,$(sort $(filter FILE%,$(.VARIABLES))),$($(FILE)))
 
 BG= lfsrules-1600-1200.jpg
 URL-$(BG)= http://www.linuxfromscratch.org/blfs/artwork/wallpapers/$(BG)
-SHA-$(BG)= 8f4abcc49ccc37874a1d2bf958ee7db024e21a3a
+SUM-$(BG)= 8f4abcc49ccc37874a1d2bf958ee7db024e21a3a
 
 # Targets
 

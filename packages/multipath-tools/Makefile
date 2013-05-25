@@ -11,7 +11,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://christophe.varoqui.free.fr/$(NAME)/$(FILE)
-SHA-$(FILE)= aadc7c7ed072c3df2e32c64a2ab1ba7fac850d7a
+SUM-$(FILE)= aadc7c7ed072c3df2e32c64a2ab1ba7fac850d7a
 
 # Fixes support for extended partitions
 # Incomplete, deactivation doesn't work for the first try

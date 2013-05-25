@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://www.freebsoft.org/pub/projects/speechd-up/$(FILE)
-SHA-$(FILE)= ad31c9a15fd8f5616aff4d35713f736ad8266a92
+SUM-$(FILE)= ad31c9a15fd8f5616aff4d35713f736ad8266a92
 
 PATCH1= speechd-up-0.4-onechar-1.patch
 

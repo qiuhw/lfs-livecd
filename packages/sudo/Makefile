@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://contribsoft.caixamagica.pt/export/2312/packages/cm15/sudo/current/SOURCES/sudo-1.7.2p6.tar.gz
-SHA-$(FILE)= 45976e82cc2ca9f34cad574629ddd998c377734e
+SUM-$(FILE)= 45976e82cc2ca9f34cad574629ddd998c377734e
 
 # Targets
 

@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://sourceforge.net/projects/fuse/files/fuse-2.X/2.8.4/fuse-2.8.4.tar.gz
-SHA-$(FILE)= b1bc296c3e5b90b3658edb5d8d7aa0ee97c145d7
+SUM-$(FILE)= b1bc296c3e5b90b3658edb5d8d7aa0ee97c145d7
 
 # Targets
 

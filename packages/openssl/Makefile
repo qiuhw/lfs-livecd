@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://www.openssl.org/source/$(FILE)
-SHA-$(FILE)= 3f800ea9fa3da1c0f576d689be7dca3d55a4cb62
+SUM-$(FILE)= 3f800ea9fa3da1c0f576d689be7dca3d55a4cb62
 
 DEPS= $(FILE)
 

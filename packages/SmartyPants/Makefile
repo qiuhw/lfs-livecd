@@ -6,7 +6,7 @@ DIR= $(NAME)_$(VER)
 
 FILE= $(DIR).zip
 URL-$(FILE)= http://daringfireball.net/projects/downloads/$(FILE)
-SHA-$(FILE)= 339a493f89cfee1e9f051bb1b39f9dcae4c595ca
+SUM-$(FILE)= 339a493f89cfee1e9f051bb1b39f9dcae4c595ca
 
 # Targets
 

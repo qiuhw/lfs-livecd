@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.x.org/pub/individual/app/luit-1.0.4.tar.bz2
-SHA-$(FILE)= d5f1326017c0cebf62e7e7df2703b3b4998a39bd
+SUM-$(FILE)= d5f1326017c0cebf62e7e7df2703b3b4998a39bd
 
 # Targets
 

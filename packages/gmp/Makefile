@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/gmp/gmp-5.0.0.tar.bz2
-SHA-$(FILE)= 11a49c6fec0a3cfae2df9966d321d740af9f603f
+SUM-$(FILE)= 11a49c6fec0a3cfae2df9966d321d740af9f603f
 
 # Targets
 

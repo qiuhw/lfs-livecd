@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://download.osgeo.org/libtiff/tiff-3.9.2.tar.gz
-SHA-$(FILE)= 5c054d31e350e53102221b7760c3700cf70b4327
+SUM-$(FILE)= 5c054d31e350e53102221b7760c3700cf70b4327
 
 # Targets
 

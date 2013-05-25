@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= ftp://ftp.uwsg.indiana.edu/linux/gentoo/distfiles/kochi-substitute-20030809.tar.bz2
-SHA-$(FILE)= 9c48f3ba33558b4d48e7764b944fcb2f5f941dd8
+SUM-$(FILE)= 9c48f3ba33558b4d48e7764b944fcb2f5f941dd8
 
 # Targets
 

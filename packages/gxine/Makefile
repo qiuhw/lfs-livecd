@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://sourceforge.net/projects/xine/files/gxine/0.5.905/gxine-0.5.905.tar.bz2
-SHA-$(FILE)= dc01b617641d6eac4152259c592f15f31b9d9bf0
+SUM-$(FILE)= dc01b617641d6eac4152259c592f15f31b9d9bf0
 
 # Targets
 

@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(NAME)-$(VER).tar.bz2
 URL-$(FILE)= http://developer.osdl.org/dev/iproute2/download/iproute2-2.6.31.tar.bz2
-SHA-$(FILE)= e7dec62a4d6646f3fded4f5d34718e9fd98615e4
+SUM-$(FILE)= e7dec62a4d6646f3fded4f5d34718e9fd98615e4
 
 # Targets
 

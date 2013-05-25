@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= ftp://ftp.uwsg.indiana.edu/linux/gentoo/distfiles/man-pages-es-1.55.tar.bz2
-SHA-$(FILE)= 1d72e80d0c41f9e5c24ba6a4eea161fc151ec5b5
+SUM-$(FILE)= 1d72e80d0c41f9e5c24ba6a4eea161fc151ec5b5
 
 # Targets
 

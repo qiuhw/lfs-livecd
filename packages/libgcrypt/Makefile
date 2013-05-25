@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://mirrors.dotsrc.org/gcrypt/libgcrypt/libgcrypt-1.4.5.tar.bz2
-SHA-$(FILE)= ef7ecbd3a03a7978094366bcd1257b3654608d28
+SUM-$(FILE)= ef7ecbd3a03a7978094366bcd1257b3654608d28
 
 # Targets
 

@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/findutils/findutils-4.4.2.tar.gz
-SHA-$(FILE)= e8dd88fa2cc58abffd0bfc1eddab9020231bb024
+SUM-$(FILE)= e8dd88fa2cc58abffd0bfc1eddab9020231bb024
 
 # Targets
 

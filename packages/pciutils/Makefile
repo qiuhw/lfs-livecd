@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= https://www.kernel.org/pub/software/utils/pciutils/pciutils-3.1.7.tar.gz
-SHA-$(FILE)= 58336ef8c1bbe870f2cc0ed9481a8cf8a58e039c
+SUM-$(FILE)= 58336ef8c1bbe870f2cc0ed9481a8cf8a58e039c
 
 # Targets
 

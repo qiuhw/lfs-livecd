@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://curl.haxx.se/download/curl-7.20.1.tar.bz2
-SHA-$(FILE)= bc3ba6d83069ef1f13d320f29b26f1c63f6056b3
+SUM-$(FILE)= bc3ba6d83069ef1f13d320f29b26f1c63f6056b3
 
 # Targets
 

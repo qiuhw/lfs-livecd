@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://irssi.org/files/irssi-0.8.15.tar.bz2
-SHA-$(FILE)= b79ce8c2c98a76b004f63706e7868cd363000d89
+SUM-$(FILE)= b79ce8c2c98a76b004f63706e7868cd363000d89
 
 # Targets
 

@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://web.telia.com/~u89404340/touchpad/files/$(FILE)
-SHA-$(FILE)= 41443e253e73546657b40435c8c9bfa0a91662bc
+SUM-$(FILE)= 41443e253e73546657b40435c8c9bfa0a91662bc
 
 # Targets
 

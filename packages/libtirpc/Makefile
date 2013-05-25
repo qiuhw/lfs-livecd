@@ -6,7 +6,7 @@ DIR= $(NAME)-$(VER)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://jaist.dl.sourceforge.net/project/libtirpc/libtirpc/0.2.1/libtirpc-0.2.1.tar.bz2
-SHA-$(FILE)= ab0188be0eee162ad42cb941257e1615db5387c9
+SUM-$(FILE)= ab0188be0eee162ad42cb941257e1615db5387c9
 
 # Targets
 
