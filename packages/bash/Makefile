@@ -1,13 +1,14 @@
-# Bash Makefile
-# The Bash package contains the Bourne-Again SHell.
+NAME = bash
+VER  = 4.2
+DIR  = $(NAME)-$(VER)
 
-NAME= bash
-DIR= $(NAME)-4.1
-FILE= $(DIR).tar.gz
-URL-$(FILE)= http://ftp.gnu.org/gnu/$(NAME)/$(FILE)
-SUM-$(FILE)= 3bd1ec9c66f3689f6b3495bdaaf9077b2e5dc150
+FILE = $(DIR).tar.gz
+URL-$(FILE) = http://ftp.gnu.org/gnu/$(NAME)/$(FILE)
+SUM-$(FILE) = 3fb927c7c33022f1c327f14a81c0d4b0
 
-# Targets
+PATCH = $(DIR)-fixes-12.patch
+URL-$(PATCH) = http://www.linuxfromscratch.org/patches/lfs/development/$(PATCH)
+SUM-$(PATCH) = 419f95c173596aea47a23d922598977a
 
 include $(MY_ROOT)/scripts/functions
 
@@ -15,6 +16,7 @@ stage1: $(FILE)
 	$(std_build)
 
 compile-stage1:
+	patch -Np1 -i ../$(PATCH)
 	./configure --prefix=/tools --without-bash-malloc
 	make
 	make install
@@ -24,8 +26,8 @@ stage2: $(FILE)
 	$(std_build)
 
 compile-stage2:
-	./configure \
-		--prefix=/usr \
+	patch -Np1 -i ../$(PATCH)
+	./configure --prefix=/usr \
 		--bindir=/bin \
 		--htmldir=/usr/share/doc/$(DIR) \
 		--without-bash-malloc \
