@@ -1,47 +1,32 @@
-# Wget Makefile
+NAME = wget
+VER  = 1.14
+DIR  = $(NAME)-$(VER)
 
-NAME= wget
-VER= 1.11.4
-DIR= $(NAME)-$(VER)
-FILE= $(DIR).tar.gz
-URL-$(FILE)= http://ftp.gnu.org/gnu/$(NAME)/$(FILE)
-SUM-$(FILE)= a78a3b71fd59504df3ff3dbc0a2195a1410e9eac
-
-# Targets
+FILE = $(DIR).tar.xz
+URL-$(FILE) = http://ftp.gnu.org/gnu/$(NAME)/$(FILE)
+SUM-$(FILE) = 316f6f59292c9098ad81fd54f658c579
 
 include $(MY_ROOT)/scripts/functions
-
-prebuild: $(FILE)
-	$(std_build)
-
-compile-prebuild:
-	cp -v Makefile.in{,.bak}
-	sed -e '/^SUBDIRS/s@ doc@@' -e '/^install:/s@ install.info@@' \
-	-e 's/@COMMENT_IF_NO_POD2MAN@install.man//' Makefile.in.bak > Makefile.in
-	./configure --prefix=/tools --disable-nls
-	make
-	make install
 
 stage1: $(FILE)
 	$(std_build)
 
 compile-stage1:
-	./configure \
-	   --prefix=/tools
+	./configure --prefix=/tools
 	make
 	make install
 
-stage2: Makefile $(FILE)
+stage2: $(FILE)
 	$(std_build)
 
 compile-stage2:
-	./configure \
-		--prefix=/usr \
-		--sysconfdir=/etc
+	./configure --prefix=/usr \
+		--sysconfdir=/etc \
+		--with-ssl=openssl
 	make
 	make install
 
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: compile-prebuild clean chroot compile-stage2
+.PHONY: compile-stage1 compile-stage2 clean
