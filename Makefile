@@ -197,6 +197,7 @@ tools: \
 	sed-stage1 \
 	tar-stage1 \
 	texinfo-stage1 \
+	xz-stage1 \
 	wget-stage1 \
 	zlib-stage1 \
 	cdrtools-stage1
