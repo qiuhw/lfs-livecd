@@ -1,8 +1,8 @@
 # dbus Makefile
 
-NM= dbus
+NAME= dbus
 VRS= 1.2.16
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://dbus.freedesktop.org/releases/dbus/dbus-1.2.16.tar.gz

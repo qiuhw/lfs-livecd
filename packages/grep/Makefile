@@ -1,8 +1,8 @@
 # Grep Makefile
 
-NM= grep
+NAME= grep
 VRS= 2.5.4
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/grep/grep-2.5.4.tar.bz2

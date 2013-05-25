@@ -1,8 +1,8 @@
 # Coreutils Makefile
 
-NM= coreutils
+NAME= coreutils
 VRS= 8.4
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/coreutils/coreutils-8.4.tar.gz

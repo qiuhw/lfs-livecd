@@ -1,8 +1,8 @@
 # libnotify Makefile
 
-NM= libnotify
+NAME= libnotify
 VRS= 0.4.4
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://www.galago-project.org/files/releases/source/libnotify/$(FILE)
@@ -14,7 +14,7 @@ include $(ROOT)/scripts/functions
 
 chroot:
 	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
+	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
 
 stage2: Makefile $(FILE)
 	$(std_build)

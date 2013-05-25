@@ -1,8 +1,8 @@
 # Linux Kernel Makefile
 
-NM= linux
+NAME= linux
 VRS= 2.6.32.8
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.32.8.tar.bz2

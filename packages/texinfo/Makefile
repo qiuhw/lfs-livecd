@@ -1,8 +1,8 @@
 # Texinfo Makefile
 
-NM= texinfo
+NAME= texinfo
 VRS= 4.13a
-DIR= $(NM)-4.13
+DIR= $(NAME)-4.13
 
 FILE= $(DIR)a.tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/texinfo/texinfo-4.13a.tar.gz

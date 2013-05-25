@@ -1,8 +1,8 @@
 # Gettext Makefile
 
-NM= gettext
+NAME= gettext
 VRS= 0.17
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/gettext/gettext-0.17.tar.gz
@@ -20,10 +20,10 @@ stage1: $(FILE)
 	$(std_build)
 
 compile-stage1:
-	cd $(NM)-tools ; ./configure --prefix=/tools --disable-shared
-	cd $(NM)-tools ; make -C gnulib-lib
-	cd $(NM)-tools ; make -C src msgfmt
-	cd $(NM)-tools ; cp -v src/msgfmt /tools/bin
+	cd $(NAME)-tools ; ./configure --prefix=/tools --disable-shared
+	cd $(NAME)-tools ; make -C gnulib-lib
+	cd $(NAME)-tools ; make -C src msgfmt
+	cd $(NAME)-tools ; cp -v src/msgfmt /tools/bin
 
 stage2: Makefile $(FILE) $(PATCH)
 	$(std_build)

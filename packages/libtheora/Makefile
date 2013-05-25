@@ -1,8 +1,8 @@
 # libtheora Makefile
 
-NM= libtheora
+NAME= libtheora
 VRS= 1.1.1
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.bz2

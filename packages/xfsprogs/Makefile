@@ -1,10 +1,10 @@
 # XFS Progs Makefile
 
-NM= xfsprogs
+NAME= xfsprogs
 VRS= 3.1.1
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
-FILE=$(NM)-$(VRS).tar.gz
+FILE=$(NAME)-$(VRS).tar.gz
 URL-$(FILE)= http://ftp.gwdg.de/pub/linux/misc/xfs/xfs/previous/xfsprogs-3.1.1.tar.gz
 SHA-$(FILE)= aff98427443b9944d42652172e4780945da94ab2
 

@@ -1,12 +1,12 @@
 # linux32 Makefile
 
-NM= linux32
+NAME= linux32
 
 # Targets
 
 chroot:
 	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
+	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
 
 stage2: Makefile
 	make -f Makefile compile-$@

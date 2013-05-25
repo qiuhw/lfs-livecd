@@ -1,8 +1,8 @@
 # Tar Makefile
 
-NM= tar
+NAME= tar
 VRS= 1.22
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/tar/tar-1.22.tar.bz2

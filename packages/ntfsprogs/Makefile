@@ -1,8 +1,8 @@
 # ntfsprogs Makefile
 
-NM= ntfsprogs
+NAME= ntfsprogs
 VRS= 2.0.0
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://sourceforge.net/projects/linux-ntfs/files/NTFS%20Tools%20and%20Library/2.0.0/ntfsprogs-2.0.0.tar.gz

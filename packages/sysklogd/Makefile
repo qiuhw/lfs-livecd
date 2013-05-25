@@ -1,8 +1,8 @@
 # Sysklogd Makefile
 
-NM= sysklogd
+NAME= sysklogd
 VRS= 1.5
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://www.infodrom.org/projects/sysklogd/download/sysklogd-1.5.tar.gz

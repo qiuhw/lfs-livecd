@@ -1,8 +1,8 @@
 # gstreamer-plugins-base Makefile
 
-NM= gst-plugins-base
+NAME= gst-plugins-base
 VRS= 0.10.25
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-0.10.25.tar.bz2

@@ -1,8 +1,8 @@
 # libx86 Makefile
 
-NM= libx86
+NAME= libx86
 VRS= 1.1
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= ftp://ftp.de.cw.net/pub/FreeBSD/ports/distfiles/libx86-1.1.tar.gz

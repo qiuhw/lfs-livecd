@@ -1,9 +1,9 @@
 # hibernate-script Makefile
 
 # Do not update - new versions are buggy (call hooks more than once)
-NM= hibernate-script
+NAME= hibernate-script
 VRS= 1.91
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://at-mirror.tuxonice.net/downloads/all/$(FILE)

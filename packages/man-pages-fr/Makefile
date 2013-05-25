@@ -1,8 +1,8 @@
 # man-pages-fr Makefile
 
-NM= man-pages-fr
+NAME= man-pages-fr
 VRS= 3.03.0
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= ftp://ftp.ro.debian.org/pub/linux/distributions/frugalware/frugalware-1.6/source/locale-extra/man-pages-fr/man-pages-fr-3.03.0.tar.bz2

@@ -1,8 +1,8 @@
 # SCIM-Input-Pad Makefile
 
-NM= scim-input-pad
+NAME= scim-input-pad
 VRS= 0.1.2
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://sourceforge.net/projects/scim/files/scim-input-pad/0.1.2/scim-input-pad-0.1.2.tar.gz

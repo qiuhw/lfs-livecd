@@ -1,8 +1,8 @@
 # libdvdcss Makefile
 
-NM= libdvdcss
+NAME= libdvdcss
 VRS= 1.2.9
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://download.videolan.org/pub/libdvdcss/1.2.9/libdvdcss-1.2.9.tar.bz2

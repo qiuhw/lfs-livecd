@@ -1,7 +1,7 @@
 # Expect Makefile
 
-NM= expect
-DIR= $(NM)5.45
+NAME= expect
+DIR= $(NAME)5.45
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://prdownloads.sourceforge.net/expect/expect5.45.tar.gz

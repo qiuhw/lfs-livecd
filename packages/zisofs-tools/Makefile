@@ -1,8 +1,8 @@
 # zisofs-tools Makefile
 
-NM= zisofs-tools
+NAME= zisofs-tools
 VRS= 1.0.8
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://mirror.linux.org.au/linux/utils/fs/zisofs/zisofs-tools-1.0.8.tar.bz2

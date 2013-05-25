@@ -1,8 +1,8 @@
 # libusb Makefile
 
-NM= libusb
+NAME= libusb
 VRS= 1.0.7
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.7/libusb-1.0.7.tar.bz2

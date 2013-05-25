@@ -1,8 +1,8 @@
 # xorg-server Makefile
 
-NM= xorg-server
+NAME= xorg-server
 VRS= 1.7.1
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.x.org/pub/individual/xserver/$(FILE)

@@ -1,8 +1,8 @@
 # Autoconf Makefile
 
-NM= autoconf
+NAME= autoconf
 VRS= 2.65
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/autoconf/autoconf-2.65.tar.bz2

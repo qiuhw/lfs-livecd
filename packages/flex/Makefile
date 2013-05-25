@@ -1,8 +1,8 @@
 # Flex Makefile
 
-NM= flex
+NAME= flex
 VRS= 2.5.35
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://prdownloads.sourceforge.net/flex/flex-2.5.35.tar.bz2

@@ -1,10 +1,10 @@
 # Tcl Makefile
 # The Tcl package contains the Tool Command Language.
 
-NM= tcl
-DIR= $(NM)8.6.0
+NAME= tcl
+DIR= $(NAME)8.6.0
 FILE= $(DIR)-src.tar.gz
-URL-$(FILE)= http://prdownloads.sourceforge.net/$(NM)/$(FILE)
+URL-$(FILE)= http://prdownloads.sourceforge.net/$(NAME)/$(FILE)
 SUM-$(FILE)= 573aa5fe678e9185ef2b3c56b24658d3
 
 # Targets

@@ -1,8 +1,8 @@
 # gstreamer Makefile
 
-NM= gstreamer
+NAME= gstreamer
 VRS= 0.10.25
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://gstreamer.freedesktop.org/src/gstreamer/gstreamer-0.10.25.tar.bz2

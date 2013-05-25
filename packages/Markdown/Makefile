@@ -1,8 +1,8 @@
 # Markdown Makefile
 
-NM= Markdown
+NAME= Markdown
 VRS= 1.0.1
-DIR= $(NM)_$(VRS)
+DIR= $(NAME)_$(VRS)
 
 FILE= $(DIR).zip
 URL-$(FILE)= http://daringfireball.net/projects/downloads/$(FILE)

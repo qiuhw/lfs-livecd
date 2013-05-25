@@ -1,8 +1,8 @@
 # man-pages-es Makefile
 
-NM= man-pages-es
+NAME= man-pages-es
 VRS= 1.55
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= ftp://ftp.uwsg.indiana.edu/linux/gentoo/distfiles/man-pages-es-1.55.tar.bz2

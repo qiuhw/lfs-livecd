@@ -1,8 +1,8 @@
 # Gtk+ Makefile
 
-NM= gtk+
+NAME= gtk+
 VRS= 2.18.7
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnome.org/pub/gnome/sources/gtk+/2.18/gtk+-2.18.7.tar.bz2

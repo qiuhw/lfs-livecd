@@ -1,8 +1,8 @@
 # speech-dispatcher Makefile
 
-NM= speech-dispatcher
+NAME= speech-dispatcher
 VRS= 0.6.7
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://www.freebsoft.org/pub/projects/speechd/speech-dispatcher-0.6.7.tar.gz

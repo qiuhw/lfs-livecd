@@ -1,6 +1,6 @@
 # SCSI firmware Makefile
 
-NM= scsi-firmware
+NAME= scsi-firmware
 VRS= 1
 
 FILE1= aic94xx-seq.fw
@@ -37,7 +37,7 @@ include $(ROOT)/scripts/functions
 
 chroot:
 	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
+	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
 
 stage2: Makefile $(ALLFILES)
 	@cp $(ALLFILES) /lib/firmware

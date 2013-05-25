@@ -1,8 +1,8 @@
 # jhalfs Makefile
 
-NM= jhalfs
+NAME= jhalfs
 VRS= trunk
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 # Using trunk version for now...
 
@@ -10,7 +10,7 @@ include $(MY_ROOT)/scripts/functions
 
 chroot:
 	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
+	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
 
 stage2: Makefile $(FILE1)
 	@touch $(DIR)-$@.log

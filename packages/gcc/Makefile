@@ -1,10 +1,10 @@
 # Gcc Makefile
 # The GCC package contains the GNU compiler collection, which includes the C and C++ compilers.
 
-NM= gcc
-DIR= $(NM)-4.8.0
+NAME= gcc
+DIR= $(NAME)-4.8.0
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= http://ftp.gnu.org/gnu/$(NM)/$(DIR)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/$(NAME)/$(DIR)/$(FILE)
 SUM-$(FILE)= e6040024eb9e761c3bea348d1fa5abb0
 
 NM1= mpfr
@@ -163,6 +163,6 @@ compile-stage2:
 	
 clean:
 	-rm -rf $(DIR)
-	-rm -rf $(NM)-build
+	-rm -rf $(NAME)-build
 
 .PHONY: compile-prebuild compile-stage1 compile-stage2 clean

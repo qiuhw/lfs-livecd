@@ -1,8 +1,8 @@
 # SCIM-Anthy Makefile
 
-NM= scim-anthy
+NAME= scim-anthy
 VRS= 1.3.1
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://sourceforge.jp/projects/scim-imengine/downloads/29660/scim-anthy-1.3.1.tar.gz

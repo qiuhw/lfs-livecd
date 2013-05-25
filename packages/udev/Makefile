@@ -1,10 +1,10 @@
 # Udev Makefile
 
-NM= udev
+NAME= udev
 VRS= 151
 CONFVRS= 20100128
-DIR= $(NM)-$(VRS)
-CONFDIR=$(NM)-config-$(CONFVRS)
+DIR= $(NAME)-$(VRS)
+CONFDIR=$(NAME)-config-$(CONFVRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev-151.tar.bz2

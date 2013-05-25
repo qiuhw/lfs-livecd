@@ -1,10 +1,10 @@
 # dmraid Makefile
 
-NM= dmraid
+NAME= dmraid
 VRS= 1.0.0.rc16
-DIR= $(NM)
+DIR= $(NAME)
 
-FILE= $(NM)-$(VRS).tar.bz2
+FILE= $(NAME)-$(VRS).tar.bz2
 URL-$(FILE)= http://repository.timesys.com/buildsources/d/dmraid/dmraid-1.0.0.rc16/dmraid-1.0.0.rc16.tar.bz2
 SHA-$(FILE)= 99e76332bb03c5a79406e3c8cb12b6746288635d
 
@@ -22,6 +22,6 @@ compile-stage2:
 	cd $(VRS) ; make install
 
 clean:
-	-rm -rf $(NM)
+	-rm -rf $(NAME)
 
 .PHONY: clean compile-stage2

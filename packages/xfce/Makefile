@@ -1,9 +1,9 @@
 # xfce Makefile
-NM= xfce
+NAME= xfce
 VRS= 4.6.1
 URLBASE= http://archive.xfce.org/xfce/4.6.1/src
 
-include $(MY_ROOT)/packages/$(NM)/filelist
+include $(MY_ROOT)/packages/$(NAME)/filelist
 
 ALLFILES= $(foreach FILE,$(sort $(filter FILE%,$(.VARIABLES))),$($(FILE)))
 

@@ -1,6 +1,6 @@
 # tcpwrappers Makefile
 
-NM= tcpwrappers
+NAME= tcpwrappers
 VRS= 7.6
 DIR= tcp_wrappers_$(VRS)
 

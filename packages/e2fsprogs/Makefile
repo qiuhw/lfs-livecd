@@ -1,8 +1,8 @@
 # E2fsprogs Makefile
 
-NM= e2fsprogs
+NAME= e2fsprogs
 VRS= 1.41.10
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://prdownloads.sourceforge.net/e2fsprogs/e2fsprogs-1.41.10.tar.gz

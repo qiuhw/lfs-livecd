@@ -1,8 +1,8 @@
 # DB Makefile
 
-NM= db
+NAME= db
 VRS= 4.7.25
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://download-east.oracle.com/berkeley-db/db-4.7.25.tar.gz
@@ -18,7 +18,7 @@ include $(ROOT)/scripts/functions
 
 chroot:
 	chroot "$(LFS)" $(chenv-post-bash) \
-	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
+	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
 
 stage2: Makefile $(FILE) $(PATCH1)
 	$(std_build)

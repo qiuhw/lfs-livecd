@@ -1,8 +1,8 @@
 # W3M Makefile
 
-NM= w3m
+NAME= w3m
 VRS= 0.5.2
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://prdownloads.sourceforge.net/w3m/$(FILE)

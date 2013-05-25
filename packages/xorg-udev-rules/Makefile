@@ -1,16 +1,16 @@
 # xorg udev rules Makefile
 
-NM= xorg-udev-rules
+NAME= xorg-udev-rules
 
 # Targets
 
 chroot:
 	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
+	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
 
 stage2: Makefile extract_pci_ids.c
-	make -f Makefile compile-$@ >$(NM).log 2>&1
-	make clean >>$(NM).log 2>&1
+	make -f Makefile compile-$@ >$(NAME).log 2>&1
+	make clean >>$(NAME).log 2>&1
 	touch $@	
 
 compile-stage2:

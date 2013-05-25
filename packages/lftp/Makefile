@@ -1,8 +1,8 @@
 # lftp Makefile
 
-NM= lftp
+NAME= lftp
 VRS= 3.5.11
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://www.kanshima.net/mirrors/lftp/$(FILE)
@@ -14,7 +14,7 @@ include $(ROOT)/scripts/functions
 
 chroot:
 	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
+	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
 
 stage2: Makefile $(FILE)
 	$(std_build)

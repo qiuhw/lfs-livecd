@@ -1,8 +1,8 @@
 # which Makefile
 
-NM= which
+NAME= which
 VRS= 2.20
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/which/which-2.20.tar.gz

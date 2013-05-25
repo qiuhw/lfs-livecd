@@ -1,8 +1,8 @@
 # LibXML2 Makefile
 
-NM= libxml2
+NAME= libxml2
 VRS= 2.7.7
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://xmlsoft.org/sources/libxml2-2.7.7.tar.gz

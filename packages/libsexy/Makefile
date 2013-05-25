@@ -1,8 +1,8 @@
 # libsexy Makefile
 
-NM= libsexy
+NAME= libsexy
 VRS= 0.1.11
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://releases.chipx86.com/libsexy/libsexy/$(FILE)
@@ -14,7 +14,7 @@ include $(ROOT)/scripts/functions
 
 chroot:
 	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
+	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
 
 stage2: Makefile $(FILE)
 	$(std_build)

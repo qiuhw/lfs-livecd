@@ -7,9 +7,9 @@ ifeq ($(CD_ARCH),x86_64)
 CROSS_MAKE= make
 endif
 
-NM= linux
+NAME= linux
 VRS= 2.6.22.5
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://www.kernel.org/pub/linux/kernel/v2.6/$(FILE)
@@ -87,7 +87,7 @@ include $(ROOT)/scripts/functions
 
 chroot:
 	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NM)64 $(chbash-post-bash)'
+	'cd $(ROOT) && make ch-$(NAME)64 $(chbash-post-bash)'
 
 stage2: Makefile $(FILE) $(FILE1) $(FILE2) $(FILE3) $(FILE4) $(FILE5) $(FILE6) $(FILE7) $(FILE8) $(FILE9) $(FILE10) $(PATCH1)
 	$(std_build)

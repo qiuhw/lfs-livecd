@@ -1,8 +1,8 @@
 # Glib Makefile
 
-NM= glib
+NAME= glib
 VRS= 2.25.3
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= https://launchpad.net/glib/head/2.25.3/+download/glib-2.25.3.tar.bz2

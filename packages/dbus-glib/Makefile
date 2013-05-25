@@ -1,8 +1,8 @@
 # dbus-glib Makefile
 
-NM= dbus-glib
+NAME= dbus-glib
 VRS= 0.82
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://dbus.freedesktop.org/releases/dbus-glib/dbus-glib-0.82.tar.gz

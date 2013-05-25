@@ -3,8 +3,8 @@
 # Compressing text files with bzip2 yields a much better compression percentage
 # than with the traditional gzip.
 
-NM= bzip2
-DIR= $(NM)-1.0.5
+NAME= bzip2
+DIR= $(NAME)-1.0.5
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://www.bzip.org/1.0.5/$(FILE)

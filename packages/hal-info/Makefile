@@ -1,8 +1,8 @@
 # hal information Makefile
 
-NM= hal-info
+NAME= hal-info
 VRS= 20091130
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://hal.freedesktop.org/releases/hal-info-20091130.tar.gz

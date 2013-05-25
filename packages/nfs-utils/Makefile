@@ -1,8 +1,8 @@
 # NFS Utilities Makefile
 
-NM= nfs-utils
+NAME= nfs-utils
 VRS= 1.2.2
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://sourceforge.net/projects/nfs/files/nfs-utils/1.2.2/nfs-utils-1.2.2.tar.bz2

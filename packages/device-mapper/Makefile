@@ -1,8 +1,8 @@
 # device-mapper Makefile
 
-NM= device-mapper
+NAME= device-mapper
 VRS= 1.02.21
-DIR= $(NM).$(VRS)
+DIR= $(NAME).$(VRS)
 
 FILE= $(DIR).tgz
 URL-$(FILE)= ftp://sources.redhat.com/pub/dm/$(FILE)
@@ -14,7 +14,7 @@ include $(ROOT)/scripts/functions
 
 chroot:
 	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
+	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
 
 stage2: Makefile $(FILE)
 	$(std_build)

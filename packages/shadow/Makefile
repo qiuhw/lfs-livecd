@@ -1,8 +1,8 @@
 # Shadow Makefile
 
-NM= shadow
+NAME= shadow
 VRS= 4.1.4.2
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= ftp://pkg-shadow.alioth.debian.org/pub/pkg-shadow/shadow-4.1.4.2.tar.bz2

@@ -1,8 +1,8 @@
 # diffutils Makefile
 
-NM= diffutils
+NAME= diffutils
 VRS= 2.8.1
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/diffutils/diffutils-2.8.1.tar.gz

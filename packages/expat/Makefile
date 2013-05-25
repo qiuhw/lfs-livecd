@@ -1,8 +1,8 @@
 # Expat Makefile
 
-NM= expat
+NAME= expat
 VRS= 2.0.1
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://nchc.dl.sourceforge.net/project/expat/expat/2.0.1/expat-2.0.1.tar.gz

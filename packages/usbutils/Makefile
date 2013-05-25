@@ -1,8 +1,8 @@
 # usbutils Makefile
 
-NM= usbutils
+NAME= usbutils
 VRS= 0.86
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gts.lug.ro/kernel/linux/utils/usb/usbutils/usbutils-0.86.tar.gz

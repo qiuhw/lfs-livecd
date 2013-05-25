@@ -1,6 +1,6 @@
 NAME = check
 VER  = 0.9.10
-DIR  = $(NM)-$(VER)
+DIR  = $(NAME)-$(VER)
 
 FILE = $(DIR).tar.gz
 URL-$(FILE) = http://sourceforge.net/projects/$(NAME)/files/$(NAME)/$(VER)/$(FILE)

@@ -1,8 +1,8 @@
 # alsa-lib Makefile
 
-NM= alsa-lib
+NAME= alsa-lib
 VRS= 1.0.21
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://alsa.cybermirror.org/lib/alsa-lib-1.0.21.tar.bz2

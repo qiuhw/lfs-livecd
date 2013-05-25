@@ -1,14 +1,14 @@
 # Subversion Makefile
 
-NM= subversion
+NAME= subversion
 VRS= 1.6.11
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://archive.apache.org/dist/subversion/subversion-1.6.11.tar.bz2
 SHA-$(FILE)= 36cf9d39c14e5bd8d713302ac770c3964fe196b3
 
-FILE2= $(NM)-deps-$(VRS).tar.bz2
+FILE2= $(NAME)-deps-$(VRS).tar.bz2
 URL-$(FILE2)= http://subversion.tigris.org/downloads/subversion-deps-1.6.11.tar.bz2
 SHA-$(FILE2)= bb65755933c385122918ab1f60f7715ebd4b52df
 

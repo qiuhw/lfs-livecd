@@ -4,10 +4,10 @@
 # opening and closing files, reading and writing files, string handling,
 # pattern matching, arithmetic, and so on.
 
-NM= glibc
-DIR= $(NM)-2.17
+NAME= glibc
+DIR= $(NAME)-2.17
 FILE= $(DIR).tar.xz
-URL-$(FILE)= http://ftp.gnu.org/gnu/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/$(NAME)/$(FILE)
 SUM-$(FILE)= 87bf675c8ee523ebda4803e8e1cec638
 
 FILE1= tzdata2013c.tar.gz
@@ -117,6 +117,6 @@ compile-stage2:
 
 clean:
 	-rm -rf $(DIR)
-	-rm -rf $(NM)-build
+	-rm -rf $(NAME)-build
 
 .PHONY: compile-stage1 compile-stage2 clean

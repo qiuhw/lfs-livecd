@@ -1,8 +1,8 @@
 # Perl Makefile
 
-NM= perl
+NAME= perl
 VRS= 5.10.1
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://cpan.org/src/5.0/perl-5.10.1.tar.bz2

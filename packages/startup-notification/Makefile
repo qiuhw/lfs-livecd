@@ -1,8 +1,8 @@
 # startup-notification Makefile
 
-NM= startup-notification
+NAME= startup-notification
 VRS= 0.9
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.lfs-matrix.net/pub/blfs/6.3/s/startup-notification-0.9.tar.bz2

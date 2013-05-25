@@ -1,8 +1,8 @@
 # portaudio Makefile
 
-NM= portaudio
+NAME= portaudio
 VRS= stable_v19_20071207
-DIR= $(NM)
+DIR= $(NAME)
 
 FILE= pa_$(VRS).tar.gz
 URL-$(FILE)= http://www.portaudio.com/archives/pa_stable_v19_20071207.tar.gz

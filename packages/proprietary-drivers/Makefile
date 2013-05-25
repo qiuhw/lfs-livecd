@@ -1,6 +1,6 @@
 # Makefile for proprietary video drivers
 
-NM= proprietary-drivers
+NAME= proprietary-drivers
 VRS= 3
 
 # NVIDIA legacy driver
@@ -24,7 +24,7 @@ include $(ROOT)/scripts/functions
 
 chroot:
 	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
+	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
 
 stage2: Makefile $(FILE1) $(FILE2) $(FILE3)
 	@touch $@

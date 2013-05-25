@@ -1,10 +1,10 @@
 # Iproute2 Makefile
 
-NM= iproute2
+NAME= iproute2
 VRS= 2.6.31
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
-FILE= $(NM)-$(VRS).tar.bz2
+FILE= $(NAME)-$(VRS).tar.bz2
 URL-$(FILE)= http://developer.osdl.org/dev/iproute2/download/iproute2-2.6.31.tar.bz2
 SHA-$(FILE)= e7dec62a4d6646f3fded4f5d34718e9fd98615e4
 

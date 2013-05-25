@@ -1,8 +1,8 @@
 # flac Makefile
 
-NM= flac
+NAME= flac
 VRS= 1.2.1
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://downloads.sourceforge.net/flac/flac-1.2.1.tar.gz

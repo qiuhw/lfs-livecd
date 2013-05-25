@@ -1,8 +1,8 @@
 # lvm2 Makefile
 
-NM= LVM2
+NAME= LVM2
 VRS= 2.02.64
-DIR= $(NM).$(VRS)
+DIR= $(NAME).$(VRS)
 
 FILE= $(DIR).tgz
 URL-$(FILE)= http://sourceware.mirrors.tds.net/pub/sourceware.org/lvm2/old/LVM2.2.02.64.tgz

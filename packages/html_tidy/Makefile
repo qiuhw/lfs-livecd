@@ -1,8 +1,8 @@
 # HTML Tidy Makefile
 
-NM= tidy
+NAME= tidy
 VRS= cvs_20070326
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.lfs-matrix.net/pub/blfs/conglomeration/tidy/tidy-cvs_20070326.tar.bz2

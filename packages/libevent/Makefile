@@ -1,8 +1,8 @@
 # libevent Makefile
 
-NM= libevent
+NAME= libevent
 VRS= 1.4.13-stable
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://sourceforge.net/projects/levent/files/libevent/libevent-1.4/libevent-1.4.13-stable.tar.gz

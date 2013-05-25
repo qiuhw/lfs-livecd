@@ -1,8 +1,8 @@
 # libhangul Makefile
 
-NM= libhangul
+NAME= libhangul
 VRS= 0.0.10
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= ftp://ftp.uwsg.indiana.edu/linux/gentoo/distfiles/libhangul-0.0.10.tar.gz

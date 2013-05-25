@@ -1,8 +1,8 @@
 # tin Makefile
 
-NM= tin
+NAME= tin
 VRS= 1.8.3
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= ftp://ftp.parrot.org/.1/blfs/6.3/t/tin-1.8.3.tar.bz2

@@ -1,8 +1,8 @@
 # libtiff Makefile
 
-NM= tiff
+NAME= tiff
 VRS= 3.9.2
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://download.osgeo.org/libtiff/tiff-3.9.2.tar.gz

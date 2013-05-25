@@ -1,12 +1,12 @@
 # inputattach Makefile
 
-NM= inputattach
+NAME= inputattach
 
 # Targets
 
 chroot:
 	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
+	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
 
 stage2: Makefile
 	make -f Makefile compile-$@

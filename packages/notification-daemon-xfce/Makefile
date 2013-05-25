@@ -1,8 +1,8 @@
 # notification-daemon-xfce Makefile
 
-NM= notification-daemon-xfce
+NAME= notification-daemon-xfce
 VRS= 0.3.6
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://goodies.xfce.org/releases/notification-daemon-xfce/$(FILE)
@@ -14,7 +14,7 @@ include $(ROOT)/scripts/functions
 
 chroot:
 	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
+	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
 
 stage2: Makefile $(FILE)
 	$(std_build)

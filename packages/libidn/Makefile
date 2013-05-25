@@ -1,8 +1,8 @@
 # libidn Makefile
 
-NM= libidn
+NAME= libidn
 VRS= 1.18
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/libidn/libidn-1.18.tar.gz

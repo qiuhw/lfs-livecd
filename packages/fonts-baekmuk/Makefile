@@ -1,8 +1,8 @@
 # Baekmuk fonts Makefile
 
-NM= baekmuk-ttf
+NAME= baekmuk-ttf
 VRS= 2.2
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://kldp.net/frs/download.php/1429/baekmuk-ttf-2.2.tar.gz

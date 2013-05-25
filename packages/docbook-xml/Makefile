@@ -1,9 +1,9 @@
 # DocBook XML DTD Makefile
 
-NM= docbook-xml
+NAME= docbook-xml
 VRS= 4.5
 OLDVERSIONS= 4.1.2 4.2 4.3 4.4
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).zip
 URL-$(FILE)= http://www.docbook.org/xml/4.5/docbook-xml-4.5.zip

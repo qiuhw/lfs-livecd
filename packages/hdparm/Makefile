@@ -1,8 +1,8 @@
 # hdparm Makefile
 
-NM= hdparm
+NAME= hdparm
 VRS= 9.28
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://sourceforge.net/projects/hdparm/files/hdparm/hdparm-9.28.tar.gz

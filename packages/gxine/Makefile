@@ -1,8 +1,8 @@
 # gxine Makefile
 
-NM= gxine
+NAME= gxine
 VRS= 0.5.905
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://sourceforge.net/projects/xine/files/gxine/0.5.905/gxine-0.5.905.tar.bz2

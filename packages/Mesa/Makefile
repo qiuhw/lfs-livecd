@@ -1,8 +1,8 @@
 # Mesa Makefile
 
-NM= Mesa
+NAME= Mesa
 VRS= 7.6
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= MesaLib-$(VRS).tar.bz2
 URL-$(FILE)= ftp://ftp.mirrorservice.org/sites/distfiles.macports.org/mesa/MesaLib-7.6.tar.bz2

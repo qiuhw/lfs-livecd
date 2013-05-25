@@ -1,8 +1,8 @@
 # Bison Makefile
 
-NM= bison
+NAME= bison
 VRS= 2.4.1
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/bison/bison-2.4.1.tar.bz2

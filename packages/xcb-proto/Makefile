@@ -1,8 +1,8 @@
 # xcb-proto Makefile
 
-NM= xcb-proto
+NAME= xcb-proto
 VRS= 1.6
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://xcb.freedesktop.org/dist/xcb-proto-1.6.tar.bz2

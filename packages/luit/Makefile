@@ -1,8 +1,8 @@
 # luit Makefile
 
-NM= luit
+NAME= luit
 VRS= 1.0.4
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.x.org/pub/individual/app/luit-1.0.4.tar.bz2

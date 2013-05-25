@@ -1,8 +1,8 @@
 # acl Makefile
 
-NM= acl
+NAME= acl
 VRS= 2.2.49
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).src.tar.gz
 URL-$(FILE)= http://download.savannah.gnu.org/releases/acl/acl-2.2.49.src.tar.gz

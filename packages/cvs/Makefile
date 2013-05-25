@@ -1,8 +1,8 @@
 # cvs Makefile
 
-NM= cvs
+NAME= cvs
 VRS= 1.11.23
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/non-gnu/cvs/source/stable/1.11.23/cvs-1.11.23.tar.bz2

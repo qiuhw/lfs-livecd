@@ -1,8 +1,8 @@
 # Anthy Makefile
 
-NM= anthy
+NAME= anthy
 VRS= 9100h
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= ftp://ftp.uwsg.indiana.edu/linux/gentoo/distfiles/anthy-9100h.tar.gz

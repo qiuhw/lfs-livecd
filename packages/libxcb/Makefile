@@ -1,8 +1,8 @@
 # libxcb Makefile
 
-NM= libxcb
+NAME= libxcb
 VRS= 1.6
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://xcb.freedesktop.org/dist/libxcb-1.6.tar.bz2

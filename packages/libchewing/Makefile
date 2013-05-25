@@ -1,8 +1,8 @@
 # libchewing Makefile
 
-NM= libchewing
+NAME= libchewing
 VRS= 0.3.2
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://chewing.googlecode.com/files/libchewing-0.3.2.tar.bz2

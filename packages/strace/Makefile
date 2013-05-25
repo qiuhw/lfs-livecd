@@ -1,8 +1,8 @@
 # strace Makefile
 
-NM= strace
+NAME= strace
 VRS= 4.5.20
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://prdownloads.sourceforge.net/strace/$(FILE)

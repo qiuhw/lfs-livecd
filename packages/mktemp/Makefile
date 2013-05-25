@@ -1,8 +1,8 @@
 # Mktemp Makefile
 
-NM= mktemp
+NAME= mktemp
 VRS= 1.5
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://cross-lfs.org/files/packages/1.1.0/mktemp-1.5.tar.gz
@@ -18,7 +18,7 @@ include $(ROOT)/scripts/functions
 
 chroot:
 	chroot "$(LFS)" $(chenv-pre-bash) \
-	'cd $(ROOT) && make ch-$(NM) $(chbash-pre-bash)'
+	'cd $(ROOT) && make ch-$(NAME) $(chbash-pre-bash)'
 
 stage2: Makefile $(FILE) $(PATCH1)
 	$(std_build)

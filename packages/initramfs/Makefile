@@ -1,6 +1,6 @@
 # Makefile for initramfs included on the LFS livecd
 
-NM= initramfs
+NAME= initramfs
 VRS= 1
 
 # Targets

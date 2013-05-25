@@ -1,11 +1,11 @@
 # Libstdc++ Makefile
 # Libstdc++ is the standard C++ library. It is needed for the correct operation of the g++ compiler.
 
-NM= gcc
+NAME= gcc
 VRS= 4.8.0
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= http://ftp.gnu.org/gnu/$(NM)/$(DIR)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/$(NAME)/$(DIR)/$(FILE)
 SUM-$(FILE)= e6040024eb9e761c3bea348d1fa5abb0
 
 # Targets
@@ -30,6 +30,6 @@ compile-stage1:
 
 clean:
 	-rm -rf $(DIR)
-	-rm -rf $(NM)-build
+	-rm -rf $(NAME)-build
 
 .PHONY: compile-stage1 clean

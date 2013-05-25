@@ -1,8 +1,8 @@
 # UnZip Makefile
 
-NM= unzip
+NAME= unzip
 VRS= 60
-DIR= $(NM)$(VRS)
+DIR= $(NAME)$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://prdownloads.sourceforge.net/infozip/$(FILE)

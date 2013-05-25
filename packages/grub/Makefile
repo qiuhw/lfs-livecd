@@ -1,8 +1,8 @@
 # Grub Makefile
 
-NM= grub
+NAME= grub
 VRS= 1.97.2
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= ftp://alpha.gnu.org/gnu/grub/grub-1.97.2.tar.gz

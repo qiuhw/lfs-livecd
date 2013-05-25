@@ -1,8 +1,8 @@
 # Gcc 3.3.6 Makefile
 
-NM= gcc
+NAME= gcc
 VRS= 3.3.6
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/gcc/$(DIR)/$(FILE)
@@ -35,6 +35,6 @@ compile-stage2:
 
 clean:
 	-rm -rf $(DIR)
-	-rm -rf $(NM)-build
+	-rm -rf $(NAME)-build
 
 .PHONY: clean compile-stage2

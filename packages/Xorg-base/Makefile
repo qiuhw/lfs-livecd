@@ -1,4 +1,4 @@
-NM= X.org-base
+NAME= X.org-base
 VRS=X11R7.5
 
 include $(MY_ROOT)/scripts/functions

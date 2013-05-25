@@ -1,8 +1,8 @@
 # gdbm Makefile
 
-NM= gdbm
+NAME= gdbm
 VRS= 1.8.3
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/gdbm/gdbm-1.8.3.tar.gz

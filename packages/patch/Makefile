@@ -1,8 +1,8 @@
 # Patch Makefile
 
-NM= patch
+NAME= patch
 VRS= 2.6.1
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/patch/patch-2.6.1.tar.bz2

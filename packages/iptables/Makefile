@@ -1,8 +1,8 @@
 # iptables Makefile
 
-NM= iptables
+NAME= iptables
 VRS= 1.4.7
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://www.netfilter.org/projects/iptables/files/iptables-1.4.7.tar.bz2

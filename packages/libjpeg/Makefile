@@ -1,6 +1,6 @@
 # libjpeg Makefile
 
-NM= libjpeg
+NAME= libjpeg
 VRS= 7
 DIR= jpeg-$(VRS)
 

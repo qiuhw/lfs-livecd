@@ -1,8 +1,8 @@
 # Syslinux Makefile
 
-NM= syslinux
+NAME= syslinux
 VRS= 3.86
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= https://www.kernel.org/pub/linux/utils/boot/syslinux/3.xx/syslinux-3.86.tar.bz2

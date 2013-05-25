@@ -1,8 +1,8 @@
 # Boehm GC Makefile
 
-NM= gc
+NAME= gc
 VRS= 6.8
-DIR= $(NM)$(VRS)
+DIR= $(NAME)$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://www.hpl.hp.com/personal/Hans_Boehm/gc/gc_source/gc6.8.tar.gz

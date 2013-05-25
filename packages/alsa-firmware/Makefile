@@ -1,8 +1,8 @@
 # alsa-firmware Makefile
 
-NM= alsa-firmware
+NAME= alsa-firmware
 VRS= 1.0.20
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://alsa.cybermirror.org/firmware/alsa-firmware-1.0.20.tar.bz2

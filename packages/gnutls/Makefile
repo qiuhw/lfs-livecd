@@ -1,8 +1,8 @@
 # gnutls Makefile
 
-NM= gnutls
+NAME= gnutls
 VRS= 2.8.6
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/gnutls/gnutls-2.8.6.tar.bz2

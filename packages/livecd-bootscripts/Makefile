@@ -1,4 +1,4 @@
-NM= livecd-bootscripts
+NAME= livecd-bootscripts
 VRS= SVN
 
 # Targets
@@ -9,7 +9,7 @@ DATA= font.dat font-errors.dat lang.dat
 include $(MY_ROOT)/scripts/functions
 
 stage2: Makefile $(SCRIPTS) $(DATA)
-	@make -f Makefile compile-$@ >>$(NM)-$@.log 2>&1
+	@make -f Makefile compile-$@ >>$(NAME)-$@.log 2>&1
 	@touch $@
 
 compile-stage2:

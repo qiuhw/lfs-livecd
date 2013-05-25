@@ -1,8 +1,8 @@
 # CDRTools Makefile
 
-NM= cdrtools
+NAME= cdrtools
 VRS= 3.00
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gwdg.de/linux/cdrecord/cdrtools-3.00.tar.bz2

@@ -1,10 +1,10 @@
 # Lynx Makefile
 
-NM= lynx
+NAME= lynx
 VRS= 2.8.7rel.1
-DIR= $(NM)2-8-7
+DIR= $(NAME)2-8-7
 
-FILE= $(NM)$(VRS).tar.bz2
+FILE= $(NAME)$(VRS).tar.bz2
 URL-$(FILE)= http://lynx.isc.org/current/lynx2.8.7rel.1.tar.bz2
 SHA-$(FILE)= f5e67a298322b22fe0edcfba326c02eaa5edcb72
 
@@ -17,11 +17,11 @@ stage2: Makefile $(FILE)
 
 compile-stage2:
 	./configure --prefix=/usr --sysconfdir=/etc/lynx \
-	 --datadir=/usr/share/doc/$(NM)-$(VRS) --with-zlib --with-bzlib \
+	 --datadir=/usr/share/doc/$(NAME)-$(VRS) --with-zlib --with-bzlib \
 	 --with-screen=ncursesw --enable-locale-charset
 	make
 	make install-full
-	chgrp -v -R root /usr/share/doc/$(NM)-$(VRS)/lynx_doc
+	chgrp -v -R root /usr/share/doc/$(NAME)-$(VRS)/lynx_doc
 
 clean:
 	-rm -rf $(DIR)

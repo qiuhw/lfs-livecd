@@ -1,9 +1,9 @@
 # DejaGNU Makefile
 
-NM= dejagnu
-DIR= $(NM)-1.5.1
+NAME= dejagnu
+DIR= $(NAME)-1.5.1
 FILE= $(DIR).tar.gz
-URL-$(FILE)= http://ftp.gnu.org/gnu/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/$(NAME)/$(FILE)
 SUM-$(FILE)= 8386e04e362345f50ad169f052f4c4ab
 
 # Targets

@@ -1,8 +1,8 @@
 # ATK Makefile
 
-NM= atk
+NAME= atk
 VRS= 1.28.0
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnome.org/pub/gnome/sources/atk/1.28/atk-1.28.0.tar.bz2

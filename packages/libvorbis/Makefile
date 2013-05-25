@@ -1,8 +1,8 @@
 # libvorbis Makefile
 
-NM= libvorbis
+NAME= libvorbis
 VRS= 1.2.3
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://downloads.xiph.org/releases/vorbis/libvorbis-1.2.3.tar.bz2

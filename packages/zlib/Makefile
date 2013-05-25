@@ -1,8 +1,8 @@
 # Zlib Makefile
 
-NM= zlib
+NAME= zlib
 VRS= 1.2.3
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://www.zlib.net/zlib-1.2.3.tar.bz2

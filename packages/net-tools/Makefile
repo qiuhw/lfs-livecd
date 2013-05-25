@@ -1,8 +1,8 @@
 # net-tools Makefile
 
-NM= net-tools
+NAME= net-tools
 VRS= 1.60
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://www.tazenda.demon.co.uk/phil/net-tools/$(FILE)
@@ -26,7 +26,7 @@ include $(ROOT)/scripts/functions
 
 chroot:
 	chroot "$(LFS)" $(chenv-post-bash) \
-	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
+	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
 
 stage2: Makefile $(FILE) $(PATCH1) $(PATCH2) $(PATCH3)
 	$(std_build)

@@ -1,8 +1,8 @@
 # Man-pages Makefile
 
-NM= man-pages
+NAME= man-pages
 VRS= 3.23
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://www.kernel.org/pub/linux/docs/manpages/Archive/man-pages-3.23.tar.bz2

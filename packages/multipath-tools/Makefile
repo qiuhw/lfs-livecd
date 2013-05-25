@@ -5,12 +5,12 @@
 #
 # Udev rules are not installed, because they rely on a patched dmsetup
 
-NM= multipath-tools
+NAME= multipath-tools
 VRS= 0.4.8
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= http://christophe.varoqui.free.fr/$(NM)/$(FILE)
+URL-$(FILE)= http://christophe.varoqui.free.fr/$(NAME)/$(FILE)
 SHA-$(FILE)= aadc7c7ed072c3df2e32c64a2ab1ba7fac850d7a
 
 # Fixes support for extended partitions
@@ -23,7 +23,7 @@ include $(ROOT)/scripts/functions
 
 chroot:
 	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
+	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
 
 stage2: Makefile $(FILE)
 	$(std_build)

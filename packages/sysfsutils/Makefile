@@ -1,8 +1,8 @@
 # Sysfsutils Makefile
 
-NM= sysfsutils
+NAME= sysfsutils
 VRS= 2.1.0
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://enterprise-storage-os.googlecode.com/files/sysfsutils-2.1.0.tar.gz

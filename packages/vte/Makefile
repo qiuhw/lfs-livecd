@@ -1,8 +1,8 @@
 # vte Makefile
 
-NM= vte
+NAME= vte
 VRS= 0.22.5
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnome.org/mirror/gnome.org/sources/vte/0.22/vte-0.22.5.tar.bz2

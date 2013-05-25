@@ -2,11 +2,11 @@
 #
 # The Binutils package contains a liner, an assembler, and other tools for handling object files.
 
-NM= binutils
-DIR= $(NM)-2.23.2
+NAME= binutils
+DIR= $(NAME)-2.23.2
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= http://ftp.gnu.org/gnu/$(NM)/$(FILE)
+URL-$(FILE)= http://ftp.gnu.org/gnu/$(NAME)/$(FILE)
 SUM-$(FILE)= 4f8fa651e35ef262edc01d60fb45702e
 
 # Targets
@@ -68,6 +68,6 @@ compile-stage2:
 
 clean:
 	-rm -rf $(DIR)
-	-rm -rf $(NM)-build
+	-rm -rf $(NAME)-build
 
 .PHONY: compile-prebuild compile-stage1 compile-stage2 clean

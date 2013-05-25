@@ -1,8 +1,8 @@
 # wpa_supplicant Makefile
 
-NM= wpa_supplicant
+NAME= wpa_supplicant
 VRS= 0.6.10
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://wl500g.googlecode.com/svn-history/r3173/branches/rt-n/wpa_supplicant/wpa_supplicant-0.6.10.tar.gz
@@ -16,11 +16,11 @@ stage2: Makefile $(FILE)
 	$(std_build)
 
 compile-stage2:
-	cd $(NM) ; cp defconfig .config
-	cd $(NM) ; make
-	cd $(NM) ; install -m755 $(NM) wpa_passphrase wpa_cli /usr/bin
-	mkdir -p /etc/$(NM)
-	cd $(NM) ; cp examples/*.conf /etc/$(NM)
+	cd $(NAME) ; cp defconfig .config
+	cd $(NAME) ; make
+	cd $(NAME) ; install -m755 $(NAME) wpa_passphrase wpa_cli /usr/bin
+	mkdir -p /etc/$(NAME)
+	cd $(NAME) ; cp examples/*.conf /etc/$(NAME)
 
 clean:
 	-rm -rf $(DIR)

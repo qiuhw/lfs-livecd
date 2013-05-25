@@ -1,8 +1,8 @@
 # bin86 Makefile
 
-NM= bin86
+NAME= bin86
 VRS= 0.16.17
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.nux.at/pub/dev86/$(FILE)
@@ -18,7 +18,7 @@ include $(ROOT)/scripts/functions
 
 chroot:
 	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
+	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
 
 stage2: Makefile $(FILE) $(PATCH)
 	$(std_build)

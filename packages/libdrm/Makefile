@@ -1,8 +1,8 @@
 # libdrm Makefile
 
-NM= libdrm
+NAME= libdrm
 VRS= 2.4.14
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://dri.freedesktop.org/libdrm/libdrm-2.4.14.tar.bz2

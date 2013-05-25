@@ -1,8 +1,8 @@
 # attr Makefile
 
-NM= attr
+NAME= attr
 VRS= 2.4.44
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).src.tar.gz
 URL-$(FILE)= http://download.savannah.gnu.org/releases/attr/attr-2.4.44.src.tar.gz

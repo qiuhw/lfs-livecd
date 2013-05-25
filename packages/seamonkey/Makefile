@@ -1,10 +1,10 @@
 # Seamonkey Makefile
 
-NM= seamonkey
+NAME= seamonkey
 VRS= 2.0.4
 DIR= comm-1.9.1
 
-FILE= $(NM)-$(VRS).source.tar.bz2
+FILE= $(NAME)-$(VRS).source.tar.bz2
 URL-$(FILE)= https://ftp.mozilla.org/pub/mozilla.org/seamonkey/releases/2.0.4/source/seamonkey-2.0.4.source.tar.bz2
 SHA-$(FILE)= 8bbf46520725b3fae0d057821a4e7cd89baa8031
 
@@ -19,7 +19,7 @@ stage2: Makefile $(FILE)
 
 compile-stage2:
 	sed -i 's/-$$(MOZ_APP_VERSION)//' config/autoconf.mk.in
-	sed 's:@TOPSRCDIR@:$(MY_ROOT)/packages/$(NM)/$(DIR):' ../.mozconfig \
+	sed 's:@TOPSRCDIR@:$(MY_ROOT)/packages/$(NAME)/$(DIR):' ../.mozconfig \
 	 > .mozconfig
 	make -f client.mk build
 	make -f client.mk install

@@ -1,8 +1,8 @@
 # DDCControl Makefile
 
-NM= ddccontrol
+NAME= ddccontrol
 VRS= 0.4.2
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://sourceforge.net/projects/ddccontrol/files/ddccontrol/0.4.2/ddccontrol-0.4.2.tar.bz2

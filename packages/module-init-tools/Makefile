@@ -1,8 +1,8 @@
 # Module-Init-Tools Makefile
 
-NM= module-init-tools
+NAME= module-init-tools
 VRS= 3.11.1
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= https://www.kernel.org/pub/linux/utils/kernel/module-init-tools/module-init-tools-3.11.1.tar.bz2

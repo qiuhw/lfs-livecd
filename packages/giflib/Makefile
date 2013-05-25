@@ -1,8 +1,8 @@
 # giflib Makefile
 
-NM= giflib
+NAME= giflib
 VRS= 4.1.6
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://downloads.sourceforge.net/giflib/giflib-4.1.6.tar.bz2

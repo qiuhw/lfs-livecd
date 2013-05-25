@@ -1,8 +1,8 @@
 # man-db Makefile
 
-NM= man-db
+NAME= man-db
 VRS= 2.5.6
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://download.savannah.gnu.org/releases/man-db/man-db-2.5.6.tar.gz

@@ -1,8 +1,8 @@
 # Automake Makefile
 
-NM= automake
+NAME= automake
 VRS= 1.11.1
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/automake/automake-1.11.1.tar.bz2

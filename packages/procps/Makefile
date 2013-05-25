@@ -1,8 +1,8 @@
 # procps Makefile
 
-NM= procps
+NAME= procps
 VRS= 3.2.8
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://procps.sourceforge.net/procps-3.2.8.tar.gz

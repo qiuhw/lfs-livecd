@@ -1,8 +1,8 @@
 # manpages-ru Makefile
 
-NM= manpages-ru
+NAME= manpages-ru
 VRS= 0.98
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= ftp://ftp.uwsg.indiana.edu/linux/gentoo/distfiles/manpages-ru-0.98.tar.bz2

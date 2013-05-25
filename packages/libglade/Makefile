@@ -1,8 +1,8 @@
 # libglade Makefile
 
-NM= libglade
+NAME= libglade
 VRS= 2.6.4
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnome.org/pub/gnome/sources/libglade/2.6/libglade-2.6.4.tar.bz2

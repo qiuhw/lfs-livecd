@@ -1,8 +1,8 @@
 # LibIDL Makefile
 
-NM= libIDL
+NAME= libIDL
 VRS= 0.8.13
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnome.org/pub/gnome/sources/libIDL/0.8/libIDL-0.8.13.tar.bz2

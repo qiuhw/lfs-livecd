@@ -1,8 +1,8 @@
 # xcursor-themes Makefile
 
-NM= xcursor-themes
+NAME= xcursor-themes
 VRS= 1.0.2
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.x.org/pub/individual/data/xcursor-themes-1.0.2.tar.bz2

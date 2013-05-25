@@ -1,8 +1,8 @@
 # Make Makefile
 
-NM= make
+NAME= make
 VRS= 3.81
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/make/make-3.81.tar.bz2

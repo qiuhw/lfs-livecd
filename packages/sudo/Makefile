@@ -1,8 +1,8 @@
 # sudo Makefile
 
-NM= sudo
+NAME= sudo
 VRS= 1.7.2p6
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://contribsoft.caixamagica.pt/export/2312/packages/cm15/sudo/current/SOURCES/sudo-1.7.2p6.tar.gz

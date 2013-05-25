@@ -1,8 +1,8 @@
 # SCIM Makefile
 
-NM= scim
+NAME= scim
 VRS= 1.4.9
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://sourceforge.net/projects/scim/files/scim/1.4.9/scim-1.4.9.tar.gz

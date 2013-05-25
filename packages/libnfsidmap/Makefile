@@ -1,8 +1,8 @@
 # libnfsidmap Makefile
 
-NM= libnfsidmap
+NAME= libnfsidmap
 VRS= 0.23
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= ftp://ftp.uwsg.indiana.edu/linux/gentoo/distfiles/libnfsidmap-0.23.tar.gz

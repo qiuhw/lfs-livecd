@@ -1,8 +1,8 @@
-NM= Xorg-util
+NAME= Xorg-util
 VRS= X11R7.5
 URLBASE= http://ftp.x.org/pub/individual/util
 
-include $(MY_ROOT)/packages/$(NM)/filelist
+include $(MY_ROOT)/packages/$(NAME)/filelist
 
 ALLFILES= $(foreach FILE,$(sort $(filter FILE%,$(.VARIABLES))),$($(FILE)))
 

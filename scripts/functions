@@ -7,9 +7,9 @@ endef
 
 define sep_dir_build
 	@tar xf $(FILE)
-	@rm -rf $(NM)-build
-	@install -d $(NM)-build
-	@make -C $(NM)-build -f ../Makefile compile-$@
+	@rm -rf $(NAME)-build
+	@install -d $(NAME)-build
+	@make -C $(NAME)-build -f ../Makefile compile-$@
 	@make clean
 	@touch $@
 endef

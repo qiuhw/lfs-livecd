@@ -1,8 +1,8 @@
 # lilo Makefile
 
-NM= lilo
+NAME= lilo
 VRS= 22.8
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).src.tar.gz
 URL-$(FILE)= http://home.san.rr.com/johninsd/pub/linux/lilo/$(FILE)
@@ -14,7 +14,7 @@ include $(ROOT)/scripts/functions
 
 chroot:
 	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
+	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
 
 stage2: Makefile $(FILE)
 	$(std_build)

@@ -1,8 +1,8 @@
 # libusb-compat Makefile
 
-NM= libusb-compat
+NAME= libusb-compat
 VRS= 0.1.3
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://sourceforge.net/projects/libusb/files/libusb-compat-0.1/libusb-compat-0.1.3/libusb-compat-0.1.3.tar.bz2

@@ -1,8 +1,8 @@
 # speex Makefile
 
-NM= speex
+NAME= speex
 VRS= 1.2rc1
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://downloads.us.xiph.org/releases/speex/speex-1.2rc1.tar.gz

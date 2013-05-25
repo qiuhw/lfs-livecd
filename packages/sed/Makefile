@@ -1,8 +1,8 @@
 # Sed Makefile
 
-NM= sed
+NAME= sed
 VRS= 4.2.1
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.gnu.org/gnu/sed/sed-4.2.1.tar.bz2
@@ -34,7 +34,7 @@ compile-stage1:
 
 chroot:
 	chroot "$(LFS)" $(chenv-pre-bash) \
-	'cd $(MY_ROOT) && make ch-$(NM) $(chbash-pre-bash)'
+	'cd $(MY_ROOT) && make ch-$(NAME) $(chbash-pre-bash)'
 
 stage2: Makefile $(FILE)
 	$(std_build)

@@ -1,8 +1,8 @@
 # pidgin Makefile
 
-NM= pidgin
+NAME= pidgin
 VRS= 2.6.6
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://sourceforge.net/projects/pidgin/files/Pidgin/2.6.6/pidgin-2.6.6.tar.bz2

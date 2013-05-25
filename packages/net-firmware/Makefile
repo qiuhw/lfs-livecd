@@ -1,6 +1,6 @@
 # network firmware Makefile
 
-NM= net-firmware
+NAME= net-firmware
 VRS= 1
 
 UNCOMPRESSED_FILE1= t3fw-3.3.0.bin
@@ -100,7 +100,7 @@ include $(ROOT)/scripts/functions
 
 chroot:
 	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NM) $(chbash-post-bash)'
+	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
 
 stage2: Makefile $(ALLFILES)
 	@zcat $(FILE1) >/lib/firmware/$(UNCOMPRESSED_FILE1)

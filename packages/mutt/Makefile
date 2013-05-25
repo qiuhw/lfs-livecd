@@ -1,8 +1,8 @@
 # mutt Makefile
 
-NM= mutt
+NAME= mutt
 VRS= 1.5.20
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= ftp://ftp.mutt.org/mutt/devel/mutt-1.5.20.tar.gz

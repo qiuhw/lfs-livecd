@@ -1,8 +1,8 @@
 # Readline Makefile
 
-NM= readline
+NAME= readline
 VRS= 6.1
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/readline/readline-6.1.tar.gz

@@ -1,8 +1,8 @@
 # GPM Makefile
 
-NM= gpm
+NAME= gpm
 VRS= 1.20.1
-DIR= $(NM)-$(VRS)
+DIR= $(NAME)-$(VRS)
 
 FILE= $(DIR).tar.bz2
 URL-$(FILE)= http://ftp.schottelius.org/pub/linux/gpm/gpm-1.20.1.tar.bz2
@@ -24,7 +24,7 @@ include $(ROOT)/scripts/functions
 
 chroot:
 	chroot "$(LFS)" $(chenv-pre-bash) \
-	'cd $(ROOT) && make ch-$(NM) $(chbash-pre-bash)'
+	'cd $(ROOT) && make ch-$(NAME) $(chbash-pre-bash)'
 
 stage2: Makefile $(FILE) $(PATCH1) $(PATCH2)
 	$(std_build)
