@@ -1,22 +1,14 @@
-# Perl Makefile
+NAME = perl
+VER  = 5.16.3
+DIR  = $(NAME)-$(VER)
 
-NAME= perl
-VER= 5.10.1
-DIR= $(NAME)-$(VER)
+FILE = $(DIR).tar.bz2
+URL-$(FILE) = http://cpan.org/src/5.0/$(FILE)
+SUM-$(FILE) = 025102de0e4a597cf541e57da80c6aa3
 
-FILE= $(DIR).tar.bz2
-URL-$(FILE)= http://cpan.org/src/5.0/perl-5.10.1.tar.bz2
-SUM-$(FILE)= 98b762b5cd4fb76dd354dfa5ba0d21bc2acacaf2
-
-PATCH= $(DIR)-utf8-1.patch
-URL-$(PATCH)= http://www.linuxfromscratch.org/patches/lfs/6.6/perl-5.10.1-utf8-1.patch
-SUM-$(PATCH)= 8fd13345554b15be27cbb1ba5d0a190793ea6489
-
-PATCH1= $(DIR)-libc-1.patch
-URL-$(PATCH1)= http://www.linuxfromscratch.org/patches/lfs/6.6/perl-5.10.1-libc-1.patch
-SUM-$(PATCH1)= 67c2e4e4d63f88b83cd8042dad04c07a4054037b
-
-# Targets
+PATCH = $(DIR)-libc-1.patch
+URL-$(PATCH) = http://www.linuxfromscratch.org/patches/lfs/development/$(PATCH)
+SUM-$(PATCH) = daf5c64fd7311e924966842680535f8f
 
 include $(MY_ROOT)/scripts/functions
 
@@ -24,35 +16,34 @@ stage1: $(FILE) $(PATCH1)
 	$(std_build)
 
 compile-stage1:
-	patch -Np1 -i ../$(PATCH1)
-	sh Configure -des -Dprefix=/tools \
-	 -Dstatic_ext='Data/Dumper Fcntl IO POSIX'
-	make perl utilities ext/Errno/pm_to_blib
-	cp -v perl pod/pod2man /tools/bin
-	mkdir -pv /tools/lib/perl5/$(VER)
-	cp -Rv lib/* /tools/lib/perl5/$(VER)
+	patch -Np1 -i ../$(PATCH)
+	sh Configure -des -Dprefix=/tools
+	make
+	cp perl cpan/podlators/pod2man /tools/bin
+	mkdir -p /tools/lib/perl5/$(VER)
+	cp -R lib/* /tools/lib/perl5/$(VER)
 
-stage2: Makefile $(FILE) $(PATCH)
+stage2: $(FILE)
 	$(std_build)
 
 compile-stage2:
-	patch -Np1 -i ../$(PATCH)
 	# LFS has:
 	# echo "127.0.0.1 localhost $(hostname)" > /etc/hosts
 	# this is already taken care of by the createfiles target
 	sed -i -e "s|BUILD_ZLIB\s*= True|BUILD_ZLIB = False|" \
-	 -e "s|INCLUDE\s*= ./zlib-src|INCLUDE    = /usr/include|" \
-	 -e "s|LIB\s*= ./zlib-src|LIB        = /usr|" \
-	 ext/Compress-Raw-Zlib/config.in
+		   -e "s|INCLUDE\s*= ./zlib-src|INCLUDE    = /usr/include|" \
+		   -e "s|LIB\s*= ./zlib-src|LIB        = /usr/lib|" \
+		cpan/Compress-Raw-Zlib/config.in
 	sh Configure -des -Dprefix=/usr \
-	 -Dvendorprefix=/usr           \
-	 -Dman1dir=/usr/share/man/man1 \
-	 -Dman3dir=/usr/share/man/man3 \
-	 -Dpager="/usr/bin/less -isR"
+		              -Dvendorprefix=/usr \
+		              -Dman1dir=/usr/share/man/man1 \
+		              -Dman3dir=/usr/share/man/man3 \
+		              -Dpager="/usr/bin/less -isR" \
+					  -Duseshrplib
 	make
 	make install
 
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: compile-stage1 clean compile-stage2
+.PHONY: compile-stage1 compile-stage2 clean
