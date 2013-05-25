@@ -1,18 +1,10 @@
-# diffutils Makefile
+NAME = diffutils
+VER  = 3.3
+DIR  = $(NAME)-$(VER)
 
-NAME= diffutils
-VER= 2.8.1
-DIR= $(NAME)-$(VER)
-
-FILE= $(DIR).tar.gz
-URL-$(FILE)= http://ftp.gnu.org/gnu/diffutils/diffutils-2.8.1.tar.gz
-SUM-$(FILE)= a4c467c3a6a08cde9f3d94d02067ec26436e7dc5
-
-PATCH= $(DIR)-i18n-1.patch
-URL-$(PATCH)= http://www.linuxfromscratch.org/patches/lfs/6.6/diffutils-2.8.1-i18n-1.patch
-SUM-$(PATCH)= 2d88d693ab572f04990a3a28deb5e743e288b9da
-
-# Targets
+FILE = $(DIR).tar.xz
+URL-$(FILE) = http://ftp.gnu.org/gnu/$(NAME)/$(FILE)
+SUM-$(FILE) = 99180208ec2a82ce71f55b0d7389f1b3
 
 include $(MY_ROOT)/scripts/functions
 
@@ -20,23 +12,20 @@ stage1: $(FILE)
 	$(std_build)
 
 compile-stage1:
-	./configure \
-		--prefix=/tools
+	./configure --prefix=/tools
 	make
 	make install
 
-stage2: Makefile $(FILE) $(PATCH)
+stage2: $(FILE)
 	$(std_build)
 
 compile-stage2:
-	patch -Np1 -i ../$(PATCH)
-	touch man/diff.1
-	./configure \
-		--prefix=/usr
+	./configure --prefix=/usr
 	make
+	make check
 	make install
 
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: compile-stage1 clean compile-stage2
+.PHONY: compile-stage1 compile-stage2 clean
