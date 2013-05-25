@@ -1,14 +1,10 @@
-# Gawk Makefile
+NAME = gawk
+VER  = 4.1.0
+DIR  = $(NAME)-$(VER)
 
-NAME= gawk
-VER= 3.1.7
-DIR= $(NAME)-$(VER)
-
-FILE= $(DIR).tar.bz2
-URL-$(FILE)= http://ftp.gnu.org/gnu/gawk/gawk-3.1.7.tar.bz2
-SUM-$(FILE)= 77dfacb793d579fa6830152d943096bc4362a465
-
-# Targets
+FILE = $(DIR).tar.xz
+URL-$(FILE) = http://ftp.gnu.org/gnu/$(NAME)/$(FILE)
+SUM-$(FILE) = b18992ff8faf3217dab55d2d0aa7d707
 
 include $(MY_ROOT)/scripts/functions
 
@@ -16,22 +12,21 @@ stage1: $(FILE)
 	$(std_build)
 
 compile-stage1:
-	./configure \
-		--prefix=/tools
+	./configure --prefix=/tools
 	make
 	make install
 
-stage2: Makefile $(FILE)
+stage2: $(FILE)
 	$(std_build)
 
 compile-stage2:
-	./configure \
-		--prefix=/usr \
-		--libexecdir=/usr/lib/gawk
+	./configure --prefix=/usr \
+		--libexecdir=/usr/lib
 	make
+	make check
 	make install
 
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: compile-stage1 clean compile-stage2
+.PHONY: compile-stage1 compile-stage2 clean
