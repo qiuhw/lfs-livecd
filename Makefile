@@ -69,7 +69,7 @@ all: test-host base iso
 
 # Check host prerequisites
 # FIXME: Fill this out with more package pre-reqs
-test-host: test-arch test-euid test-bash
+test-host: test-arch test-euid test-bash test-binutils
 	@if ! type -p gawk >/dev/null 2>&1 ; then \
 	 echo -e "Missing gawk on host!\nPlease install gawk and re-run 'make'." && exit 1 ; fi 
 
@@ -87,15 +87,20 @@ BASH_VER := $(subst ., ,$(shell LC_ALL=C bash --version | head -n1 | cut -d" " -
 BASH_MAJOR := $(word 1,$(BASH_VER))
 BASH_MINOR := $(word 2,$(BASH_VER))
 test-bash:
-	@if [ $(BASH_MAJOR) -lt 3 ]; then \
-		echo "Bash >= 3.2 is required." && exit 1; \
-	 fi
-	@if [ $(BASH_MAJOR) -eq 3 -a $(BASH_MINOR) -lt 2 ]; then \
+	@if [ $(BASH_MAJOR) -lt 3 -o $(BASH_MAJOR) -eq 3 -a $(BASH_MINOR) -lt 2 ]; then \
 		echo "Bash >= 3.2 is required." && exit 1; \
 	 fi
 ifneq ($(notdir $(shell readlink -f /bin/sh)),bash)
 	$(error /bin/sh  should be a symbolic or hard link to bash.)
 endif
+
+BINUTILS_VER := $(subst ., ,$(shell LC_ALL=C ld --version | head -n1 | cut -d" " -f4))
+BINUTILS_MAJOR := $(word 1,$(BINUTILS_VER))
+BINUTILS_MINOR := $(word 2,$(BINUTILS_VER))
+test-binutils:
+	@if [ $(BINUTILS_MAJOR) -lt 2 -o $(BINUTILS_MAJOR) -eq 2 -a $(BINUTILS_MINOR) -lt 17 ]; then \
+		echo "Binutils >= 2.17 is required." && exit 1; \
+	 fi
 
 base: $(MKTREE) builduser build-tools
 	@chroot "$(LFS)" $(chenv-pre-bash) 'set +h && \
