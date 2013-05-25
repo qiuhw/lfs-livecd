@@ -1,11 +1,10 @@
 # DejaGNU Makefile
-# The DejaGNU package contains a framework for testing other programs.
 
 NM= dejagnu
-DIR= $(NM)-1.4.4
+DIR= $(NM)-1.5.1
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/$(NM)/$(FILE)
-SHA-$(FILE)= fd82ffd396eba5b595f76d2f4a068cb7fcc6cffb
+SHA-$(FILE)= 8386e04e362345f50ad169f052f4c4ab
 
 # Targets
 
@@ -15,8 +14,7 @@ stage1: $(FILE)
 	$(std_build)
 
 compile-stage1:
-	./configure \
-		--prefix=/tools
+	./configure --prefix=/tools
 	make install
 	make check
 
