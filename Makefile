@@ -93,7 +93,7 @@ test-bash:
 	@if [ $(BASH_MAJOR) -eq 3 -a $(BASH_MINOR) -lt 2 ]; then \
 		echo "Bash >= 3.2 is required." && exit 1; \
 	 fi
-ifneq ($(shell readlink -f /bin/sh),/usr/bin/bash)
+ifneq ($(notdir $(shell readlink -f /bin/sh)),bash)
 	$(error /bin/sh  should be a symbolic or hard link to bash.)
 endif
 
