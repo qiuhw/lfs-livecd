@@ -1,10 +1,10 @@
 # Linux-headers Makefile
 # The Linux API Headers expose the kernel's API for use by Glibc.
 
-DIR= linux-3.8.1
+DIR= linux-3.9.2
 FILE= $(DIR).tar.xz
 URL-$(FILE)= http://www.kernel.org/pub/linux/kernel/v3.x/$(FILE)
-SUM-$(FILE)= 093b172f907d5455a6746418ad18f5bc
+SUM-$(FILE)= e406cc1bb5618a4ea88470f4d3d3d6e1
 
 # Targets
 
