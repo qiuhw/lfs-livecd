@@ -1,20 +1,14 @@
-# Bzip2 Makefile
-# The Bzip2 package contains programs for compressing and decompressing files.
-# Compressing text files with bzip2 yields a much better compression percentage
-# than with the traditional gzip.
+NAME = bzip2
+VER  = 1.0.6
+DIR  = $(NAME)-$(VER)
 
-NAME= bzip2
-DIR= $(NAME)-1.0.5
+FILE = $(DIR).tar.gz
+URL-$(FILE) = http://www.bzip.org/$(VER)/$(FILE)
+SUM-$(FILE) = 00b516f4704d4a7cb50a1d97e6e8e15b
 
-FILE= $(DIR).tar.gz
-URL-$(FILE)= http://www.bzip.org/1.0.5/$(FILE)
-SUM-$(FILE)= 8b02713ea0c8eb501cc8bdac4432d7f29700f767
-
-PATCH= $(DIR)-install_docs-1.patch
-URL-$(PATCH)= http://www.linuxfromscratch.org/patches/lfs/6.6/$(PATCH)
-SUM-$(PATCH)= 86fa168b260bb12651ebfa6d47939e926e067036
-
-# Targets
+PATCH = $(DIR)-install_docs-1.patch
+URL-$(PATCH) = http://www.linuxfromscratch.org/patches/lfs/development/$(PATCH)
+SUM-$(PATCH) = 6a5ac7e89b791aae556de0f745916f7f
 
 include $(MY_ROOT)/scripts/functions
 
@@ -31,6 +25,7 @@ stage2: $(FILE) $(PATCH)
 compile-stage2:
 	patch -Np1 -i ../$(PATCH)
 	sed -i 's@\(ln -s -f \)$$(PREFIX)/bin/@\1@' Makefile
+	sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile
 	make -f Makefile-libbz2_so
 	make clean
 	make
