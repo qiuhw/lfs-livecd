@@ -1,14 +1,10 @@
-# Texinfo Makefile
+NAME = texinfo
+VER  = 5.1
+DIR  = $(NAME)-$(VER)
 
-NAME= texinfo
-VER= 4.13a
-DIR= $(NAME)-4.13
-
-FILE= $(DIR)a.tar.gz
-URL-$(FILE)= http://ftp.gnu.org/gnu/texinfo/texinfo-4.13a.tar.gz
-SUM-$(FILE)= a1533cf8e03ea4fa6c443b73f4c85e4da04dead0
-
-# Targets
+FILE = $(DIR).tar.gz
+URL-$(FILE) = http://ftp.gnu.org/gnu/$(NAME)/$(FILE)
+SUM-$(FILE) = 52ee905a3b705020d2a1b6ec36d53ca6
 
 include $(MY_ROOT)/scripts/functions
 
@@ -16,17 +12,15 @@ stage1: $(FILE)
 	$(std_build)
 
 compile-stage1:
-	./configure \
-		--prefix=/tools
+	./configure --prefix=/tools
 	make
 	make install
 
-stage2: Makefile $(FILE)
+stage2: $(FILE)
 	$(std_build)
 
 compile-stage2:
-	./configure \
-		--prefix=/usr
+	./configure --prefix=/usr
 	make
 	make install
 	make TEXMF=/usr/share/texmf install-tex
@@ -34,4 +28,4 @@ compile-stage2:
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: compile-stage1 clean compile-stage2
+.PHONY: compile-stage1 compile-stage2 clean
