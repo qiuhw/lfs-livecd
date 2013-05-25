@@ -1,14 +1,10 @@
-# Tar Makefile
+NAME = tar
+VER  = 1.26
+DIR  = $(NAME)-$(VER)
 
-NAME= tar
-VER= 1.22
-DIR= $(NAME)-$(VER)
-
-FILE= $(DIR).tar.bz2
-URL-$(FILE)= http://ftp.gnu.org/gnu/tar/tar-1.22.tar.bz2
-SUM-$(FILE)= ca99a6ade7308f9293bdb04048cb335e52c63215
-
-# Targets
+FILE = $(DIR).tar.bz2
+URL-$(FILE) = http://ftp.gnu.org/gnu/$(NAME)/$(FILE)
+SUM-$(FILE) = 2cee42a2ff4f1cd4f9298eeeb2264519
 
 include $(MY_ROOT)/scripts/functions
 
@@ -16,17 +12,18 @@ stage1: $(FILE)
 	$(std_build)
 
 compile-stage1:
-	./configure \
-		--prefix=/tools
+	sed -i -e '/gets is a/d' gnu/stdio.in.h
+	./configure --prefix=/tools
 	make
 	make install
 
-stage2: Makefile $(FILE)
+stage2: $(FILE)
 	$(std_build)
 
 compile-stage2:
-	./configure \
-		--prefix=/usr \
+	sed -i -e '/gets is a/d' gnu/stdio.in.h
+	FORCE_UNSAFE_CONFIGURE=1 \
+	./configure --prefix=/usr \
 		--bindir=/bin \
 		--libexecdir=/usr/sbin
 	make
@@ -35,4 +32,4 @@ compile-stage2:
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: compile-stage1 clean compile-stage2
+.PHONY: compile-stage1 compile-stage2 clean
