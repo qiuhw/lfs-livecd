@@ -29,7 +29,7 @@ SUM-$(FILE3)= b32a2e1a3daa392372fbd586d1ed3679
 
 include $(MY_ROOT)/scripts/functions
 
-prebuild: $(FILE) $(FILE1) $(FILE2)
+prebuild: $(FILE) $(FILE1) $(FILE2) $(FILE3)
 	$(sep_dir_build)
 
 compile-prebuild:
@@ -75,7 +75,7 @@ compile-prebuild:
 	make install
 	ln -s libgcc.a `$(LFS_TGT)-gcc -print-libgcc-file-name | sed 's/libgcc/&_eh/'`
 
-stage1: $(FILE) $(FILE1) $(FILE2) $(PATCH1)
+stage1: $(FILE) $(FILE1) $(FILE2) $(FILE3)
 	$(sep_dir_build)
 
 compile-stage1:
