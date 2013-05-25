@@ -184,6 +184,7 @@ tools: \
 	bzip2-stage1 \
 	coreutils-stage1 \
 	diffutils-stage1 \
+	file-stage1 \
 	findutils-stage1 \
 	gawk-stage1 \
 	gettext-stage1 \

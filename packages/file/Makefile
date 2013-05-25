@@ -1,27 +1,31 @@
-# File Makefile
+NAME = file
+VER  = 5.14
+DIR  = $(NAME)-$(VER)
 
-NAME= file
-VER= 5.04
-DIR= $(NAME)-$(VER)
-
-FILE= $(DIR).tar.gz
-URL-$(FILE)= ftp://ftp.astron.com/pub/file/file-5.04.tar.gz
-SUM-$(FILE)= 56ddf7135471aa656334ed8fefe1112bcccc2cc3
-
-# Targets
+FILE = $(DIR).tar.gz
+URL-$(FILE) = ftp://ftp.astron.com/pub/$(NAME)/$(FILE)
+SUM-$(FILE) = c26625f1d6773ad4bc5a87c0e315632c
 
 include $(MY_ROOT)/scripts/functions
 
-stage2: Makefile $(FILE)
+stage1: $(FILE)
+	$(std_build)
+
+compile-stage1:
+	./configure --prefix=/tools
+	make
+	make install
+
+stage2: $(FILE)
 	$(std_build)
 
 compile-stage2:
-	./configure \
-		--prefix=/usr
+	./configure --prefix=/usr
 	make
+	make check
 	make install
 
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: clean compile-stage2
+.PHONY: compile-stage1 compile-stage2 clean
