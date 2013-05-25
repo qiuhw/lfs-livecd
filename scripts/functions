@@ -14,14 +14,14 @@ define sep_dir_build
 	@touch $@
 endef
 
-# This takes the form of 'download [filename] [url] [sha1sum]'
+# This takes the form of 'download [filename] [url] [md5sum]'
 define download
 	@if [ ! -f "$(SRC)/$(1)" ] ; then wget "$(2)" -P $(SRC) ; \
-        elif ! echo "$(3)  $(SRC)/$(1)" | sha1sum -c - --status ; then \
+        elif ! echo "$(3)  $(SRC)/$(1)" | md5sum -c - --status ; then \
         wget -c "$(2)" ; fi
-	@echo "$(3)  $(SRC)/$(1)" | sha1sum -c - --quiet
+	@echo "$(3)  $(SRC)/$(1)" | md5sum -c - --quiet
 	@ln -sf "$(SRC)/$(1)" .
 endef
 
 %.gz %.tgz %.bz2 %.zip %.patch %.jpg %.run:
-	$(call download,$@,$(URL-$@),$(SHA-$@))
+	$(call download,$@,$(URL-$@),$(SUM-$@))

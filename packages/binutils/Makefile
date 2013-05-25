@@ -3,11 +3,15 @@
 # The Binutils package contains a liner, an assembler, and other tools for handling object files.
 
 NM= binutils
-DIR= $(NM)-2.20
+DIR= $(NM)-2.23.1
 
 FILE= $(DIR).tar.bz2
-URL-$(FILE)= http://anduin.linuxfromscratch.org/sources/LFS/lfs-packages/6.6/$(FILE)
-SHA-$(FILE)= 747e7b4d94bce46587236dc5f428e5b412a590dc
+URL-$(FILE)= http://ftp.gnu.org/gnu/$(NM)/$(FILE)
+SUM-$(FILE)= 33adb18c3048d057ac58d07a3f1adb38
+
+PATCH= $(DIR)-testsuite_fix-1.patch
+URL-$(PATCH)= http://www.linuxfromscratch.org/patches/lfs/7.3/$(PATCH)
+SUM-$(PATCH)= cb47fae1bc572d45f4b0cff8ae8ecba8
 
 # Targets
 
@@ -18,22 +22,27 @@ prebuild: $(FILE)
 
 compile-prebuild:
 	../$(DIR)/configure \
-		--target=$(LFS_TGT) --prefix=/tools \
-		--disable-nls --disable-werror
+		--prefix=/tools \
+		--with-sysroot=$(LFS) \
+		--with-lib-path=/tools/lib \
+		--target=$(LFS_TGT) \
+		--disable-nls \
+		--disable-werror
 	make
-	case $(uname -m) in \
-		x86_64) install -d /tools/lib && ln -s lib /tools/lib64 ;; \
-	esac
+	install -d /tools/lib && ln -s lib /tools/lib64
 	make install
 
 stage1: $(FILE)
 	$(sep_dir_build)
 
 compile-stage1:
-	CC="$(LFS_TGT)-gcc -B/tools/lib/" \
-		AR=$(LFS_TGT)-ar RANLIB=$(LFS_TGT)-ranlib \
-		../$(DIR)/configure --prefix=/tools \
-		--disable-nls --with-lib-path=/tools/lib
+	CC=$(LFS_TGT)-gcc \
+	AR=$(LFS_TGT)-ar \
+	RANLIB=$(LFS_TGT)-ranlib \
+	../$(DIR)/configure \
+		--prefix=/tools \
+		--disable-nls \
+		--with-lib-path=/tools/lib
 	make
 	make install
 	make -C ld clean
@@ -46,7 +55,9 @@ stage2: $(FILE)
 compile-stage2:
 	rm -f ../$(DIR)/etc/standards.info
 	sed -i.bak '/^INFO/s/standards.info //' ../$(DIR)/etc/Makefile.in
-	../$(DIR)/configure --prefix=/usr \
+	cd ../$(DIR) ; patch -Np1 -i ../$(PATCH)
+	../$(DIR)/configure \
+		--prefix=/usr \
 		--enable-shared
 	make tooldir=/usr
 	make check
