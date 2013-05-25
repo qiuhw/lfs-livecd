@@ -4,7 +4,7 @@ NM= dejagnu
 DIR= $(NM)-1.5.1
 FILE= $(DIR).tar.gz
 URL-$(FILE)= http://ftp.gnu.org/gnu/$(NM)/$(FILE)
-SHA-$(FILE)= 8386e04e362345f50ad169f052f4c4ab
+SUM-$(FILE)= 8386e04e362345f50ad169f052f4c4ab
 
 # Targets
 

@@ -178,6 +178,7 @@ tools: \
 	tcl-stage1 \
 	expect-stage1 \
 	dejagnu-stage1 \
+	check-stage1 \
 	ncurses-stage1 \
 	bash-stage1 \
 	bzip2-stage1 \
