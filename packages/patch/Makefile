@@ -1,18 +1,10 @@
-# Patch Makefile
+NAME = patch
+VER  = 2.7.1
+DIR  = $(NAME)-$(VER)
 
-NAME= patch
-VER= 2.6.1
-DIR= $(NAME)-$(VER)
-
-FILE= $(DIR).tar.bz2
-URL-$(FILE)= http://ftp.gnu.org/gnu/patch/patch-2.6.1.tar.bz2
-SUM-$(FILE)= 105f313d14b5458e0aa229c518bda9ebdf921a1b
-
-PATCH= $(DIR)-test_fix-1.patch
-URL-$(PATCH)= http://www.linuxfromscratch.org/patches/lfs/6.6/patch-2.6.1-test_fix-1.patch
-SUM-$(PATCH)= c6e7b69a51c282c910dcc30365bd7a428f244a45
-
-# Targets
+FILE = $(DIR).tar.xz
+URL-$(FILE) = http://ftp.gnu.org/gnu/$(NAME)/$(FILE)
+SUM-$(FILE) = e9ae5393426d3ad783a300a338c09b72
 
 include $(MY_ROOT)/scripts/functions
 
@@ -20,22 +12,19 @@ stage1: $(FILE)
 	$(std_build)
 
 compile-stage1:
-	./configure \
-		--prefix=/tools
+	./configure --prefix=/tools
 	make
 	make install
 
-stage2: Makefile $(FILE) $(PATCH)
+stage2: $(FILE)
 	$(std_build)
 
 compile-stage2:
-	patch -Np1 -i ../$(PATCH)
-	./configure \
-		--prefix=/usr
+	./configure --prefix=/usr
 	make
 	make install
 
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: compile-stage1 clean compile-stage2
+.PHONY: compile-stage1 compile-stage2 clean
