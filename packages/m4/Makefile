@@ -1,14 +1,10 @@
-# M4 Makefile
+NAME = m4
+VER  = 1.4.16
+DIR  = $(NAME)-$(VER)
 
-NAME= m4
-VER= 1.4.13
-DIR= $(NAME)-$(VER)
-
-FILE= $(DIR).tar.bz2
-URL-$(FILE)= http://ftp.gnu.org/gnu/m4/m4-1.4.13.tar.bz2
-SUM-$(FILE)= 7ba1834ebf96d0520d526c1c9f5764cc869a9f42
-
-# Targets
+FILE = $(DIR).tar.bz2
+URL-$(FILE) = http://ftp.gnu.org/gnu/$(NAME)/$(FILE)
+SUM-$(FILE) = 8a7cef47fecab6272eb86a6be6363b2f
 
 include $(MY_ROOT)/scripts/functions
 
@@ -16,21 +12,23 @@ stage1: $(FILE)
 	$(std_build)
 
 compile-stage1:
-	./configure \
-		--prefix=/tools
+	sed -i -e '/gets is a/d' lib/stdio.in.h
+	./configure --prefix=/tools
 	make
 	make install
 
-stage2: Makefile $(FILE)
+stage2: $(FILE)
 	$(std_build)
 
 compile-stage2:
-	./configure \
-		--prefix=/usr 
+	sed -i -e '/gets is a/d' lib/stdio.in.h
+	./configure --prefix=/usr 
 	make
+	sed -i -e '41s/ENOENT/& || errno == EINVAL/' tests/test-readlink.h
+	make check
 	make install
 
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: compile-stage1 clean compile-stage2
+.PHONY: compile-stage1 compile-stage2 clean
