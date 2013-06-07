@@ -49,7 +49,7 @@ ROOTFS_MEGS := 1536
 # LiveCD version
 export CD_VERSION ?= $(MY_ARCH)-7.3
 
-export LFS := $(MY_BUILD)/image
+export LFS := image
 export MKTREE := $(LFS)$(MY_ROOT)
 export LFSSRC := /lfs-sources
 
@@ -75,13 +75,21 @@ test-euid:
 		echo "You must be logged in as root." && exit 1; \
 	 fi
 
-base: $(MKTREE) builduser build-tools
+base: builduser $(MKTREE) build-tools
 	@chroot "$(LFS)" $(chenv-pre-bash) 'set +h && \
 	 chown -R 0:0 /tools $(SRC) $(MY_ROOT) && \
 	 cd $(MY_ROOT) && make SHELL=/tools/bin/bash pre-bash'
 	@chroot "$(LFS)" $(chenv-post-bash) 'set +h && cd $(MY_ROOT) && \
 	 make SHELL=/bin/bash post-bash'
 	@install -m644 etc/issue* $(LFS)/etc
+	@touch $@
+
+# Add the unprivileged user - will be used for building the temporary tools
+builduser:
+	@-groupadd $(USER)
+	@-useradd -s /bin/bash -g $(USER) -m -k /dev/null $(USER)
+	@install -m644 -o$(USER) -g$(USER) lfs/{.bash_profile,.bashrc} ~$(USER)/
+	@-chown -R $(USER):$(USER) $(MY_BUILD)/tools $(MY_BUILD)$(SRC) $(MY_BASE)
 	@touch $@
 
 # This target populates the root.img image and sets up some mounts
@@ -136,14 +144,6 @@ root.img:
 	dd if=/dev/null of=root.img bs=1M seek=$(ROOTFS_MEGS)
 	mke2fs -jF root.img
 	tune2fs -c 0 -i 0 root.img
-
-# Add the unprivileged user - will be used for building the temporary tools
-builduser:
-	@-groupadd $(USER)
-	@-useradd -s /bin/bash -g $(USER) -m -k /dev/null $(USER)
-	@install -m644 -o$(USER) -g$(USER) $(MY_BASE)/lfs/{.bash_profile,.bashrc} ~$(USER)/
-	@-chown -R $(USER):$(USER) $(MY_BUILD)/tools $(MY_BUILD)$(SRC) $(MY_BASE)
-	@touch $@
 
 build-tools:
 	@su - $(USER) -c "make tools"
@@ -294,7 +294,6 @@ post-bash: \
 	libxslt-stage2 \
 	docbook-xsl-stage2 \
 	html_tidy-stage2 \
-	LFS-BOOK-stage2 \
 	openssh-stage2 \
 	pcre-stage2 \
 	glib2-stage2 \
