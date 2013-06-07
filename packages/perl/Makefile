@@ -1,10 +1,10 @@
 NAME = perl
-VER  = 5.16.3
+VER  = 5.18.0
 DIR  = $(NAME)-$(VER)
 
 FILE = $(DIR).tar.bz2
-URL-$(FILE) = http://cpan.org/src/5.0/$(FILE)
-SUM-$(FILE) = 025102de0e4a597cf541e57da80c6aa3
+URL-$(FILE) = http://www.cpan.org/src/5.0/$(FILE)
+SUM-$(FILE) = a832e928adfd36d162d2a5d3b631265c
 
 PATCH = $(DIR)-libc-1.patch
 URL-$(PATCH) = http://www.linuxfromscratch.org/patches/lfs/development/$(PATCH)
@@ -41,6 +41,7 @@ compile-stage2:
 		              -Dpager="/usr/bin/less -isR" \
 					  -Duseshrplib
 	make
+	make -k test
 	make install
 
 clean:
