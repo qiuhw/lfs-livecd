@@ -1,34 +1,25 @@
-# gmp Makefile
+NAME = gmp
+VER  = 5.1.2
+DIR  = $(NAME)-$(VER)
 
-NAME= gmp
-VER= 5.0.0
-DIR= $(NAME)-$(VER)
-
-FILE= $(DIR).tar.bz2
-URL-$(FILE)= http://ftp.gnu.org/gnu/gmp/gmp-5.0.0.tar.bz2
-SUM-$(FILE)= 11a49c6fec0a3cfae2df9966d321d740af9f603f
-
-# Targets
+FILE = $(DIR).tar.xz
+URL-$(FILE) = http://ftp.gnu.org/gnu/$(NAME)/$(FILE)
+SUM-$(FILE) = 06fe2ca164221c59ce74867155cfc1ac
 
 include $(MY_ROOT)/scripts/functions
-
-ifeq ($(MY_ARCH), i686)
-BUILD_PARAM= --build=i686-pc-linux-gnu
-endif
 
 stage2: $(FILE)
 	$(std_build)
 
 compile-stage2:
-	./configure \
-		--prefix=/usr \
-		--enable-cxx \
-		$(BUILD_PARAM) \
-	 	--enable-mpbsd
+	./configure --prefix=/usr \
+		--enable-cxx
 	make
+	make check 2>&1 | tee gmp-check-log
+	awk '/tests passed/{total+=$2} ; END{print total}' gmp-check-log
 	make install
 
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: clean compile-stage2
+.PHONY: compile-stage2 clean
