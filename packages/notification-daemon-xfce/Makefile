@@ -1,22 +1,14 @@
-# notification-daemon-xfce Makefile
+NAME = notification-daemon-xfce
+VER  = 0.3.6
+DIR  = $(NAME)-$(VER)
 
-NAME= notification-daemon-xfce
-VER= 0.3.6
-DIR= $(NAME)-$(VER)
-
-FILE= $(DIR).tar.bz2
-URL-$(FILE)= http://goodies.xfce.org/releases/notification-daemon-xfce/$(FILE)
-SUM-$(FILE)= 6edc6a21df03514880abe892befe4a7a58437107
-
-# Targets
+FILE = $(DIR).tar.bz2
+URL-$(FILE) = http://goodies.xfce.org/releases/notification-daemon-xfce/$(FILE)
+SUM-$(FILE) = 6edc6a21df03514880abe892befe4a7a58437107
 
 include $(ROOT)/scripts/functions
 
-chroot:
-	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
-
-stage2: Makefile $(FILE)
+stage2: $(FILE)
 	$(std_build)
 
 compile-stage2:
@@ -28,4 +20,4 @@ compile-stage2:
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: clean chroot compile-stage2
+.PHONY: compile-stage2 clean

@@ -1,34 +1,26 @@
-# net-tools Makefile
+NAME = net-tools
+VER  = 1.60
+DIR  = $(NAME)-$(VER)
 
-NAME= net-tools
-VER= 1.60
-DIR= $(NAME)-$(VER)
+FILE = $(DIR).tar.bz2
+URL-$(FILE) = http://www.tazenda.demon.co.uk/phil/net-tools/$(FILE)
+SUM-$(FILE) = 944fb70641505d5d1139dba3aeb81ba124574b83
 
-FILE= $(DIR).tar.bz2
-URL-$(FILE)= http://www.tazenda.demon.co.uk/phil/net-tools/$(FILE)
-SUM-$(FILE)= 944fb70641505d5d1139dba3aeb81ba124574b83
+PATCH1 = $(DIR)-gcc34-3.patch
+URL-$(PATCH1) = http://www.linuxfromscratch.org/patches/blfs/svn/$(PATCH1)
+SUM-$(PATCH1) = a92286932a423fc987f2a152931d05b0a9a312bd
 
-PATCH1= $(DIR)-gcc34-3.patch
-URL-$(PATCH1)= http://www.linuxfromscratch.org/patches/blfs/svn/$(PATCH1)
-SUM-$(PATCH1)= a92286932a423fc987f2a152931d05b0a9a312bd
+PATCH2 = $(DIR)-kernel_headers-2.patch
+URL-$(PATCH2) = http://www.linuxfromscratch.org/patches/blfs/svn/$(PATCH2)
+SUM-$(PATCH2) = 3e59577e904582503b25c7b21f6e3b77b165f84a
 
-PATCH2= $(DIR)-kernel_headers-2.patch
-URL-$(PATCH2)= http://www.linuxfromscratch.org/patches/blfs/svn/$(PATCH2)
-SUM-$(PATCH2)= 3e59577e904582503b25c7b21f6e3b77b165f84a
-
-PATCH3= $(DIR)-mii_ioctl-1.patch
-URL-$(PATCH3)= http://www.linuxfromscratch.org/patches/blfs/svn/$(PATCH3)
-SUM-$(PATCH3)= 912613acbf3a000a2935391a14e55b5ccdeeae6b
-
-# Targets
+PATCH3 = $(DIR)-mii_ioctl-1.patch
+URL-$(PATCH3) = http://www.linuxfromscratch.org/patches/blfs/svn/$(PATCH3)
+SUM-$(PATCH3) = 912613acbf3a000a2935391a14e55b5ccdeeae6b
 
 include $(ROOT)/scripts/functions
 
-chroot:
-	chroot "$(LFS)" $(chenv-post-bash) \
-	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
-
-stage2: Makefile $(FILE) $(PATCH1) $(PATCH2) $(PATCH3)
+stage2: $(FILE) $(PATCH1) $(PATCH2) $(PATCH3)
 	$(std_build)
 
 compile-stage2:
@@ -44,4 +36,4 @@ compile-stage2:
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: clean chroot compile-stage2
+.PHONY: compile-stage2 clean

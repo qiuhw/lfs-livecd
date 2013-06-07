@@ -22,10 +22,6 @@ PATCH3= $(DIR)-default_client-1.patch
 
 include $(ROOT)/scripts/functions
 
-chroot:
-	chroot "$(LFS)" $(chenv-pre-bash) \
-	'cd $(ROOT) && make ch-$(NAME) $(chbash-pre-bash)'
-
 stage2: Makefile $(FILE) $(PATCH1) $(PATCH2)
 	$(std_build)
 
@@ -42,4 +38,4 @@ compile-stage2:
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: clean chroot compile-stage2
+.PHONY: clean compile-stage2

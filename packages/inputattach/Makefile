@@ -4,10 +4,6 @@ NAME= inputattach
 
 # Targets
 
-chroot:
-	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
-
 stage2: Makefile
 	make -f Makefile compile-$@
 	make clean
@@ -20,4 +16,4 @@ compile-stage2:
 clean:
 	rm -f inputattach
 
-.PHONY: clean chroot compile-stage2
+.PHONY: clean compile-stage2

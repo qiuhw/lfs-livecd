@@ -1,20 +1,18 @@
-# network firmware Makefile
+NAME = net-firmware
+VER  = 1
 
-NAME= net-firmware
-VER= 1
-
-UNCOMPRESSED_FILE1= t3fw-3.3.0.bin
-FILE1= $(UNCOMPRESSED_FILE1).gz
-URL-$(FILE1)= http://service.chelsio.com/drivers/firmware/t3/$(FILE1)
-SUM-$(FILE1)= 6c2965f7eaa7e0f18c2e7d7e9afe470850b502ee
+UNCOMPRESSED_FILE1 = t3fw-3.3.0.bin
+FILE1 = $(UNCOMPRESSED_FILE1).gz
+URL-$(FILE1) = http://service.chelsio.com/drivers/firmware/t3/$(FILE1)
+SUM-$(FILE1) = 6c2965f7eaa7e0f18c2e7d7e9afe470850b502ee
 
 # FILE2 was for Myri10GE, but there is no way to automate the download
 # due to one-time URLs used for license checks. Removed.
 
-DIR3= atmel-firmware-1.3
-FILE3= $(DIR3).tar.gz
-URL-$(FILE3)= http://www.thekelleys.org.uk/atmel/$(FILE3)
-SUM-$(FILE3)= 8027f505dc49c8322c8593ce05ec2b73391b74c7
+DIR3  = atmel-firmware-1.3
+FILE3 = $(DIR3).tar.gz
+URL-$(FILE3) = http://www.thekelleys.org.uk/atmel/$(FILE3)
+SUM-$(FILE3) = 8027f505dc49c8322c8593ce05ec2b73391b74c7
 
 FILE4= wl_apsta.o
 URL-$(FILE4)= http://svit.epfl.ch/stuff/$(FILE4)
@@ -98,10 +96,6 @@ ALLFILES= $(foreach FILE,$(sort $(filter FILE%,$(.VARIABLES))),$($(FILE)))
 
 include $(ROOT)/scripts/functions
 
-chroot:
-	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
-
 stage2: Makefile $(ALLFILES)
 	@zcat $(FILE1) >/lib/firmware/$(UNCOMPRESSED_FILE1)
 	@tar xf $(FILE3)
@@ -133,4 +127,4 @@ clean:
 $(ALLFILES):
 	$(call download,$@,$(URL-$@),$(SUM-$@))
 
-.PHONY: clean chroot compile-stage2
+.PHONY: clean compile-stage2

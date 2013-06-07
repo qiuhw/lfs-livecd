@@ -85,10 +85,6 @@ SUM-$(FILE10)= 101a7fcae2cbf2dbad81d91ff7cb262d6857d104
 
 include $(ROOT)/scripts/functions
 
-chroot:
-	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NAME)64 $(chbash-post-bash)'
-
 stage2: Makefile $(FILE) $(FILE1) $(FILE2) $(FILE3) $(FILE4) $(FILE5) $(FILE6) $(FILE7) $(FILE8) $(FILE9) $(FILE10) $(PATCH1)
 	$(std_build)
 
@@ -146,4 +142,4 @@ clean:
 	-rm -rf $(DIR)
 	-rm -f fakes-for-fglrx/{uname,cat}
 
-.PHONY: clean chroot compile-stage2
+.PHONY: clean compile-stage2

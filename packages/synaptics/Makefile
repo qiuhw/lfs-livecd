@@ -1,22 +1,14 @@
-# synaptics Makefile
+NAME = synaptics
+VER  = 0.14.6
+DIR  = $(NAME)-$(VER)
 
-NAME= synaptics
-VER= 0.14.6
-DIR= $(NAME)-$(VER)
-
-FILE= $(DIR).tar.bz2
-URL-$(FILE)= http://web.telia.com/~u89404340/touchpad/files/$(FILE)
-SUM-$(FILE)= 41443e253e73546657b40435c8c9bfa0a91662bc
-
-# Targets
+FILE = $(DIR).tar.bz2
+URL-$(FILE) = http://web.telia.com/~u89404340/touchpad/files/$(FILE)
+SUM-$(FILE) = 41443e253e73546657b40435c8c9bfa0a91662bc
 
 include $(ROOT)/scripts/functions
 
-chroot:
-	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
-
-stage2: Makefile $(FILE)
+stage2: $(FILE)
 	$(std_build)
 
 compile-stage2:
@@ -26,4 +18,4 @@ compile-stage2:
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: clean chroot compile-stage2
+.PHONY: compile-stage2 clean

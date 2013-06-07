@@ -1,23 +1,14 @@
-# PCMCIS-CS Makefile
+NAME = pcmcia-cs
+VER  = 3.2.8
+DIR  = $(NAME)-$(VER)
 
-# Is it OK to download a 1 MB package just for 10 KB of cis-files?
-NAME= pcmcia-cs
-VER= 3.2.8
-DIR= $(NAME)-$(VER)
-
-FILE= $(DIR).tar.gz
-URL-$(FILE)= http://pcmcia-cs.sourceforge.net/ftp/$(FILE)
-SUM-$(FILE)= 38ce295c2a6baed05d792141f60a01fe6770350e
-
-# Targets
+FILE = $(DIR).tar.gz
+URL-$(FILE) = http://pcmcia-cs.sourceforge.net/ftp/$(FILE)
+SUM-$(FILE) = 38ce295c2a6baed05d792141f60a01fe6770350e
 
 include $(ROOT)/scripts/functions
 
-chroot:
-	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
-
-stage2: Makefile $(FILE)
+stage2: $(FILE)
 	$(std_build)
 
 compile-stage2:
@@ -27,4 +18,4 @@ compile-stage2:
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: clean chroot compile-stage2
+.PHONY: compile-stage2 clean

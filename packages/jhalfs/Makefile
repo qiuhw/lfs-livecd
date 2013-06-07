@@ -8,10 +8,6 @@ DIR= $(NAME)-$(VER)
 
 include $(MY_ROOT)/scripts/functions
 
-chroot:
-	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
-
 stage2: Makefile $(FILE1)
 	@touch $(DIR)-$@.log
 	@-ln -sf ../packages/$(shell basename `pwd`)/$(DIR)-$@.log $(MY_ROOT)/logs/ 

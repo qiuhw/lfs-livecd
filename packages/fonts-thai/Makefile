@@ -13,10 +13,6 @@ SUM-$(FILE)= 02e94e471b2b29845f4dbbde6056b34fac0d1611
 
 include $(ROOT)/scripts/functions
 
-chroot:
-	chroot "$(LFS)" $(chenv-blfs) \
-	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
-
 stage2: Makefile $(FILE) 
 	$(std_build)
 
@@ -26,4 +22,4 @@ compile-stage2:
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: clean chroot compile-stage2
+.PHONY: clean compile-stage2

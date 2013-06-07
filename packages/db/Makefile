@@ -16,10 +16,6 @@ SUM-$(PATCH1)= 737f11c8f7f9b7bd2523f6c19460bd0aacd6799f
 
 include $(ROOT)/scripts/functions
 
-chroot:
-	chroot "$(LFS)" $(chenv-post-bash) \
-	'cd $(ROOT) && make ch-$(NAME) $(chbash-post-bash)'
-
 stage2: Makefile $(FILE) $(PATCH1)
 	$(std_build)
 
@@ -34,4 +30,4 @@ compile-stage2:
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: clean chroot compile-stage2
+.PHONY: clean compile-stage2
