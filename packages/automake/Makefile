@@ -1,27 +1,23 @@
-# Automake Makefile
+NAME = automake
+VER  = 1.13.3
+DIR  = $(NAME)-$(VER)
 
-NAME= automake
-VER= 1.11.1
-DIR= $(NAME)-$(VER)
-
-FILE= $(DIR).tar.bz2
-URL-$(FILE)= http://ftp.gnu.org/gnu/automake/automake-1.11.1.tar.bz2
-SUM-$(FILE)= 44ab0007d8edbe82338e29bdda2f461f43a98818
-
-# Targets
+FILE = $(DIR).tar.xz
+URL-$(FILE) = http://ftp.gnu.org/gnu/$(NAME)/$(FILE)
+SUM-$(FILE) = e181a81bb57097a6c8c52cdb91c4b2b9
 
 include $(MY_ROOT)/scripts/functions
 
-stage2: Makefile $(FILE)
+stage2: $(FILE)
 	$(std_build)
 
 compile-stage2:
-	./configure \
-		--prefix=/usr
+	./configure --prefix=/usr \
+		--docdir=/usr/share/doc/$(DIR)
 	make
 	make install
 
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: clean compile-stage2
+.PHONY: compile-stage2 clean
