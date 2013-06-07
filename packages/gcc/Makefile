@@ -1,31 +1,33 @@
-# Gcc Makefile
-# The GCC package contains the GNU compiler collection, which includes the C and C++ compilers.
+NAME = gcc
+VER  = 4.8.1
+DIR  = $(NAME)-$(VER)
 
-NAME= gcc
-DIR= $(NAME)-4.8.0
-FILE= $(DIR).tar.bz2
-URL-$(FILE)= http://ftp.gnu.org/gnu/$(NAME)/$(DIR)/$(FILE)
-SUM-$(FILE)= e6040024eb9e761c3bea348d1fa5abb0
+FILE = $(DIR).tar.bz2
+URL-$(FILE) = http://ftp.gnu.org/gnu/$(NAME)/$(DIR)/$(FILE)
+SUM-$(FILE) = 3b2386c114cd74185aa3754b58a79304
 
-NM1= mpfr
-DIR1= $(NM1)-3.1.2
-FILE1= $(DIR1).tar.xz
-URL-$(FILE1)= http://www.mpfr.org/$(DIR1)/$(FILE1)
-SUM-$(FILE1)= e3d203d188b8fe60bb6578dd3152e05c
+NAME1 = mpfr
+VER1  = 3.1.2
+DIR1  = $(NAME1)-$(VER1)
 
-NM2= gmp
-DIR2= $(NM2)-5.1.1
-FILE2= $(DIR2).tar.xz
-URL-$(FILE2)= ftp://ftp.gmplib.org/pub/$(DIR2)/$(FILE2)
-SUM-$(FILE2)= 485b1296e6287fa381e6015b19767989
+FILE1 = $(DIR1).tar.xz
+URL-$(FILE1) = http://www.mpfr.org/$(DIR1)/$(FILE1)
+SUM-$(FILE1) = e3d203d188b8fe60bb6578dd3152e05c
 
-NM3= mpc
-DIR3= $(NM3)-1.0.1
-FILE3= $(DIR3).tar.gz
-URL-$(FILE3)= http://www.multiprecision.org/$(NM3)/download/$(FILE3)
-SUM-$(FILE3)= b32a2e1a3daa392372fbd586d1ed3679
+NAME2 = gmp
+VER2  = 5.1.2
+DIR2  = $(NAME2)-$(VER2)
+FILE2 = $(DIR2).tar.xz
+URL-$(FILE2) = ftp://ftp.gmplib.org/pub/$(DIR2)/$(FILE2)
+SUM-$(FILE2) = 06fe2ca164221c59ce74867155cfc1ac
 
-# Targets
+NAME3 = mpc
+VER3  = 1.0.1
+DIR3  = $(NAME3)-$(VER3)
+
+FILE3 = $(DIR3).tar.gz
+URL-$(FILE3) = http://www.multiprecision.org/$(NAME3)/download/$(FILE3)
+SUM-$(FILE3) = b32a2e1a3daa392372fbd586d1ed3679
 
 include $(MY_ROOT)/scripts/functions
 
@@ -33,9 +35,9 @@ prebuild: $(FILE) $(FILE1) $(FILE2) $(FILE3)
 	$(sep_dir_build)
 
 compile-prebuild:
-	cd ../$(DIR) ; tar xf ../$(FILE1); mv $(DIR1) $(NM1)
-	cd ../$(DIR) ; tar xf ../$(FILE2); mv $(DIR2) $(NM2)
-	cd ../$(DIR) ; tar xf ../$(FILE3); mv $(DIR3) $(NM3)
+	cd ../$(DIR) ; tar xf ../$(FILE1); mv $(DIR1) $(NAME1)
+	cd ../$(DIR) ; tar xf ../$(FILE2); mv $(DIR2) $(NAME2)
+	cd ../$(DIR) ; tar xf ../$(FILE3); mv $(DIR3) $(NAME3)
 	for file in $$(find ../$(DIR)/gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h) ; \
 	do cp -u $$file{,.orig} && \
 	sed -e 's@/lib\(64\)\?\(32\)\?/ld@/tools&@g' \
@@ -61,6 +63,7 @@ compile-prebuild:
 		--disable-multilib \
 		--disable-decimal-float \
 		--disable-threads \
+		--disable-libatomic \
 		--disable-libgomp \
 		--disable-libitm \
 		--disable-libmudflap \
@@ -93,9 +96,9 @@ compile-stage1:
 	echo '#define STANDARD_STARTFILE_PREFIX_2 ""' >> $$file && \
 	touch $$file.orig ; \
 	done
-	cd ../$(DIR) ; tar xf ../$(FILE1); mv $(DIR1) $(NM1)
-	cd ../$(DIR) ; tar xf ../$(FILE2); mv $(DIR2) $(NM2)
-	cd ../$(DIR) ; tar xf ../$(FILE3); mv $(DIR3) $(NM3)
+	cd ../$(DIR) ; tar xf ../$(FILE1); mv $(DIR1) $(NAME1)
+	cd ../$(DIR) ; tar xf ../$(FILE2); mv $(DIR2) $(NAME2)
+	cd ../$(DIR) ; tar xf ../$(FILE3); mv $(DIR3) $(NAME3)
 	CC=$(LFS_TGT)-gcc \
 	CXX=$(LFS_TGT)-g++ \
 	AR=$(LFS_TGT)-ar \
