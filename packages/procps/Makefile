@@ -1,30 +1,30 @@
-# procps Makefile
+NAME = procps-ng
+VER  = 3.3.8
+DIR  = $(NAME)-$(VER)
 
-NAME= procps
-VER= 3.2.8
-DIR= $(NAME)-$(VER)
-
-FILE= $(DIR).tar.gz
-URL-$(FILE)= http://procps.sourceforge.net/procps-3.2.8.tar.gz
-SUM-$(FILE)= a0c86790569dec26b5d9037e8868ca907acc9829
-
-PATCH= $(DIR)-watch_unicode-1.patch
-URL-$(PATCH)= http://www.linuxfromscratch.org/patches/lfs/6.6/procps-3.2.8-watch_unicode-1.patch
-SUM-$(PATCH)= 70eb76e7370448213130d5520d8132f0bd1c761f
-
-# Targets
+FILE = $(DIR).tar.xz
+URL-$(FILE) = http://sourceforge.net/projects/$(NAME)/files/Production/$(FILE)
+SUM-$(FILE) = aecbeeda2ab308f8d09dddcb4cb9a572
 
 include $(MY_ROOT)/scripts/functions
 
-stage2: $(FILE) $(PATCH)
+stage2: $(FILE)
 	$(std_build)
 
 compile-stage2:
-	patch -Np1 -i ../$(PATCH)
+	./configure --prefix=/usr \
+		--exec-prefix= \
+		--libdir=/usr/lib \
+		--docdir=/usr/share/doc/procps-ng-3.3.8 \
+		--disable-static \
+		--disable-skill \
+		--disable-kill
 	make
+	sed -i -r 's|(pmap_initname)\\\$$|\1|' testsuite/pmap.test/pmap.exp
+	make check
 	make install
 
 clean:
 	-rm -rf $(DIR)
 
-.PHONY: clean compile-stage2
+.PHONY: compile-stage2 clean
