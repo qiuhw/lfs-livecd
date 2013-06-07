@@ -9,11 +9,6 @@
 #
 #==============================================================================
 
-# Place your personal customizations in Makefile.personal
-# instead of editing this Makefile.
-
--include Makefile.personal
-
 # Timezone
 export timezone ?= Asia/Shanghai
 
