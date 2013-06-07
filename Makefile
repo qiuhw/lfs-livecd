@@ -51,7 +51,6 @@ export CD_VERSION ?= $(MY_ARCH)-7.3
 
 export LFS := image
 export MKTREE := $(LFS)$(MY_ROOT)
-export LFSSRC := /lfs-sources
 
 export chenv-pre-bash := /tools/bin/env -i HOME=/root TERM=$(TERM) PS1='\u:\w\$$ ' PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin /tools/bin/bash -c
 export chenv-post-bash := /tools/bin/env -i HOME=/root TERM=$(TERM) PS1='\u:\w\$$ ' PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin /bin/bash -c
@@ -97,12 +96,11 @@ $(MKTREE): root.img
 	mkdir -p $(LFS) $(MY_BUILD)$(SRC) $(MY_BUILD)/iso/boot
 	mount -o loop root.img $(LFS)
 	mkdir -p $(MKTREE) $(LFS)$(SRC) $(LFS)/tools
-	mkdir -p $(LFS)/boot $(LFS)$(LFSSRC) $(MY_BUILD)/iso$(LFSSRC)
+	mkdir -p $(LFS)/boot
 	mount --bind $(MY_BASE) $(LFS)$(MY_ROOT)
 	mount --bind $(MY_BUILD)/tools $(LFS)/tools
 	mount --bind $(MY_BUILD)$(SRC) $(LFS)$(SRC)
 	mount --bind $(MY_BUILD)/iso/boot $(LFS)/boot
-	mount --bind $(MY_BUILD)/iso$(LFSSRC) $(LFS)$(LFSSRC)
 	-ln -nsf $(MY_BUILD)/tools /
 	-ln -nsf $(MY_BUILD)$(SRC) /
 	-ln -nsf $(MY_BUILD)$(MY_ROOT) /
@@ -580,12 +578,11 @@ unmount:
 	-umount $(LFS)/proc
 	-umount $(LFS)/sys
 	-umount $(LFS)/boot
-	-umount $(LFS)$(LFSSRC)
 	-umount $(LFS)$(SRC)
 	-umount $(LFS)/tools
 	-umount $(LFS)$(MY_ROOT)
 	-rmdir $(LFS)$(SRC) $(LFS)/tools $(LFS)$(MY_ROOT)
-	-rmdir $(LFS)/boot $(LFS)$(LFSSRC)
+	-rmdir $(LFS)/boot
 	-umount $(LFS)
 
 zeroes: $(MKTREE)
