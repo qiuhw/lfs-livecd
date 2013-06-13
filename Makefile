@@ -56,13 +56,7 @@ export chenv-post-bash := /tools/bin/env -i HOME=/root TERM=$(TERM) PS1='\u:\w\$
 # Build Targets
 #==============================================================================
 
-all: test-host base iso
-
-# Check host prerequisites
-test-host:
-	@if [ $$EUID -ne 0 ]; then \
-		echo "You must be logged in as root." && exit 1; \
-	 fi
+all: base iso
 
 base: builduser $(MKTREE) build-tools
 	@chroot "$(LFS)" $(chenv-pre-bash) 'set +h && \
