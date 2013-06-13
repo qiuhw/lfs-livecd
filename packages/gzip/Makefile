@@ -1,10 +1,10 @@
 NAME = gzip
-VER  = 1.5
+VER  = 1.6
 DIR  = $(NAME)-$(VER)
 
 FILE = $(DIR).tar.xz
 URL-$(FILE) = http://ftp.gnu.org/gnu/$(NAME)/$(FILE)
-SUM-$(FILE) = 2a431e169b6f62f7332ef6d47cc53bae
+SUM-$(FILE) = da981f86677d58a106496e68de6f8995
 
 include $(MY_ROOT)/scripts/functions
 
