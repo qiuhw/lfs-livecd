@@ -26,12 +26,9 @@ export CFLAGS := -O2 -pipe
 export CXXFLAGS := $(CFLAGS)
 export LDFLAGS := -s
 
-# Set the base architecture
-export MY_ARCH := $(shell uname -m)
-
 export LINKER = ld-linux-x86-64.so.2
 
-export LFS_TGT := $(MY_ARCH)-lfs-linux-gnu
+export LFS_TGT := x86_64-lfs-linux-gnu
 
 # The full path to the build scripts on the host OS
 export MY_BASE := $(shell pwd)
@@ -47,7 +44,7 @@ export MY_ROOT := /$(shell basename $(MY_BASE))
 ROOTFS_MEGS := 1536
 
 # LiveCD version
-export CD_VERSION ?= $(MY_ARCH)-7.3
+export CD_VERSION ?= x86_64-7.3
 
 export LFS := image
 export MKTREE := $(LFS)$(MY_ROOT)
@@ -62,14 +59,7 @@ export chenv-post-bash := /tools/bin/env -i HOME=/root TERM=$(TERM) PS1='\u:\w\$
 all: test-host base iso
 
 # Check host prerequisites
-test-host: test-arch test-euid
-
-test-arch:
-ifneq ($(MY_ARCH),x86_64)
-	$(error Only x86_64 architecture is supported.)
-endif
-
-test-euid:
+test-host:
 	@if [ $$EUID -ne 0 ]; then \
 		echo "You must be logged in as root." && exit 1; \
 	 fi
