@@ -16,11 +16,11 @@ endef
 
 # This takes the form of 'download [filename] [url] [md5sum]'
 define download
-	@if [ ! -f "$(SRC)/$(1)" ] ; then wget "$(2)" -P $(SRC) ; \
-        elif ! echo "$(3)  $(SRC)/$(1)" | md5sum -c - --status ; then \
+	@if [ ! -f "/sources/$(1)" ] ; then wget "$(2)" -P /sources ; \
+        elif ! echo "$(3)  /sources/$(1)" | md5sum -c - --status ; then \
         wget -c "$(2)" ; fi
-	@echo "$(3)  $(SRC)/$(1)" | md5sum -c - --quiet
-	@ln -sf "$(SRC)/$(1)" .
+	@echo "$(3)  /sources/$(1)" | md5sum -c - --quiet
+	@ln -sf "/sources/$(1)" .
 endef
 
 %.xz %.bz2 %.gz %.tgz %.zip %.patch %.jpg %.run:

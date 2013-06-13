@@ -15,9 +15,6 @@ export timezone ?= Asia/Shanghai
 # Default paper size for groff.
 export pagesize ?= A4
 
-# Location for the sources, must be a directory immediately under /
-export SRC := /sources
-
 # The name of the build user account to create and use for the temporary tools
 export USER := lfs
 
@@ -60,7 +57,7 @@ all: base iso
 
 base: builduser $(MKTREE) build-tools
 	@chroot "$(LFS)" $(chenv-pre-bash) 'set +h && \
-	 chown -R 0:0 /tools $(SRC) $(MY_ROOT) && \
+	 chown -R 0:0 /tools /sources $(MY_ROOT) && \
 	 cd $(MY_ROOT) && make SHELL=/tools/bin/bash pre-bash'
 	@chroot "$(LFS)" $(chenv-post-bash) 'set +h && cd $(MY_ROOT) && \
 	 make SHELL=/bin/bash post-bash'
@@ -72,21 +69,21 @@ builduser:
 	@-groupadd $(USER)
 	@-useradd -s /bin/bash -g $(USER) -m -k /dev/null $(USER)
 	@install -m644 -o$(USER) -g$(USER) lfs/{.bash_profile,.bashrc} ~$(USER)/
-	@-chown -R $(USER):$(USER) $(MY_BUILD)/tools $(MY_BUILD)$(SRC) $(MY_BASE)
+	@-chown -R $(USER):$(USER) tools sources $(MY_BASE)
 	@touch $@
 
 # This target populates the root.img image and sets up some mounts
 $(MKTREE): root.img
-	mkdir -p $(LFS) $(MY_BUILD)$(SRC) $(MY_BUILD)/iso/boot
+	mkdir -p $(LFS) sources iso/boot
 	mount -o loop root.img $(LFS)
-	mkdir -p $(MKTREE) $(LFS)$(SRC) $(LFS)/tools
+	mkdir -p $(MKTREE) $(LFS)/sources $(LFS)/tools
 	mkdir -p $(LFS)/boot
 	mount --bind $(MY_BASE) $(LFS)$(MY_ROOT)
-	mount --bind $(MY_BUILD)/tools $(LFS)/tools
-	mount --bind $(MY_BUILD)$(SRC) $(LFS)$(SRC)
-	mount --bind $(MY_BUILD)/iso/boot $(LFS)/boot
-	-ln -nsf $(MY_BUILD)/tools /
-	-ln -nsf $(MY_BUILD)$(SRC) /
+	mount --bind tools $(LFS)/tools
+	mount --bind sources $(LFS)/sources
+	mount --bind iso/boot $(LFS)/boot
+	-ln -nsf tools /
+	-ln -nsf sources /
 	-ln -nsf $(MY_BUILD)$(MY_ROOT) /
 	-mkdir -p $(LFS)/{proc,sys,dev/shm,dev/pts}
 	-mount -t proc proc $(LFS)/proc
@@ -133,15 +130,6 @@ build-tools:
 	@rm -rf /tools/{,share/}{info,man}
 	@-ln -s /tools/bin/bash $(LFS)/bin/bash
 	@install -m644 -oroot -groot $(MY_BASE)/etc/{group,passwd} $(LFS)/etc
-	@touch $@
-
-maybe-tools:
-	@if [ -f tools.tar.xz ] ; then \
-	    tar -C .. -xpf tools.tar.bz2 ; \
-	else \
-	    su - lfs -c "$(lfsenv) '$(lfsbash) && $(MAKE) tools'" && \
-	    tar -C .. -Jcpf tools.tar.xz tools ; \
-	fi
 	@touch $@
 
 tools: \
@@ -519,12 +507,12 @@ iso: prepiso
 	# e2fsck optimizes directories and returns 1 after a clean build.
 	# This is not a bug.
 	@-e2fsck -f -p root.img
-	@/tools/bin/mkzftree -F root.img $(MY_BUILD)/iso/root.img
-	@cd $(MY_BUILD)/iso ; /tools/bin/mkisofs -z -R -l --allow-leading-dots -D -o \
+	@/tools/bin/mkzftree -F root.img iso/root.img
+	@cd iso ; /tools/bin/mkisofs -z -R -l --allow-leading-dots -D -o \
 	$(MY_BUILD)$(MY_ROOT)/lfslivecd-$(CD_VERSION).iso -b boot/isolinux/isolinux.bin \
 	-c boot/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table \
 	-V "lfslivecd-$(CD_VERSION)" ./
-	@cd $(MY_BUILD)/iso ; /tools/bin/mkisofs -z -R -l --allow-leading-dots -D -o \
+	@cd iso ; /tools/bin/mkisofs -z -R -l --allow-leading-dots -D -o \
 	$(MY_BUILD)$(MY_ROOT)/lfslivecd-$(CD_VERSION)-nosrc.iso -b boot/isolinux/isolinux.bin \
 	-c boot/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table \
 	-m lfs-sources -V "lfslivecd-$(CD_VERSION)" ./
@@ -535,7 +523,7 @@ iso: prepiso
 #==============================================================================
 
 clean: unmount
-	@-rm -rf /tools $(MY_BUILD)/tools $(MY_BUILD)/iso
+	@-rm -rf /tools tools iso
 	@-userdel $(USER)
 	@-groupdel $(USER)
 	@rm -rf /home/$(USER)
@@ -547,7 +535,7 @@ clean: unmount
 	@rm -f logs/*
 	@rm -f packages/Xorg-*/*-stage2
 	@rm -f packages/binutils/{a.out,dummy.c,.spectest}
-	@-rm -f $(SRC) $(MY_ROOT)
+	@-rm -f /sources $(MY_ROOT)
 	@find packages/* -xtype l -exec rm -f \{} \;
 	@-rm root.img
 
@@ -562,10 +550,10 @@ unmount:
 	-umount $(LFS)/proc
 	-umount $(LFS)/sys
 	-umount $(LFS)/boot
-	-umount $(LFS)$(SRC)
+	-umount $(LFS)/sources
 	-umount $(LFS)/tools
 	-umount $(LFS)$(MY_ROOT)
-	-rmdir $(LFS)$(SRC) $(LFS)/tools $(LFS)$(MY_ROOT)
+	-rmdir $(LFS)/sources $(LFS)/tools $(LFS)$(MY_ROOT)
 	-rmdir $(LFS)/boot
 	-umount $(LFS)
 
