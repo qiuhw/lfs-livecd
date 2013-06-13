@@ -1,10 +1,10 @@
 NAME = linux
-VER  = 3.9.4
+VER  = 3.9.5
 DIR  = $(NAME)-$(VER)
 
 FILE = $(DIR).tar.xz
 URL-$(FILE) = http://www.kernel.org/pub/$(NAME)/kernel/v3.x/$(FILE)
-SUM-$(FILE) = 053095dfe88fbd52e7cc8db302631d99
+SUM-$(FILE) = d7be63a4e95ddfc80ba3f7852d87016c
 
 include $(MY_ROOT)/scripts/functions
 
